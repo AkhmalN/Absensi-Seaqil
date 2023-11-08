@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dasboard from "./pages/Dasboard";
+import Dasboard from "./pages/users/Dasboard";
 import Navbar from "./components/Navbar";
-import IzinKerja from "./pages/IzinKerja";
-import MasukKerja from "./pages/MasukKerja";
-import Telat from "./pages/Telat";
+import IzinKerja from "./pages/users/IzinKerja";
+import MasukKerja from "./pages/users/MasukKerja";
+import Telat from "./pages/users/Telat";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

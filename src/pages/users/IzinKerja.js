@@ -3,7 +3,7 @@ import FormIzin from '../components/FormIzin'
 function IzinKerja() {
   return (
     <>
-        <FormIzin />
+      <FormIzin />
     </>
   )
 }
