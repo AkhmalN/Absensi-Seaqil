@@ -1,4 +1,3 @@
-import React from 'react'
 import FormIzin from '../components/FormIzin'
 
 function IzinKerja() {
