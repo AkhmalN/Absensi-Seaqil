@@ -1,10 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dasboard from "./pages/users/Dasboard";
-import Navbar from "./components/Navbar";
+import Dasboard from "./pages/users/Dasboard";  
 import IzinKerja from "./pages/users/IzinKerja";
 import MasukKerja from "./pages/users/MasukKerja";
 import Telat from "./pages/users/Telat";
@@ -12,7 +9,6 @@ import Telat from "./pages/users/Telat";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Navbar />
     <Routes>
       <Route path="/" Component={Dasboard} />
       <Route path="/masuk_kerja" Component={MasukKerja} />

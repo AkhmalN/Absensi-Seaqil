@@ -1,4 +1,4 @@
-import FormIzin from '../components/FormIzin'
+import FormIzin from '../../components/FormIzin'
 
 function IzinKerja() {
   return (
