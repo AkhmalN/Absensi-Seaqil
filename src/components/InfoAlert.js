@@ -18,7 +18,7 @@ function InfoAlert(props) {
         >
           {props.icon}
         </svg>
-        <p>{props.message}</p>
+        <p style={props.color}>{props.message}</p>
       </Modal.Body>
     </Modal>
   );
