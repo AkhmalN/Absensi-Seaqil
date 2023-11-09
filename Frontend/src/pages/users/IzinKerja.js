@@ -1,7 +1,11 @@
-import React from "react";
+import FormIzin from '../../components/FormIzin'
 
 function IzinKerja() {
-  return <div></div>;
+  return (
+    <>
+      <FormIzin />
+    </>
+  )
 }
 
-export default IzinKerja;
+export default IzinKerja
