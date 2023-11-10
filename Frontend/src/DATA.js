@@ -7,6 +7,8 @@ const DATA = [
     nm: "Asep Sutrisno",
     div: "Web Design",
     alasan: "Mau ke ragunan",
+    shift: "Pagi",
+    pass: "lalalili",
   },
   {
     no: 1,
