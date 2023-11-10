@@ -19,7 +19,7 @@ function Pengajuan() {
         <div className="card shadow mb-4">
           {/* Card Header - Dropdown */}
           <div className="card-header py-3 d-flex justify-content-between bg-white">
-            <div className="">
+            <div className="header tulisan">
               <div className="header">
                 Daftar Pengajuan Izin
                 <span className="blue-tag ms-2">MSIB Batch 5</span>
@@ -45,16 +45,16 @@ function Pengajuan() {
           </div>
 
           {/* Card Body */}
-          <div className="card-body">
+          <div className="card-body ">
             <DataTable
               value={DATA}
               paginator
               rows={10}
               rowsPerPageOptions={[5, 10, 25, 50]}
-              tableStyle={{ minWidth: "50rem" }}
-              className="customDataTable centered-header" // Add a custom class for more styling options
+              tableStyle={{ textAlign: "center" }}
+              className="customDataTable" // Add a custom class for more styling options
               paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
-              <Column field="no" header="No" style={{ width: "3%" }}></Column>
+              <Column field="no" header="No" style={{ width: "2%" }}></Column>
               <Column
                 field="IDa"
                 header="ID Absen"
@@ -75,11 +75,13 @@ function Pengajuan() {
               <Column
                 field="div"
                 header="Divisi"
-                style={{ width: "10%" }}></Column>
+                style={{ width: "12%" }}
+                alignHeader={"center"}></Column>
+
               <Column
                 field="file"
                 header="File"
-                style={{ width: "12%" }}></Column>
+                style={{ width: "10%" }}></Column>
               <Column
                 field="stat"
                 header="Status"
