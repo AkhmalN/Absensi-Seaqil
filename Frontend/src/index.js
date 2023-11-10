@@ -6,6 +6,7 @@ import Dasboard from "./pages/users/Dasboard";
 import IzinKerja from "./pages/users/IzinKerja";
 import MasukKerja from "./pages/users/MasukKerja";
 import Telat from "./pages/users/Telat";
+import "bootstrap/dist/css/bootstrap.css"; // Import Bootstrap CSS
 import Dashboard from "./pages/admin/Dashboard";
 import Presensi from "./pages/admin/Presensi";
 import Pengajuan from "./pages/admin/Pengajuan";
