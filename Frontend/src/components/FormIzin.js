@@ -14,7 +14,7 @@ function FormIzin() {
         <Row>
           <Col></Col>
           <Col>
-            <Form className="d-grid">
+            <Form className="formIzin d-grid">
               <Form.Group className="mb-3">
                 <Form.Label>Tipe Pengajuan :</Form.Label>
                 <Form.Select aria-label="Default select example" required>

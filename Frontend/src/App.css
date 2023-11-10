@@ -12,6 +12,18 @@ body {
   height: 100vh;
 }
 
+.formIzin .form-control,
+.formIzin .form-select,
+.formIzin .form-select option {
+  border: 1px solid #fff;
+  background-color: transparent;
+}
+
+.formIzin .form-label,
+.formIzin .form-select {
+  color: #fff;
+}
+
 .modalIzin p {
   font-size: 20px;
 }
