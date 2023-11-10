@@ -13,7 +13,7 @@ const Sidebar = () => {
         <div className="sidebar-brand-icon rotate-n-15">
           <i className="fas fa-laugh-wink" />
         </div>
-        <div className="sidebar-brand-text ml-2">SEAPIL.</div>
+        <div className="sidebar-brand-text ml-2 fs-2">SEAPIL.</div>
       </Link>
       {/* Divider */}
       <hr className="sidebar-divider my-0" />
