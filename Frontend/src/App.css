@@ -31,6 +31,62 @@ body {
   font-size: 20px;
 }
 
+/**ADMIN CSS**/
+
+.admin-bg {
+  background-color: #ffffff;
+}
+
+.admin-sidebar {
+  background-image: linear-gradient(173deg, #266cb2 -1.11%, #8caed1 111.38%);
+}
+
+.header {
+  color: #1c1d22;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 140% */
+}
+
+.sub-header {
+  color: #667085;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+}
+
+.blue-tag {
+  color: #266cb2;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 150% */
+  padding: 2px 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #eef6fa;
+}
+
+.centered-header .p-datatable-thead th {
+  text-align: center;
+}
+.customDataTable .p-datatable-thead th {
+  color: #1c1d22;
+  font-size: 16px;
+}
+.customDataTable .p-datatable-tbody td {
+  color: #545459;
+  font-size: 14px;
+  text-align: center;
+}
+
 .customDataTable .p-datatable-tbody tr {
   border-bottom: 1px solid #ddd;
   height: 60px;
@@ -54,12 +110,4 @@ body {
   color: #a9a9a9;
   font-size: 20px;
   margin-right: 5px;
-}
-
-.admin-bg {
-  background-color: #ffffff;
-}
-
-.admin-sidebar {
-  background-image: linear-gradient(173deg, #266cb2 -1.11%, #8caed1 111.38%);
 }
