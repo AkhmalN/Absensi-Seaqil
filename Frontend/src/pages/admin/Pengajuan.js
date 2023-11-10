@@ -23,7 +23,7 @@ function Pengajuan() {
               <h5 className="m-0 font-weight-bold text-primary">
                 Daftar Pengajuan Izin
               </h5>
-              <h5 className="m-0 font-weight-bold">seameo</h5>
+              <h5 className="m-0 font-weight-bold">SEAMEO QITEP IN LANGUAGE</h5>
             </div>
             <form className="d-sm-inline-block form-inline mr-0 mw-100 navbar-search">
               <div className="input-group">
