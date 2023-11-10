@@ -1,11 +1,11 @@
-import FormIzin from '../components/FormIzin'
+import FormIzin from "../../components/FormIzin";
 
 function IzinKerja() {
   return (
     <>
       <FormIzin />
     </>
-  )
+  );
 }
 
-export default IzinKerja
+export default IzinKerja;
