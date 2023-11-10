@@ -6,6 +6,7 @@ import IzinKerja from "./pages/users/IzinKerja";
 import MasukKerja from "./pages/users/MasukKerja";
 import Telat from "./pages/users/Telat";
 import DB_Admin from "./pages/admin/DB_Admin";
+import "bootstrap/dist/css/bootstrap.css"; // Import Bootstrap CSS
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
