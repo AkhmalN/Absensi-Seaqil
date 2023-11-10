@@ -73,11 +73,8 @@ body {
   border-radius: 16px;
   background: #eef6fa;
 }
-
-.centered-header .p-datatable-thead th {
-  text-align: center;
-}
 .customDataTable .p-datatable-thead th {
+  text-align: center;
   color: #1c1d22;
   font-size: 16px;
 }
