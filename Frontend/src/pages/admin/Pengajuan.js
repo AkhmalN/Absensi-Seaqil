@@ -18,11 +18,14 @@ function Pengajuan() {
       <div className="admin-bg container-fluid p-5 w-100">
         <div className="card shadow mb-4">
           {/* Card Header - Dropdown */}
-          <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 className="m-0 font-weight-bold text-primary">
-              Daftar Pengajuan
-            </h6>
-            <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <div className="card-header py-3 d-flex  justify-content-between">
+            <div className="">
+              <h5 className="m-0 font-weight-bold text-primary">
+                Daftar Pengajuan Izin
+              </h5>
+              <h5 className="m-0 font-weight-bold">seameo</h5>
+            </div>
+            <form className="d-sm-inline-block form-inline mr-0 mw-100 navbar-search">
               <div className="input-group">
                 <input
                   type="text"
@@ -39,6 +42,7 @@ function Pengajuan() {
               </div>
             </form>
           </div>
+
           {/* Card Body */}
           <div className="card-body">
             <DataTable
