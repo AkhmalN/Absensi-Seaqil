@@ -4,18 +4,16 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <ul
-      className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-      id="accordionSidebar"
-    >
+      className="navbar-nav admin-sidebar sidebar sidebar-dark accordion"
+      id="accordionSidebar">
       {/* Sidebar - Brand */}
       <Link
         className="sidebar-brand d-flex align-items-center justify-content-center"
-        href="index.html"
-      >
+        href="index.html">
         <div className="sidebar-brand-icon rotate-n-15">
           <i className="fas fa-laugh-wink" />
         </div>
-        <div className="sidebar-brand-text ml-2">Absensi Seaqil</div>
+        <div className="sidebar-brand-text ml-2">SEAPIL.</div>
       </Link>
       {/* Divider */}
       <hr className="sidebar-divider my-0" />
@@ -39,8 +37,7 @@ const Sidebar = () => {
           // data-toggle="collapse"
           data-target="#collapseTwo"
           aria-expanded="true"
-          aria-controls="collapseTwo"
-        >
+          aria-controls="collapseTwo">
           <i className="fas fa-fw fa-cog" />
           <span>Presensi Hari ini</span>
         </Link>
@@ -54,8 +51,7 @@ const Sidebar = () => {
           // data-toggle="collapse"
           data-target="#collapseUtilities"
           aria-expanded="true"
-          aria-controls="collapseUtilities"
-        >
+          aria-controls="collapseUtilities">
           <i className="fas fa-fw fa-wrench" />
           <span>Pengajuan Izin</span>
         </Link>
@@ -73,8 +69,7 @@ const Sidebar = () => {
           // data-toggle="collapse"
           data-target="#collapsePages"
           aria-expanded="true"
-          aria-controls="collapsePages"
-        >
+          aria-controls="collapsePages">
           <i className="fas fa-fw fa-folder" />
           <span>Data Pengajuan</span>
         </Link>
@@ -86,8 +81,7 @@ const Sidebar = () => {
         <Link
           to="/dashboard/data_mahasiswa"
           className="nav-link"
-          href="tables.html"
-        >
+          href="tables.html">
           <i className="fas fa-fw fa-table" />
           <span>Data Mahasiswa</span>
         </Link>

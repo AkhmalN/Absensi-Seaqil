@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
 body {
   background-image: linear-gradient(
     to right bottom,
@@ -10,6 +12,19 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.formIzin .form-control,
+.formIzin .form-select,
+.formIzin .form-select option {
+  border: 1px solid #fff;
+  background-color: transparent;
+}
+
+.formIzin .form-label,
+.formIzin .form-select {
+  color: #fff;
 }
 
 .modalIzin p {
@@ -39,4 +54,12 @@ body {
   color: #a9a9a9;
   font-size: 20px;
   margin-right: 5px;
+}
+
+.admin-bg {
+  background-color: #ffffff;
+}
+
+.admin-sidebar {
+  background-image: linear-gradient(173deg, #266cb2 -1.11%, #8caed1 111.38%);
 }
