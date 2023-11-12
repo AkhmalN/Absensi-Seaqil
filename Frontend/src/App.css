@@ -31,6 +31,178 @@ body {
   font-size: 20px;
 }
 
+/* masuk kerja css */
+.header-masuk {
+  margin: 0%;
+  padding: 20px 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header__logo {
+  width: 176px;
+  height: 63px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.header__logo img {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-1 {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 35px;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.form-content {
+  width: 50%;
+  height: 100%;
+}
+
+.first-row {
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  padding: 20px 35px;
+  text-align: center;
+}
+.first-row h3 {
+  font-family: poppins;
+  font-weight: bold;
+}
+
+.first-row p {
+  font-family: inter;
+  margin-top: 20px;
+}
+
+.second-row {
+  margin-top: 10px;
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 35px;
+}
+
+.second-row button {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 2px solid #ffffff;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.camera {
+  width: 47%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.camera-title {
+  align-items: center;
+  justify-content: center;
+  padding: 20px 35px;
+}
+
+.camera .webcam {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+}
+
+.camera .camera-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.camera-button button {
+  border: 2px solid #ffffff;
+}
+
+.camera-button button:nth-child(2) {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #dfdfdf;
+}
+
+/**ADMIN CSS**/
+
+.admin-bg {
+  background-color: #ffffff;
+}
+
+.admin-sidebar {
+  background-image: linear-gradient(173deg, #266cb2 -1.11%, #8caed1 111.38%);
+}
+
+.header {
+  color: #1c1d22;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 140% */
+}
+
+.sub-header {
+  color: #667085;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+}
+
+.blue-tag {
+  color: #266cb2;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 150% */
+  padding: 2px 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #eef6fa;
+}
+.customDataTable .p-datatable-thead th {
+  text-align: center;
+  color: #1c1d22;
+  font-size: 16px;
+}
+.customDataTable .p-datatable-tbody td {
+  color: #545459;
+  font-size: 14px;
+  text-align: center;
+}
+
 .customDataTable .p-datatable-tbody tr {
   border-bottom: 1px solid #ddd;
   height: 60px;
@@ -54,12 +226,4 @@ body {
   color: #a9a9a9;
   font-size: 20px;
   margin-right: 5px;
-}
-
-.admin-bg {
-  background-color: #ffffff;
-}
-
-.admin-sidebar {
-  background-image: linear-gradient(173deg, #266cb2 -1.11%, #8caed1 111.38%);
 }
