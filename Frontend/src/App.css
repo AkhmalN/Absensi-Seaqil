@@ -228,9 +228,6 @@ body {
   margin-right: 5px;
 }
 
-.card {
-}
-
 .card .check {
   background-color: #d0ffcf;
   border: none;
@@ -248,7 +245,7 @@ body {
   font-family: "Karla", sans-serif;
   font-size: 12px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 18px; /* 150% */
   width: 46px;
   padding: 4px 12px;
@@ -272,7 +269,7 @@ body {
   font-family: "Karla", sans-serif;
   font-size: 12px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 18px; /* 150% */
 }
 
@@ -289,6 +286,6 @@ body {
   font-family: "Karla", sans-serif;
   font-size: 12px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 18px; /* 150% */
 }

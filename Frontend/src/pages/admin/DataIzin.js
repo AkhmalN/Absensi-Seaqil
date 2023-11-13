@@ -6,7 +6,7 @@ import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import "../../App.css";
 import { Button } from "react-bootstrap";
-function Pengajuan() {
+function DataIzin() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -116,4 +116,4 @@ function Pengajuan() {
   );
 }
 
-export default Pengajuan;
+export default DataIzin;

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import DATA from "../../d_pengajuan-izin";
+import DATA from "../../DATA";
 import { Button } from "react-bootstrap";
 import "../../App.css";
 const Dashboard = () => {
@@ -40,12 +40,13 @@ const Dashboard = () => {
                 <div className="nav-item dropdown no-arrow">
                   <Dropdown show={isDropdownOpen} onToggle={toggleDropdown}>
                     <Dropdown.Toggle variant="white">
-                      <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-                        Testing Doang
+                      <span className="mr-2 d-none d-lg-inline text-black">
+                        Ce Iis
                       </span>
                       <img
+                        alt=""
                         className="img-profile rounded-circle"
-                        src="img/undraw_profile.svg"
+                        src="../../admin/profil.png"
                       />
                     </Dropdown.Toggle>
                     {/* Dropdown - User Information */}
@@ -77,7 +78,7 @@ const Dashboard = () => {
             </nav>
             {/* End of Topbar */}
             {/* Begin Page Content */}
-            <div className="container-fluid">
+            <div className="container-fluid" id="beranda">
               {/* Page Heading */}
               <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -177,7 +178,7 @@ const Dashboard = () => {
               </div>
               {/* Content Row */}
               {/* Area Chart PRESENSI PULANG HARI INI*/}
-              <div className="card shadow mb-4" id="presensi-pulang">
+              <div className="card shadow mb-4" id="presensi_pulang">
                 {/* Card Header - Dropdown */}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
