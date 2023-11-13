@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar";
 import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import DATA from "../../DATA";
+import DATA from "../../d_pengajuan-izin";
 import "../../App.css";
 import { Button } from "react-bootstrap";
 function Presensi() {

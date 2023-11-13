@@ -59,7 +59,7 @@ body {
   line-height: 20px; /* 142.857% */
 }
 
-.blue-tag {
+.msib-tag {
   color: #266cb2;
   text-align: center;
   font-family: "Karla", sans-serif;
@@ -105,6 +105,38 @@ body {
 }
 .customDataTable .p-paginator .p-paginator-pages .p-paginator-page {
   color: #a9a9a9;
-  font-size: 20px;
+  font-size: 16px;
   margin-right: 5px;
+}
+
+.customDataTable .check {
+  background-color: #d0ffcf;
+  border: none;
+  box-shadow: none;
+}
+
+.customDataTable .decline {
+  background-color: #fdd4d4;
+  border: none;
+  box-shadow: none;
+}
+
+.blue-tag {
+  color: #266cb2;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 150% */
+  padding: 2px 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #eef6fa;
+}
+.card .check {
+  background-color: #d0ffcf;
+  border: none;
+  box-shadow: none;
 }
