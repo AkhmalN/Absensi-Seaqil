@@ -13,7 +13,7 @@ const Sidebar = () => {
         <div className="sidebar-brand-icon rotate-n-15">
           <i className="fas fa-laugh-wink" />
         </div>
-        <div className="sidebar-brand-text ml-2 fs-2">SEAPIL.</div>
+        <div className="sidebar-brand-text ml-2 fs-2">SEAMIN.</div>
       </Link>
       {/* Divider */}
       <hr className="sidebar-divider my-0" />
@@ -39,7 +39,20 @@ const Sidebar = () => {
           aria-expanded="true"
           aria-controls="collapseTwo">
           <i className="fas fa-fw fa-cog" />
-          <span>Presensi Hari ini</span>
+          <span>Presensi Masuk ini</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/dashboard/presensi"
+          className="nav-link collapsed"
+          href="#"
+          // data-toggle="collapse"
+          data-target="#collapseTwo"
+          aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i className="fas fa-fw fa-cog" />
+          <span>Presensi ini</span>
         </Link>
       </li>
       {/* Nav Item - Utilities Collapse Menu */}
