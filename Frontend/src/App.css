@@ -227,10 +227,6 @@ body {
   font-size: 16px;
   margin-right: 5px;
 }
-
-.card {
-}
-
 .card .check {
   background-color: #d0ffcf;
   border: none;
@@ -241,7 +237,11 @@ body {
   border: none;
   border-radius: 5px;
 }
-
+.card .edit {
+  background-color: #FDFFB2;
+  border: none;
+  border-radius: 5px;
+}
 .blue-tag {
   color: #266cb2;
   text-align: center;
