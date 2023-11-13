@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../d_pengajuan-izin";
@@ -18,19 +18,20 @@ function Presensi() {
       <div className="admin-bg container-fluid p-5 w-100">
         <div className="card shadow mb-4">
           {/* Card Header - Dropdown */}
-          <div className="card-header py-3 d-flex  justify-content-between">
-            <div className="">
-              <h5 className="m-0 font-weight-bold text-primary">
-                Daftar Pengajuan Izin
-              </h5>
-              <h5 className="m-0 font-weight-bold">SEAMEO QITEP IN LANGUAGE</h5>
+          <div className="card-header py-3 d-flex justify-content-between bg-white">
+            <div className="header tulisan">
+              <div className="header">
+                Daftar Presensi
+                <span className="blue-tag ms-2">MSIB Batch 5</span>
+              </div>
+              <div className="sub-header">SEAMEO QITEP In Language</div>
             </div>
             <form className="d-sm-inline-block form-inline mr-0 mw-100 navbar-search">
               <div className="input-group">
                 <input
                   type="text"
                   className="form-control border border-secondary small"
-                  placeholder="Search for..."
+                  placeholder="kamoeh cari apa eah?"
                   aria-label="Search"
                   aria-describedby="basic-addon2"
                 />
@@ -44,33 +45,55 @@ function Presensi() {
           </div>
 
           {/* Card Body */}
-          <div className="card-body">
+          <div className="card-body ">
             <DataTable
               value={DATA}
               paginator
               rows={10}
               rowsPerPageOptions={[5, 10, 25, 50]}
-              tableStyle={{ minWidth: "50rem" }}
+              tableStyle={{ textAlign: "center" }}
               className="customDataTable" // Add a custom class for more styling options
               paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
-              <Column field="ID" header="ID" style={{ width: "10%" }}></Column>
+              <Column field="no" header="No" style={{ width: "2%" }}></Column>
               <Column
-                field="Nama"
+                field="IDa"
+                header="ID Absen"
+                style={{ width: "10%" }}></Column>
+
+              <Column
+                field="IDk"
+                header="ID Kegiatan"
+                style={{ width: "10%" }}></Column>
+              <Column
+                field="tgl"
+                header="Tanggal"
+                style={{ width: "10%" }}></Column>
+              <Column
+                field="nm"
                 header="Nama"
-                style={{ width: "25%" }}></Column>
+                style={{ width: "13%" }}></Column>
               <Column
-                field="Divisi"
+                field="div"
                 header="Divisi"
-                style={{ width: "25%" }}></Column>
+                style={{ width: "12%" }}
+                alignHeader={"center"}></Column>
+
               <Column
-                field="Asal Kampus"
-                header="Asal Kampus"
-                style={{ width: "30%" }}></Column>
-              <Column field="Status" header="status" style={{ width: "10%" }}>
-                <div>
-                  <Button variant="dark" />
-                </div>
-              </Column>
+                field="file"
+                header="File"
+                style={{ width: "10%" }}></Column>
+              <Column
+                field="stat"
+                header="Status"
+                style={{ width: "10%" }}></Column>
+              <Column
+                field="alasan"
+                header="Alasan"
+                style={{ width: "13%" }}></Column>
+              <Column
+                field="aksi"
+                header="Aksi"
+                style={{ width: "10%" }}></Column>
             </DataTable>
           </div>
         </div>
