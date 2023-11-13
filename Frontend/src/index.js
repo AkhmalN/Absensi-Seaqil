@@ -12,6 +12,7 @@ import Presensi from "./pages/admin/Presensi";
 import Pengajuan from "./pages/admin/Pengajuan";
 import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import FormMasukKerja from "./components/FormMasukKerja";
+import DataIzin from "./pages/admin/DataIzin";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +23,8 @@ root.render(
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="telat_kerja" Component={Telat} />
       <Route path="/dashboard" Component={Dashboard} />
-      <Route path="/dashboard/presensi" Component={Presensi} />
+      <Route path="/dashboard/Presensi" Component={Presensi} />
+      <Route path="/dashboard/DataIzin" Component={DataIzin} />
       <Route path="/dashboard/pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/form_masuk_kerja" Component={FormMasukKerja} />

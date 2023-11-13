@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar";
 import { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import DATA from "../../d_pengajuan-izin";
+import DATA from "../../DATA";
 import "../../App.css";
 import { Button } from "react-bootstrap";
 function DataMahasiswa() {
