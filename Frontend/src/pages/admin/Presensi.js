@@ -6,7 +6,7 @@ import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import "../../App.css";
 import { Button } from "react-bootstrap";
-function Pengajuan() {
+function Presensi() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -21,7 +21,7 @@ function Pengajuan() {
           <div className="card-header py-3 d-flex justify-content-between bg-white">
             <div className="header tulisan">
               <div className="header">
-                Daftar Pengajuan Izin
+                Daftar Presensi Izin
                 <span className="msib-tag ms-2">MSIB Batch 5</span>
               </div>
               <div className="sub-header">SEAMEO QITEP In Language</div>
@@ -53,38 +53,45 @@ function Pengajuan() {
               rowsPerPageOptions={[5, 10, 25, 50]}
               tableStyle={{ textAlign: "center" }}
               className="customDataTable" // Add a custom class for more styling options
-              paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+              paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+            >
               <Column field="no" header="No" style={{ width: "2%" }}></Column>
               <Column
                 field="IDk"
                 header="ID Kegiatan"
                 style={{ width: "11%" }}
-                alignHeader={"center"}></Column>
+                alignHeader={"center"}
+              ></Column>
               <Column
                 field="tgl"
                 header="Tanggal"
                 style={{ width: "11%" }}
-                alignHeader={"center"}></Column>
+                alignHeader={"center"}
+              ></Column>
               <Column
                 field="nm"
                 header="Nama"
                 style={{ width: "15%" }}
-                alignHeader={"center"}></Column>
+                alignHeader={"center"}
+              ></Column>
               <Column
                 field="div"
                 header="Divisi"
                 style={{ width: "15%" }}
-                alignHeader={"center"}></Column>
+                alignHeader={"center"}
+              ></Column>
               <Column
                 field="stat"
                 header="Status"
                 style={{ width: "10%" }}
-                alignHeader={"center"}></Column>
+                alignHeader={"center"}
+              ></Column>
               <Column
                 field="alasan"
                 header="Alasan"
                 style={{ width: "15%" }}
-                alignHeader={"center"}></Column>
+                alignHeader={"center"}
+              ></Column>
               <Column
                 field="aksi"
                 header="Aksi"
@@ -95,19 +102,23 @@ function Pengajuan() {
                     style={{
                       display: "flex",
                       justifyContent: "center",
-                    }}>
+                    }}
+                  >
                     <Button className="check me-2 btn-success">
                       <i
                         className="fa-solid fa-check"
-                        style={{ color: "#1C711B" }}></i>
+                        style={{ color: "#1C711B" }}
+                      ></i>
                     </Button>
                     <Button className="decline btn-danger">
                       <i
                         className="fa-solid fa-xmark"
-                        style={{ color: "#AC1616" }}></i>
+                        style={{ color: "#AC1616" }}
+                      ></i>
                     </Button>
                   </div>
-                )}></Column>
+                )}
+              ></Column>
             </DataTable>
           </div>
         </div>
@@ -116,4 +127,4 @@ function Pengajuan() {
   );
 }
 
-export default Pengajuan;
+export default Presensi;
