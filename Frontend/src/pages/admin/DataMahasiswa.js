@@ -7,7 +7,11 @@ import DATA from "../../DATA";
 import "../../App.css";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faPenToSquare,
+  faTrashCan,
+} from "@fortawesome/free-solid-svg-icons";
 function DataMahasiswa() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -53,7 +57,7 @@ function DataMahasiswa() {
                 />
                 <div className="input-group-append">
                   <button className="btn btn-primary" type="button">
-                    <i className="fas fa-search fa-sm" />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
                   </button>
                 </div>
               </div>

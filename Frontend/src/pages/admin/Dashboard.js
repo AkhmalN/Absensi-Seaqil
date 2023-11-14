@@ -9,7 +9,13 @@ import DATA from "../../DATA";
 import { Button } from "react-bootstrap";
 import "../../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faFilePdf, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faCheck,
+  faFilePdf,
+  faMagnifyingGlass,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -34,7 +40,7 @@ const Dashboard = () => {
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3">
-                <i className="fa fa-bars" />
+                <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
               <ul className="navbar-nav ml-auto">
@@ -218,7 +224,7 @@ const Dashboard = () => {
                       />
                       <div className="input-group-append">
                         <button className="btn btn-primary" type="button">
-                          <i className="fas fa-search fa-sm" />
+                          <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                       </div>
                     </div>
@@ -331,7 +337,7 @@ const Dashboard = () => {
                         />
                         <div className="input-group-append">
                           <button className="btn btn-primary" type="button">
-                            <i className="fas fa-search fa-sm" />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
                           </button>
                         </div>
                       </div>
@@ -429,7 +435,7 @@ const Dashboard = () => {
                       />
                       <div className="input-group-append">
                         <button className="btn btn-primary" type="button">
-                          <i className="fas fa-search fa-sm" />
+                          <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                       </div>
                     </div>
@@ -474,9 +480,15 @@ const Dashboard = () => {
                       field="file"
                       header="File"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}>
-                      <FontAwesomeIcon icon={faFilePdf} />
-                    </Column>
+                      alignHeader={"center"}
+                      body={(rowData) => (
+                        <div>
+                          <Button className="btn btn-light">
+                            <FontAwesomeIcon icon={faFilePdf} />
+                          </Button>
+                        </div>
+                      )}></Column>
+
                     <Column
                       field="stat_i"
                       header="Status"

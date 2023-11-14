@@ -7,6 +7,8 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import "../../App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const DataIzin = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -100,7 +102,7 @@ const DataIzin = () => {
                       />
                       <div className="input-group-append">
                         <button className="btn btn-primary" type="button">
-                          <i className="fas fa-search fa-sm" />
+                          <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                       </div>
                     </div>

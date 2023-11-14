@@ -20,9 +20,6 @@ const Sidebar = () => {
       <Link
         className="sidebar-brand d-flex align-items-center justify-content-center"
         href="index.html">
-        <div className="sidebar-brand-icon rotate-n-15">
-          <i class="fa-solid fa-user-tie"></i>
-        </div>
         <div className="sidebar-brand-text ml-2 fs-2">SEAMIN.</div>
       </Link>
       {/* Divider */}
