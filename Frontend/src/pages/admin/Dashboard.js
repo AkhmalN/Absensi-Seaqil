@@ -8,7 +8,9 @@ import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import { Button } from "react-bootstrap";
 import "../../App.css";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faFilePdf, faXmark } from "@fortawesome/free-solid-svg-icons";
+
 const Dashboard = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -34,23 +36,6 @@ const Dashboard = () => {
                 className="btn btn-link d-md-none rounded-circle mr-3">
                 <i className="fa fa-bars" />
               </button>
-              {/* Topbar Search */}
-              <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control border border-secondary small"
-                    placeholder="Search for..."
-                    aria-label="Search"
-                    aria-describedby="basic-addon2"
-                  />
-                  <div className="input-group-append">
-                    <button className="btn btn-primary" type="button">
-                      <i className="fas fa-search fa-sm" />
-                    </button>
-                  </div>
-                </div>
-              </form>
               {/* Topbar Navbar */}
               <ul className="navbar-nav ml-auto">
                 <div className="topbar-divider d-none d-sm-block" />
@@ -61,13 +46,11 @@ const Dashboard = () => {
                       <span className="mr-2 d-none d-lg-inline text-black">
                         Ce Iis
                       </span>
-                      {/* <img
+                      <img
+                        alt=""
                         className="img-profile rounded-circle"
-                        src="img/undraw_profile.svg"
-                      /> */}
-                      <span className="mr-2 d-none d-lg-inline text-black fw-bold">
-                        Ce Iis
-                      </span>
+                        src="../../admin/profil.png"
+                      />
                     </Dropdown.Toggle>
                     {/* Dropdown - User Information */}
                     <Dropdown.Menu className="dropdown-menu-right shadow animated--grow-in">
@@ -96,16 +79,18 @@ const Dashboard = () => {
                 </div>
               </ul>
             </nav>
-            {/* End ofD Topbar */}
+            {/* End of Topbar */}
             {/* Begin Page Content */}
             <div className="container-fluid" id="beranda">
               {/* Page Heading */}
               <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                <Link className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <a
+                  href="#"
+                  className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                   <i className="fas fa-download fa-sm text-white-50" /> Generate
                   Report
-                </Link>
+                </a>
               </div>
               {/* Content Row */}
               <div className="row">
@@ -116,10 +101,10 @@ const Dashboard = () => {
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
                           <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Earnings (Monthly)
+                            Presensi Hari Ini
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            $40,000
+                            23
                           </div>
                         </div>
                         <div className="col-auto">
@@ -136,10 +121,10 @@ const Dashboard = () => {
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
                           <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Earnings (Annual)
+                            Terlambat
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            $215,000
+                            2
                           </div>
                         </div>
                         <div className="col-auto">
@@ -156,24 +141,12 @@ const Dashboard = () => {
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
                           <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Tasks
+                            Pengajuan Izin
                           </div>
                           <div className="row no-gutters align-items-center">
                             <div className="col-auto">
                               <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                50%
-                              </div>
-                            </div>
-                            <div className="col">
-                              <div className="progress progress-sm mr-2">
-                                <div
-                                  className="progress-bar bg-info"
-                                  role="progressbar"
-                                  style={{ width: "50%" }}
-                                  aria-valuenow={50}
-                                  aria-valuemin={0}
-                                  aria-valuemax={100}
-                                />
+                                5
                               </div>
                             </div>
                           </div>
@@ -192,10 +165,10 @@ const Dashboard = () => {
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
                           <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Pending Requests
+                            Mahasiswa Magang
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            18
+                            52
                           </div>
                         </div>
                         <div className="col-auto">
@@ -217,12 +190,12 @@ const Dashboard = () => {
                     <div className="header">
                       Presensi Pulang Hari Ini
                       <span className="sub-header ms-2">27/10/2023</span>
-                      <span className="msib-tag ms-2">MSIB Batch 5</span>
+                      <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                    <Button className="check me-2">
+                    <Button className="check me-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -307,15 +280,11 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
-                            <i
-                              className="fa-solid fa-check"
-                              style={{ color: "#1C711B" }}></i>
+                          <Button className="check me-2 ">
+                            <FontAwesomeIcon icon={faCheck} />
                           </Button>
-                          <Button className="decline">
-                            <i
-                              className="fa-solid fa-xmark"
-                              style={{ color: "#AC1616" }}></i>
+                          <Button className="decline ">
+                            <FontAwesomeIcon icon={faXmark} />
                           </Button>
                         </div>
                       )}></Column>
@@ -334,12 +303,12 @@ const Dashboard = () => {
                       <div className="header">
                         Presensi Masuk Hari Ini
                         <span className="sub-header ms-2">27/10/2023</span>
-                        <span className="msib-tag ms-2">MSIB Batch 5</span>
+                        <span className="blue-tag ms-2">MSIB Batch 5</span>
                       </div>
                       <div className="sub-header">SEAMEO QITEP In Language</div>
                     </div>
                     <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                      <Button className="check me-2 btn-success">
+                      <Button className="check me-2 ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -380,17 +349,29 @@ const Dashboard = () => {
                       className="customDataTable" // Add a custom class for more styling options
                       paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                       <Column
-                        field="ID"
-                        header="ID"
-                        style={{ width: "10%" }}></Column>
+                        field="no"
+                        header="No"
+                        style={{ width: "3%" }}></Column>
                       <Column
-                        field="Nama"
+                        field="IDk"
+                        header="ID Kegiatan"
+                        style={{ width: "15%" }}
+                        alignHeader={"center"}></Column>
+                      <Column
+                        field="shift"
+                        header="Shift"
+                        style={{ width: "11%" }}
+                        alignHeader={"center"}></Column>
+                      <Column
+                        field="nm"
                         header="Nama"
-                        style={{ width: "25%" }}></Column>
+                        style={{ width: "17%" }}
+                        alignHeader={"center"}></Column>
                       <Column
-                        field="Divisi"
+                        field="div"
                         header="Divisi"
-                        style={{ width: "30%" }}></Column>
+                        style={{ width: "16%" }}
+                        alignHeader={"center"}></Column>
                       <Column
                         field="jm"
                         header="Jam Masuk"
@@ -412,15 +393,11 @@ const Dashboard = () => {
                               display: "flex",
                               justifyContent: "center",
                             }}>
-                            <Button className="check me-2 btn-success">
-                              <i
-                                className="fa-solid fa-check"
-                                style={{ color: "#1C711B" }}></i>
+                            <Button className="check me-2 ">
+                              <FontAwesomeIcon icon={faCheck} />
                             </Button>
-                            <Button className="decline btn-danger">
-                              <i
-                                className="fa-solid fa-xmark"
-                                style={{ color: "#AC1616" }}></i>
+                            <Button className="decline ">
+                              <FontAwesomeIcon icon={faXmark} />
                             </Button>
                           </div>
                         )}></Column>
@@ -437,7 +414,7 @@ const Dashboard = () => {
                   <div className="header tulisan">
                     <div className="header">
                       Daftar Pengajuan Izin
-                      <span className="msib-tag ms-2">MSIB Batch 5</span>
+                      <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
@@ -472,7 +449,7 @@ const Dashboard = () => {
                     <Column
                       field="no"
                       header="No"
-                      style={{ width: "2%" }}></Column>
+                      style={{ width: "3%" }}></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
@@ -491,8 +468,15 @@ const Dashboard = () => {
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "15%" }}
+                      style={{ width: "11%" }}
                       alignHeader={"center"}></Column>
+                    <Column
+                      field="file"
+                      header="File"
+                      style={{ width: "9%" }}
+                      alignHeader={"center"}>
+                      <FontAwesomeIcon icon={faFilePdf} />
+                    </Column>
                     <Column
                       field="stat_i"
                       header="Status"
@@ -514,16 +498,18 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
-                            <i
-                              className="fa-solid fa-check"
-                              style={{ color: "#1C711B" }}></i>
-                          </Button>
-                          <Button className="decline">
-                            <i
-                              className="fa-solid fa-xmark"
-                              style={{ color: "#AC1616" }}></i>
-                          </Button>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}>
+                            <Button className="check me-2 ">
+                              <FontAwesomeIcon icon={faCheck} />
+                            </Button>
+                            <Button className="decline ">
+                              <FontAwesomeIcon icon={faXmark} />
+                            </Button>
+                          </div>
                         </div>
                       )}></Column>
                   </DataTable>

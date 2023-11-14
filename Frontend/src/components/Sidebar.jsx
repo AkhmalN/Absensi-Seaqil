@@ -1,6 +1,16 @@
 // src/components/Sidebar.js
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartBar,
+  faCheckDouble,
+  faDatabase,
+  faEnvelopeOpenText,
+  faFolder,
+  faHouse,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
 const Sidebar = () => {
   return (
     <ul
@@ -20,7 +30,7 @@ const Sidebar = () => {
       {/* Nav Item - Dashboard */}
       <li className="nav-item active">
         <Link to="/dashboard" className="nav-link">
-          <i class="fa-solid fa-house"></i>
+          <FontAwesomeIcon icon={faHouse} />
           <span className="ms-2">Beranda</span>
         </Link>
       </li>
@@ -38,7 +48,7 @@ const Sidebar = () => {
           data-target="#collapseTwo"
           aria-expanded="true"
           aria-controls="collapseTwo">
-          <i class="fa-solid fa-right-to-bracket"></i>
+          <FontAwesomeIcon icon={faRightToBracket} />
           <span className="ms-2">Presensi Masuk</span>
         </Link>
       </li>
@@ -51,7 +61,7 @@ const Sidebar = () => {
           data-target="#collapseTwo"
           aria-expanded="true"
           aria-controls="collapseTwo">
-          <i class="fa-solid fa-check-double"></i>
+          <FontAwesomeIcon icon={faCheckDouble} />
           <span className="ms-2">Presensi Pulang</span>
         </Link>
       </li>
@@ -65,7 +75,7 @@ const Sidebar = () => {
           data-target="#collapseUtilities"
           aria-expanded="true"
           aria-controls="collapseUtilities">
-          <i class="fa-solid fa-envelope-open-text"></i>
+          <FontAwesomeIcon icon={faEnvelopeOpenText} />
           <span className="ms-2">Pengajuan Izin</span>
         </Link>
       </li>
@@ -83,7 +93,7 @@ const Sidebar = () => {
           data-target="#collapsePages"
           aria-expanded="true"
           aria-controls="collapsePages">
-          <i className="fas fa-fw fa-folder" />
+          <FontAwesomeIcon icon={faFolder} />
           <span className="ms-2">Data Izin</span>
         </Link>
       </li>
@@ -95,13 +105,13 @@ const Sidebar = () => {
           to="/dashboard/data_mahasiswa"
           className="nav-link"
           href="tables.html">
-          <i className="fa-solid fa-chart-bar"></i>
+          <FontAwesomeIcon icon={faChartBar} />
           <span className="ms-2">Data Mahasiswa</span>
         </Link>
       </li>
       <li className="nav-item">
         <Link className="nav-link" href="charts.html">
-          <i class="fa-solid fa-database"></i>
+          <FontAwesomeIcon icon={faDatabase} />
           <span className="ms-2">Laporan</span>
         </Link>
       </li>

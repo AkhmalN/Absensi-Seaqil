@@ -6,6 +6,8 @@ import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import "../../App.css";
 import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 function DataMahasiswa() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -23,7 +25,7 @@ function DataMahasiswa() {
               <div className="header">
                 Data Mahasiswa Magang
                 {/* <span className="sub-header ms-2">27/10/2023</span> */}
-                <span className="msib-tag ms-2">MSIB Batch 5</span>
+                <span className="blue-tag ms-2">MSIB Batch 5</span>
               </div>
               <div className="sub-header">SEAMEO QITEP In Language</div>
             </div>
@@ -105,15 +107,11 @@ function DataMahasiswa() {
                       display: "flex",
                       justifyContent: "center",
                     }}>
-                    <Button className="check me-2 btn-success">
-                      <i
-                        className="fa-solid fa-check"
-                        style={{ color: "#1C711B" }}></i>
+                    <Button className="edit me-2 ">
+                      <FontAwesomeIcon icon={faPenToSquare} />
                     </Button>
-                    <Button className="decline btn-danger">
-                      <i
-                        className="fa-solid fa-xmark"
-                        style={{ color: "#AC1616" }}></i>
+                    <Button className="decline ">
+                      <FontAwesomeIcon icon={faTrashCan} />
                     </Button>
                   </div>
                 )}></Column>
