@@ -1,22 +1,26 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
+import userRouter from "./routes/user-router.js";
+
 const PORT = process.env.PORT || 8081;
 const app = express();
 dotenv.config();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use("/", (req, res) => {
-  res.send("hello gaes");
-});
+// Middlewares
+app.use("/absensiseaqil/", userRouter);
 
+// Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
     app.listen(PORT, () => {
-      console.log("server running on port : ", PORT);
+      console.log("Server running on port: ", PORT);
     });
-    console.log("connected to mongodb");
+    console.log("Connected to MongoDB");
   })
   .catch((err) => {
-    console.log("Cannot connect to mongodb : ", err);
+    console.log("Cannot connect to MongoDB: ", err);
   });

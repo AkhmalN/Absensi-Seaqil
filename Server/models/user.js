@@ -5,10 +5,14 @@ const userSchema = new mongoose.Schema(
     userId: {
       type: mongoose.Schema.Types.ObjectId,
     },
+    Id_Kegiatan: {
+      type: Number,
+      required: true,
+      unique: true,
+    },
     username: {
       type: String,
       required: true,
-      unique: true,
     },
     email: {
       type: String,
@@ -20,10 +24,6 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     role: {
-      type: String,
-      required: true,
-    },
-    divisi: {
       type: String,
       required: true,
     },
