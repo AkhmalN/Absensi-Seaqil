@@ -1,5 +1,4 @@
 import React from "react";
-// import Table from "react-bootstrap/Table";
 import logo from "../../assets/Users/Logo SEAQIL 1 1.png";
 import akun from "../../assets/Users/akun.png";
 import "../../App.css";
@@ -28,8 +27,6 @@ function StatusPengajuan() {
               <div className="header-1">Status Pengajuan Izin</div>
               <div className="header-2">Silahkan cek status pengajuan izin kamu dibawah ini.</div>
             </div>
-            {/* <h3 className="m-0 font-weight-bold">Status Pengajuan Izin</h3>
-            <div className="sub-header">Silahkan cek status pengajuan izin kamu dibawah ini</div> */}
           </div>
           {/* Card Body  */}
           <div className="card-body field-pengajuan">
@@ -44,7 +41,7 @@ function StatusPengajuan() {
             >
               <Column field="No" header="No" style={{ width: "10%" }} alignHeader={"center"}></Column>
               <Column field="Tanggal" header="Tanggal" style={{ width: "25%" }} alignHeader={"center"}></Column>
-              <Column className="pengajuan-text" field="Pengajuan" header="Pengajuan" style={{ width: "25%" }} alignHeader={"center"}></Column>
+              <Column field="Pengajuan" header="Pengajuan" style={{ width: "25%" }} alignHeader={"center"}></Column>
               <Column field="Status" header="Status" style={{ width: "25%" }} alignHeader={"center"}></Column>
             </DataTable>
           </div>

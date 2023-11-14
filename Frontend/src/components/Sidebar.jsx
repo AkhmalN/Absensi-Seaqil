@@ -13,7 +13,7 @@ const Sidebar = () => {
         <div className="sidebar-brand-icon rotate-n-15">
           <i className="fas fa-laugh-wink" />
         </div>
-        <div className="sidebar-brand-text ml-2 fs-2">SEAPIL.</div>
+        <div className="sidebar-brand-text ml-2 fs-2">SEAMIN.</div>
       </Link>
       {/* Divider */}
       <hr className="sidebar-divider my-0" />
@@ -33,13 +33,26 @@ const Sidebar = () => {
         <Link
           to="/dashboard/presensi"
           className="nav-link collapsed"
-          href="#"
+          href="dashboard/#presensi_masuk"
           // data-toggle="collapse"
           data-target="#collapseTwo"
           aria-expanded="true"
           aria-controls="collapseTwo">
           <i className="fas fa-fw fa-cog" />
-          <span>Presensi Hari ini</span>
+          <span>Presensi Masuk</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/dashboard/presensi"
+          className="nav-link collapsed"
+          href="dashboard/#presensi_pulang"
+          // data-toggle="collapse"
+          data-target="#collapseTwo"
+          aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i className="fas fa-fw fa-cog" />
+          <span>Presensi Pulang</span>
         </Link>
       </li>
       {/* Nav Item - Utilities Collapse Menu */}
@@ -63,7 +76,7 @@ const Sidebar = () => {
       {/* Nav Item - Pages Collapse Menu */}
       <li className="nav-item">
         <Link
-          to="/dashboard/data_pengajuan"
+          to="/dashboard/DataIzin"
           className="nav-link collapsed"
           href="#"
           // data-toggle="collapse"
@@ -71,7 +84,7 @@ const Sidebar = () => {
           aria-expanded="true"
           aria-controls="collapsePages">
           <i className="fas fa-fw fa-folder" />
-          <span>Data Pengajuan</span>
+          <span>Data Izin</span>
         </Link>
       </li>
       {/* Nav Item - Charts */}

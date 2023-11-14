@@ -4,7 +4,7 @@ body {
   background-image: linear-gradient(to right bottom, #266cb2, #748cc5, #a8b0d7, #d6d6eb, #ffffff);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  /* height: 100vh; */
   font-family: "Poppins", sans-serif;
 }
 
@@ -155,19 +155,13 @@ body {
 .header-1 {
   text-align: center;
   color: #ffffff;
+  font-size: 25px;
 }
 
 .header-2 {
   color: #ffffff;
   font-weight: normal;
   font-size: 15px;
-}
-
-.customDataTable .pengajuan-text {
-  color: #266cb2;
-  border-radius: 16px;
-  padding: 5px;
-  background-color: #eef6fa;
 }
 
 /**ADMIN CSS**/
@@ -198,7 +192,7 @@ body {
   line-height: 20px; /* 142.857% */
 }
 
-.blue-tag {
+.msib-tag {
   color: #266cb2;
   text-align: center;
   font-family: "Karla", sans-serif;
@@ -244,6 +238,75 @@ body {
 }
 .customDataTable .p-paginator .p-paginator-pages .p-paginator-page {
   color: #a9a9a9;
-  font-size: 20px;
+  font-size: 16px;
   margin-right: 5px;
+}
+
+.card {
+}
+
+.card .check {
+  background-color: #d0ffcf;
+  border: none;
+  border-radius: 5px;
+}
+.card .decline {
+  background-color: #fdd4d4;
+  border: none;
+  border-radius: 5px;
+}
+.card .edit {
+  background-color: #fdffb2;
+  border: none;
+  border-radius: 5px;
+}
+.blue-tag {
+  color: #266cb2;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 150% */
+  width: 46px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #eef6fa;
+  gap: 6px;
+}
+
+.green-tag {
+  width: 46px;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 16px;
+  background: var(--bg-button-hijau, #d0ffcf);
+  color: var(--icon-hijau-tulisan, #1c711b);
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 150% */
+}
+
+.red-tag {
+  width: 46px;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 16px;
+  background: #fdd4d4;
+  color: #ac1616;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 150% */
 }
