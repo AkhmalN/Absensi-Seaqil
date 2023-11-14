@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Middlewares
-app.use("/absensiseaqil/", userRouter);
+app.use("/absensiseaqil/users", userRouter);
 
 // Connect to MongoDB
 mongoose
