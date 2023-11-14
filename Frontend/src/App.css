@@ -178,7 +178,7 @@ body {
   line-height: 20px; /* 142.857% */
 }
 
-.msib-tag {
+.blue-tag {
   color: #266cb2;
   text-align: center;
   font-family: "Karla", sans-serif;
@@ -224,75 +224,10 @@ body {
 }
 .customDataTable .p-paginator .p-paginator-pages .p-paginator-page {
   color: #a9a9a9;
-  font-size: 16px;
+  font-size: 20px;
   margin-right: 5px;
 }
+.custom-text{
+  color: #1c1d22;
 
-.card {
-}
-
-.card .check {
-  background-color: #d0ffcf;
-  border: none;
-  border-radius: 5px;
-}
-.card .decline {
-  background-color: #fdd4d4;
-  border: none;
-  border-radius: 5px;
-}
-.card .edit {
-  background-color: #FDFFB2;
-  border: none;
-  border-radius: 5px;
-}
-.blue-tag {
-  color: #266cb2;
-  text-align: center;
-  font-family: "Karla", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 18px; /* 150% */
-  width: 46px;
-  padding: 4px 12px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-  background: #eef6fa;
-  gap: 6px;
-}
-
-.green-tag {
-  width: 46px;
-  padding: 4px 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  border-radius: 16px;
-  background: var(--bg-button-hijau, #d0ffcf);
-  color: var(--icon-hijau-tulisan, #1c711b);
-  text-align: center;
-  font-family: "Karla", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 18px; /* 150% */
-}
-
-.red-tag {
-  width: 46px;
-  padding: 4px 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  border-radius: 16px;
-  background: #fdd4d4;
-  color: #ac1616;
-  text-align: center;
-  font-family: "Karla", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 18px; /* 150% */
 }
