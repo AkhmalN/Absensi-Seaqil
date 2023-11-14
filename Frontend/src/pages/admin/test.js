@@ -11,14 +11,14 @@ const Sidebar = () => {
         className="sidebar-brand d-flex align-items-center justify-content-center"
         href="index.html">
         <div className="sidebar-brand-icon rotate-n-15">
-          <i class="fa-solid fa-user-tie"></i>
+          <i className="fas fa-laugh-wink" />
         </div>
         <div className="sidebar-brand-text ml-2 fs-2">SEAMIN.</div>
       </Link>
       {/* Divider */}
       <hr className="sidebar-divider my-0" />
       {/* Nav Item - Dashboard */}
-      <li className="nav-item active">
+      <li className="nav-item">
         <Link to="/dashboard" className="nav-link">
           <i class="fa-solid fa-house"></i>
           <span className="ms-2">Beranda</span>

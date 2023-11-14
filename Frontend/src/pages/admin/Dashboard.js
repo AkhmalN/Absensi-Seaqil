@@ -40,14 +40,14 @@ const Dashboard = () => {
                 <div className="nav-item dropdown no-arrow">
                   <Dropdown show={isDropdownOpen} onToggle={toggleDropdown}>
                     <Dropdown.Toggle variant="white">
-                      <span className="mr-2 d-none d-lg-inline text-black">
-                        Ce Iis
-                      </span>
                       <img
                         alt=""
                         className="img-profile rounded-circle"
                         src="../../admin/profil.png"
                       />
+                      <span className="mr-2 d-none d-lg-inline text-black fw-bold">
+                        Ce Iis
+                      </span>
                     </Dropdown.Toggle>
                     {/* Dropdown - User Information */}
                     <Dropdown.Menu className="dropdown-menu-right shadow animated--grow-in">
@@ -177,8 +177,10 @@ const Dashboard = () => {
                 </div>
               </div>
               {/* Content Row */}
-              {/* Area Chart PRESENSI PULANG HARI INI*/}
-              <div className="card shadow mb-4" id="presensi_pulang">
+            </div>
+            {/* Area Chart PRESENSI PULANG HARI INI*/}
+            <div className="container-fluid" id="presensi_pulang">
+              <div className="card shadow mb-4">
                 {/* Card Header - Dropdown */}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
@@ -190,7 +192,7 @@ const Dashboard = () => {
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                    <Button className="check me-2 btn-success">
+                    <Button className="check me-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -275,12 +277,12 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
+                          <Button className="check me-2">
                             <i
                               className="fa-solid fa-check"
                               style={{ color: "#1C711B" }}></i>
                           </Button>
-                          <Button className="decline btn-danger">
+                          <Button className="decline">
                             <i
                               className="fa-solid fa-xmark"
                               style={{ color: "#AC1616" }}></i>
@@ -290,9 +292,11 @@ const Dashboard = () => {
                   </DataTable>
                 </div>
               </div>
+            </div>
 
+            {/* Card Header - Dropdown PRESENSI HARI INI*/}
+            <div className="container-fluid" id="presensi_masuk">
               <div className="card shadow mb-4">
-                {/* Card Header - Dropdown PRESENSI HARI INI*/}
                 <div className="card shadow mb-4">
                   {/* Card Header - Dropdown */}
                   <div className="card-header py-3 d-flex justify-content-between bg-white">
@@ -305,7 +309,7 @@ const Dashboard = () => {
                       <div className="sub-header">SEAMEO QITEP In Language</div>
                     </div>
                     <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                      <Button className="check me-2 btn-success">
+                      <Button className="check me-2">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -390,12 +394,12 @@ const Dashboard = () => {
                               display: "flex",
                               justifyContent: "center",
                             }}>
-                            <Button className="check me-2 btn-success">
+                            <Button className="check me-2">
                               <i
                                 className="fa-solid fa-check"
                                 style={{ color: "#1C711B" }}></i>
                             </Button>
-                            <Button className="decline btn-danger">
+                            <Button className="decline">
                               <i
                                 className="fa-solid fa-xmark"
                                 style={{ color: "#AC1616" }}></i>
@@ -406,9 +410,11 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
+            </div>
 
+            {/* Card Header - Dropdown PENGAJUAN IZIN*/}
+            <div className="container-fluid" id="pengajuan izin">
               <div className="card shadow mb-4">
-                {/* Card Header - Dropdown PENGAJUAN IZIN*/}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
                     <div className="header">
@@ -448,7 +454,7 @@ const Dashboard = () => {
                     <Column
                       field="no"
                       header="No"
-                      style={{ width: "2%" }}></Column>
+                      style={{ width: "3%" }}></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
@@ -467,7 +473,12 @@ const Dashboard = () => {
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "15%" }}
+                      style={{ width: "11%" }}
+                      alignHeader={"center"}></Column>
+                    <Column
+                      field="file"
+                      header="File"
+                      style={{ width: "9%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="stat_i"
@@ -482,7 +493,7 @@ const Dashboard = () => {
                     <Column
                       field="aksi"
                       header="Aksi"
-                      style={{ width: "10%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}
                       body={(rowData) => (
                         <div
@@ -490,12 +501,12 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
+                          <Button className="check me-2">
                             <i
                               className="fa-solid fa-check"
                               style={{ color: "#1C711B" }}></i>
                           </Button>
-                          <Button className="decline btn-danger">
+                          <Button className="decline">
                             <i
                               className="fa-solid fa-xmark"
                               style={{ color: "#AC1616" }}></i>
@@ -505,8 +516,10 @@ const Dashboard = () => {
                   </DataTable>
                 </div>
               </div>
-              {/* Content Row */}
             </div>
+
+            {/* Content Row */}
+
             {/* /.container-fluid */}
           </div>
           {/* End of Main Content */}

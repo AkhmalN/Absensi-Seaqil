@@ -228,21 +228,39 @@ body {
   margin-right: 5px;
 }
 
-.card {
+.card .edit {
+  background-color: #fdffb2;
+  border: none;
+  border-radius: 5px;
+  color: #cacd22;
 }
-
+.card .edit:hover {
+  background-color: #fbff84;
+  color: #cacd22;
+}
 .card .check {
   background-color: #d0ffcf;
   border: none;
   border-radius: 5px;
+  color: #1c711b;
+}
+.card .check:hover {
+  background-color: #acffaa;
+  color: #1c711b;
 }
 .card .decline {
   background-color: #fdd4d4;
   border: none;
   border-radius: 5px;
+  color: #ac1616;
+}
+
+.card .decline:hover {
+  background-color: #ffb5b5;
+  color: #ac1616;
 }
 .card .edit {
-  background-color: #FDFFB2;
+  background-color: #fdffb2;
   border: none;
   border-radius: 5px;
 }
