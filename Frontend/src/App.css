@@ -149,7 +149,9 @@ body {
   height: 50px;
   border: 5px solid #dfdfdf;
 }
-
+.custom-text{
+  color: #1c1d22;
+}
 /**ADMIN CSS**/
 
 .admin-bg {
@@ -226,8 +228,4 @@ body {
   color: #a9a9a9;
   font-size: 20px;
   margin-right: 5px;
-}
-.custom-text{
-  color: #1c1d22;
-
 }

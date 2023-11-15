@@ -13,6 +13,7 @@ import Pengajuan from "./pages/admin/Pengajuan";
 import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import FormMasukKerja from "./components/FormMasukKerja";
 import DataIzin from "./pages/admin/DataIzin";
+import formmasukkerja from "./components/FormMasukKerja";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,7 +28,7 @@ root.render(
       <Route path="/dashboard/DataIzin" Component={DataIzin} />
       <Route path="/dashboard/pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
-      <Route path="/dashboard/form_masuk_kerja" Component={FormMasukKerja} />
+      <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
     </Routes>
   </BrowserRouter>
 );
