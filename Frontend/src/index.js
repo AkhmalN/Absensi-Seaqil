@@ -25,7 +25,6 @@ root.render(
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/data_izin" Component={DataIzin} />
       <Route path="/dashboard/laporan" Component={Laporan} />
-
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />

@@ -8,14 +8,21 @@ import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import { Button } from "react-bootstrap";
 import "../../App.css";
+import profil from "../../assets/admin/profil.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
+  faCaretDown,
   faCheck,
+  faCogs,
   faFilePdf,
+  faList,
   faMagnifyingGlass,
+  faSignOut,
+  faUser,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import { Row, Col } from "react-bootstrap";
 
 const Dashboard = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -49,27 +56,47 @@ const Dashboard = () => {
                 <div className="nav-item dropdown no-arrow">
                   <Dropdown show={isDropdownOpen} onToggle={toggleDropdown}>
                     <Dropdown.Toggle variant="white">
-                      <span className="mr-2 d-none d-lg-inline text-black">
-                        Ce Iis
-                      </span>
-                      <img
-                        alt=""
-                        className="img-profile rounded-circle"
-                        src="../../admin/profil.png"
-                      />
+                      <Row className="d-flex align-content-end">
+                        <Col xs="3" className="">
+                          <img
+                            src={profil}
+                            alt="logo"
+                            className="icon_profile"
+                          />
+                        </Col>
+                        <Col xs="7" className="mt-1">
+                          <Row>
+                            <span className="header_profile d-none d-lg-inline text-left ">
+                              Asep Sutrisno
+                            </span>
+                          </Row>
+                          <Row>
+                            <span className="sub-header_profile d-none d-lg-inline text-left ">
+                              Koordinator
+                            </span>
+                          </Row>
+                        </Col>
+                        <Col xs="1" className="mt-2 ps-3">
+                          <FontAwesomeIcon
+                            icon={faCaretDown}
+                            className="sub-header_profile d-none d-lg-inline text-left "
+                          />
+                        </Col>
+                      </Row>
                     </Dropdown.Toggle>
                     {/* Dropdown - User Information */}
                     <Dropdown.Menu className="dropdown-menu-right shadow animated--grow-in">
                       <Dropdown.Item href="#">
+                        <FontAwesomeIcon icon={faUser} />
                         <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                         Profile
                       </Dropdown.Item>
                       <Dropdown.Item href="#">
-                        <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faCogs} />
                         Settings
                       </Dropdown.Item>
                       <Dropdown.Item href="#">
-                        <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faList} />
                         Activity Log
                       </Dropdown.Item>
                       <Dropdown.Divider />
@@ -77,7 +104,7 @@ const Dashboard = () => {
                         href="#"
                         data-toggle="modal"
                         data-target="#logoutModal">
-                        <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faSignOut} />
                         Logout
                       </Dropdown.Item>
                     </Dropdown.Menu>
@@ -91,12 +118,6 @@ const Dashboard = () => {
               {/* Page Heading */}
               <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                <a
-                  href="#"
-                  className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                  <i className="fas fa-download fa-sm text-white-50" /> Generate
-                  Report
-                </a>
               </div>
               {/* Content Row */}
               <div className="row">
@@ -112,9 +133,6 @@ const Dashboard = () => {
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
                             23
                           </div>
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-calendar fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -132,9 +150,6 @@ const Dashboard = () => {
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
                             2
                           </div>
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-dollar-sign fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -157,9 +172,6 @@ const Dashboard = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-auto">
-                          <i className="fas fa-clipboard-list fa-2x text-gray-300" />
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -176,9 +188,6 @@ const Dashboard = () => {
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
                             52
                           </div>
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-comments fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -480,7 +489,6 @@ const Dashboard = () => {
                       field="file"
                       header="File"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}
                       body={(rowData) => (
                         <div>
                           <Button className="btn btn-light">
@@ -488,7 +496,6 @@ const Dashboard = () => {
                           </Button>
                         </div>
                       )}></Column>
-
                     <Column
                       field="stat_i"
                       header="Status"

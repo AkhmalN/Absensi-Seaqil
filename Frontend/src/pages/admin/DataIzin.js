@@ -8,7 +8,12 @@ import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import "../../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faFilePdf,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
 const DataIzin = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -32,7 +37,7 @@ const DataIzin = () => {
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3">
-                <i className="fa fa-bars" />
+                <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
               <ul className="navbar-nav ml-auto">
@@ -87,7 +92,7 @@ const DataIzin = () => {
                   <div className="header tulisan">
                     <div className="header">
                       Data Pengajuan Izin
-                      <span className="msib-tag ms-2">MSIB Batch 5</span>
+                      <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
@@ -147,9 +152,15 @@ const DataIzin = () => {
                       field="file"
                       header="File"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}>
-                      <i class="fa-solid fa-file"></i>
-                    </Column>
+                      alignHeader={"center"}
+                      body={(rowData) => (
+                        <div>
+                          <Button className="btn btn-light">
+                            <FontAwesomeIcon icon={faFilePdf} />
+                          </Button>
+                        </div>
+                      )}></Column>
+
                     <Column
                       field="stat_i"
                       header="Status"

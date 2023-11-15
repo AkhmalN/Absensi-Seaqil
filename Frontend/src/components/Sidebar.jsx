@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faAngleLeft,
   faChartBar,
   faCheckDouble,
   faDatabase,
@@ -11,6 +12,8 @@ import {
   faHouse,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
+
 const Sidebar = () => {
   return (
     <ul
@@ -107,7 +110,7 @@ const Sidebar = () => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" href="charts.html">
+        <Link to="/dashboard/laporan" className="nav-link" href="charts.html">
           <FontAwesomeIcon icon={faDatabase} />
           <span className="ms-2">Laporan</span>
         </Link>
@@ -116,7 +119,9 @@ const Sidebar = () => {
       <hr className="sidebar-divider d-none d-md-block" />
       {/* Sidebar Toggler (Sidebar) */}
       <div className="text-center d-none d-md-inline">
-        <button className="rounded-circle border-0" id="sidebarToggle" />
+        <Button className="rounded-circle border-0" id="sidebarToggle">
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </Button>
       </div>
     </ul>
   );
