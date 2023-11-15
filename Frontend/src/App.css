@@ -11,7 +11,7 @@ body {
   );
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  /* height: 100vh; */
   font-family: "Poppins", sans-serif;
 }
 
@@ -149,9 +149,34 @@ body {
   height: 50px;
   border: 5px solid #dfdfdf;
 }
+<<<<<<< HEAD
 .custom-text{
   color: #1c1d22;
 }
+=======
+
+/* STATUS PENGAJUAN CSS */
+.tablePengajuanIzin {
+  padding: 10px 65px 0px 65px;
+}
+
+.card-header-pengajuan {
+  background-color: #266cb2;
+}
+
+.header-1 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 25px;
+}
+
+.header-2 {
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+>>>>>>> 2ea305ca3616cf0bd856e1120afd01ee28857674
 /**ADMIN CSS**/
 
 .admin-bg {
@@ -229,3 +254,146 @@ body {
   font-size: 20px;
   margin-right: 5px;
 }
+<<<<<<< HEAD
+=======
+
+.card .edit {
+  background-color: #fdffb2;
+  border: none;
+  border-radius: 5px;
+  color: #cacd22;
+}
+.card .edit:hover {
+  background-color: #fbff84;
+  color: #cacd22;
+}
+.card .check {
+  background-color: #d0ffcf;
+  border: none;
+  border-radius: 5px;
+  color: #1c711b;
+}
+.card .check:hover {
+  background-color: #acffaa;
+  color: #1c711b;
+}
+.card .decline {
+  background-color: #fdd4d4;
+  border: none;
+  border-radius: 5px;
+  color: #ac1616;
+}
+
+.card .decline:hover {
+  background-color: #ffb5b5;
+  color: #ac1616;
+}
+.card .edit {
+  background-color: #fdffb2;
+  border: none;
+  border-radius: 5px;
+}
+.blue-tag {
+  color: #266cb2;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 150% */
+  width: 46px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #eef6fa;
+  gap: 6px;
+}
+
+.green-tag {
+  width: 46px;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 16px;
+  background: var(--bg-button-hijau, #d0ffcf);
+  color: var(--icon-hijau-tulisan, #1c711b);
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 150% */
+}
+
+.red-tag {
+  width: 46px;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 16px;
+  background: #fdd4d4;
+  color: #ac1616;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 150% */
+}
+
+.search-button {
+  border-radius: 8px;
+  border: 1px solid #0070ff;
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+.print-button {
+  display: flex;
+  padding: 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--Abu-abu, #545459);
+  background: #fff;
+}
+
+.icon_profile {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header_profile {
+  color: var(--Hitam, #1c1d22);
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.sub-header_profile {
+  color: var(--Hitam, #1c1d22);
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* .date-picker {
+  border-radius: 5px;
+  border: 1px solid #545459;
+  background: #fff;
+  display: flex;
+  width: 232px;
+  padding: 8px 10px 8px 16px;
+  align-items: center;
+  gap: 6px;
+} */
+>>>>>>> 2ea305ca3616cf0bd856e1120afd01ee28857674
