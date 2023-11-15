@@ -339,11 +339,11 @@ body {
 .search-button {
   border-radius: 8px;
   border: 1px solid #0070ff;
-  background: #266cb2;
+  background: #fff;
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
 
-.custom-print-button {
+.print-button {
   display: flex;
   padding: 10px 16px;
   justify-content: center;
@@ -352,11 +352,6 @@ body {
   border-radius: 8px;
   border: 1px solid var(--Abu-abu, #545459);
   background: #fff;
-}
-
-.custom-print-button svg {
-  width: 20px;
-  height: 20px;
 }
 
 .icon_profile {
@@ -382,3 +377,14 @@ body {
   font-weight: 500;
   line-height: normal;
 }
+
+/* .date-picker {
+  border-radius: 5px;
+  border: 1px solid #545459;
+  background: #fff;
+  display: flex;
+  width: 232px;
+  padding: 8px 10px 8px 16px;
+  align-items: center;
+  gap: 6px;
+} */
