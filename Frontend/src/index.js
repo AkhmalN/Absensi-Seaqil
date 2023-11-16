@@ -10,13 +10,20 @@ import Pengajuan from "./pages/admin/Pengajuan";
 import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
+import FormMasukKerja from "./components/FormMasukKerja";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
+    <Route path="/dashboard" Component={Dashboard} />
+    <Route path="/dashboard/data_pengajuan" Component={Pengajuan} />
+    <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
+    <Route path="/dashboard/data_izin" Component={DataIzin} />
+
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
+      <Route path="/form_masuk_kerja" Component={FormMasukKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />
     </Routes>
   </BrowserRouter>

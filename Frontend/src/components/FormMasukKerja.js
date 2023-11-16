@@ -2,31 +2,43 @@ import { Col, Form, Row } from "react-bootstrap";
 import "../App.css";
 import Button from "react-bootstrap/Button";
 
-const formmasukkerjaStyle = {
-  backgroundColor: '#fff', // Set latar belakang menjadi putih
-  color: '#000', // Set warna teks menjadi hitam atau sesuai kebutuhan
-  height: '100vh',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
-function formmasukkerja() {
+// const FormMasukKerjaStyle = {
+//   backgroundColor: '#fff', // Set latar belakang menjadi putih
+//   color: '#000', // Set warna teks menjadi hitam atau sesuai kebutuhan
+//   height: '100vh',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+// };
+
+
+// const kolomFirst = {
+//   borderColor: "black",
+// };
+
+function FormMasukKerja() {
   return (
-    <div classname="container">
+    <div classname="Container my-4">
       <Row>
         <Col>
           <h1>Testing</h1>
         </Col>
-        <Col>
-          <Form className="">
-            <Row classname="my-5">
+        <Col className="blur-bg"> 
+          <div className="app-container">  
+            <div className="header-data">
+             <div className="Teks1">Presensi Hari Ini Sudah Selesai</div>
+             <div className="Teks2">Presensi Hari Ini Sudah Selesai</div>
+               </div>
+               
+          <Form className="container my-4">
+            <Row>
               <Col>
-                <Form.Label className="custom-text">
+                  <Form.Label className="custom-text">
                   Waktu Absen Masuk
                 </Form.Label>
                 <Form.Control placeholder="First name" />
               </Col>
-              <Col sm={{ offset: 7 }}>
+              <Col sm={{ offset: 2 }}>
                 <Form.Label className="custom-text">ID Kegiatan</Form.Label>
                 <Form.Control placeholder="Last name" />
               </Col>
@@ -37,24 +49,27 @@ function formmasukkerja() {
                 <Form.Label className="custom-text">
                   Waktu Absen Selesai
                 </Form.Label>
-                <Form.Control placeholder="First name" />
+                <Form.Control className="kolomFirst" placeholder="First name" />
               </Col>
-              <Col sm={{ offset: 7 }}>
+              <Col sm={{ offset: 2 }}>
                 <Form.Label className="custom-text">ID Kegiatan</Form.Label>
                 <Form.Control placeholder="Last name" />
               </Col>
             </Row>
-
-            <Row className="my-5">
-              <Col sm={{ offset: 10 }}>
+            
+            <div className="button-keluar">
+            <Row>
+              <Col sm={{offset:3}}>
                 <Button type="submit">Absen Keluar</Button>
               </Col>
             </Row>
+            </div>
           </Form>
+          </div>
         </Col>
       </Row>
     </div>
   );
 }
 
-export default formmasukkerja;
+export default FormMasukKerja;

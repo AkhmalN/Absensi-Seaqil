@@ -12,7 +12,8 @@ function FormIzin() {
     <>
       <Container>
         <Row>
-          <Col></Col>
+          <Col>
+          Testing</Col>
           <Col>
             <Form className="formIzin d-grid">
               <Form.Group className="mb-3">
