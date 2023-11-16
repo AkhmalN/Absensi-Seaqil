@@ -8,6 +8,22 @@ import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import { Button } from "react-bootstrap";
 import "../../App.css";
+import profil from "../../assets/admin/profil.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faCaretDown,
+  faCheck,
+  faCogs,
+  faFilePdf,
+  faList,
+  faMagnifyingGlass,
+  faSignOut,
+  faUser,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { Row, Col } from "react-bootstrap";
+
 const Dashboard = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -28,28 +44,11 @@ const Dashboard = () => {
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
               {/* Sidebar Toggle (Topbar) */}
-<<<<<<< HEAD
-              <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
-                <i className="fa fa-bars" />
-              </button>
-              {/* Topbar Search */}
-              <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div className="input-group">
-                  <input type="text" className="form-control border border-secondary small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                  <div className="input-group-append">
-                    <button className="btn btn-primary" type="button">
-                      <i className="fas fa-search fa-sm" />
-                    </button>
-                  </div>
-                </div>
-              </form>
-=======
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3">
-                <i className="fa fa-bars" />
+                <FontAwesomeIcon icon={faBars} />
               </button>
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
               {/* Topbar Navbar */}
               <ul className="navbar-nav ml-auto">
                 <div className="topbar-divider d-none d-sm-block" />
@@ -57,44 +56,55 @@ const Dashboard = () => {
                 <div className="nav-item dropdown no-arrow">
                   <Dropdown show={isDropdownOpen} onToggle={toggleDropdown}>
                     <Dropdown.Toggle variant="white">
-<<<<<<< HEAD
-                      <span className="mr-2 d-none d-lg-inline text-gray-600 small">Testing Doang</span>
-                      <img className="img-profile rounded-circle" src="img/undraw_profile.svg" />
-=======
-                      <span className="mr-2 d-none d-lg-inline text-black">
-                        Ce Iis
-                      </span>
-                      <img
-                        alt=""
-                        className="img-profile rounded-circle"
-                        src="../../admin/profil.png"
-                      />
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
+                      <Row className="d-flex align-content-end">
+                        <Col xs="3" className="">
+                          <img
+                            src={profil}
+                            alt="logo"
+                            className="icon_profile"
+                          />
+                        </Col>
+                        <Col xs="7" className="mt-1">
+                          <Row>
+                            <span className="header_profile d-none d-lg-inline text-left ">
+                              Asep Sutrisno
+                            </span>
+                          </Row>
+                          <Row>
+                            <span className="sub-header_profile d-none d-lg-inline text-left ">
+                              Koordinator
+                            </span>
+                          </Row>
+                        </Col>
+                        <Col xs="1" className="mt-2 ps-3">
+                          <FontAwesomeIcon
+                            icon={faCaretDown}
+                            className="sub-header_profile d-none d-lg-inline text-left "
+                          />
+                        </Col>
+                      </Row>
                     </Dropdown.Toggle>
                     {/* Dropdown - User Information */}
                     <Dropdown.Menu className="dropdown-menu-right shadow animated--grow-in">
                       <Dropdown.Item href="#">
+                        <FontAwesomeIcon icon={faUser} />
                         <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                         Profile
                       </Dropdown.Item>
                       <Dropdown.Item href="#">
-                        <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faCogs} />
                         Settings
                       </Dropdown.Item>
                       <Dropdown.Item href="#">
-                        <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faList} />
                         Activity Log
                       </Dropdown.Item>
                       <Dropdown.Divider />
-<<<<<<< HEAD
-                      <Dropdown.Item href="#" data-toggle="modal" data-target="#logoutModal">
-=======
                       <Dropdown.Item
                         href="#"
                         data-toggle="modal"
                         data-target="#logoutModal">
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
-                        <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faSignOut} />
                         Logout
                       </Dropdown.Item>
                     </Dropdown.Menu>
@@ -108,17 +118,6 @@ const Dashboard = () => {
               {/* Page Heading */}
               <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-<<<<<<< HEAD
-                <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                  <i className="fas fa-download fa-sm text-white-50" /> Generate Report
-=======
-                <a
-                  href="#"
-                  className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                  <i className="fas fa-download fa-sm text-white-50" /> Generate
-                  Report
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
-                </a>
               </div>
               {/* Content Row */}
               <div className="row">
@@ -128,20 +127,12 @@ const Dashboard = () => {
                     <div className="card-body">
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
-<<<<<<< HEAD
-                          <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                          <div className="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-=======
                           <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Presensi Hari Ini
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
                             23
                           </div>
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-calendar fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -153,20 +144,12 @@ const Dashboard = () => {
                     <div className="card-body">
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
-<<<<<<< HEAD
-                          <div className="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                          <div className="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-=======
                           <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Terlambat
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
                             2
                           </div>
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-dollar-sign fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -178,16 +161,6 @@ const Dashboard = () => {
                     <div className="card-body">
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
-<<<<<<< HEAD
-                          <div className="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                          <div className="row no-gutters align-items-center">
-                            <div className="col-auto">
-                              <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                            </div>
-                            <div className="col">
-                              <div className="progress progress-sm mr-2">
-                                <div className="progress-bar bg-info" role="progressbar" style={{ width: "50%" }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
-=======
                           <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Pengajuan Izin
                           </div>
@@ -195,13 +168,9 @@ const Dashboard = () => {
                             <div className="col-auto">
                               <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                 5
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-clipboard-list fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -213,20 +182,12 @@ const Dashboard = () => {
                     <div className="card-body">
                       <div className="row no-gutters align-items-center">
                         <div className="col mr-2">
-<<<<<<< HEAD
-                          <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                          <div className="h5 mb-0 font-weight-bold text-gray-800">18</div>
-=======
                           <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Mahasiswa Magang
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
                             52
                           </div>
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-comments fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -234,20 +195,22 @@ const Dashboard = () => {
                 </div>
               </div>
               {/* Content Row */}
-              {/* Area Chart PRESENSI PULANG HARI INI*/}
-              <div className="card shadow mb-4" id="presensi_pulang">
+            </div>
+            {/* Area Chart PRESENSI PULANG HARI INI*/}
+            <div className="container-fluid" id="presensi_pulang">
+              <div className="card shadow mb-4">
                 {/* Card Header - Dropdown */}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
                     <div className="header">
                       Presensi Pulang Hari Ini
                       <span className="sub-header ms-2">27/10/2023</span>
-                      <span className="msib-tag ms-2">MSIB Batch 5</span>
+                      <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                    <Button className="check me-2 btn-success">
+                    <Button className="check me-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -270,7 +233,7 @@ const Dashboard = () => {
                       />
                       <div className="input-group-append">
                         <button className="btn btn-primary" type="button">
-                          <i className="fas fa-search fa-sm" />
+                          <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                       </div>
                     </div>
@@ -332,41 +295,35 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
-                            <i
-                              className="fa-solid fa-check"
-                              style={{ color: "#1C711B" }}></i>
+                          <Button className="check me-2 ">
+                            <FontAwesomeIcon icon={faCheck} />
                           </Button>
-                          <Button className="decline btn-danger">
-                            <i
-                              className="fa-solid fa-xmark"
-                              style={{ color: "#AC1616" }}></i>
+                          <Button className="decline ">
+                            <FontAwesomeIcon icon={faXmark} />
                           </Button>
                         </div>
                       )}></Column>
                   </DataTable>
                 </div>
               </div>
+            </div>
 
+            {/* Card Header - Dropdown PRESENSI HARI INI*/}
+            <div className="container-fluid" id="presensi_masuk">
               <div className="card shadow mb-4">
-                {/* Card Header - Dropdown PRESENSI HARI INI*/}
                 <div className="card shadow mb-4">
                   {/* Card Header - Dropdown */}
-<<<<<<< HEAD
-                  <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 className="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
-=======
                   <div className="card-header py-3 d-flex justify-content-between bg-white">
                     <div className="header tulisan">
                       <div className="header">
                         Presensi Masuk Hari Ini
                         <span className="sub-header ms-2">27/10/2023</span>
-                        <span className="msib-tag ms-2">MSIB Batch 5</span>
+                        <span className="blue-tag ms-2">MSIB Batch 5</span>
                       </div>
                       <div className="sub-header">SEAMEO QITEP In Language</div>
                     </div>
                     <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                      <Button className="check me-2 btn-success">
+                      <Button className="check me-2 ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -389,12 +346,11 @@ const Dashboard = () => {
                         />
                         <div className="input-group-append">
                           <button className="btn btn-primary" type="button">
-                            <i className="fas fa-search fa-sm" />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
                           </button>
                         </div>
                       </div>
                     </form>
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
                   </div>
 
                   {/* Card Body */}
@@ -406,14 +362,6 @@ const Dashboard = () => {
                       rowsPerPageOptions={[5, 10, 25, 50]}
                       tableStyle={{ textAlign: "center" }}
                       className="customDataTable" // Add a custom class for more styling options
-<<<<<<< HEAD
-                      paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-                    >
-                      <Column field="ID" header="ID" style={{ width: "10%" }}></Column>
-                      <Column field="Nama" header="Nama" style={{ width: "25%" }}></Column>
-                      <Column field="Divisi" header="Divisi" style={{ width: "30%" }}></Column>
-                      <Column field="Asal Kampus" header="Asal Kampus" style={{ width: "35%" }}></Column>
-=======
                       paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                       <Column
                         field="no"
@@ -460,31 +408,28 @@ const Dashboard = () => {
                               display: "flex",
                               justifyContent: "center",
                             }}>
-                            <Button className="check me-2 btn-success">
-                              <i
-                                className="fa-solid fa-check"
-                                style={{ color: "#1C711B" }}></i>
+                            <Button className="check me-2 ">
+                              <FontAwesomeIcon icon={faCheck} />
                             </Button>
-                            <Button className="decline btn-danger">
-                              <i
-                                className="fa-solid fa-xmark"
-                                style={{ color: "#AC1616" }}></i>
+                            <Button className="decline ">
+                              <FontAwesomeIcon icon={faXmark} />
                             </Button>
                           </div>
                         )}></Column>
->>>>>>> f056b62ccb92dde08b78ea5d79efb2d4669ed641
                     </DataTable>
                   </div>
                 </div>
               </div>
+            </div>
 
+            {/* Card Header - Dropdown PENGAJUAN IZIN*/}
+            <div className="container-fluid" id="pengajuan izin">
               <div className="card shadow mb-4">
-                {/* Card Header - Dropdown PENGAJUAN IZIN*/}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
                     <div className="header">
                       Daftar Pengajuan Izin
-                      <span className="msib-tag ms-2">MSIB Batch 5</span>
+                      <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
@@ -499,7 +444,7 @@ const Dashboard = () => {
                       />
                       <div className="input-group-append">
                         <button className="btn btn-primary" type="button">
-                          <i className="fas fa-search fa-sm" />
+                          <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                       </div>
                     </div>
@@ -519,7 +464,7 @@ const Dashboard = () => {
                     <Column
                       field="no"
                       header="No"
-                      style={{ width: "2%" }}></Column>
+                      style={{ width: "3%" }}></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
@@ -538,8 +483,19 @@ const Dashboard = () => {
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "15%" }}
+                      style={{ width: "11%" }}
                       alignHeader={"center"}></Column>
+                    <Column
+                      field="file"
+                      header="File"
+                      style={{ width: "9%" }}
+                      body={(rowData) => (
+                        <div>
+                          <Button className="btn btn-light">
+                            <FontAwesomeIcon icon={faFilePdf} />
+                          </Button>
+                        </div>
+                      )}></Column>
                     <Column
                       field="stat_i"
                       header="Status"
@@ -553,7 +509,7 @@ const Dashboard = () => {
                     <Column
                       field="aksi"
                       header="Aksi"
-                      style={{ width: "10%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}
                       body={(rowData) => (
                         <div
@@ -561,23 +517,27 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
-                            <i
-                              className="fa-solid fa-check"
-                              style={{ color: "#1C711B" }}></i>
-                          </Button>
-                          <Button className="decline btn-danger">
-                            <i
-                              className="fa-solid fa-xmark"
-                              style={{ color: "#AC1616" }}></i>
-                          </Button>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}>
+                            <Button className="check me-2 ">
+                              <FontAwesomeIcon icon={faCheck} />
+                            </Button>
+                            <Button className="decline ">
+                              <FontAwesomeIcon icon={faXmark} />
+                            </Button>
+                          </div>
                         </div>
                       )}></Column>
                   </DataTable>
                 </div>
               </div>
-              {/* Content Row */}
             </div>
+
+            {/* Content Row */}
+
             {/* /.container-fluid */}
           </div>
           {/* End of Main Content */}
