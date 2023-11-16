@@ -174,13 +174,46 @@ body {
   font-size: 15px;
 }
 .bg-blur {
+  display: block;
   border-radius: 20px;
   border: 1px solid var(--Biru-Muda-BANGET, #eef6fa);
   background: rgba(191, 191, 191, 0.2);
   backdrop-filter: blur(45px);
   padding-top: 15px;
   margin-left: 60px;
-  width: 1200px;
+  margin-right: 60px;
+  /* width: 1200px;
+  height: 560px; */
+}
+
+.yellow-tag {
+  color: #cacd22;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px; /* 150% */
+  width: 46px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #fdffb2;
+  gap: 6px;
+}
+
+.button-cetak {
+  display: flex;
+  padding: 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+  color: var(--Hitam, #1c1d22);
+  background: #fff;
+  margin-left: auto;
 }
 
 /**ADMIN CSS**/
@@ -225,6 +258,7 @@ body {
   border-radius: 16px;
   background: #eef6fa;
 }
+
 .customDataTable .p-datatable-thead th {
   text-align: center;
   color: #1c1d22;
