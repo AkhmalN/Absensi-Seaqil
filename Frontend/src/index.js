@@ -17,11 +17,7 @@ root.render(
     <Routes>
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
-      <Route path="/dashboard" Component={Dashboard} />
-      <Route path="/dashboard/DataIzin" Component={DataIzin} />
-      <Route path="/dashboard/pengajuan" Component={Pengajuan} />
-      <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
-      <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
+      <Route path="/status_pengajuan" Component={StatusPengajuan} />
     </Routes>
   </BrowserRouter>
 );
