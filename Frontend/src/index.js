@@ -12,6 +12,7 @@ import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
 import Laporan from "./pages/admin/Laporan";
+import Presensi from "./pages/admin/Presensi";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
