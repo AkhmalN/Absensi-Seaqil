@@ -19,31 +19,33 @@ function StatusPengajuan() {
           <img src={akun} alt="logo" />
         </div>
       </div>
-      <div className="tablePengajuanIzin">
-        <div className="card shadow mb-4">
-          {/* Card Header - Dropdown */}
-          <div className="card-header card-header-pengajuan py-3 d-flex flex-row align-items-center justify-content-center">
-            <div className="header">
-              <div className="header-1">Status Pengajuan Izin</div>
-              <div className="header-2">Silahkan cek status pengajuan izin kamu dibawah ini.</div>
+      <div className="bg-blur">
+        <div className="tablePengajuanIzin">
+          <div className="card shadow mb-4">
+            {/* Card Header - Dropdown */}
+            <div className="card-header card-header-pengajuan py-3 d-flex flex-row align-items-center justify-content-center">
+              <div className="header">
+                <div className="header-1">Status Pengajuan Izin</div>
+                <div className="header-2">Silahkan cek status pengajuan izin kamu dibawah ini.</div>
+              </div>
             </div>
-          </div>
-          {/* Card Body  */}
-          <div className="card-body field-pengajuan">
-            <DataTable
-              value={PengajuanIzin}
-              paginator
-              rows={10}
-              rowsPerPageOptions={[5, 10, 25, 30]}
-              tableStyle={{ minWidth: "50rem" }}
-              className="customDataTable" //Add a custom class for more styling options
-              paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-            >
-              <Column field="No" header="No" style={{ width: "10%" }} alignHeader={"center"}></Column>
-              <Column field="Tanggal" header="Tanggal" style={{ width: "25%" }} alignHeader={"center"}></Column>
-              <Column field="Pengajuan" header="Pengajuan" style={{ width: "25%" }} alignHeader={"center"}></Column>
-              <Column field="Status" header="Status" style={{ width: "25%" }} alignHeader={"center"}></Column>
-            </DataTable>
+            {/* Card Body  */}
+            <div className="card-body field-pengajuan">
+              <DataTable
+                value={PengajuanIzin}
+                paginator
+                rows={5}
+                rowsPerPageOptions={[5, 10, 25, 30]}
+                tableStyle={{ minWidth: "50rem" }}
+                className="customDataTable" //Add a custom class for more styling options
+                paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+              >
+                <Column field="No" header="No" style={{ width: "10%" }} alignHeader={"center"}></Column>
+                <Column field="Tanggal" header="Tanggal" style={{ width: "25%" }} alignHeader={"center"}></Column>
+                <Column field="Pengajuan" header="Pengajuan" style={{ width: "25%" }} alignHeader={"center"}></Column>
+                <Column field="Status" header="Status" style={{ width: "25%" }} alignHeader={"center"}></Column>
+              </DataTable>
+            </div>
           </div>
         </div>
       </div>
