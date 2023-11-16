@@ -2,6 +2,14 @@ import { Col, Form, Row } from "react-bootstrap";
 import "../App.css";
 import Button from 'react-bootstrap/Button';
 
+const formmasukkerjaStyle = {
+  backgroundColor: '#fff', // Set latar belakang menjadi putih
+  color: '#000', // Set warna teks menjadi hitam atau sesuai kebutuhan
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 function formmasukkerja() {
   return (
     <div classname="formmasukkerja"> 

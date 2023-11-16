@@ -149,11 +149,9 @@ body {
   height: 50px;
   border: 5px solid #dfdfdf;
 }
-<<<<<<< HEAD
 .custom-text{
   color: #1c1d22;
 }
-=======
 
 /* STATUS PENGAJUAN CSS */
 .tablePengajuanIzin {
@@ -176,7 +174,6 @@ body {
   font-size: 15px;
 }
 
->>>>>>> 2ea305ca3616cf0bd856e1120afd01ee28857674
 /**ADMIN CSS**/
 
 .admin-bg {
@@ -254,9 +251,6 @@ body {
   font-size: 20px;
   margin-right: 5px;
 }
-<<<<<<< HEAD
-=======
-
 .card .edit {
   background-color: #fdffb2;
   border: none;
@@ -396,4 +390,3 @@ body {
   align-items: center;
   gap: 6px;
 } */
->>>>>>> 2ea305ca3616cf0bd856e1120afd01ee28857674
