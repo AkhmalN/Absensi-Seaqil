@@ -143,11 +143,11 @@ function Laporan() {
                   {/* </div> */}
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
                     <button
-                      className="print-button"
+                      className="print-button "
                       type="button"
                       style={{ marginRight: "16px" }}>
                       <FontAwesomeIcon icon={faPrint} />
-                      Cetak
+                      <span className="d-none d-lg-inline">Cetak</span>
                     </button>
                     <div className="input-group">
                       <input
