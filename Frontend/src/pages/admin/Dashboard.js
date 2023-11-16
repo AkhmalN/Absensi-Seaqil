@@ -6,7 +6,6 @@ import { Dropdown } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
-import { Button } from "react-bootstrap";
 import "../../App.css";
 import profil from "../../assets/admin/profil.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -165,10 +164,8 @@ const Dashboard = () => {
                             Pengajuan Izin
                           </div>
                           <div className="row no-gutters align-items-center">
-                            <div className="col-auto">
-                              <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                5
-                              </div>
+                            <div className="h5 mb-0 font-weight-bold text-gray-800">
+                              2
                             </div>
                           </div>
                         </div>
@@ -210,7 +207,7 @@ const Dashboard = () => {
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                    <Button className="check me-2 ">
+                    <button className="check me-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -222,7 +219,7 @@ const Dashboard = () => {
                           fill="#1C711B"
                         />
                       </svg>
-                    </Button>
+                    </button>
                     <div className="input-group">
                       <input
                         type="text"
@@ -295,12 +292,12 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 ">
-                            <FontAwesomeIcon icon={faCheck} />
-                          </Button>
-                          <Button className="decline ">
-                            <FontAwesomeIcon icon={faXmark} />
-                          </Button>
+                          <button className="check me-2 " type="button">
+                            <FontAwesomeIcon icon={faCheck} size="lg" />
+                          </button>
+                          <button className="decline " type="button">
+                            <FontAwesomeIcon icon={faXmark} size="lg" />
+                          </button>
                         </div>
                       )}></Column>
                   </DataTable>
@@ -323,7 +320,7 @@ const Dashboard = () => {
                       <div className="sub-header">SEAMEO QITEP In Language</div>
                     </div>
                     <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                      <Button className="check me-2 ">
+                      <button className="check me-2 ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -335,7 +332,7 @@ const Dashboard = () => {
                             fill="#1C711B"
                           />
                         </svg>
-                      </Button>
+                      </button>
                       <div className="input-group">
                         <input
                           type="text"
@@ -408,12 +405,12 @@ const Dashboard = () => {
                               display: "flex",
                               justifyContent: "center",
                             }}>
-                            <Button className="check me-2 ">
-                              <FontAwesomeIcon icon={faCheck} />
-                            </Button>
-                            <Button className="decline ">
-                              <FontAwesomeIcon icon={faXmark} />
-                            </Button>
+                            <button className="check me-2 " type="button">
+                              <FontAwesomeIcon icon={faCheck} size="lg" />
+                            </button>
+                            <button className="decline " type="button">
+                              <FontAwesomeIcon icon={faXmark} size="lg" />
+                            </button>
                           </div>
                         )}></Column>
                     </DataTable>
@@ -489,11 +486,14 @@ const Dashboard = () => {
                       field="file"
                       header="File"
                       style={{ width: "9%" }}
+                      alignHeader={"center"}
                       body={(rowData) => (
                         <div>
-                          <Button className="btn btn-light">
-                            <FontAwesomeIcon icon={faFilePdf} />
-                          </Button>
+                          <FontAwesomeIcon
+                            icon={faFilePdf}
+                            size="lg"
+                            type="button"
+                          />
                         </div>
                       )}></Column>
                     <Column
@@ -522,12 +522,12 @@ const Dashboard = () => {
                               display: "flex",
                               justifyContent: "center",
                             }}>
-                            <Button className="check me-2 ">
-                              <FontAwesomeIcon icon={faCheck} />
-                            </Button>
-                            <Button className="decline ">
-                              <FontAwesomeIcon icon={faXmark} />
-                            </Button>
+                            <button className="check me-2" type="button">
+                              <FontAwesomeIcon icon={faCheck} size="lg" />
+                            </button>
+                            <button className="decline" type="button">
+                              <FontAwesomeIcon icon={faXmark} size="lg" />
+                            </button>
                           </div>
                         </div>
                       )}></Column>
