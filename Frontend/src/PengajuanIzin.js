@@ -41,6 +41,42 @@ const PengajuanIzin = [
     Pengajuan: <span className="blue-tag">Izin</span>,
     Status: <span className="red-tag">Ditolak</span>,
   },
+  {
+    No: 7,
+    Tanggal: "11/11/2023",
+    Pengajuan: <span className="blue-tag">Izin</span>,
+    Status: <span className="red-tag">Ditolak</span>,
+  },
+  {
+    No: 7,
+    Tanggal: "11/11/2023",
+    Pengajuan: <span className="blue-tag">Izin</span>,
+    Status: <span className="red-tag">Ditolak</span>,
+  },
+  {
+    No: 7,
+    Tanggal: "11/11/2023",
+    Pengajuan: <span className="blue-tag">Izin</span>,
+    Status: <span className="red-tag">Ditolak</span>,
+  },
+  {
+    No: 7,
+    Tanggal: "11/11/2023",
+    Pengajuan: <span className="blue-tag">Izin</span>,
+    Status: <span className="red-tag">Ditolak</span>,
+  },
+  {
+    No: 7,
+    Tanggal: "11/11/2023",
+    Pengajuan: <span className="blue-tag">Izin</span>,
+    Status: <span className="red-tag">Ditolak</span>,
+  },
+  {
+    No: 7,
+    Tanggal: "11/11/2023",
+    Pengajuan: <span className="blue-tag">Izin</span>,
+    Status: <span className="red-tag">Ditolak</span>,
+  },
 ];
 
 export default PengajuanIzin;

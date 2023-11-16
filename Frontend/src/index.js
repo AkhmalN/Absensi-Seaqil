@@ -19,11 +19,11 @@ root.render(
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/dashboard" Component={Dashboard} />
+      <Route path="/dashboard/Presensi" Component={Presensi} />
       <Route path="/dashboard/DataIzin" Component={DataIzin} />
       <Route path="/dashboard/pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
-      <Route path="/dashboard/Laporan" Component={Laporan} />
     </Routes>
   </BrowserRouter>
 );
