@@ -244,7 +244,7 @@ function DataMahasiswa() {
             {/* BUTTON EDIT */}
             <Modal
               show={showEdit}
-              onHide={handleCloseDelete}
+              onHide={handleCloseEdit}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm">
