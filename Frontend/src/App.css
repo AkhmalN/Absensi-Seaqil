@@ -149,11 +149,9 @@ body {
   height: 50px;
   border: 5px solid #dfdfdf;
 }
-<<<<<<< HEAD
-.custom-text{
+.custom-text {
   color: #1c1d22;
 }
-=======
 
 /* STATUS PENGAJUAN CSS */
 .tablePengajuanIzin {
@@ -176,7 +174,6 @@ body {
   font-size: 15px;
 }
 
->>>>>>> 2ea305ca3616cf0bd856e1120afd01ee28857674
 /**ADMIN CSS**/
 
 .admin-bg {
@@ -254,14 +251,14 @@ body {
   font-size: 20px;
   margin-right: 5px;
 }
-<<<<<<< HEAD
-=======
 
 .card .edit {
   background-color: #fdffb2;
   border: none;
   border-radius: 5px;
   color: #cacd22;
+  width: 35px;
+  height: 35px;
 }
 .card .edit:hover {
   background-color: #fbff84;
@@ -272,8 +269,14 @@ body {
   border: none;
   border-radius: 5px;
   color: #1c711b;
+  width: 35px;
+  height: 35px;
 }
 .card .check:hover {
+  background-color: #acffaa;
+  color: #1c711b;
+}
+.card .check:active {
   background-color: #acffaa;
   color: #1c711b;
 }
@@ -282,17 +285,15 @@ body {
   border: none;
   border-radius: 5px;
   color: #ac1616;
+  width: 35px;
+  height: 35px;
 }
 
 .card .decline:hover {
   background-color: #ffb5b5;
   color: #ac1616;
 }
-.card .edit {
-  background-color: #fdffb2;
-  border: none;
-  border-radius: 5px;
-}
+
 .blue-tag {
   color: #266cb2;
   text-align: center;
@@ -353,13 +354,17 @@ body {
 
 .print-button {
   display: flex;
-  padding: 10px 16px;
+  padding: 6px 10px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: 8px;
   border: 1px solid var(--Abu-abu, #545459);
   background: #fff;
+}
+.print-button:hover {
+  color: #fff;
+  background-color: #8f8f8f;
 }
 
 .icon_profile {
@@ -396,4 +401,91 @@ body {
   align-items: center;
   gap: 6px;
 } */
->>>>>>> 2ea305ca3616cf0bd856e1120afd01ee28857674
+
+/*MODAL ADMIN CSS*/
+.modal .modal-header-decline {
+  color: #ac1616;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.modal .decline {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #fdd4d4;
+  color: #ac1616;
+  font-family: "Karla" sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.modal .decline:hover {
+  background-color: #ffb5b5;
+  color: #ac1616;
+}
+
+.modal .batal {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(230, 230, 230);
+  color: #3d3d3d;
+  font-family: "Karla" sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.modal .batal:hover {
+  background-color: rgb(214, 214, 214);
+  color: #3d3d3d;
+}
+
+.modal .modal-body {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.modal .edit {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #eef6fa;
+  color: #266cb2;
+  font-family: "Karla" sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.modal .edit:hover {
+  background-color: #d8effa;
+  color: #266cb2;
+}
+.modal .modal-header-edit {
+  color: #266cb2;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

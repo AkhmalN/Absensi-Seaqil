@@ -20,8 +20,7 @@ function FormIzin() {
                 <Form.Select
                   className="form-control"
                   aria-label="Default select example"
-                  required
-                >
+                  required>
                   <option>Pilih</option>
                   <option value="Izin">Izin</option>
                   <option value="Sakit">Sakit</option>
@@ -30,8 +29,7 @@ function FormIzin() {
 
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
+                controlId="exampleForm.ControlInput1">
                 <Form.Label>Tanggal :</Form.Label>
                 <Form.Control
                   type="date"
@@ -42,8 +40,7 @@ function FormIzin() {
 
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
+                controlId="exampleForm.ControlInput1">
                 <Form.Label>File :</Form.Label>
                 <Form.Control type="file" placeholder="Upload File" required />
               </Form.Group>
@@ -52,8 +49,7 @@ function FormIzin() {
                 variant="primary"
                 size="lg"
                 onClick={handleShow}
-                dismissible
-              >
+                dismissible>
                 SUBMIT
               </Button>
             </Form>

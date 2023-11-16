@@ -15,6 +15,7 @@ import {
   faCogs,
   faList,
   faMagnifyingGlass,
+  faPrint,
   faSignOut,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -48,8 +49,7 @@ function Laporan() {
               {/* Sidebar Toggle (Topbar) */}
               <button
                 id="sidebarToggleTop"
-                className="btn btn-link d-md-none rounded-circle mr-3"
-              >
+                className="btn btn-link d-md-none rounded-circle mr-3">
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -106,8 +106,7 @@ function Laporan() {
                       <Dropdown.Item
                         href="#"
                         data-toggle="modal"
-                        data-target="#logoutModal"
-                      >
+                        data-target="#logoutModal">
                         <FontAwesomeIcon icon={faSignOut} />
                         Logout
                       </Dropdown.Item>
@@ -146,28 +145,15 @@ function Laporan() {
                     <button
                       className="print-button"
                       type="button"
-                      style={{ marginRight: "16px" }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        stroke="#1C1D22"
-                        strokeWidth="1.66667"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M6.6665 14.1667L9.99984 17.5M9.99984 17.5L13.3332 14.1667M9.99984 17.5V10M16.6665 13.9524C17.6844 13.1117 18.3332 11.8399 18.3332 10.4167C18.3332 7.88536 16.2811 5.83333 13.7498 5.83333C13.5677 5.83333 13.3974 5.73833 13.3049 5.58145C12.2182 3.73736 10.2119 2.5 7.9165 2.5C4.46472 2.5 1.6665 5.29822 1.6665 8.75C1.6665 10.4718 2.36271 12.0309 3.48896 13.1613" />
-                      </svg>
+                      style={{ marginRight: "16px" }}>
+                      <FontAwesomeIcon icon={faPrint} />
                       Cetak
                     </button>
                     <div className="input-group">
                       <input
                         type="text"
-                        className="search-button"
-                        placeholder="Cari"
+                        className="form-control border border-secondary small"
+                        placeholder="Cari..."
                         aria-label="Search"
                         aria-describedby="basic-addon2"
                       />
@@ -189,38 +175,32 @@ function Laporan() {
                     rowsPerPageOptions={[5, 10, 25, 50]}
                     tableStyle={{ textAlign: "center" }}
                     className="customDataTable"
-                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-                  >
+                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                     <Column
                       field="no"
                       header="No"
                       style={{ width: "3%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
                       style={{ width: "14%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="div"
                       header="Divisi"
                       style={{ width: "11%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       // field="stat_i"
                       header={
@@ -231,8 +211,7 @@ function Laporan() {
                               display: "flex",
                               flexDirection: "row",
                               paddingTop: "5px", // Adjust the padding on top
-                            }}
-                          >
+                            }}>
                             <div style={{ width: "17%", margin: "0 10px" }}>
                               Hadir
                             </div>
@@ -248,8 +227,7 @@ function Laporan() {
                                 paddingRight: "5px",
                                 whiteSpace: "nowrap",
                                 margin: "0 10px",
-                              }}
-                            >
+                              }}>
                               Tanpa Keterangan
                             </div>
                           </div>
@@ -257,8 +235,7 @@ function Laporan() {
                       }
                       style={{ width: "20%" }} // Adjust the width of the "Status" column
                       alignHeader={"center"}
-                      rowSpan={2}
-                    ></Column>
+                      rowSpan={2}></Column>
                   </DataTable>
                 </div>
               </div>
