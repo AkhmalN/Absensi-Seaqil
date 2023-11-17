@@ -16,10 +16,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-    <Route path="/dashboard" Component={Dashboard} />
-    <Route path="/dashboard/data_pengajuan" Component={Pengajuan} />
-    <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
-    <Route path="/dashboard/data_izin" Component={DataIzin} />
+      <Route path="/dashboard" Component={Dashboard} />
+      <Route path="/dashboard/data_pengajuan" Component={Pengajuan} />
+      <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
+      <Route path="/dashboard/data_izin" Component={DataIzin} />
 
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
@@ -30,8 +30,6 @@ root.render(
       <Route path="/dashboard/pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
-
-      <Route path="/dashboard/Laporan" Component={Laporan} />
     </Routes>
   </BrowserRouter>
 );
