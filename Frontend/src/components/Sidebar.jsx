@@ -11,22 +11,28 @@ import {
   faFolder,
   faHouse,
   faRightToBracket,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
+import "../App.css";
 
-const Sidebar = () => {
+const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
+  const handleSideBarToggle = () => {
+    setIsSideBarOpen(!isSideBarOpen);
+  };
+
   return (
     <ul
-      className="navbar-nav admin-sidebar sidebar sidebar-dark accordion"
-      id="accordionSidebar">
+      className={`navbar-nav admin-sidebar sidebar sidebar-dark accordion ${
+        isSideBarOpen ? "toggled fixed" : ""
+      }`}
+      id="accordionSidebar"
+    >
       {/* Sidebar - Brand */}
-      <Link
-        className="sidebar-brand d-flex align-items-center justify-content-center"
-        href="index.html">
+      <Link className="sidebar-brand d-flex align-items-center justify-content-center">
         <div className="sidebar-brand-text ml-2 fs-2">SEAMIN.</div>
       </Link>
       {/* Divider */}
-      <hr className="sidebar-divider my-0" />
       {/* Nav Item - Dashboard */}
       <li className="nav-item active">
         <Link to="/dashboard" className="nav-link">
@@ -35,7 +41,7 @@ const Sidebar = () => {
         </Link>
       </li>
       {/* Divider */}
-      <hr className="sidebar-divider" />
+      <hr className="sidebar-divider text-white" />
       {/* Heading */}
       <div className="sidebar-heading">Presensi Mahasiswa</div>
       {/* Nav Item - Pages Collapse Menu */}
@@ -47,7 +53,8 @@ const Sidebar = () => {
           // data-toggle="collapse"
           data-target="#collapseTwo"
           aria-expanded="true"
-          aria-controls="collapseTwo">
+          aria-controls="collapseTwo"
+        >
           <FontAwesomeIcon icon={faRightToBracket} />
           <span className="ms-2">Presensi Masuk</span>
         </Link>
@@ -60,7 +67,8 @@ const Sidebar = () => {
           // data-toggle="collapse"
           data-target="#collapseTwo"
           aria-expanded="true"
-          aria-controls="collapseTwo">
+          aria-controls="collapseTwo"
+        >
           <FontAwesomeIcon icon={faCheckDouble} />
           <span className="ms-2">Presensi Pulang</span>
         </Link>
@@ -74,13 +82,14 @@ const Sidebar = () => {
           // data-toggle="collapse"
           data-target="#collapseUtilities"
           aria-expanded="true"
-          aria-controls="collapseUtilities">
+          aria-controls="collapseUtilities"
+        >
           <FontAwesomeIcon icon={faEnvelopeOpenText} />
           <span className="ms-2">Pengajuan Izin</span>
         </Link>
       </li>
       {/* Divider */}
-      <hr className="sidebar-divider" />
+      <hr className="sidebar-divider text-white" />
       {/* Heading */}
       <div className="sidebar-heading">Data Mahasiswa</div>
       {/* Nav Item - Pages Collapse Menu */}
@@ -92,7 +101,8 @@ const Sidebar = () => {
           // data-toggle="collapse"
           data-target="#collapsePages"
           aria-expanded="true"
-          aria-controls="collapsePages">
+          aria-controls="collapsePages"
+        >
           <FontAwesomeIcon icon={faFolder} />
           <span className="ms-2">Data Izin</span>
         </Link>
@@ -104,7 +114,8 @@ const Sidebar = () => {
         <Link
           to="/dashboard/data_mahasiswa"
           className="nav-link"
-          href="tables.html">
+          href="tables.html"
+        >
           <FontAwesomeIcon icon={faChartBar} />
           <span className="ms-2">Data Mahasiswa</span>
         </Link>
@@ -116,10 +127,14 @@ const Sidebar = () => {
         </Link>
       </li>
       {/* Divider */}
-      <hr className="sidebar-divider d-none d-md-block" />
+      <hr className="sidebar-divider d-none d-md-block text-white" />
       {/* Sidebar Toggler (Sidebar) */}
       <div className="text-center d-none d-md-inline">
-        <Button className="rounded-circle border-0" id="sidebarToggle">
+        <Button
+          className="rounded-circle border-0"
+          id="sidebarToggle"
+          onClick={handleSideBarToggle}
+        >
           <FontAwesomeIcon icon={faAngleLeft} />
         </Button>
       </div>
