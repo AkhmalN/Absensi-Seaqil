@@ -22,8 +22,15 @@ root.render(
       <Route path="/dashboard/data_pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/data_izin" Component={DataIzin} />
+<<<<<<< HEAD
 
       <Route path="/login" Component={Login} />
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
+>>>>>>> 38b6b86b5df4f4acf1e9cb090a9a2a65114868f9
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />
@@ -33,8 +40,11 @@ root.render(
       <Route path="/dashboard/pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
+<<<<<<< HEAD
 
       {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
+=======
+>>>>>>> 38b6b86b5df4f4acf1e9cb090a9a2a65114868f9
     </Routes>
   </BrowserRouter>
 );
