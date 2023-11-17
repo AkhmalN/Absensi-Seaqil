@@ -383,6 +383,7 @@ const Dashboard = () => {
             </Modal>
             {/* END OF BERHASIL HAPUS */}
 
+
             {/* BUTTON EDIT */}
             <Modal
               show={showEdit}
@@ -475,6 +476,7 @@ const Dashboard = () => {
               </Modal.Body>
             </Modal>
             {/* END OF BERHASIL EDIT */}
+
 
             {/* BUTTON ADD PERSON */}
             <Modal
@@ -712,6 +714,7 @@ const Dashboard = () => {
               </Modal.Body>
             </Modal>
             {/* END OF BUTTON DELETE */}
+
             {/* BERHASIL HAPUS */}
             <Modal
               show={showAlertDelete}
@@ -729,99 +732,6 @@ const Dashboard = () => {
               </Modal.Body>
             </Modal>
             {/* END OF BERHASIL HAPUS */}
-
-            {/* BUTTON EDIT */}
-            <Modal
-              show={showEdit}
-              onHide={handleCloseEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body className="modal-body">
-                <Modal.Body>
-                  <div className="modal-header-edit text-center mb-3">
-                    Edit Data
-                    <div className="mt-3">
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="IdK"
-                          placeholder="ID Kegiatan"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="nm"
-                          placeholder="Nama Lengkap"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="div"
-                          placeholder="Divisi"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <select
-                          class="form-select"
-                          aria-label="Default select example">
-                          <option selected>Shift</option>
-                          <option value="Pagi">Pagi</option>
-                          <option value="Siang">Siang</option>
-                        </select>
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="pass"
-                          placeholder="Password"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
-                    <button
-                      className="batal-btn me-2"
-                      onClick={handleCloseEdit}>
-                      Batal
-                    </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertEdit}>
-                      Simpan
-                    </button>
-                  </div>
-                </Modal.Body>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BUTTON EDIT */}
-
-            {/* BERHASIL EDIT */}
-            <Modal
-              show={showAlertEdit}
-              onHide={handleCloseAlertEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">
-                  Data Berhasil Diedit!
-                </div>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BERHASIL EDIT */}
 
             {/* Card Header - Dropdown PENGAJUAN IZIN*/}
             <div className="container-fluid" id="pengajuan izin">
@@ -970,6 +880,7 @@ const Dashboard = () => {
               </Modal.Body>
             </Modal>
             {/* END OF BUTTON DELETE */}
+
             {/* BERHASIL HAPUS */}
             <Modal
               show={showAlertDelete}
@@ -987,99 +898,6 @@ const Dashboard = () => {
               </Modal.Body>
             </Modal>
             {/* END OF BERHASIL HAPUS */}
-
-            {/* BUTTON EDIT */}
-            <Modal
-              show={showEdit}
-              onHide={handleCloseEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body className="modal-body">
-                <Modal.Body>
-                  <div className="modal-header-edit text-center mb-3">
-                    Edit Data
-                    <div className="mt-3">
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="IdK"
-                          placeholder="ID Kegiatan"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="nm"
-                          placeholder="Nama Lengkap"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="div"
-                          placeholder="Divisi"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <select
-                          class="form-select"
-                          aria-label="Default select example">
-                          <option selected>Shift</option>
-                          <option value="Pagi">Pagi</option>
-                          <option value="Siang">Siang</option>
-                        </select>
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="pass"
-                          placeholder="Password"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
-                    <button
-                      className="batal-btn me-2"
-                      onClick={handleCloseEdit}>
-                      Batal
-                    </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertEdit}>
-                      Simpan
-                    </button>
-                  </div>
-                </Modal.Body>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BUTTON EDIT */}
-
-            {/* BERHASIL EDIT */}
-            <Modal
-              show={showAlertEdit}
-              onHide={handleCloseAlertEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">
-                  Data Berhasil Diedit!
-                </div>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BERHASIL EDIT */}
 
             {/* Content Row */}
 

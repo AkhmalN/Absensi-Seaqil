@@ -446,7 +446,6 @@ body {
 
 /*MODAL ADMIN CSS*/
 .modal-header-decline {
-/MODAL ADMIN CSS/ .modal-header-decline {
   color: #ac1616;
   font-family: "Poppins", sans-serif;
   font-size: 25px;
@@ -563,5 +562,4 @@ body {
   width: 100px;
   height: 100px;
   margin-right: 10px;
-}
 }
