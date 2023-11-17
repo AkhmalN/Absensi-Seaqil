@@ -225,6 +225,7 @@ body {
   margin-left: auto;
 }
 
+<<<<<<< HEAD
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */
@@ -268,6 +269,9 @@ body {
 
 /**ADMIN CSS**/
 
+=======
+/*ADMIN CSS*/
+>>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
 .admin-bg {
   background-color: #ffffff;
 }
@@ -493,3 +497,123 @@ body {
   align-items: center;
   gap: 6px;
 } */
+
+/*MODAL ADMIN CSS*/
+.modal-header-decline {
+  color: #ac1616;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.decline {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #fdd4d4;
+  color: #ac1616;
+  font-family: "Karla" sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.decline:hover {
+  background-color: #ffb5b5;
+  color: #ac1616;
+}
+
+.batal-btn {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(230, 230, 230);
+  color: #3d3d3d;
+  font-family: "Karla" sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.batal-btn:hover {
+  background-color: rgb(214, 214, 214);
+  color: #3d3d3d;
+}
+
+.modal-body {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.edit-btn {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #eef6fa;
+  color: #266cb2;
+  font-family: "Karla", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.edit-btn:hover {
+  background-color: #d8effa;
+  color: #266cb2;
+}
+.modal-header-edit {
+  color: #266cb2;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.modal-header-edit input {
+  border-radius: 10px;
+  border: 2px solid #266cb2;
+  color: #266cb2;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.modal-header-edit input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: #266cb2;
+}
+.modal-header-edit select {
+  border-radius: 10px;
+  border: 2px solid #266cb2;
+  color: #266cb2;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.icon_check {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}

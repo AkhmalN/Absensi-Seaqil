@@ -254,9 +254,9 @@ function DataMahasiswa() {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <button className="edit me-2" type="button">
+                          <button className="edit me-2" type="button"
+                          onClick={handleShowEdit}>
                             <FontAwesomeIcon
-                              onClick={handleShowEdit}
                               icon={faPenToSquare}
                             />
                           </button>
@@ -619,7 +619,7 @@ function DataMahasiswa() {
               </Modal.Body>
             </Modal>
             {/* END OF BERHASIL EDIT */}
-            {/* BERHASIL EDIT */}
+            {/* BERHASIL HAPUS */}
             <Modal
               show={showAlertDelete}
               onHide={handleCloseAlertDelete}
@@ -635,7 +635,7 @@ function DataMahasiswa() {
                 </div>
               </Modal.Body>
             </Modal>
-            {/* END OF BERHASIL EDIT */}
+            {/* END OF BERHASIL HAPUS */}
             {/* /.container-fluid */}
           </div>
           {/* End of Main Content */}
