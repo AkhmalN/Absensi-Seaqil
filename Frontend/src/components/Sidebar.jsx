@@ -1,6 +1,19 @@
 // src/components/Sidebar.js
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleLeft,
+  faChartBar,
+  faCheckDouble,
+  faDatabase,
+  faEnvelopeOpenText,
+  faFolder,
+  faHouse,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
+
 const Sidebar = () => {
   return (
     <ul
@@ -10,9 +23,6 @@ const Sidebar = () => {
       <Link
         className="sidebar-brand d-flex align-items-center justify-content-center"
         href="index.html">
-        <div className="sidebar-brand-icon rotate-n-15">
-          <i className="fas fa-laugh-wink" />
-        </div>
         <div className="sidebar-brand-text ml-2 fs-2">SEAMIN.</div>
       </Link>
       {/* Divider */}
@@ -20,8 +30,8 @@ const Sidebar = () => {
       {/* Nav Item - Dashboard */}
       <li className="nav-item active">
         <Link to="/dashboard" className="nav-link">
-          <i className="fas fa-fw fa-tachometer-alt" />
-          <span>Beranda</span>
+          <FontAwesomeIcon icon={faHouse} />
+          <span className="ms-2">Beranda</span>
         </Link>
       </li>
       {/* Divider */}
@@ -38,8 +48,8 @@ const Sidebar = () => {
           data-target="#collapseTwo"
           aria-expanded="true"
           aria-controls="collapseTwo">
-          <i className="fas fa-fw fa-cog" />
-          <span>Presensi Masuk</span>
+          <FontAwesomeIcon icon={faRightToBracket} />
+          <span className="ms-2">Presensi Masuk</span>
         </Link>
       </li>
       <li className="nav-item">
@@ -51,8 +61,8 @@ const Sidebar = () => {
           data-target="#collapseTwo"
           aria-expanded="true"
           aria-controls="collapseTwo">
-          <i className="fas fa-fw fa-cog" />
-          <span>Presensi Pulang</span>
+          <FontAwesomeIcon icon={faCheckDouble} />
+          <span className="ms-2">Presensi Pulang</span>
         </Link>
       </li>
       {/* Nav Item - Utilities Collapse Menu */}
@@ -65,8 +75,8 @@ const Sidebar = () => {
           data-target="#collapseUtilities"
           aria-expanded="true"
           aria-controls="collapseUtilities">
-          <i className="fas fa-fw fa-wrench" />
-          <span>Pengajuan Izin</span>
+          <FontAwesomeIcon icon={faEnvelopeOpenText} />
+          <span className="ms-2">Pengajuan Izin</span>
         </Link>
       </li>
       {/* Divider */}
@@ -83,8 +93,8 @@ const Sidebar = () => {
           data-target="#collapsePages"
           aria-expanded="true"
           aria-controls="collapsePages">
-          <i className="fas fa-fw fa-folder" />
-          <span>Data Izin</span>
+          <FontAwesomeIcon icon={faFolder} />
+          <span className="ms-2">Data Izin</span>
         </Link>
       </li>
       {/* Nav Item - Charts */}
@@ -95,21 +105,23 @@ const Sidebar = () => {
           to="/dashboard/data_mahasiswa"
           className="nav-link"
           href="tables.html">
-          <i className="fas fa-fw fa-table" />
-          <span>Data Mahasiswa</span>
+          <FontAwesomeIcon icon={faChartBar} />
+          <span className="ms-2">Data Mahasiswa</span>
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" href="charts.html">
-          <i className="fas fa-fw fa-chart-area" />
-          <span>Laporan</span>
+        <Link to="/dashboard/laporan" className="nav-link" href="charts.html">
+          <FontAwesomeIcon icon={faDatabase} />
+          <span className="ms-2">Laporan</span>
         </Link>
       </li>
       {/* Divider */}
       <hr className="sidebar-divider d-none d-md-block" />
       {/* Sidebar Toggler (Sidebar) */}
       <div className="text-center d-none d-md-inline">
-        <button className="rounded-circle border-0" id="sidebarToggle" />
+        <Button className="rounded-circle border-0" id="sidebarToggle">
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </Button>
       </div>
     </ul>
   );

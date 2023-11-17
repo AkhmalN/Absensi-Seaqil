@@ -6,8 +6,23 @@ import { Dropdown } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
-import { Button } from "react-bootstrap";
 import "../../App.css";
+import profil from "../../assets/admin/profil.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faCaretDown,
+  faCheck,
+  faCogs,
+  faFilePdf,
+  faList,
+  faMagnifyingGlass,
+  faSignOut,
+  faUser,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { Row, Col } from "react-bootstrap";
+
 const Dashboard = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -31,7 +46,7 @@ const Dashboard = () => {
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3">
-                <i className="fa fa-bars" />
+                <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
               <ul className="navbar-nav ml-auto">
@@ -40,27 +55,47 @@ const Dashboard = () => {
                 <div className="nav-item dropdown no-arrow">
                   <Dropdown show={isDropdownOpen} onToggle={toggleDropdown}>
                     <Dropdown.Toggle variant="white">
-                      <span className="mr-2 d-none d-lg-inline text-black">
-                        Ce Iis
-                      </span>
-                      <img
-                        alt=""
-                        className="img-profile rounded-circle"
-                        src="../../admin/profil.png"
-                      />
+                      <Row className="d-flex align-content-end">
+                        <Col xs="3" className="">
+                          <img
+                            src={profil}
+                            alt="logo"
+                            className="icon_profile"
+                          />
+                        </Col>
+                        <Col xs="7" className="mt-1">
+                          <Row>
+                            <span className="header_profile d-none d-lg-inline text-left ">
+                              Asep Sutrisno
+                            </span>
+                          </Row>
+                          <Row>
+                            <span className="sub-header_profile d-none d-lg-inline text-left ">
+                              Koordinator
+                            </span>
+                          </Row>
+                        </Col>
+                        <Col xs="1" className="mt-2 ps-3">
+                          <FontAwesomeIcon
+                            icon={faCaretDown}
+                            className="sub-header_profile d-none d-lg-inline text-left "
+                          />
+                        </Col>
+                      </Row>
                     </Dropdown.Toggle>
                     {/* Dropdown - User Information */}
                     <Dropdown.Menu className="dropdown-menu-right shadow animated--grow-in">
                       <Dropdown.Item href="#">
+                        <FontAwesomeIcon icon={faUser} />
                         <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                         Profile
                       </Dropdown.Item>
                       <Dropdown.Item href="#">
-                        <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faCogs} />
                         Settings
                       </Dropdown.Item>
                       <Dropdown.Item href="#">
-                        <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faList} />
                         Activity Log
                       </Dropdown.Item>
                       <Dropdown.Divider />
@@ -68,7 +103,7 @@ const Dashboard = () => {
                         href="#"
                         data-toggle="modal"
                         data-target="#logoutModal">
-                        <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
+                        <FontAwesomeIcon icon={faSignOut} />
                         Logout
                       </Dropdown.Item>
                     </Dropdown.Menu>
@@ -82,12 +117,6 @@ const Dashboard = () => {
               {/* Page Heading */}
               <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                <a
-                  href="#"
-                  className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                  <i className="fas fa-download fa-sm text-white-50" /> Generate
-                  Report
-                </a>
               </div>
               {/* Content Row */}
               <div className="row">
@@ -103,9 +132,6 @@ const Dashboard = () => {
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
                             23
                           </div>
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-calendar fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -124,9 +150,6 @@ const Dashboard = () => {
                             2
                           </div>
                         </div>
-                        <div className="col-auto">
-                          <i className="fas fa-dollar-sign fa-2x text-gray-300" />
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -141,15 +164,10 @@ const Dashboard = () => {
                             Pengajuan Izin
                           </div>
                           <div className="row no-gutters align-items-center">
-                            <div className="col-auto">
-                              <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                5
-                              </div>
+                            <div className="h5 mb-0 font-weight-bold text-gray-800">
+                              2
                             </div>
                           </div>
-                        </div>
-                        <div className="col-auto">
-                          <i className="fas fa-clipboard-list fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
@@ -168,29 +186,28 @@ const Dashboard = () => {
                             52
                           </div>
                         </div>
-                        <div className="col-auto">
-                          <i className="fas fa-comments fa-2x text-gray-300" />
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               {/* Content Row */}
-              {/* Area Chart PRESENSI PULANG HARI INI*/}
-              <div className="card shadow mb-4" id="presensi_pulang">
+            </div>
+            {/* Area Chart PRESENSI PULANG HARI INI*/}
+            <div className="container-fluid" id="presensi_pulang">
+              <div className="card shadow mb-4">
                 {/* Card Header - Dropdown */}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
                     <div className="header">
                       Presensi Pulang Hari Ini
                       <span className="sub-header ms-2">27/10/2023</span>
-                      <span className="msib-tag ms-2">MSIB Batch 5</span>
+                      <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                    <Button className="check me-2 btn-success">
+                    <button className="check me-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -202,7 +219,7 @@ const Dashboard = () => {
                           fill="#1C711B"
                         />
                       </svg>
-                    </Button>
+                    </button>
                     <div className="input-group">
                       <input
                         type="text"
@@ -213,7 +230,7 @@ const Dashboard = () => {
                       />
                       <div className="input-group-append">
                         <button className="btn btn-primary" type="button">
-                          <i className="fas fa-search fa-sm" />
+                          <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                       </div>
                     </div>
@@ -275,24 +292,22 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
-                            <i
-                              className="fa-solid fa-check"
-                              style={{ color: "#1C711B" }}></i>
-                          </Button>
-                          <Button className="decline btn-danger">
-                            <i
-                              className="fa-solid fa-xmark"
-                              style={{ color: "#AC1616" }}></i>
-                          </Button>
+                          <button className="check me-2 " type="button">
+                            <FontAwesomeIcon icon={faCheck} size="lg" />
+                          </button>
+                          <button className="decline " type="button">
+                            <FontAwesomeIcon icon={faXmark} size="lg" />
+                          </button>
                         </div>
                       )}></Column>
                   </DataTable>
                 </div>
               </div>
+            </div>
 
+            {/* Card Header - Dropdown PRESENSI HARI INI*/}
+            <div className="container-fluid" id="presensi_masuk">
               <div className="card shadow mb-4">
-                {/* Card Header - Dropdown PRESENSI HARI INI*/}
                 <div className="card shadow mb-4">
                   {/* Card Header - Dropdown */}
                   <div className="card-header py-3 d-flex justify-content-between bg-white">
@@ -300,12 +315,12 @@ const Dashboard = () => {
                       <div className="header">
                         Presensi Masuk Hari Ini
                         <span className="sub-header ms-2">27/10/2023</span>
-                        <span className="msib-tag ms-2">MSIB Batch 5</span>
+                        <span className="blue-tag ms-2">MSIB Batch 5</span>
                       </div>
                       <div className="sub-header">SEAMEO QITEP In Language</div>
                     </div>
                     <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
-                      <Button className="check me-2 btn-success">
+                      <button className="check me-2 ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -317,7 +332,7 @@ const Dashboard = () => {
                             fill="#1C711B"
                           />
                         </svg>
-                      </Button>
+                      </button>
                       <div className="input-group">
                         <input
                           type="text"
@@ -328,7 +343,7 @@ const Dashboard = () => {
                         />
                         <div className="input-group-append">
                           <button className="btn btn-primary" type="button">
-                            <i className="fas fa-search fa-sm" />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
                           </button>
                         </div>
                       </div>
@@ -390,30 +405,28 @@ const Dashboard = () => {
                               display: "flex",
                               justifyContent: "center",
                             }}>
-                            <Button className="check me-2 btn-success">
-                              <i
-                                className="fa-solid fa-check"
-                                style={{ color: "#1C711B" }}></i>
-                            </Button>
-                            <Button className="decline btn-danger">
-                              <i
-                                className="fa-solid fa-xmark"
-                                style={{ color: "#AC1616" }}></i>
-                            </Button>
+                            <button className="check me-2 " type="button">
+                              <FontAwesomeIcon icon={faCheck} size="lg" />
+                            </button>
+                            <button className="decline " type="button">
+                              <FontAwesomeIcon icon={faXmark} size="lg" />
+                            </button>
                           </div>
                         )}></Column>
                     </DataTable>
                   </div>
                 </div>
               </div>
+            </div>
 
+            {/* Card Header - Dropdown PENGAJUAN IZIN*/}
+            <div className="container-fluid" id="pengajuan izin">
               <div className="card shadow mb-4">
-                {/* Card Header - Dropdown PENGAJUAN IZIN*/}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
                     <div className="header">
                       Daftar Pengajuan Izin
-                      <span className="msib-tag ms-2">MSIB Batch 5</span>
+                      <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
@@ -428,7 +441,7 @@ const Dashboard = () => {
                       />
                       <div className="input-group-append">
                         <button className="btn btn-primary" type="button">
-                          <i className="fas fa-search fa-sm" />
+                          <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                       </div>
                     </div>
@@ -448,7 +461,7 @@ const Dashboard = () => {
                     <Column
                       field="no"
                       header="No"
-                      style={{ width: "2%" }}></Column>
+                      style={{ width: "3%" }}></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
@@ -467,8 +480,22 @@ const Dashboard = () => {
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "15%" }}
+                      style={{ width: "11%" }}
                       alignHeader={"center"}></Column>
+                    <Column
+                      field="file"
+                      header="File"
+                      style={{ width: "9%" }}
+                      alignHeader={"center"}
+                      body={(rowData) => (
+                        <div>
+                          <FontAwesomeIcon
+                            icon={faFilePdf}
+                            size="lg"
+                            type="button"
+                          />
+                        </div>
+                      )}></Column>
                     <Column
                       field="stat_i"
                       header="Status"
@@ -482,7 +509,7 @@ const Dashboard = () => {
                     <Column
                       field="aksi"
                       header="Aksi"
-                      style={{ width: "10%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}
                       body={(rowData) => (
                         <div
@@ -490,23 +517,27 @@ const Dashboard = () => {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <Button className="check me-2 btn-success">
-                            <i
-                              className="fa-solid fa-check"
-                              style={{ color: "#1C711B" }}></i>
-                          </Button>
-                          <Button className="decline btn-danger">
-                            <i
-                              className="fa-solid fa-xmark"
-                              style={{ color: "#AC1616" }}></i>
-                          </Button>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}>
+                            <button className="check me-2" type="button">
+                              <FontAwesomeIcon icon={faCheck} size="lg" />
+                            </button>
+                            <button className="decline" type="button">
+                              <FontAwesomeIcon icon={faXmark} size="lg" />
+                            </button>
+                          </div>
                         </div>
                       )}></Column>
                   </DataTable>
                 </div>
               </div>
-              {/* Content Row */}
             </div>
+
+            {/* Content Row */}
+
             {/* /.container-fluid */}
           </div>
           {/* End of Main Content */}

@@ -12,6 +12,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="green-tag">Diterima</span>,
   },
   {
     no: 2,
@@ -26,6 +27,7 @@ const DATA = [
     jm: "08.30",
     stat_p: <span className="red-tag">Terlambat</span>,
     jk: "05.01",
+    ket: <span className="red-tag">Ditolak</span>,
   },
   {
     no: 3,
@@ -40,6 +42,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="green-tag">Diterima</span>,
   },
   {
     no: 4,
@@ -54,6 +57,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="green-tag">Diterima</span>,
   },
   {
     no: 5,
@@ -68,6 +72,7 @@ const DATA = [
     jm: "08.30",
     stat_p: <span className="red-tag">Terlambat</span>,
     jk: "05.01",
+    ket: <span className="red-tag">Ditolak</span>,
   },
   {
     no: 6,
@@ -82,6 +87,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="green-tag">Diterima</span>,
   },
   {
     no: 7,
@@ -96,6 +102,7 @@ const DATA = [
     jm: "08.30",
     stat_p: <span className="red-tag">Terlambat</span>,
     jk: "05.01",
+    ket: <span className="red-tag">Ditolak</span>,
   },
   {
     no: 8,
@@ -110,6 +117,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="red-tag">Ditolak</span>,
   },
   {
     no: 9,
@@ -124,6 +132,7 @@ const DATA = [
     jm: "08.30",
     stat_p: <span className="red-tag">Terlambat</span>,
     jk: "05.01",
+    ket: <span className="green-tag">Diterima</span>,
   },
   {
     no: 10,
@@ -138,6 +147,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="red-tag">Ditolak</span>,
   },
   {
     no: 11,
@@ -152,6 +162,7 @@ const DATA = [
     jm: "08.30",
     stat_p: <span className="red-tag">Terlambat</span>,
     jk: "05.01",
+    ket: <span className="green-tag">Diterima</span>,
   },
   {
     no: 12,
@@ -166,6 +177,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="red-tag">Ditolak</span>,
   },
   {
     no: 13,
@@ -180,6 +192,8 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="red-tag">Ditolak</span>,
+    file: <span className="blue-tag">Siang</span>,
   },
   {
     no: 14,
@@ -194,6 +208,7 @@ const DATA = [
     jm: "07.30",
     stat_p: <span className="green-tag">Tepat Waktu</span>,
     jk: "05.01",
+    ket: <span className="green-tag">Diterima</span>,
   },
 ];
 
