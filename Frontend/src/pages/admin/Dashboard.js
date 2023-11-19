@@ -32,6 +32,9 @@ const Dashboard = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
+
+  // PRESENSI PULANG
+
   const [showDelete, setShowDelete] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
@@ -41,6 +44,9 @@ const Dashboard = () => {
 
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => setShowDelete(true);
+
+  const handleCloseAlertDelete = () => setShowAlertDelete(false);
+  const handleShowAlertDelete = () => setShowAlertDelete(true);
 
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
@@ -53,9 +59,6 @@ const Dashboard = () => {
 
   const handleCloseAlertEdit = () => setShowAlertEdit(false);
   const handleShowAlertEdit = () => setShowAlertEdit(true);
-
-  const handleCloseAlertDelete = () => setShowAlertDelete(false);
-  const handleShowAlertDelete = () => setShowAlertDelete(true);
 
   return (
     <>
@@ -352,7 +355,7 @@ const Dashboard = () => {
                   PERINGATAN!
                 </div>
                 <div className="modal-body text-center">
-                  Anda yakin menghapus data ini?
+                  Anda yakin untuk menolak data ini?
                 </div>
                 <div
                   className="d-flex justify-content-center mt-2"
