@@ -12,16 +12,39 @@ body {
   height: 100vh;
 }
 
+/* =============== FORM IZIN =================== */
+.formIzin {
+  width: 500px;
+  padding: 20px 50px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+
 .formIzin .form-control,
-.formIzin .form-select,
-.formIzin .form-select option {
+.formIzin .form-control:focus,
+.formIzin .form-select {
   border: 1px solid #fff;
   background-color: transparent;
 }
 
 .formIzin .form-label,
-.formIzin .form-select {
+.formIzin .form-select,
+.formIzin button {
   color: #fff;
+}
+
+.formIzin .form-select option {
+  color: black !important;
+}
+
+.formIzin button {
+  background-color: #266cb2;
+}
+
+.formIzin button:hover {
+  color: #266cb2;
+  border: 1px solid #266cb2;
+  background-color: transparent;
 }
 
 .modalIzin p {
