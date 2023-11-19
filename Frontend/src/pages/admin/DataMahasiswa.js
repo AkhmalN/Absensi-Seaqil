@@ -254,11 +254,11 @@ function DataMahasiswa() {
                             display: "flex",
                             justifyContent: "center",
                           }}>
-                          <button className="edit me-2" type="button"
-                          onClick={handleShowEdit}>
-                            <FontAwesomeIcon
-                              icon={faPenToSquare}
-                            />
+                          <button
+                            className="edit me-2"
+                            type="button"
+                            onClick={handleShowEdit}>
+                            <FontAwesomeIcon icon={faPenToSquare} />
                           </button>
                           <button
                             className="decline"
