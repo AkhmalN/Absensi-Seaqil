@@ -12,45 +12,29 @@ function FormIzin() {
     <>
       <Container>
         <Row>
-          <Col>
-          Testing</Col>
+          <Col>Testing</Col>
           <Col>
             <Form className="formIzin d-grid">
               <Form.Group className="mb-3">
                 <Form.Label>Tipe Pengajuan :</Form.Label>
-                <Form.Select
-                  className="form-control"
-                  aria-label="Default select example"
-                  required>
+                <Form.Select className="form-control" aria-label="Default select example" required>
                   <option>Pilih</option>
                   <option value="Izin">Izin</option>
                   <option value="Sakit">Sakit</option>
                 </Form.Select>
               </Form.Group>
 
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Tanggal :</Form.Label>
-                <Form.Control
-                  type="date"
-                  placeholder="Pilih Tanggal"
-                  required
-                />
+                <Form.Control type="date" placeholder="Pilih Tanggal" required />
               </Form.Group>
 
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>File :</Form.Label>
                 <Form.Control type="file" placeholder="Upload File" required />
               </Form.Group>
 
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleShow}
-                dismissible>
+              <Button variant="primary" size="lg" onClick={handleShow} dismissible>
                 SUBMIT
               </Button>
             </Form>
