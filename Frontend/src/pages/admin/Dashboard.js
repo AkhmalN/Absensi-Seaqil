@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
 import { useState } from "react";
-import { Dropdown } from "react-bootstrap";
+import { Button, Dropdown } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
@@ -26,40 +26,96 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
 import selfie from "../../assets/admin/selfie.jpg";
+import Terlambat from "../../fragments/terlambat";
+import MahasiswaMagang from "../../fragments/mahasiswa_magang";
+import PengajuanIzin from "../../fragments/pengajuan_izin";
+import PresensiHarian from "../../fragments/Presensi_hari_ini";
+import { useMediaQuery } from "@react-hook/media-query";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
+  const isLargeScreen = useMediaQuery("(min-width: 992px)");
+  const isMediumScreen = useMediaQuery(
+    "(max-width: 992px) and (min-width: 768px)"
+  );
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
+  const marginLeft = isLargeScreen
+    ? isSideBarOpen
+      ? "130px"
+      : "300px"
+    : isMediumScreen
+    ? isSideBarOpen
+      ? "130px"
+      : "170"
+    : "0";
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
   const toggleSidebar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
+  const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showAlertAdd, setShowAlertAdd] = useState(false);
+  const [showAlertEdit, setShowAlertEdit] = useState(false);
+  const [showAlertDelete, setShowAlertDelete] = useState(false);
 
+  const handleCloseDelete = () => setShowDelete(false);
+  const handleShowDelete = () => setShowDelete(true);
+
+  const handleCloseEdit = () => setShowEdit(false);
+  const handleShowEdit = () => setShowEdit(true);
+
+  const handleCloseAdd = () => setShowAdd(false);
+  const handleShowAdd = () => setShowAdd(true);
+
+  const handleCloseAlertAdd = () => setShowAlertAdd(false);
+  const handleShowAlertAdd = () => setShowAlertAdd(true);
+
+  const handleCloseAlertEdit = () => setShowAlertEdit(false);
+  const handleShowAlertEdit = () => setShowAlertEdit(true);
+
+  const handleCloseAlertDelete = () => setShowAlertDelete(false);
+  const handleShowAlertDelete = () => setShowAlertDelete(true);
   return (
     <>
       <div id="wrapper">
         {/* Sidebar */}
-        <Sidebar />
+        <Sidebar
+          isSideBarOpen={isSideBarOpen}
+          setIsSideBarOpen={setIsSideBarOpen}
+        />
         {/* End of Sidebar */}
         {/* Content Wrapper */}
         <div id="content-wrapper" className="d-flex flex-column">
           {/* Main Content */}
-          <div id="content">
+          <div
+            id="content"
+            style={{
+              marginLeft,
+              transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
+              padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
+            }}
+          >
+            {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
               {/* Sidebar Toggle (Topbar) */}
-              <button
+              <Button
                 id="sidebarToggleTop"
-                className="btn btn-link d-md-none rounded-circle mr-3"
+                onClick={toggleSidebar}
+                className="mx-2"
               >
                 <FontAwesomeIcon icon={faBars} />
-              </button>
+              </Button>
               {/* Topbar Navbar */}
               <ul className="navbar-nav ml-auto">
                 <div className="topbar-divider d-none d-sm-block" />
                 {/* Nav Item - User Information */}
+
                 <div className="nav-item dropdown no-arrow">
                   <Dropdown show={isDropdownOpen} onToggle={toggleDropdown}>
                     <Dropdown.Toggle variant="white">
@@ -129,76 +185,10 @@ const Dashboard = () => {
               </div>
               {/* Content Row */}
               <div className="row">
-                {/* Earnings (Monthly) Card Example */}
-                <div className="col-xl-3 col-md-6 mb-4">
-                  <div className="card border-left-primary shadow h-100 py-2">
-                    <div className="card-body">
-                      <div className="row no-gutters align-items-center">
-                        <div className="col mr-2">
-                          <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Presensi Hari Ini
-                          </div>
-                          <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            23
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Earnings (Monthly) Card Example */}
-                <div className="col-xl-3 col-md-6 mb-4">
-                  <div className="card border-left-success shadow h-100 py-2">
-                    <div className="card-body">
-                      <div className="row no-gutters align-items-center">
-                        <div className="col mr-2">
-                          <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Terlambat
-                          </div>
-                          <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            2
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Earnings (Monthly) Card Example */}
-                <div className="col-xl-3 col-md-6 mb-4">
-                  <div className="card border-left-info shadow h-100 py-2">
-                    <div className="card-body">
-                      <div className="row no-gutters align-items-center">
-                        <div className="col mr-2">
-                          <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Pengajuan Izin
-                          </div>
-                          <div className="row no-gutters align-items-center">
-                            <div className="h5 mb-0 font-weight-bold text-gray-800">
-                              2
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Pending Requests Card Example */}
-                <div className="col-xl-3 col-md-6 mb-4">
-                  <div className="card border-left-warning shadow h-100 py-2">
-                    <div className="card-body">
-                      <div className="row no-gutters align-items-center">
-                        <div className="col mr-2">
-                          <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Mahasiswa Magang
-                          </div>
-                          <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            52
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <PresensiHarian />
+                <Terlambat />
+                <MahasiswaMagang />
+                <PengajuanIzin />
               </div>
               {/* Content Row */}
             </div>
@@ -219,7 +209,7 @@ const Dashboard = () => {
                     <button
                       className="check me-2"
                       type="button"
-                      // onClick={handleShowAdd}
+                      onClick={handleShowAdd}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -321,7 +311,7 @@ const Dashboard = () => {
                           <button
                             className="decline "
                             type="button"
-                            // onClick={handleShowDelete}
+                            onClick={handleShowDelete}
                           >
                             <FontAwesomeIcon icon={faXmark} size="lg" />
                           </button>
@@ -496,8 +486,8 @@ const Dashboard = () => {
             {/* END OF BERHASIL ADD PRESENSI*/}
             {/* BUTTON DELETE */}
             <Modal
-              // show={showDelete}
-              // onHide={handleCloseDelete}
+              show={showDelete}
+              onHide={handleCloseDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm"
@@ -515,13 +505,13 @@ const Dashboard = () => {
                 >
                   <button
                     className="batal-btn me-2"
-                    // onClick={handleCloseDelete}
+                    onClick={handleCloseDelete}
                   >
                     Batal
                   </button>
                   <button
                     className="decline ms-2"
-                    // onClick={handleShowAlertDelete}
+                    onClick={handleShowAlertDelete}
                   >
                     Yakin
                   </button>
@@ -531,8 +521,8 @@ const Dashboard = () => {
             {/* END OF BUTTON DELETE */}
             {/* BERHASIL HAPUS */}
             <Modal
-              // show={showAlertDelete}
-              // onHide={handleCloseAlertDelete}
+              show={showAlertDelete}
+              onHide={handleCloseAlertDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm"
@@ -546,7 +536,7 @@ const Dashboard = () => {
             </Modal>
             {/* END OF BERHASIL HAPUS */}
 
-            <div className="dashboard-section" id="presensi_masuk">
+            <div className="container-fluid" id="presensi_masuk">
               <div className="card shadow mb-4">
                 <div className="card shadow mb-4">
                   {/* Card Header - Dropdown */}
@@ -563,7 +553,7 @@ const Dashboard = () => {
                       <button
                         className="check me-2 "
                         type="button"
-                        // onClick={handleShowAdd}
+                        onClick={handleShowAdd}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -665,7 +655,7 @@ const Dashboard = () => {
                             <button
                               className="decline "
                               type="button"
-                              // onClick={handleShowDelete}
+                              onClick={handleShowDelete}
                             >
                               <FontAwesomeIcon icon={faXmark} size="lg" />
                             </button>
@@ -679,8 +669,8 @@ const Dashboard = () => {
             </div>
             {/* BUTTON DELETE */}
             <Modal
-              // show={showDelete}
-              // onHide={handleCloseDelete}
+              show={showDelete}
+              onHide={handleCloseDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm"
@@ -698,13 +688,13 @@ const Dashboard = () => {
                 >
                   <button
                     className="batal-btn me-2"
-                    // onClick={handleCloseDelete}
+                    onClick={handleCloseDelete}
                   >
                     Batal
                   </button>
                   <button
                     className="decline ms-2"
-                    // onClick={handleShowAlertDelete}
+                    onClick={handleShowAlertDelete}
                   >
                     Yakin
                   </button>
@@ -714,8 +704,8 @@ const Dashboard = () => {
             {/* END OF BUTTON DELETE */}
             {/* BERHASIL HAPUS */}
             <Modal
-              // show={showAlertDelete}
-              // onHide={handleCloseAlertDelete}
+              show={showAlertDelete}
+              onHide={handleCloseAlertDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm"
@@ -733,8 +723,8 @@ const Dashboard = () => {
 
             {/* BUTTON EDIT */}
             <Modal
-              // show={showEdit}
-              // onHide={handleCloseEdit}
+              show={showEdit}
+              onHide={handleCloseEdit}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm"
@@ -795,13 +785,13 @@ const Dashboard = () => {
                   >
                     <button
                       className="batal-btn me-2"
-                      // onClick={handleCloseEdit}
+                      onClick={handleCloseEdit}
                     >
                       Batal
                     </button>
                     <button
                       className="edit-btn ms-2"
-                      // onClick={handleShowAlertEdit}
+                      onClick={handleShowAlertEdit}
                     >
                       Simpan
                     </button>
@@ -813,8 +803,8 @@ const Dashboard = () => {
 
             {/* BERHASIL EDIT */}
             <Modal
-              // show={showAlertEdit}
-              // onHide={handleCloseAlertEdit}
+              show={showAlertEdit}
+              onHide={handleCloseAlertEdit}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm"
@@ -830,7 +820,7 @@ const Dashboard = () => {
             </Modal>
             {/* END OF BERHASIL EDIT */}
 
-            <div className="dashboard-section" id="pengajuan izin">
+            <div className="container-fluid" id="pengajuan izin">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
@@ -943,7 +933,7 @@ const Dashboard = () => {
                             <button
                               className="decline"
                               type="button"
-                              // onClick={handleShowDelete}
+                              onClick={handleShowDelete}
                             >
                               <FontAwesomeIcon icon={faXmark} size="lg" />
                             </button>
@@ -956,8 +946,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          {/* End of Main Content */}
-          {/* Footer */}
+
           <footer className="sticky-footer bg-white">
             <div className="container my-auto">
               <div className="copyright text-center my-auto">
@@ -965,11 +954,8 @@ const Dashboard = () => {
               </div>
             </div>
           </footer>
-          {/* End of Footer */}
         </div>
-        {/* End of Content Wrapper */}
       </div>
-      {/* End of Page Wrapper */}
     </>
   );
 };

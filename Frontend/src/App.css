@@ -21,7 +21,7 @@ body {
   overflow-y: auto; /* Add this line to enable vertical scrolling */
   z-index: 1000;
   transition: width 0.3s ease, left 0.3s ease;
-  height: 100%; /* Add a fixed height for the sidebar */
+  height: auto; /* Add a fixed height for the sidebar */
 }
 
 .formIzin .form-control,

@@ -36,7 +36,7 @@ root.render(
       <Route path="/rekap_presensi" Component={RekapPresensi} />
       <Route path="/dashboard" Component={Dashboard} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
-      <Route path="/dashboard/Laporan" Component={Laporan} />
+      {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
     </Routes>
   </BrowserRouter>
 );
