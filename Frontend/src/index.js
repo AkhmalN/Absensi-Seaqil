@@ -14,19 +14,17 @@ import Pengajuan from "./pages/admin/Pengajuan";
 import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
-import PresensiMasuk from "./pages/admin/PresensiMasuk";
-import PresensiPulang from "./pages/admin/PresensiPulang";
+import Laporan from "./pages/admin/Laporan";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/dashboard" Component={Dashboard} />
-      <Route path="/dashboard/presensi_masuk" Component={PresensiMasuk} />
-      <Route path="/dashboard/presensi_pulang" Component={PresensiPulang} />
-      <Route path="/dashboard/data_pengajuan" Component={Pengajuan} />
+      <Route path="/dashboard/pengajuan_izin" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/data_izin" Component={DataIzin} />
+      <Route path="/dashboard/laporan" Component={Laporan} />
 
       <Route path="/login" Component={Login} />
       <Route path="/home" Component={Home} />
