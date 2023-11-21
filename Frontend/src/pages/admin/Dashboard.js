@@ -25,10 +25,10 @@ import { Row, Col } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
+import selfie from "../../assets/admin/selfie.jpg";
 
 const Dashboard = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -39,22 +39,20 @@ const Dashboard = () => {
 
   return (
     <>
-      <div id="wrapper" className={isSideBarOpen ? "toggled" : ""}>
-        <Sidebar
-          isSideBarOpen={isSideBarOpen}
-          setIsSideBarOpen={setIsSideBarOpen}
-        />
+      <div id="wrapper">
+        {/* Sidebar */}
+        <Sidebar />
+        {/* End of Sidebar */}
+        {/* Content Wrapper */}
         <div id="content-wrapper" className="d-flex flex-column">
-          <div
-            id="content"
-            style={{ marginLeft: isSideBarOpen ? "150px" : "300px" }}
-          >
+          {/* Main Content */}
+          <div id="content">
+            {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
               {/* Sidebar Toggle (Topbar) */}
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3"
-                onClick={toggleSidebar}
               >
                 <FontAwesomeIcon icon={faBars} />
               </button>
@@ -122,7 +120,9 @@ const Dashboard = () => {
                 </div>
               </ul>
             </nav>
-            <div className="dashboard-section" id="beranda">
+            {/* End of Topbar */}
+            {/* Begin Page Content */}
+            <div className="container-fluid" id="beranda">
               {/* Page Heading */}
               <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -202,7 +202,8 @@ const Dashboard = () => {
               </div>
               {/* Content Row */}
             </div>
-            <div className="dashboard-section" id="presensi_pulang">
+            {/* Area Chart PRESENSI PULANG HARI INI*/}
+            <div className="container-fluid" id="presensi_pulang">
               <div className="card shadow mb-4">
                 {/* Card Header - Dropdown */}
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
@@ -331,6 +332,168 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+            {/* BUTTON ADD PRESENSI */}
+            <Modal
+              show={showAdd}
+              onHide={handleCloseAdd}
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+              size="md"
+            >
+              <Modal.Body className="modal-body">
+                <Modal.Body>
+                  <div className="modal-header-edit text-center mb-3">
+                    Tambah Presensi
+                    <Row className="mt-3">
+                      <div className="col-6 modal-header-edit">
+                        <div className="input-group">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Cari..."
+                            aria-label="Search"
+                            aria-describedby="basic-addon2"
+                          />
+                          <div className="input-group-append">
+                            <button
+                              className="btn btn-primary btn-sm"
+                              type="button"
+                              style={{
+                                backgroundColor: "#266cb2",
+                                borderBottomRightRadius: "10px",
+                                borderTopRightRadius: "10px",
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <div className="mt-3">
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="IdK"
+                              placeholder="ID Kegiatan"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="nm"
+                              placeholder="Nama Lengkap"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="div"
+                              placeholder="Divisi"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <select
+                              class="form-select"
+                              aria-label="Default select example"
+                            >
+                              <option selected>Shift</option>
+                              <option value="Pagi">Pagi</option>
+                              <option value="Siang">Siang</option>
+                            </select>
+                          </div>
+                          <div class="mb-2">
+                            <input
+                              type="date"
+                              className="form-control"
+                              id="tgl"
+                              placeholder="Tanggal"
+                            />
+                          </div>
+                        </div>
+                      </Col>
+                      <Col>
+                        <div className="mt-3">
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="jm"
+                              placeholder="Jam Masuk"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="jk"
+                              placeholder="Jam Keluar"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <select
+                              class="form-select"
+                              aria-label="Default select example"
+                            >
+                              <option selected>Shift</option>
+                              <option value="Pagi">Tepat Waktu</option>
+                              <option value="Siang">Terlambat</option>
+                            </select>
+                          </div>
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="Alasan"
+                              placeholder="Alasan"
+                            />
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+
+                  <div
+                    className="d-flex justify-content-center mt-4"
+                    style={{ border: "none" }}
+                  >
+                    <button className="batal-btn me-2" onClick={handleCloseAdd}>
+                      Batal
+                    </button>
+                    <button
+                      className="edit-btn ms-2"
+                      onClick={handleShowAlertAdd}
+                    >
+                      Simpan
+                    </button>
+                  </div>
+                </Modal.Body>
+              </Modal.Body>
+            </Modal>
+            {/* END OF BUTTON ADD PRESENSI */}
+            {/* BERHASIL ADD PRESENSI*/}
+            <Modal
+              show={showAlertAdd}
+              onHide={handleCloseAlertAdd}
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+              size="sm"
+            >
+              <Modal.Body>
+                <div className="modal-header-decline text-center">
+                  <img src={checkmark} alt="checkmark" className="icon_check" />
+                </div>
+                <div className="modal-body text-center">
+                  Data Berhasil Ditambahkan!
+                </div>
+              </Modal.Body>
+            </Modal>
+            {/* END OF BERHASIL ADD PRESENSI*/}
             {/* BUTTON DELETE */}
             <Modal
               // show={showDelete}
@@ -344,7 +507,7 @@ const Dashboard = () => {
                   PERINGATAN!
                 </div>
                 <div className="modal-body text-center">
-                  Anda yakin menghapus data ini?
+                  Anda yakin untuk menolak data ini?
                 </div>
                 <div
                   className="d-flex justify-content-center mt-2"
@@ -378,9 +541,7 @@ const Dashboard = () => {
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
                 </div>
-                <div className="modal-body text-center">
-                  Data Berhasil Dihapus!
-                </div>
+                <div className="modal-body text-center">Berhasil Ditolak!</div>
               </Modal.Body>
             </Modal>
             {/* END OF BERHASIL HAPUS */}
@@ -716,13 +877,13 @@ const Dashboard = () => {
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
-                      style={{ width: "11%" }}
+                      style={{ width: "13%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
-                      style={{ width: "11%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
@@ -734,13 +895,13 @@ const Dashboard = () => {
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "11%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
                       field="file"
                       header="File"
-                      style={{ width: "9%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}
                       body={(rowData) => (
                         <div>
@@ -755,13 +916,7 @@ const Dashboard = () => {
                     <Column
                       field="stat_i"
                       header="Status"
-                      style={{ width: "10%" }}
-                      alignHeader={"center"}
-                    ></Column>
-                    <Column
-                      field="alasan"
-                      header="Alasan"
-                      style={{ width: "15%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
@@ -801,7 +956,8 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-
+          {/* End of Main Content */}
+          {/* Footer */}
           <footer className="sticky-footer bg-white">
             <div className="container my-auto">
               <div className="copyright text-center my-auto">
@@ -809,8 +965,11 @@ const Dashboard = () => {
               </div>
             </div>
           </footer>
+          {/* End of Footer */}
         </div>
+        {/* End of Content Wrapper */}
       </div>
+      {/* End of Page Wrapper */}
     </>
   );
 };

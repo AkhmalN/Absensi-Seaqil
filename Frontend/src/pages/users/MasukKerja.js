@@ -64,29 +64,16 @@ class MasukKerja extends Component {
           <div className="form-content">
             <div className="first-row">
               <h3 className="">Halo, Staf Magang SEAQIL !</h3>
-              <p className="">
-                Selamat datang di Sistem Presensi MSIB SEAQIL. Selamat bekerja
-                dan semoga pengalaman presensi Anda menjadi lebih praktis dan
-                efektif.
-              </p>
+              <p className="">Selamat datang di Sistem Presensi MSIB SEAQIL. Selamat bekerja dan semoga pengalaman presensi Anda menjadi lebih praktis dan efektif.</p>
             </div>
             <div className="second-row">
-              <button
-                className="btn btn-primary"
-                style={{ borderWidth: 2, borderColor: "white" }}
-              >
+              <button className="btn btn-primary" style={{ borderWidth: 2, borderColor: "white" }}>
                 Masuk Kerja
               </button>
-              <button
-                className="btn btn-primary"
-                style={{ borderWidth: 2, borderColor: "white" }}
-              >
+              <button className="btn btn-primary" style={{ borderWidth: 2, borderColor: "white" }}>
                 Izin Kerja
               </button>
-              <button
-                className="btn btn-primary"
-                style={{ borderWidth: 2, borderColor: "white" }}
-              >
+              <button className="btn btn-primary" style={{ borderWidth: 2, borderColor: "white" }}>
                 Telat Kerja
               </button>
             </div>
@@ -94,22 +81,10 @@ class MasukKerja extends Component {
           <div className="camera">
             <div className="camera-title">
               <div className="">
-                {this.state.displayCamera && (
-                  <Webcam
-                    className="webcam"
-                    audio={false}
-                    ref={this.webcamRef}
-                    screenshotFormat="image/jpeg"
-                    mirrored={true}
-                  />
-                )}
+                {this.state.displayCamera && <Webcam className="webcam" audio={false} ref={this.webcamRef} screenshotFormat="image/jpeg" mirrored={true} />}
                 {this.state.capturedImage && (
                   <div style={{ position: "relative", textAlign: "center" }}>
-                    <img
-                      src={this.state.capturedImage}
-                      alt="Captured"
-                      className="webcam"
-                    />
+                    <img src={this.state.capturedImage} alt="Captured" className="webcam" />
                     <p
                       style={{
                         position: "absolute",
@@ -127,20 +102,11 @@ class MasukKerja extends Component {
                 )}
               </div>
               <div className="camera-button">
-                <button
-                  className="btn btn-danger"
-                  onClick={this.handleCancelButtonClick}
-                >
+                <button className="btn btn-danger" onClick={this.handleCancelButtonClick}>
                   Cancel
                 </button>
-                <button
-                  className="btn btn-light"
-                  onClick={this.handleCaptureButtonClick}
-                ></button>
-                <button
-                  className="btn btn-primary"
-                  onClick={this.handleUploadButtonClick}
-                >
+                <button className="btn btn-light" onClick={this.handleCaptureButtonClick}></button>
+                <button className="btn btn-primary" onClick={this.handleUploadButtonClick}>
                   Upload
                 </button>
               </div>
