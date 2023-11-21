@@ -47,7 +47,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
       {/* Nav Item - Pages Collapse Menu */}
       <li className="nav-item">
         <Link
-          to="/dashboard/presensi"
+          to="/dashboard/presensi_masuk"
           className="nav-link collapsed"
           href="dashboard/#presensi_masuk"
           // data-toggle="collapse"
@@ -61,7 +61,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
       </li>
       <li className="nav-item">
         <Link
-          to="/dashboard/presensi"
+          to="/dashboard/presensi_pulang"
           className="nav-link collapsed"
           href="dashboard/#presensi_pulang"
           // data-toggle="collapse"
@@ -76,7 +76,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
       {/* Nav Item - Utilities Collapse Menu */}
       <li className="nav-item">
         <Link
-          to="/dashboard/pengajuan"
+          to="/dashboard/data_pengajuan"
           className="nav-link collapsed"
           href="#"
           // data-toggle="collapse"
@@ -95,7 +95,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
       {/* Nav Item - Pages Collapse Menu */}
       <li className="nav-item">
         <Link
-          to="/dashboard/DataIzin"
+          to="/dashboard/data_izin"
           className="nav-link collapsed"
           href="#"
           // data-toggle="collapse"

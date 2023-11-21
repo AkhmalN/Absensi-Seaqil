@@ -13,24 +13,26 @@ import Pengajuan from "./pages/admin/Pengajuan";
 import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
+import PresensiMasuk from "./pages/admin/PresensiMasuk";
+import PresensiPulang from "./pages/admin/PresensiPulang";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/dashboard" Component={Dashboard} />
+      <Route path="/dashboard/presensi_masuk" Component={PresensiMasuk} />
+      <Route path="/dashboard/presensi_pulang" Component={PresensiPulang} />
       <Route path="/dashboard/data_pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/data_izin" Component={DataIzin} />
+
       <Route path="/login" Component={Login} />
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />
       <Route path="/rekap_presensi" Component={RekapPresensi} />
       <Route path="/dashboard" Component={Dashboard} />
-      <Route path="/dashboard/DataIzin" Component={DataIzin} />
-      <Route path="/dashboard/pengajuan" Component={Pengajuan} />
-      <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
       {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
     </Routes>

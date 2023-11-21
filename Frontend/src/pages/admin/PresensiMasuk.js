@@ -21,7 +21,7 @@ import {
 import { Dropdown } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import profil from "../../assets/admin/profil.png";
-function Presensi() {
+function PresensiMasuk() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -260,4 +260,4 @@ function Presensi() {
   );
 }
 
-export default Presensi;
+export default PresensiMasuk;

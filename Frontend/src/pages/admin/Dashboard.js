@@ -33,36 +33,9 @@ const Dashboard = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
-<<<<<<< HEAD
   const toggleSidebar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
-=======
-  const [showDelete, setShowDelete] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [showAdd, setShowAdd] = useState(false);
-  const [showAlertAdd, setShowAlertAdd] = useState(false);
-  const [showAlertEdit, setShowAlertEdit] = useState(false);
-  const [showAlertDelete, setShowAlertDelete] = useState(false);
-
-  const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
-
-  const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = () => setShowEdit(true);
-
-  const handleCloseAdd = () => setShowAdd(false);
-  const handleShowAdd = () => setShowAdd(true);
-
-  const handleCloseAlertAdd = () => setShowAlertAdd(false);
-  const handleShowAlertAdd = () => setShowAlertAdd(true);
-
-  const handleCloseAlertEdit = () => setShowAlertEdit(false);
-  const handleShowAlertEdit = () => setShowAlertEdit(true);
-
-  const handleCloseAlertDelete = () => setShowAlertDelete(false);
-  const handleShowAlertDelete = () => setShowAlertDelete(true);
->>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
 
   return (
     <>
@@ -245,7 +218,8 @@ const Dashboard = () => {
                     <button
                       className="check me-2"
                       type="button"
-                      onClick={handleShowAdd}>
+                      // onClick={handleShowAdd}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -338,23 +312,16 @@ const Dashboard = () => {
                           style={{
                             display: "flex",
                             justifyContent: "center",
-<<<<<<< HEAD
                           }}
                         >
                           <button className="check me-2 " type="button">
-=======
-                          }}>
-                          <button
-                            className="check me-2 "
-                            type="button"
-                            onClick={handleShowEdit}>
->>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
                             <FontAwesomeIcon icon={faCheck} size="lg" />
                           </button>
                           <button
                             className="decline "
                             type="button"
-                            onClick={handleShowDelete}>
+                            // onClick={handleShowDelete}
+                          >
                             <FontAwesomeIcon icon={faXmark} size="lg" />
                           </button>
                         </div>
@@ -366,11 +333,12 @@ const Dashboard = () => {
             </div>
             {/* BUTTON DELETE */}
             <Modal
-              show={showDelete}
-              onHide={handleCloseDelete}
+              // show={showDelete}
+              // onHide={handleCloseDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   PERINGATAN!
@@ -380,15 +348,18 @@ const Dashboard = () => {
                 </div>
                 <div
                   className="d-flex justify-content-center mt-2"
-                  style={{ border: "none" }}>
+                  style={{ border: "none" }}
+                >
                   <button
                     className="batal-btn me-2"
-                    onClick={handleCloseDelete}>
+                    // onClick={handleCloseDelete}
+                  >
                     Batal
                   </button>
                   <button
                     className="decline ms-2"
-                    onClick={handleShowAlertDelete}>
+                    // onClick={handleShowAlertDelete}
+                  >
                     Yakin
                   </button>
                 </div>
@@ -397,11 +368,12 @@ const Dashboard = () => {
             {/* END OF BUTTON DELETE */}
             {/* BERHASIL HAPUS */}
             <Modal
-              show={showAlertDelete}
-              onHide={handleCloseAlertDelete}
+              // show={showAlertDelete}
+              // onHide={handleCloseAlertDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -413,195 +385,7 @@ const Dashboard = () => {
             </Modal>
             {/* END OF BERHASIL HAPUS */}
 
-<<<<<<< HEAD
             <div className="dashboard-section" id="presensi_masuk">
-=======
-            {/* BUTTON EDIT */}
-            <Modal
-              show={showEdit}
-              onHide={handleCloseEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body className="modal-body">
-                <Modal.Body>
-                  <div className="modal-header-edit text-center mb-3">
-                    Edit Data
-                    <div className="mt-3">
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="IdK"
-                          placeholder="ID Kegiatan"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="nm"
-                          placeholder="Nama Lengkap"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="div"
-                          placeholder="Divisi"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <select
-                          class="form-select"
-                          aria-label="Default select example">
-                          <option selected>Shift</option>
-                          <option value="Pagi">Pagi</option>
-                          <option value="Siang">Siang</option>
-                        </select>
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="pass"
-                          placeholder="Password"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
-                    <button
-                      className="batal-btn me-2"
-                      onClick={handleCloseEdit}>
-                      Batal
-                    </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertEdit}>
-                      Simpan
-                    </button>
-                  </div>
-                </Modal.Body>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BUTTON EDIT */}
-
-            {/* BERHASIL EDIT */}
-            <Modal
-              show={showAlertEdit}
-              onHide={handleCloseAlertEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">
-                  Data Berhasil Diedit!
-                </div>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BERHASIL EDIT */}
-
-            {/* BUTTON ADD PERSON */}
-            <Modal
-              show={showAdd}
-              onHide={handleCloseAdd}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body className="modal-body">
-                <Modal.Body>
-                  <div className="modal-header-edit text-center mb-3">
-                    Tambah Data
-                    <div className="mt-3">
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="IdK"
-                          placeholder="ID Kegiatan"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="nm"
-                          placeholder="Nama Lengkap"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="div"
-                          placeholder="Divisi"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <select
-                          class="form-select"
-                          aria-label="Default select example">
-                          <option selected>Shift</option>
-                          <option value="Pagi">Pagi</option>
-                          <option value="Siang">Siang</option>
-                        </select>
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="pass"
-                          placeholder="Password"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
-                    <button className="batal-btn me-2" onClick={handleCloseAdd}>
-                      Batal
-                    </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertAdd}>
-                      Simpan
-                    </button>
-                  </div>
-                </Modal.Body>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BUTTON ADD PERSON */}
-            {/* BERHASIL ADD */}
-            <Modal
-              show={showAlertAdd}
-              onHide={handleCloseAlertAdd}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">
-                  Data Berhasil Ditambahkan!
-                </div>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BERHASIL ADD */}
-
-            {/* Card Header - PRESENSI HARI INI*/}
-            <div className="container-fluid" id="presensi_masuk">
->>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
               <div className="card shadow mb-4">
                 <div className="card shadow mb-4">
                   {/* Card Header - Dropdown */}
@@ -618,7 +402,8 @@ const Dashboard = () => {
                       <button
                         className="check me-2 "
                         type="button"
-                        onClick={handleShowAdd}>
+                        // onClick={handleShowAdd}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -711,23 +496,16 @@ const Dashboard = () => {
                             style={{
                               display: "flex",
                               justifyContent: "center",
-<<<<<<< HEAD
                             }}
                           >
                             <button className="check me-2 " type="button">
-=======
-                            }}>
-                            <button
-                              className="check me-2 "
-                              type="button"
-                              onClick={handleShowEdit}>
->>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
                               <FontAwesomeIcon icon={faCheck} size="lg" />
                             </button>
                             <button
                               className="decline "
                               type="button"
-                              onClick={handleShowDelete}>
+                              // onClick={handleShowDelete}
+                            >
                               <FontAwesomeIcon icon={faXmark} size="lg" />
                             </button>
                           </div>
@@ -740,11 +518,12 @@ const Dashboard = () => {
             </div>
             {/* BUTTON DELETE */}
             <Modal
-              show={showDelete}
-              onHide={handleCloseDelete}
+              // show={showDelete}
+              // onHide={handleCloseDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   PERINGATAN!
@@ -754,15 +533,18 @@ const Dashboard = () => {
                 </div>
                 <div
                   className="d-flex justify-content-center mt-2"
-                  style={{ border: "none" }}>
+                  style={{ border: "none" }}
+                >
                   <button
                     className="batal-btn me-2"
-                    onClick={handleCloseDelete}>
+                    // onClick={handleCloseDelete}
+                  >
                     Batal
                   </button>
                   <button
                     className="decline ms-2"
-                    onClick={handleShowAlertDelete}>
+                    // onClick={handleShowAlertDelete}
+                  >
                     Yakin
                   </button>
                 </div>
@@ -771,11 +553,12 @@ const Dashboard = () => {
             {/* END OF BUTTON DELETE */}
             {/* BERHASIL HAPUS */}
             <Modal
-              show={showAlertDelete}
-              onHide={handleCloseAlertDelete}
+              // show={showAlertDelete}
+              // onHide={handleCloseAlertDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -789,11 +572,12 @@ const Dashboard = () => {
 
             {/* BUTTON EDIT */}
             <Modal
-              show={showEdit}
-              onHide={handleCloseEdit}
+              // show={showEdit}
+              // onHide={handleCloseEdit}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
@@ -826,7 +610,8 @@ const Dashboard = () => {
                       <div class="mb-2">
                         <select
                           class="form-select"
-                          aria-label="Default select example">
+                          aria-label="Default select example"
+                        >
                           <option selected>Shift</option>
                           <option value="Pagi">Pagi</option>
                           <option value="Siang">Siang</option>
@@ -845,15 +630,18 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
+                    style={{ border: "none" }}
+                  >
                     <button
                       className="batal-btn me-2"
-                      onClick={handleCloseEdit}>
+                      // onClick={handleCloseEdit}
+                    >
                       Batal
                     </button>
                     <button
                       className="edit-btn ms-2"
-                      onClick={handleShowAlertEdit}>
+                      // onClick={handleShowAlertEdit}
+                    >
                       Simpan
                     </button>
                   </div>
@@ -864,11 +652,12 @@ const Dashboard = () => {
 
             {/* BERHASIL EDIT */}
             <Modal
-              show={showAlertEdit}
-              onHide={handleCloseAlertEdit}
+              // show={showAlertEdit}
+              // onHide={handleCloseAlertEdit}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -991,23 +780,16 @@ const Dashboard = () => {
                             style={{
                               display: "flex",
                               justifyContent: "center",
-<<<<<<< HEAD
                             }}
                           >
                             <button className="check me-2" type="button">
-=======
-                            }}>
-                            <button
-                              className="check me-2"
-                              type="button"
-                              onClick={handleShowEdit}>
->>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
                               <FontAwesomeIcon icon={faCheck} size="lg" />
                             </button>
                             <button
                               className="decline"
                               type="button"
-                              onClick={handleShowDelete}>
+                              // onClick={handleShowDelete}
+                            >
                               <FontAwesomeIcon icon={faXmark} size="lg" />
                             </button>
                           </div>
@@ -1018,154 +800,6 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-=======
-            {/* BUTTON DELETE */}
-            <Modal
-              show={showDelete}
-              onHide={handleCloseDelete}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  PERINGATAN!
-                </div>
-                <div className="modal-body text-center">
-                  Anda yakin menghapus data ini?
-                </div>
-                <div
-                  className="d-flex justify-content-center mt-2"
-                  style={{ border: "none" }}>
-                  <button
-                    className="batal-btn me-2"
-                    onClick={handleCloseDelete}>
-                    Batal
-                  </button>
-                  <button
-                    className="decline ms-2"
-                    onClick={handleShowAlertDelete}>
-                    Yakin
-                  </button>
-                </div>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BUTTON DELETE */}
-            {/* BERHASIL HAPUS */}
-            <Modal
-              show={showAlertDelete}
-              onHide={handleCloseAlertDelete}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">
-                  Data Berhasil Dihapus!
-                </div>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BERHASIL HAPUS */}
-
-            {/* BUTTON EDIT */}
-            <Modal
-              show={showEdit}
-              onHide={handleCloseEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body className="modal-body">
-                <Modal.Body>
-                  <div className="modal-header-edit text-center mb-3">
-                    Edit Data
-                    <div className="mt-3">
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="IdK"
-                          placeholder="ID Kegiatan"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="nm"
-                          placeholder="Nama Lengkap"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="div"
-                          placeholder="Divisi"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <select
-                          class="form-select"
-                          aria-label="Default select example">
-                          <option selected>Shift</option>
-                          <option value="Pagi">Pagi</option>
-                          <option value="Siang">Siang</option>
-                        </select>
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="pass"
-                          placeholder="Password"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
-                    <button
-                      className="batal-btn me-2"
-                      onClick={handleCloseEdit}>
-                      Batal
-                    </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertEdit}>
-                      Simpan
-                    </button>
-                  </div>
-                </Modal.Body>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BUTTON EDIT */}
-
-            {/* BERHASIL EDIT */}
-            <Modal
-              show={showAlertEdit}
-              onHide={handleCloseAlertEdit}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">
-                  Data Berhasil Diedit!
-                </div>
-              </Modal.Body>
-            </Modal>
-            {/* END OF BERHASIL EDIT */}
-
-            {/* Content Row */}
-
-            {/* /.container-fluid */}
->>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
           </div>
 
           <footer className="sticky-footer bg-white">
