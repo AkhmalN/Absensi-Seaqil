@@ -614,3 +614,38 @@ body {
   height: 100px;
   margin-right: 10px;
 }
+
+.approve-presensi {
+  font-family: "Karla", sans-serif;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.selfie {
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+}
+
+.approve-btn {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #d0ffcf;
+  color: #1c711b;
+  font-family: "Karla" sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.approve-btn:hover {
+  background-color: #acffaa;
+  color: #1c711b;
+}
