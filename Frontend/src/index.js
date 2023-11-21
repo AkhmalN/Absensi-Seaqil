@@ -14,6 +14,7 @@ import Pengajuan from "./pages/admin/Pengajuan";
 import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
+import Laporan from "./pages/admin/Laporan";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -34,7 +35,7 @@ root.render(
       <Route path="/dashboard/pengajuan" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
-      {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
+      <Route path="/dashboard/Laporan" Component={Laporan} />
     </Routes>
   </BrowserRouter>
 );
