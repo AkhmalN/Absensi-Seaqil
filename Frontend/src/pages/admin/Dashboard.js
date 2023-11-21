@@ -561,9 +561,10 @@ const Dashboard = () => {
                   <div className="approve-presensi">
                     <Row>
                       <Col
+                        lg="4"
                         md="12"
                         sm="12"
-                        className="d-flex justify-content-center">
+                        className="d-flex justify-content-left">
                         <table border="0" cellpadding="8">
                           <tr>
                             <td>ID Absen</td>
@@ -587,7 +588,11 @@ const Dashboard = () => {
                           </tr>
                         </table>
                       </Col>
-                      <Col className="d-flex justify-content-center">
+                      <Col
+                        lg="4"
+                        md="12"
+                        sm="12"
+                        className="d-flex justify-content-left">
                         <table border="0" cellpadding="8">
                           <tr>
                             <td>Nama</td>
@@ -607,7 +612,11 @@ const Dashboard = () => {
                           </tr>
                         </table>
                       </Col>
-                      <Col lg="4" className="d-flex justify-content-center">
+                      <Col
+                        lg="4"
+                        md="12"
+                        sm="12"
+                        className="d-flex justify-content-center">
                         <img src={selfie} alt="selfie" className="selfie" />
                       </Col>
                     </Row>
