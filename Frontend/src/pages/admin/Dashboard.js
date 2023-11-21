@@ -897,7 +897,8 @@ const Dashboard = () => {
               onHide={handleCloseEdit}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
@@ -930,7 +931,8 @@ const Dashboard = () => {
                       <div class="mb-2">
                         <select
                           class="form-select"
-                          aria-label="Default select example">
+                          aria-label="Default select example"
+                        >
                           <option selected>Shift</option>
                           <option value="Pagi">Pagi</option>
                           <option value="Siang">Siang</option>
@@ -949,15 +951,18 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
+                    style={{ border: "none" }}
+                  >
                     <button
                       className="batal-btn me-2"
-                      onClick={handleCloseEdit}>
+                      onClick={handleCloseEdit}
+                    >
                       Batal
                     </button>
                     <button
                       className="edit-btn ms-2"
-                      onClick={handleShowAlertEdit}>
+                      onClick={handleShowAlertEdit}
+                    >
                       Simpan
                     </button>
                   </div>
@@ -972,7 +977,8 @@ const Dashboard = () => {
               onHide={handleCloseAlertEdit}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
