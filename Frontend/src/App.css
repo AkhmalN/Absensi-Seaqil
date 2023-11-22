@@ -1,14 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
 body {
-  background-image: linear-gradient(
-    to right bottom,
-    #266cb2,
-    #748cc5,
-    #a8b0d7,
-    #d6d6eb,
-    #ffffff
-  );
+  background-image: linear-gradient(to right bottom, #266cb2, #748cc5, #a8b0d7, #d6d6eb, #ffffff);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -419,6 +412,53 @@ body {
   color: var(--Hitam, #1c1d22);
   background: #fff;
   margin-left: auto;
+}
+
+/* DROPDWON PROFILE CSS */
+
+.dropdown-toggle {
+  background: transparent !important;
+  border: none !important;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  /* border: none !important; */
+}
+
+.profileakun {
+  margin-right: 30px;
+}
+
+.centered-text {
+  text-align: center;
+  font-family: "Karla" sans-serif;
+  font-size: 16x;
+}
+
+.dropdown-toggle::after {
+  content: none !important; /* Menghilangkan icon dropdown */
+}
+
+.btn-pro {
+  padding: 5px 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: #eef6fa;
+  color: #266cb2;
+  font-family: "Karla" sans-serif;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.btn-log {
+  padding: 5px 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: #fdd4d4;
+  color: #ac1616;
+  font-family: "Karla" sans-serif;
+  font-size: 13px;
 }
 
 /* form masuk kerja */
