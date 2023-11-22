@@ -16,6 +16,8 @@ import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
 import PresensiMasuk from "./pages/admin/PresensiMasuk";
 import PresensiPulang from "./pages/admin/PresensiPulang";
+import formtelatkerja from "./components/FormTelatKerja";
+import FormTelatKerja from "./components/FormTelatKerja";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -36,6 +38,7 @@ root.render(
       <Route path="/rekap_presensi" Component={RekapPresensi} />
       <Route path="/dashboard" Component={Dashboard} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
+      <Route path="/dashboard/form_telat_kerja" Component={FormTelatKerja} />
       {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
     </Routes>
   </BrowserRouter>
