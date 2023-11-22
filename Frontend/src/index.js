@@ -15,6 +15,7 @@ import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
 import Laporan from "./pages/admin/Laporan";
+import rumah from "./pages/users/rumah";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -32,7 +33,7 @@ root.render(
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />
       <Route path="/rekap_presensi" Component={RekapPresensi} />
-      <Route path="/dashboard" Component={Dashboard} />
+      <Route path="/rumah" Component={rumah} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
       {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
     </Routes>
