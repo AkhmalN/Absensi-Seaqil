@@ -16,7 +16,6 @@ import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
 import Laporan from "./pages/admin/Laporan";
 import formtelatkerja from "./components/FormTelatKerja";
-import FormTelatKerja from "./components/FormTelatKerja";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
