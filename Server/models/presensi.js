@@ -1,15 +1,19 @@
 import mongoose from "mongoose";
 
-const absenSchema = new mongoose.Schema(
+const presenceSchema = new mongoose.Schema(
   {
-    id: {
+    id_user: {
       type: mongoose.Schema.Types.ObjectId,
-    },
-    Id_Kegiatan: {
-      type: Number,
-      required: true,
       ref: "User",
-      unique: true,
+      required: true,
+    },
+    id_msib: {
+      type: Number,
+      // required: true,
+    },
+    shift: {
+      type: String,
+      required: true,
     },
     username: {
       type: String,
@@ -19,12 +23,8 @@ const absenSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    status_absen: {
-      type: String,
-      required: true,
-    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Absen", absenSchema);
+export default mongoose.model("Presence", presenceSchema);
