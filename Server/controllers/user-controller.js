@@ -12,11 +12,11 @@ export const createUser = async (req, res, next) => {
     });
     await newUser.save();
     if (!newUser) {
-      return res.json({ message: "terjadi Kesalahan" });
+      res.json({ message: "terjadi Kesalahan" });
     }
-    return res.status(201).json({ message: "User Ditambahkan" });
+    res.status(201).json({ message: "User Ditambahkan" });
   } catch (error) {
-    return res.status(404).json(error);
+    res.status(404).json(error);
   }
 };
 
