@@ -40,7 +40,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
             <FontAwesomeIcon icon={isSideBarOpen ? faBars : faAngleLeft} />
           </Link>
         </li>
-        <li className="nav-item active">
+        <li className="nav-item">
           <Link to="/dashboard" className="nav-link">
             <FontAwesomeIcon icon={faHouse} />
             <span className="ms-2">Beranda</span>
