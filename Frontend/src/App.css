@@ -893,7 +893,7 @@ body {
   display: flex;
   flex-direction: row;
   padding: 20px 35px;
-  margin-top: 10px;
+  margin-top: 2px;
   justify-content: space-between;
 }
 
@@ -958,12 +958,30 @@ body {
   margin-left: 15px;
 }
 
+.sub-content-rumah-3-index {
+  /* margin-top: 10px; */
+  height: 100%;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 35px;
+}
+
+.sub-content-rumah-3-index img {
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
 .sub-content-rumah-3 {
   /* margin-top: 10px; */
   height: 100%;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
-  border: none;
+  border: 1px solid #ffffff;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
