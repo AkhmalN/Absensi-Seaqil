@@ -866,8 +866,8 @@ body {
 .admin-sidebar ul li {
   margin-top: 1px;
 }
-/* Home CSS */
 
+/* Home CSS */
 .header-rumah {
   width: 100%;
   padding: 20px;
@@ -975,6 +975,8 @@ body {
   align-items: center;
 }
 
+/* CSS PRESENSI MASUK */
+
 .sub-content-rumah-3 {
   /* margin-top: 10px; */
   height: 100%;
@@ -992,4 +994,71 @@ body {
   width: 100%;
   justify-content: center;
   align-items: center;
+}
+
+.sub-content-rumah-3 .container {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.header-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #1c711b;
+}
+
+.header-content p {
+  font-family: poppins;
+}
+
+.header-content h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.border-sub-content {
+  border: 1px solid #266cb2;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.form-content {
+  color: #266cb2;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-done-working {
+  display: flex;
+  width: 180px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #d0ffcf;
+  border: none;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #1c711b;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+.btn-done-working:hover {
+  background-color: #acffaa;
+  color: #1c711b;
+}
+
+.border-sub-content label {
+  color: #266cb2;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
 }

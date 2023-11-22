@@ -28,9 +28,13 @@ function rumah() {
           <div className="sub-content-rumah-2">
             <button
               className="btn btn-primary"
-              style={{ borderWidth: 2, borderColor: "white" }}>
+              style={{ borderWidth: 2, borderColor: "white" }}
+              onClick={() => {
+                window.location.href = "/masuk_kerja"; // Navigasi ke laman masuk_kerja
+              }}>
               Masuk Kerja
             </button>
+
             <button
               className="btn btn-primary"
               style={{ borderWidth: 2, borderColor: "white" }}>
@@ -45,7 +49,6 @@ function rumah() {
         </div>
         <div className="image-content">
           <div className="sub-content-rumah-3-index">
-            {" "}
             <img src={people} alt="home" className="home" />
           </div>
         </div>
