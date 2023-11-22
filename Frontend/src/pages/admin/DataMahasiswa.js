@@ -21,7 +21,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
 import { useMediaQuery } from "@react-hook/media-query";
 
-const Dashboard = () => {
+const DataMahasiswa = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
   const isMediumScreen = useMediaQuery(
     "(max-width: 992px) and (min-width: 768px)"
@@ -47,23 +47,56 @@ const Dashboard = () => {
   const [showAlertEdit, setShowAlertEdit] = useState(false);
   const [showAlertDelete, setShowAlertDelete] = useState(false);
 
-  const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
-
-  const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = () => setShowEdit(true);
-
   const handleCloseAdd = () => setShowAdd(false);
   const handleShowAdd = () => setShowAdd(true);
 
   const handleCloseAlertAdd = () => setShowAlertAdd(false);
-  const handleShowAlertAdd = () => setShowAlertAdd(true);
+  const handleShowAlertAdd = () => {
+    setShowAlertAdd(true);
+    setTimeout(() => {
+      setShowAlertAdd(false);
+    }, 2000);
+  };
+
+  const ButtonAdd = () => {
+    // Memanggil kedua aksi secara bersamaan
+    handleCloseAdd();
+    handleShowAlertAdd();
+  };
+
+  const handleCloseEdit = () => setShowEdit(false);
+  const handleShowEdit = () => setShowEdit(true);
 
   const handleCloseAlertEdit = () => setShowAlertEdit(false);
-  const handleShowAlertEdit = () => setShowAlertEdit(true);
+  const handleShowAlertEdit = () => {
+    setShowAlertEdit(true);
+    setTimeout(() => {
+      setShowAlertEdit(false);
+    }, 2000);
+  };
+
+  const ButtonEdit = () => {
+    // Memanggil kedua aksi secara bersamaan
+    handleCloseEdit();
+    handleShowAlertEdit();
+  };
+
+  const handleCloseDelete = () => setShowDelete(false);
+  const handleShowDelete = () => setShowDelete(true);
 
   const handleCloseAlertDelete = () => setShowAlertDelete(false);
-  const handleShowAlertDelete = () => setShowAlertDelete(true);
+  const handleShowAlertDelete = () => {
+    setShowAlertDelete(true);
+    setTimeout(() => {
+      setShowAlertDelete(false);
+    }, 2000);
+  };
+
+  const ButtonDelete = () => {
+    // Memanggil kedua aksi secara bersamaan
+    handleCloseDelete();
+    handleShowAlertDelete();
+  };
 
   return (
     <>
@@ -151,7 +184,7 @@ const Dashboard = () => {
                       type="button"
                       style={{ marginRight: "16px" }}>
                       <FontAwesomeIcon icon={faPrint} />
-                      Cetak
+                      <span className="d-none d-lg-inline">Cetak</span>
                     </button>
                     <button
                       className="check me-2 "
@@ -315,9 +348,7 @@ const Dashboard = () => {
                     <button className="batal-btn me-2" onClick={handleCloseAdd}>
                       Batal
                     </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertAdd}>
+                    <button className="edit-btn ms-2" onClick={ButtonAdd}>
                       Simpan
                     </button>
                   </div>
@@ -389,9 +420,7 @@ const Dashboard = () => {
                       onClick={handleCloseEdit}>
                       Batal
                     </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertEdit}>
+                    <button className="edit-btn ms-2" onClick={ButtonEdit}>
                       Simpan
                     </button>
                   </div>
@@ -421,9 +450,7 @@ const Dashboard = () => {
                     onClick={handleCloseDelete}>
                     Batal
                   </button>
-                  <button
-                    className="decline ms-2"
-                    onClick={handleShowAlertDelete}>
+                  <button className="decline ms-2" onClick={ButtonDelete}>
                     Yakin
                   </button>
                 </div>
@@ -498,4 +525,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DataMahasiswa;

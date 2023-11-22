@@ -55,19 +55,51 @@ const Dashboard = () => {
   const handleShowAdd = () => setShowAdd(true);
 
   const handleCloseAlertAdd = () => setShowAlertAdd(false);
-  const handleShowAlertAdd = () => setShowAlertAdd(true);
+  const handleShowAlertAdd = () => {
+    setShowAlertAdd(true);
+    setTimeout(() => {
+      setShowAlertAdd(false);
+    }, 2000);
+  };
 
+  const ButtonAdd = () => {
+    // Memanggil kedua aksi secara bersamaan
+    handleCloseAdd();
+    handleShowAlertAdd();
+  };
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => setShowDelete(true);
 
   const handleCloseAlertDelete = () => setShowAlertDelete(false);
-  const handleShowAlertDelete = () => setShowAlertDelete(true);
+  const handleShowAlertDelete = () => {
+    setShowAlertDelete(true);
+    setTimeout(() => {
+      setShowAlertDelete(false);
+    }, 2000);
+  };
+
+  const ButtonDelete = () => {
+    // Memanggil kedua aksi secara bersamaan
+    handleCloseDelete();
+    handleShowAlertDelete();
+  };
 
   const handleCloseApprove = () => setshowApprove(false);
   const handleshowApprove = () => setshowApprove(true);
 
   const handleCloseAlertApprove = () => setShowAlertApprove(false);
-  const handleShowAlertApprove = () => setShowAlertApprove(true);
+  const handleShowAlertApprove = () => {
+    setShowAlertApprove(true);
+    setTimeout(() => {
+      setShowAlertApprove(false);
+    }, 2000);
+  };
+
+  const ButtonApprove = () => {
+    // Memanggil kedua aksi secara bersamaan
+    handleCloseApprove();
+    handleShowAlertApprove();
+  };
   return (
     <>
       <div id="wrapper">
@@ -158,7 +190,6 @@ const Dashboard = () => {
                   <div className="header tulisan">
                     <div className="header">
                       Presensi Pulang Hari Ini
-                      <span className="sub-header ms-2">27/10/2023</span>
                       <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
@@ -204,8 +235,8 @@ const Dashboard = () => {
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
-                    tableStyle={{ textAlign: "center", minWidth: "60rem" }}
-                    className="customDataTable" // Add a custom class for more styling options
+                    tableStyle={{ textAlign: "center", minWidth: "50rem" }}
+                    className="customDataTable"
                     paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                     <Column
                       field="no"
@@ -214,32 +245,32 @@ const Dashboard = () => {
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
-                      style={{ width: "15%" }}
+                      style={{ width: "14%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="shift"
                       header="Shift"
-                      style={{ width: "11%" }}
+                      style={{ width: "10%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
-                      style={{ width: "17%" }}
+                      style={{ width: "20%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "16%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="jk"
                       header="Jam Keluar"
-                      style={{ width: "11%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="stat_p"
                       header="Status"
-                      style={{ width: "11%" }}
+                      style={{ width: "13%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="aksi"
@@ -398,9 +429,7 @@ const Dashboard = () => {
                     <button className="batal-btn me-2" onClick={handleCloseAdd}>
                       Batal
                     </button>
-                    <button
-                      className="edit-btn ms-2"
-                      onClick={handleShowAlertAdd}>
+                    <button className="edit-btn ms-2" onClick={ButtonAdd}>
                       Simpan
                     </button>
                   </div>
@@ -447,9 +476,7 @@ const Dashboard = () => {
                     onClick={handleCloseDelete}>
                     Batal
                   </button>
-                  <button
-                    className="decline ms-2"
-                    onClick={handleShowAlertDelete}>
+                  <button className="decline ms-2" onClick={ButtonDelete}>
                     Yakin
                   </button>
                 </div>
@@ -557,7 +584,7 @@ const Dashboard = () => {
                     </button>
                     <button
                       className="approve-btn ms-2"
-                      onClick={handleShowAlertApprove}>
+                      onClick={ButtonApprove}>
                       Simpan
                     </button>
                   </div>
@@ -591,7 +618,6 @@ const Dashboard = () => {
                   <div className="header tulisan">
                     <div className="header">
                       Presensi Masuk Hari Ini
-                      <span className="sub-header ms-2">27/10/2023</span>
                       <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
@@ -637,8 +663,8 @@ const Dashboard = () => {
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
-                    tableStyle={{ textAlign: "center", minWidth: "60rem" }}
-                    className="customDataTable" // Add a custom class for more styling options
+                    tableStyle={{ textAlign: "center", minWidth: "50rem" }}
+                    className="customDataTable"
                     paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                     <Column
                       field="no"
@@ -647,32 +673,32 @@ const Dashboard = () => {
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
-                      style={{ width: "15%" }}
+                      style={{ width: "14%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="shift"
                       header="Shift"
-                      style={{ width: "11%" }}
+                      style={{ width: "10%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
-                      style={{ width: "17%" }}
+                      style={{ width: "20%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "16%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="jm"
                       header="Jam Masuk"
-                      style={{ width: "11%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="stat_p"
                       header="Status"
-                      style={{ width: "11%" }}
+                      style={{ width: "13%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="aksi"
