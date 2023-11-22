@@ -21,7 +21,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
 import { useMediaQuery } from "@react-hook/media-query";
 
-const Dashboard = () => {
+const Pengajuan = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
   const isMediumScreen = useMediaQuery(
     "(max-width: 992px) and (min-width: 768px)"
@@ -326,4 +326,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Pengajuan;
