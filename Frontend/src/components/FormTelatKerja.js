@@ -7,11 +7,11 @@ function FormTelatKerja() {
       <div classname="Container my-4">
         <Row>
           <Col>
-            <h1>Testing</h1>
+          
           </Col>
           <Col className="blur-bg"> 
             <div className="app-container">  
-              <div className="header-data">
+              <div className="header-data1">
                <div className="Teks1">Presensi Hari Ini Sudah Selesai</div>
                <div className="Teks2">Mohon maaf kamu telat hari ini</div>
                <div className="Teks2">Selamat bekerja dan tetap semangat</div>
