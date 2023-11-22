@@ -845,3 +845,24 @@ body {
   background-color: #acffaa;
   color: #1c711b;
 }
+
+.bars {
+  display: flex;
+  width: 80px;
+  padding: 10px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #d0ffcf;
+  color: #1c711b;
+  font-family: "Karla" sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.admin-sidebar ul li {
+  margin-top: 1px;
+}

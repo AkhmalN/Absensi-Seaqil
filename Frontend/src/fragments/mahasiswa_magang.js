@@ -10,7 +10,9 @@ const MahasiswaMagang = () => {
               <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
                 Mahasiswa Magang
               </div>
-              <div className="h5 mb-0 font-weight-bold text-gray-800">52</div>
+              <div className="h5 ps-2 mb-0 font-weight-bold text-gray-800">
+                52
+              </div>
             </div>
           </div>
         </div>

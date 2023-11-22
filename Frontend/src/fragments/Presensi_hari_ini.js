@@ -10,7 +10,9 @@ const PresensiHarian = () => {
               <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
                 Presensi Hari Ini
               </div>
-              <div className="h5 mb-0 font-weight-bold text-gray-800">23</div>
+              <div className="h5 ps-2 mb-0 font-weight-bold text-gray-800">
+                23
+              </div>
             </div>
           </div>
         </div>

@@ -10,7 +10,9 @@ const Terlambat = () => {
               <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
                 Terlambat
               </div>
-              <div className="h5 mb-0 font-weight-bold text-gray-800">2</div>
+              <div className="h5 ps-2 mb-0 font-weight-bold text-gray-800">
+                2
+              </div>
             </div>
           </div>
         </div>
