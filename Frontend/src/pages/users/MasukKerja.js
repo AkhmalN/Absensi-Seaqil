@@ -133,17 +133,6 @@ class MasukKerja extends Component {
                   onClick={this.handleCaptureButtonClick}></button>
                 <button
                   className="btn btn-primary"
-                  onClick={this.handleUploadButtonClick}></button>
-                <button
-                  className="btn btn-danger"
-                  onClick={this.handleCancelButtonClick}>
-                  Cancel
-                </button>
-                <button
-                  className="btn btn-light"
-                  onClick={this.handleCaptureButtonClick}></button>
-                <button
-                  className="btn btn-primary"
                   onClick={this.handleUploadButtonClick}>
                   Upload
                 </button>
