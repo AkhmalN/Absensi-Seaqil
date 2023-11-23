@@ -35,17 +35,28 @@ body {
 
 /* Login CSS */
 
+* {
+  box-sizing: border-box;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  /* font-size: 30px; */
+  /* text-align: center; */
+}
+
 .content {
   align-items: center;
   justify-content: center;
-  padding: 20px 35px;
+  padding: 20px 0px;
 }
 
 .form-content {
-  display: block;
+  /* display: block; */
   margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   width: 100%;
   height: 100%;
 }
@@ -56,9 +67,82 @@ body {
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
   color: white;
-  padding: 20px 35px;
+  padding: 20px;
   text-align: center;
-  width: 50%;
+  width: 200%;
+}
+/* Smartphone 1 */
+
+@media (max-width: 646px) {
+  .form-content {
+    margin-top: 50px;
+  }
+
+  .flex-item-left {
+    padding: 10px;
+    flex: 5%;
+  }
+
+  .flex-item-center {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 5%;
+  }
+}
+/* Smartphone 2*/
+@media (min-width: 646px) and (max-width: 767px) {
+  .flex-item-left {
+    padding: 10px;
+    flex: 20%;
+  }
+
+  .flex-item-center {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 20%;
+  }
+}
+/* Tablet */
+@media (min-width: 767px) and (max-width: 1199px) {
+  .flex-item-left {
+    padding: 10px;
+    flex: 65%;
+  }
+
+  .flex-item-center {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 65%;
+  }
+}
+/* PC */
+@media (min-width: 1199px) {
+  .flex-item-left {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-center {
+    padding: 10px 0px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 100%;
+  }
 }
 
 .row-login h4 {
@@ -500,6 +584,15 @@ body {
   font-family: poppins;
   margin-bottom: 1px;
   padding: 20px 0px 10px 0px;
+}
+
+/**Telat Kerja**/
+.header-data1 {
+  background-color: #ac1616;
+  padding: 20px 0px 10px 0px;
+  margin-bottom: 1px;
+  text-align: top;
+  text-align: center;
 }
 
 /**ADMIN CSS**/
@@ -1039,6 +1132,15 @@ body {
 .sub-content-rumah-3 .container {
   background-color: white;
   border-radius: 20px;
+}
+
+.header-content1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #ac1616;
 }
 
 .header-content {
