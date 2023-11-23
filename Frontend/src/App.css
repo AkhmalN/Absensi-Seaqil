@@ -612,6 +612,8 @@ body {
   margin-bottom: 1px;
   padding: 20px 0px 10px 0px;
 }
+
+/**Telat Kerja**/
 .header-data1 {
   background-color: #ac1616;
   padding: 20px 0px 10px 0px;
@@ -1159,6 +1161,15 @@ body {
   border-radius: 20px;
 }
 
+.header-content1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #ac1616;
+}
+
 .header-content {
   justify-content: center;
   align-items: center;
@@ -1170,6 +1181,8 @@ body {
 
 .header-content p {
   font-family: poppins;
+  padding-top: 1px;
+  font-weight: bold;
 }
 
 .header-content h4 {
@@ -1190,7 +1203,7 @@ body {
   justify-content: center;
 }
 
-.btn-done-working {
+.button-center {
   display: flex;
   width: 180px;
   padding: 10px;
@@ -1206,6 +1219,7 @@ body {
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: bold;
+  margin-left: 300px;
 }
 .btn-done-working:hover {
   background-color: #acffaa;
@@ -1220,3 +1234,5 @@ body {
   font-weight: 600;
   line-height: 20px;
 }
+
+/* Responsive*/
