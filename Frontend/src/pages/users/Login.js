@@ -27,34 +27,40 @@ class Login extends Component {
   render() {
     return (
       <>
-        <div className="content">
-          <div className="form-content">
-            <form onSubmit={this.handleLoginSubmit}>
-              <div className="row-login">
-                <div className="header_logo">
-                  <img src={LogoSEAQIL} alt="logo" />
-                </div>
-                <h4 className="">Masuk</h4>
-                <p className="">Selamat Datang di Website Absensi Mahasiswa MSIB Magang SEAQIL</p>
-                <div className="form-group">
-                  <input type="text" id="username" name="username" placeholder=" Username" value={this.state.username} onChange={this.handleInputChange} />
-                </div>
-                <div className="form-group">
-                  <input type="password" id="password" name="password" placeholder=" Password" value={this.state.password} onChange={this.handleInputChange} />
-                </div>
-                <div className="form-group">
-                  <button type="submit" className="btn-login">
-                    Masuk
-                  </button>
-                </div>
-                <div>
-                  <p className="" style={{ color: "black" }}>
-                    Lupa Password?
-                  </p>
-                </div>
+        <div class="flex-container">
+          <div class="flex-item-left"></div>
+          <div class="flex-item-center">
+            <div className="content">
+              <div className="form-content">
+                <form onSubmit={this.handleLoginSubmit}>
+                  <div className="row-login">
+                    <div className="header_logo">
+                      <img src={LogoSEAQIL} alt="logo" />
+                    </div>
+                    <h4 className="">Masuk</h4>
+                    <p className="">Selamat Datang di Website Absensi Mahasiswa MSIB Magang SEAQIL</p>
+                    <div className="form-group">
+                      <input type="text" id="username" name="username" placeholder=" Username" value={this.state.username} onChange={this.handleInputChange} />
+                    </div>
+                    <div className="form-group">
+                      <input type="password" id="password" name="password" placeholder=" Password" value={this.state.password} onChange={this.handleInputChange} />
+                    </div>
+                    <div className="form-group">
+                      <button type="submit" className="btn-login">
+                        Masuk
+                      </button>
+                    </div>
+                    <div>
+                      <p className="" style={{ color: "black" }}>
+                        Lupa Password?
+                      </p>
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
+          <div class="flex-item-right"></div>
         </div>
       </>
     );
