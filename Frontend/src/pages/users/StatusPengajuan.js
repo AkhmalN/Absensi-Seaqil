@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../assets/Users/Logo SEAQIL 1 1.png";
 import "../../App.css";
 import DropdownProfile from "../../components/DropdwonProfile";
+
 // import { Table } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
