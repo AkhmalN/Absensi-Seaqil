@@ -54,7 +54,8 @@ const Laporan = () => {
               marginLeft,
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
-            }}>
+            }}
+          >
             {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -73,7 +74,8 @@ const Laporan = () => {
                   fontSize: "20px",
                   fontStyle: "normal",
                   fontWeight: "600",
-                }}>
+                }}
+              >
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -130,7 +132,8 @@ const Laporan = () => {
                     <button
                       className="print-button "
                       type="button"
-                      style={{ marginRight: "16px" }}>
+                      style={{ marginRight: "16px" }}
+                    >
                       <FontAwesomeIcon icon={faPrint} />
                       <span className="d-none d-lg-inline">Cetak</span>
                     </button>
@@ -160,34 +163,39 @@ const Laporan = () => {
                     rowsPerPageOptions={[5, 10, 25, 50]}
                     tableStyle={{ textAlign: "center" }}
                     className="customDataTable"
-                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+                  >
                     <Column
                       field="no"
                       header="No"
                       style={{ width: "3%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="nm"
                       header="Nama"
                       style={{ width: "14%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="div"
                       header="Divisi"
                       style={{ width: "11%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
-                      // field="stat_i"
                       header={
                         <>
                           Status
@@ -195,8 +203,9 @@ const Laporan = () => {
                             style={{
                               display: "flex",
                               flexDirection: "row",
-                              paddingTop: "5px", // Adjust the padding on top
-                            }}>
+                              paddingTop: "5px",
+                            }}
+                          >
                             <div style={{ width: "17%", margin: "0 10px" }}>
                               Hadir
                             </div>
@@ -212,15 +221,17 @@ const Laporan = () => {
                                 paddingRight: "5px",
                                 whiteSpace: "nowrap",
                                 margin: "0 10px",
-                              }}>
+                              }}
+                            >
                               Tanpa Keterangan
                             </div>
                           </div>
                         </>
                       }
-                      style={{ width: "20%" }} // Adjust the width of the "Status" column
+                      style={{ width: "20%" }}
                       alignHeader={"center"}
-                      rowSpan={2}></Column>
+                      rowSpan={2}
+                    ></Column>
                   </DataTable>
                 </div>
               </div>
