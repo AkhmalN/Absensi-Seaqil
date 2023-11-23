@@ -585,6 +585,13 @@ body {
   margin-bottom: 1px;
   padding: 20px 0px 10px 0px;
 }
+.header-data1 {
+  background-color: #ac1616;
+  padding: 20px 0px 10px 0px;
+  margin-bottom: 1px;
+  text-align: top;
+  text-align: center;
+}
 
 /**ADMIN CSS**/
 
