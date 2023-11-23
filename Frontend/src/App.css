@@ -585,6 +585,8 @@ body {
   margin-bottom: 1px;
   padding: 20px 0px 10px 0px;
 }
+
+/**Telat Kerja**/
 .header-data1 {
   background-color: #ac1616;
   padding: 20px 0px 10px 0px;
@@ -1130,6 +1132,15 @@ body {
 .sub-content-rumah-3 .container {
   background-color: white;
   border-radius: 20px;
+}
+
+.header-content1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #ac1616;
 }
 
 .header-content {
