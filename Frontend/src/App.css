@@ -1,14 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
 body {
-  background-image: linear-gradient(
-    to right bottom,
-    #266cb2,
-    #748cc5,
-    #a8b0d7,
-    #d6d6eb,
-    #ffffff
-  );
+  background-image: linear-gradient(to right bottom, #266cb2, #748cc5, #a8b0d7, #d6d6eb, #ffffff);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
