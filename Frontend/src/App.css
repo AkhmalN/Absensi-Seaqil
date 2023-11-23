@@ -1052,6 +1052,8 @@ body {
 
 .header-content p {
   font-family: poppins;
+  padding-top: 1px;
+  font-weight: bold;
 }
 
 .header-content h4 {
@@ -1072,7 +1074,7 @@ body {
   justify-content: center;
 }
 
-.btn-done-working {
+.button-center {
   display: flex;
   width: 180px;
   padding: 10px;
@@ -1088,6 +1090,7 @@ body {
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: bold;
+  margin-left: 300px;
 }
 .btn-done-working:hover {
   background-color: #acffaa;
@@ -1102,3 +1105,5 @@ body {
   font-weight: 600;
   line-height: 20px;
 }
+
+/* Responsive*/

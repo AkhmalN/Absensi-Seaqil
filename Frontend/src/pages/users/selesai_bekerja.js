@@ -110,7 +110,7 @@ function selesai_bekerja() {
               </div>
               <div className="footer-sub-content">
                 <button
-                  className="btn-done-working me-2 "
+                  className="button-center "
                   type="button"
                   onClick={() => {
                     window.location.href = "/rumah"; // Navigasi ke laman masuk_kerja
