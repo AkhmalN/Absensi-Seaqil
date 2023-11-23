@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
 import userRouter from "./routes/user-router.js";
-
+import presensiRouter from "./routes/presensi-router.js";
 const PORT = process.env.PORT || 8081;
 const app = express();
 dotenv.config();
@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middlewares
 app.use("/absensiseaqil/users", userRouter);
+app.use("/absensiseaqil/presence", presensiRouter);
 
 // Connect to MongoDB
 mongoose

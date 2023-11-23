@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Login from "./pages/users/Login";
+import Home from "./pages/users/Home";
 import IzinKerja from "./pages/users/IzinKerja";
 import MasukKerja from "./pages/users/MasukKerja";
 import StatusPengajuan from "./pages/users/StatusPengajuan";
@@ -13,25 +14,33 @@ import Pengajuan from "./pages/admin/Pengajuan";
 import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
+import Laporan from "./pages/admin/Laporan";
+import rumah from "./pages/users/rumah";
+import presensi_masuk from "./pages/users/presensi_masuk";
+import selesai_bekerja from "./pages/users/selesai_bekerja";
+import FormTelatKerja from "./components/FormTelatKerja";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/dashboard" Component={Dashboard} />
-      <Route path="/dashboard/data_pengajuan" Component={Pengajuan} />
+      <Route path="/dashboard/pengajuan_izin" Component={Pengajuan} />
       <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
       <Route path="/dashboard/data_izin" Component={DataIzin} />
+      <Route path="/dashboard/laporan" Component={Laporan} />
+
       <Route path="/login" Component={Login} />
+      <Route path="/home" Component={Home} />
       <Route path="/masuk_kerja" Component={MasukKerja} />
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />
       <Route path="/rekap_presensi" Component={RekapPresensi} />
-      <Route path="/dashboard" Component={Dashboard} />
-      <Route path="/dashboard/DataIzin" Component={DataIzin} />
-      <Route path="/dashboard/pengajuan" Component={Pengajuan} />
-      <Route path="/dashboard/data_mahasiswa" Component={DataMahasiswa} />
+      <Route path="/rumah" Component={rumah} />
+      <Route path="/presensi_masuk" Component={presensi_masuk} />
+      <Route path="/selesai_bekerja" Component={selesai_bekerja} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
+      <Route path="/dashboard/form_telat_kerja" Component={FormTelatKerja} />
       {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
     </Routes>
   </BrowserRouter>

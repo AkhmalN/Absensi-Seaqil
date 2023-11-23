@@ -8,7 +8,9 @@ const userSchema = new mongoose.Schema(
     Id_Kegiatan: {
       type: Number,
       required: true,
-      unique: true,
+    },
+    shift: {
+      type: String,
     },
     username: {
       type: String,
@@ -17,7 +19,6 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
     },
     password: {
       type: String,
@@ -27,7 +28,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    images: [String],
+    images: { type: String },
   },
   { timestamps: true }
 );

@@ -2,88 +2,106 @@ import React from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
 import { useState } from "react";
-import { Dropdown } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
 import "../../App.css";
+import profil from "../../assets/admin/profil.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faFilePdf,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useMediaQuery } from "@react-hook/media-query";
+
 const DataIzin = () => {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
+  const isLargeScreen = useMediaQuery("(min-width: 992px)");
+  const isMediumScreen = useMediaQuery(
+    "(max-width: 992px) and (min-width: 768px)"
+  );
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const marginLeft = isLargeScreen
+    ? isSideBarOpen
+      ? "130px"
+      : "250px"
+    : isMediumScreen
+    ? isSideBarOpen
+      ? "130px"
+      : "170"
+    : "0";
+  const toggleSidebar = () => {
+    setIsSideBarOpen(!isSideBarOpen);
   };
-
   return (
     <>
       <div id="wrapper">
         {/* Sidebar */}
-        <Sidebar />
+        <Sidebar
+          isSideBarOpen={isSideBarOpen}
+          setIsSideBarOpen={setIsSideBarOpen}
+        />
         {/* End of Sidebar */}
         {/* Content Wrapper */}
         <div id="content-wrapper" className="d-flex flex-column">
           {/* Main Content */}
-          <div id="content">
+          <div
+            id="content"
+            style={{
+              marginLeft,
+              transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
+              padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
+            }}>
+            {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
               {/* Sidebar Toggle (Topbar) */}
               <button
                 id="sidebarToggleTop"
-                className="btn btn-link d-md-none rounded-circle mr-3">
+                onClick={toggleSidebar}
+                className="mx-2 d-block d-lg-none"
+                style={{
+                  display: "flex",
+                  JustifyContent: "center",
+                  alignItems: "center",
+                  border: "none",
+                  backgroundColor: "#fff",
+                  color: "#266CB2",
+                  fontSize: "20px",
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                }}>
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
               <ul className="navbar-nav ml-auto">
                 <div className="topbar-divider d-none d-sm-block" />
                 {/* Nav Item - User Information */}
-                <div className="nav-item dropdown no-arrow">
-                  <Dropdown show={isDropdownOpen} onToggle={toggleDropdown}>
-                    <Dropdown.Toggle variant="white">
-                      <span className="mr-2 d-none d-lg-inline text-black">
-                        Ce Iis
-                      </span>
-                      <img
-                        alt=""
-                        className="img-profile rounded-circle"
-                        src="../../admin/profil.png"
-                      />
-                    </Dropdown.Toggle>
-                    {/* Dropdown - User Information */}
-                    <Dropdown.Menu className="dropdown-menu-right shadow animated--grow-in">
-                      <Dropdown.Item href="#">
-                        <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
-                        Profile
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#">
-                        <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
-                        Settings
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#">
-                        <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
-                        Activity Log
-                      </Dropdown.Item>
-                      <Dropdown.Divider />
-                      <Dropdown.Item
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#logoutModal">
-                        <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
-                        Logout
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+
+                <div className="nav-item ">
+                  <Row className="d-flex align-content-end">
+                    <Col xs="3" className="d-flex align-content-right">
+                      <img src={profil} alt="logo" className="icon_profile" />
+                    </Col>
+                    <Col xs="8" className="mt-1 ms-1">
+                      <Row>
+                        <span className="header_profile d-none d-lg-inline text-left ">
+                          Asep Sutrisno
+                        </span>
+                      </Row>
+                      <Row>
+                        <span className="sub-header_profile d-none d-lg-inline text-left ">
+                          Koordinator
+                        </span>
+                      </Row>
+                    </Col>
+                  </Row>
                 </div>
               </ul>
             </nav>
-            {/* End of Topbar */}
-            {/* Begin Page Content */}
             <div className="container-fluid" id="beranda">
               {/* Area Chart PRESENSI PULANG HARI INI*/}
               <div className="card shadow mb-4">
@@ -121,7 +139,7 @@ const DataIzin = () => {
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
-                    tableStyle={{ textAlign: "center" }}
+                    tableStyle={{ minWidth: "50rem", textAlign: "center" }}
                     className="customDataTable" // Add a custom class for more styling options
                     paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                     <Column
@@ -131,22 +149,22 @@ const DataIzin = () => {
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
-                      style={{ width: "11%" }}
+                      style={{ width: "14%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
-                      style={{ width: "11%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
-                      style={{ width: "15%" }}
+                      style={{ width: "20%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "11%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="file"
@@ -167,24 +185,17 @@ const DataIzin = () => {
                       style={{ width: "10%" }}
                       alignHeader={"center"}></Column>
                     <Column
-                      field="alasan"
-                      header="Alasan"
-                      style={{ width: "15%" }}
-                      alignHeader={"center"}></Column>
-                    <Column
                       field="ket"
                       header="Ket"
-                      style={{ width: "15%" }}
+                      style={{ width: "16%" }}
                       alignHeader={"center"}></Column>
                   </DataTable>
                 </div>
               </div>
               {/* Content Row */}
             </div>
-            {/* /.container-fluid */}
           </div>
-          {/* End of Main Content */}
-          {/* Footer */}
+
           <footer className="sticky-footer bg-white">
             <div className="container my-auto">
               <div className="copyright text-center my-auto">
@@ -192,11 +203,8 @@ const DataIzin = () => {
               </div>
             </div>
           </footer>
-          {/* End of Footer */}
         </div>
-        {/* End of Content Wrapper */}
       </div>
-      {/* End of Page Wrapper */}
     </>
   );
 };
