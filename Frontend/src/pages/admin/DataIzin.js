@@ -149,22 +149,22 @@ const DataIzin = () => {
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
-                      style={{ width: "11%" }}
+                      style={{ width: "14%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
-                      style={{ width: "11%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
-                      style={{ width: "15%" }}
+                      style={{ width: "20%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "11%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="file"
@@ -185,14 +185,9 @@ const DataIzin = () => {
                       style={{ width: "10%" }}
                       alignHeader={"center"}></Column>
                     <Column
-                      field="alasan"
-                      header="Alasan"
-                      style={{ width: "15%" }}
-                      alignHeader={"center"}></Column>
-                    <Column
                       field="ket"
                       header="Ket"
-                      style={{ width: "15%" }}
+                      style={{ width: "16%" }}
                       alignHeader={"center"}></Column>
                   </DataTable>
                 </div>

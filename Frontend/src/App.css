@@ -414,6 +414,53 @@ body {
   margin-left: auto;
 }
 
+/* DROPDWON PROFILE CSS */
+
+.dropdown-toggle {
+  background: transparent !important;
+  border: none !important;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  /* border: none !important; */
+}
+
+.profileakun {
+  margin-right: 30px;
+}
+
+.centered-text {
+  text-align: center;
+  font-family: "Karla" sans-serif;
+  font-size: 16x;
+}
+
+.dropdown-toggle::after {
+  content: none !important; /* Menghilangkan icon dropdown */
+}
+
+.btn-pro {
+  padding: 5px 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: #eef6fa;
+  color: #266cb2;
+  font-family: "Karla" sans-serif;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.btn-log {
+  padding: 5px 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: #fdd4d4;
+  color: #ac1616;
+  font-family: "Karla" sans-serif;
+  font-size: 13px;
+}
+
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */
@@ -858,4 +905,200 @@ body {
 
 .admin-sidebar ul li {
   margin-top: 1px;
+}
+
+/* Home CSS */
+.header-rumah {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-rumah img {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-rumah-logo {
+  width: 176px;
+  height: 63px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.content-rumah {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 35px;
+  margin-top: 2px;
+  justify-content: space-between;
+}
+
+.form-content-rumah {
+  width: 40%;
+  height: 100%;
+  margin-right: 15px;
+}
+
+.sub-content-rumah-1 {
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  padding: 20px 35px;
+  text-align: center;
+}
+.sub-content-rumah-1 h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.sub-content-rumah-1 p {
+  font-family: poppins;
+  margin-top: 20px;
+}
+
+.sub-content-rumah-2 {
+  margin-top: 30px;
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 35px;
+}
+
+.sub-content-rumah-2 button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 2px solid #ffffff;
+  color: #fff;
+  /* font-size: 20px; */
+  font-weight: 600;
+  font-family: poppins;
+  font-size: large;
+}
+
+.image-content {
+  width: 60%;
+  height: 100%;
+  margin-left: 15px;
+}
+
+.sub-content-rumah-3-index {
+  /* margin-top: 10px; */
+  height: 100%;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 35px;
+}
+
+.sub-content-rumah-3-index img {
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS PRESENSI MASUK */
+
+.sub-content-rumah-3 {
+  /* margin-top: 10px; */
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 35px;
+}
+
+.sub-content-rumah-3 img {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-content-rumah-3 .container {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.header-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #1c711b;
+}
+
+.header-content p {
+  font-family: poppins;
+}
+
+.header-content h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.border-sub-content {
+  border: 1px solid #266cb2;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.form-content {
+  color: #266cb2;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-done-working {
+  display: flex;
+  width: 180px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #d0ffcf;
+  border: none;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #1c711b;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+.btn-done-working:hover {
+  background-color: #acffaa;
+  color: #1c711b;
+}
+
+.border-sub-content label {
+  color: #266cb2;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
 }

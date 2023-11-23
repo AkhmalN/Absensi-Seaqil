@@ -21,7 +21,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
 import { useMediaQuery } from "@react-hook/media-query";
 
-const Dashboard = () => {
+const Pengajuan = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
   const isMediumScreen = useMediaQuery(
     "(max-width: 992px) and (min-width: 768px)"
@@ -45,13 +45,31 @@ const Dashboard = () => {
   const [showAlertApprove, setShowAlertApprove] = useState(false);
 
   const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
+  const handleShowDelete = () => {
+    setShowDelete(true);
+  };
 
   const handleCloseAlertDelete = () => setShowAlertDelete(false);
-  const handleShowAlertDelete = () => setShowAlertDelete(true);
+  const handleShowAlertDelete = () => {
+    setShowAlertDelete(true);
+    setTimeout(() => {
+      setShowAlertDelete(false);
+    }, 2000);
+  };
 
   const handleCloseAlertApprove = () => setShowAlertApprove(false);
-  const handleShowAlertApprove = () => setShowAlertApprove(true);
+  const handleShowAlertApprove = () => {
+    setShowAlertApprove(true);
+    setTimeout(() => {
+      setShowAlertApprove(false);
+    }, 2000);
+  };
+
+  const ButtonYakin = () => {
+    // Memanggil kedua aksi secara bersamaan
+    handleCloseDelete();
+    handleShowAlertDelete();
+  };
   return (
     <>
       <div id="wrapper">
@@ -140,9 +158,7 @@ const Dashboard = () => {
                     onClick={handleCloseDelete}>
                     Batal
                   </button>
-                  <button
-                    className="decline ms-2"
-                    onClick={handleShowAlertDelete}>
+                  <button className="decline ms-2" onClick={ButtonYakin}>
                     Yakin
                   </button>
                 </div>
@@ -224,17 +240,17 @@ const Dashboard = () => {
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
-                      style={{ width: "13%" }}
+                      style={{ width: "14%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
-                      style={{ width: "15%" }}
+                      style={{ width: "12%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
-                      style={{ width: "15%" }}
+                      style={{ width: "20%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="div"
@@ -244,7 +260,7 @@ const Dashboard = () => {
                     <Column
                       field="file"
                       header="File"
-                      style={{ width: "12%" }}
+                      style={{ width: "9%" }}
                       alignHeader={"center"}
                       body={(rowData) => (
                         <div>
@@ -258,12 +274,12 @@ const Dashboard = () => {
                     <Column
                       field="stat_i"
                       header="Status"
-                      style={{ width: "12%" }}
+                      style={{ width: "10%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="aksi"
                       header="Aksi"
-                      style={{ width: "15%" }}
+                      style={{ width: "16%" }}
                       alignHeader={"center"}
                       body={(rowData) => (
                         <div
@@ -310,4 +326,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Pengajuan;
