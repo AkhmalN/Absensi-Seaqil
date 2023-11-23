@@ -225,53 +225,7 @@ body {
   margin-left: auto;
 }
 
-<<<<<<< HEAD
-/* form masuk kerja */
-.app-container {
-  background: #fff; /* Ganti dengan path gambar yang diinginkan */
-  color: #fff;
-  height: 400px;
-  border-radius: 10px;
-  margin: 20px 40px 0px px;
-  padding-top: 0px;
-  padding-bottom: 50px;
-}
-.blur-bg {
-  border-radius: 10px;
-  border: 2px solid var(--Biru-Muda-BANGET, #eef6fa);
-  background: rgba(191, 191, 191, 0.2);
-  backdrop-filter: blur(45px);
-  margin-top: 100px;
-  padding-top: 25px;
-  margin-left: 100px;
-  height: 450px;
-  margin-right: 50px;
-  width: 1200px;
-}
-.button-keluar {
-  margin-left: 300px;
-  padding-top: 5px;
-  margin-right: 30px;
-}
-.header-data {
-  background-color: #266cb2;
-  padding: 20px 0px 10px 0px;
-  margin-bottom: 1px;
-  text-align: top;
-  text-align: center;
-}
-.Teks1 {
-  font-size: 32px;
-  font-family: poppins;
-  margin-bottom: 1px;
-  padding: 20px 0px 10px 0px;
-}
-
-/**ADMIN CSS**/
-
-=======
 /*ADMIN CSS*/
->>>>>>> e708e40341a723f1b1e852faa15154cebff5b3f7
 .admin-bg {
   background-color: #ffffff;
 }

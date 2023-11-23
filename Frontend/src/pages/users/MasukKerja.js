@@ -73,20 +73,17 @@ class MasukKerja extends Component {
             <div className="second-row">
               <button
                 className="btn btn-primary"
-                style={{ borderWidth: 2, borderColor: "white" }}
-              >
+                style={{ borderWidth: 2, borderColor: "white" }}>
                 Masuk Kerja
               </button>
               <button
                 className="btn btn-primary"
-                style={{ borderWidth: 2, borderColor: "white" }}
-              >
+                style={{ borderWidth: 2, borderColor: "white" }}>
                 Izin Kerja
               </button>
               <button
                 className="btn btn-primary"
-                style={{ borderWidth: 2, borderColor: "white" }}
-              >
+                style={{ borderWidth: 2, borderColor: "white" }}>
                 Telat Kerja
               </button>
             </div>
@@ -119,8 +116,7 @@ class MasukKerja extends Component {
                         fontSize: 10,
                         color: "white",
                         // textTransform: "uppercase",
-                      }}
-                    >
+                      }}>
                       Tekan Cancel untuk ambil ulang
                     </p>
                   </div>
@@ -129,18 +125,15 @@ class MasukKerja extends Component {
               <div className="camera-button">
                 <button
                   className="btn btn-danger"
-                  onClick={this.handleCancelButtonClick}
-                >
+                  onClick={this.handleCancelButtonClick}>
                   Cancel
                 </button>
                 <button
                   className="btn btn-light"
-                  onClick={this.handleCaptureButtonClick}
-                ></button>
+                  onClick={this.handleCaptureButtonClick}></button>
                 <button
                   className="btn btn-primary"
-                  onClick={this.handleUploadButtonClick}
-                >
+                  onClick={this.handleUploadButtonClick}>
                   Upload
                 </button>
               </div>
