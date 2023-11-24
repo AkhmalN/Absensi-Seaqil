@@ -14,8 +14,7 @@ body {
 
 /* =============== FORM IZIN =================== */
 .formIzin {
-  width: 500px;
-  padding: 20px 50px;
+  padding: 20px;
   border: 1px solid #fff;
   border-radius: 10px;
 }

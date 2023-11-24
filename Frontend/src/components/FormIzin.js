@@ -1,43 +1,45 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Container, Form, Row } from "react-bootstrap";
 import "../App.css";
 import { useState } from "react";
 import InfoAlert from "./InfoAlert";
 
 function FormIzin() {
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShow(true)
   const handleClose = () => setShow(false);
 
   return (
     <>
-      <Form className="formIzin d-grid">
-        <Form.Group className="mb-3">
-          <Form.Label>Tipe Pengajuan :</Form.Label>
-          <Form.Select aria-label="Default select example" required>
-            <option>Pilih</option>
-            <option value="Izin">Izin</option>
-            <option value="Sakit">Sakit</option>
-            <option value="Perjalanan Dinas">Perjalanan Dinas</option>
-            <option value="Lainnya">Lainnya</option>
-          </Form.Select>
-        </Form.Group>
+      <Container fluid="md" className="formIzin">
+        <Form>
+          <Form.Group as={Row} className="mb-3">
+            <Form.Label>Tipe Pengajuan :</Form.Label>
+            <Form.Select>
+              <option>Pilih</option>
+              <option value="izin">Izin</option>
+              <option value="sakit">Sakit</option>
+              <option value="perjalanan dinas">Perjalanan Dinas</option>
+              <option value="lainnya">Lainnya</option>
+            </Form.Select>
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Tanggal :</Form.Label>
-          <Form.Control type="date" required />
-        </Form.Group>
+          <Form.Group as={Row} className="mb-3">
+            <Form.Label>Tanggal :</Form.Label>
+            <Form.Control type="date" />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>File :</Form.Label>
-          <Form.Control type="file" required >
-          {/* <FontAwesomeIcon icon="fa-solid fa-file-pdf" /> */}
-          </Form.Control>
-        </Form.Group>
+          <Form.Group as={Row} className="mb-4">
+            <Form.Label>File :</Form.Label>
+            <Form.Control type="file" />
+          </Form.Group>
 
-        <Button size="lg" onClick={handleShow} dismissible>
-          SUBMIT
-        </Button>
-      </Form>
+          <div className="d-grid">
+            <Button onClick={handleShow} className="d-grid">
+              <strong>SUBMIT</strong>
+            </Button>
+          </div>
+        </Form>
+      </Container>
 
       <InfoAlert
         show={show}
