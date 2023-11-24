@@ -2,6 +2,7 @@ import React from "react";
 import "../../App.css";
 import akun from "../../assets/Users/akun.png";
 import logo from "../../assets/Users/Logo SEAQIL 1 1.png";
+
 function presensi_masuk() {
   return (
     <div className="presensi_masuk">
@@ -191,7 +192,7 @@ function presensi_masuk() {
                     <div className="row py-1">
                       <div class="mb-3">
                         <label for="IDKegiatan" class="form-label">
-                          ID Kegiatan
+                          Presensi Masuk
                         </label>
                         <input
                           type="text"
@@ -202,7 +203,7 @@ function presensi_masuk() {
                       </div>
                       <div class="mb-3">
                         <label for="pres_masuk" class="form-label">
-                          Presensi Masuk
+                          ID Kegiatan
                         </label>
                         <input
                           type="text"
@@ -215,7 +216,7 @@ function presensi_masuk() {
                     <div className="row py-2">
                       <div class="mb-3">
                         <label for="div" class="form-label">
-                          Divisi
+                          Presensi Selesai
                         </label>
                         <input
                           type="text"
@@ -226,7 +227,7 @@ function presensi_masuk() {
                       </div>
                       <div class="mb-3">
                         <label for="pres_pulang" class="form-label">
-                          Presensi Pulang
+                          ID Kegiatan
                         </label>
                         <input
                           type="text"
