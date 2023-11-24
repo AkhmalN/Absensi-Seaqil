@@ -17,6 +17,8 @@ import selesai_bekerja from "./pages/users/selesai_bekerja";
 import FormTelatKerja from "./components/FormTelatKerja";
 import kerja_masuk from "./pages/users/kerja_masuk";
 import Beranda from "./pages/users/beranda";
+import Login from "./pages/users/Login";
+import Home from "./pages/users/Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
