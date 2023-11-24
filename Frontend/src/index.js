@@ -15,10 +15,11 @@ import DataMahasiswa from "./pages/admin/DataMahasiswa";
 import DataIzin from "./pages/admin/DataIzin";
 import formmasukkerja from "./components/FormMasukKerja";
 import Laporan from "./pages/admin/Laporan";
-import rumah from "./pages/users/rumah";
 import presensi_masuk from "./pages/users/presensi_masuk";
 import selesai_bekerja from "./pages/users/selesai_bekerja";
 import FormTelatKerja from "./components/FormTelatKerja";
+import kerja_masuk from "./pages/users/kerja_masuk";
+import Beranda from "./pages/users/beranda";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -36,9 +37,10 @@ root.render(
       <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />
       <Route path="/rekap_presensi" Component={RekapPresensi} />
-      <Route path="/rumah" Component={rumah} />
+      <Route path="/beranda" Component={Beranda} />
       <Route path="/presensi_masuk" Component={presensi_masuk} />
       <Route path="/selesai_bekerja" Component={selesai_bekerja} />
+      <Route path="/kerja_masuk" Component={kerja_masuk} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
       <Route path="/dashboard/form_telat_kerja" Component={FormTelatKerja} />
       {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}

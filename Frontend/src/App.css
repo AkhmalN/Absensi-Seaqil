@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
 body {
-  background-image: linear-gradient(to right bottom, #266cb2, #748cc5, #a8b0d7, #d6d6eb, #ffffff);
+  background-image: linear-gradient(
+    to right bottom,
+    #266cb2,
+    #748cc5,
+    #a8b0d7,
+    #d6d6eb,
+    #ffffff
+  );
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -391,8 +398,9 @@ body {
 }
 
 .camera {
-  width: 47%;
-  height: 100%;
+  display: flex;
+  width: 55%;
+  height: 80%;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
@@ -403,7 +411,9 @@ body {
 .camera-title {
   align-items: center;
   justify-content: center;
-  padding: 20px 35px;
+  padding: 0px 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .camera .webcam {
@@ -418,11 +428,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 20px;
-}
-
-.camera-button button {
-  border: 2px solid #ffffff;
+  margin-top: 5px;
 }
 
 .camera-button button:nth-child(2) {
@@ -1192,4 +1198,207 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
+}
+
+.cancel-cam-btn {
+  display: flex;
+  width: 75.83px;
+  height: 44px;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-color: #fdd4d4;
+  color: #ac1616;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  border: none;
+}
+
+.cancel-cam-btn:hover {
+  background-color: #ffb5b5;
+  color: #ac1616;
+}
+
+.upload-cam-button {
+  display: flex;
+  width: 75.83px;
+  height: 44px;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-color: #eef6fa;
+  color: #266cb2;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  border: none;
+}
+
+.upload-cam-button:hover {
+  background-color: #d8effa;
+  color: #266cb2;
+}
+
+/* IC CSS FOR HP */
+.hp {
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+}
+.hp-2 {
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  padding: 0px 20px;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+.hp-2 h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.hp-2 p {
+  font-family: poppins;
+  margin-top: 16px;
+}
+
+.hp-1 {
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.hp-1 button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 2px solid #ffffff;
+  color: #fff;
+  /* font-size: 20px; */
+  font-weight: 600;
+  font-family: poppins;
+  font-size: 16px;
+}
+
+.hp-camera {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.hp-camera-title {
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.hp-camera .webcam {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+}
+
+.hp-camera .camera-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.hp-camera-button button:nth-child(2) {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #dfdfdf;
+}
+
+.hp-sub-content-rumah-3 {
+  /* margin-top: 10px; */
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  color: white;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hp-sub-content-rumah-3 .container {
+  background-color: white;
+  border-radius: 20px;
+  padding-bottom: 3px;
+}
+
+.hp-header-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #1c711b;
+}
+
+.hp-header-content p {
+  font-family: poppins;
+  margin-top: 2px;
+}
+
+.hp-header-content h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.hp-border-sub-content {
+  border: 1px solid #266cb2;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.hp-border-sub-content label {
+  color: #266cb2;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.hp-button button {
+  margin-bottom: 10px;
 }
