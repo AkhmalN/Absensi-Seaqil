@@ -1,4 +1,8 @@
 import React from "react";
+// import "react-date-range/dist/styles.css"; // main css file
+// import "react-date-range/dist/theme/default.css"; // theme css file
+// import { addDays } from "date-fns";
+// import { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
 import { useState } from "react";
@@ -36,6 +40,13 @@ const Laporan = () => {
   const toggleSidebar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
+  // const [state, setState] = useState([
+  //   {
+  //     startDate: new Date(),
+  //     endDate: addDays(new Date(), 7),
+  //     key: "selection",
+  //   },
+  // ]);
   return (
     <>
       <div id="wrapper">
@@ -116,6 +127,15 @@ const Laporan = () => {
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
+                  {/* <DateRangePicker
+                    onChange={(item) => setState([item.selection])}
+                    showSelectionPreview={true}
+                    moveRangeOnFirstSelection={false}
+                    months={2}
+                    ranges={state}
+                    direction="horizontal"
+                  /> */}
+                  ;
                   {/* <div className="date-picker-container">
                     <DatePicker
                       selected={selectedDate}
