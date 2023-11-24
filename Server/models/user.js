@@ -5,15 +5,20 @@ const userSchema = new mongoose.Schema(
     userId: {
       type: mongoose.Schema.Types.ObjectId,
     },
+    Id_Kegiatan: {
+      type: Number,
+      required: true,
+    },
+    shift: {
+      type: String,
+    },
     username: {
       type: String,
       required: true,
-      unique: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,
     },
     password: {
       type: String,
@@ -23,11 +28,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    divisi: {
-      type: String,
-      required: true,
-    },
-    images: [String],
+    images: { type: String },
   },
   { timestamps: true }
 );
