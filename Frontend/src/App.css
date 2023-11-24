@@ -42,19 +42,21 @@ body {
 
 /* Login CSS */
 
+* {
+  box-sizing: border-box;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  /* font-size: 30px; */
+  /* text-align: center; */
+}
+
 .content {
   align-items: center;
   justify-content: center;
-  padding: 20px 35px;
-}
-
-.form-content {
-  display: block;
-  margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  height: 100%;
+  padding: 20px 0px;
 }
 
 .row-login {
@@ -63,9 +65,82 @@ body {
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
   color: white;
-  padding: 20px 35px;
+  padding: 20px;
   text-align: center;
-  width: 50%;
+  width: 200%;
+}
+/* Smartphone 1 */
+
+@media (max-width: 646px) {
+  .form-content {
+    margin-top: 50px;
+  }
+
+  .flex-item-left {
+    padding: 10px;
+    flex: 5%;
+  }
+
+  .flex-item-center {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 5%;
+  }
+}
+/* Smartphone 2*/
+@media (min-width: 646px) and (max-width: 767px) {
+  .flex-item-left {
+    padding: 10px;
+    flex: 20%;
+  }
+
+  .flex-item-center {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 20%;
+  }
+}
+/* Tablet */
+@media (min-width: 767px) and (max-width: 1199px) {
+  .flex-item-left {
+    padding: 10px;
+    flex: 65%;
+  }
+
+  .flex-item-center {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 65%;
+  }
+}
+/* PC */
+@media (min-width: 1199px) {
+  .flex-item-left {
+    padding: 10px;
+    flex: 100%;
+  }
+
+  .flex-item-center {
+    padding: 10px 0px;
+    flex: 100%;
+  }
+
+  .flex-item-right {
+    padding: 10px;
+    flex: 100%;
+  }
 }
 
 .row-login h4 {
@@ -261,7 +336,7 @@ body {
   display: flex;
   flex-direction: row;
   padding: 20px 35px;
-  margin-top: 10px;
+  margin-top: 30px;
   justify-content: space-between;
 }
 
@@ -385,10 +460,7 @@ body {
   background: rgba(191, 191, 191, 0.2);
   backdrop-filter: blur(45px);
   padding-top: 15px;
-  margin-left: 60px;
-  margin-right: 60px;
-  /* width: 1200px;
-  height: 560px; */
+  margin: 0px 100px 0px 100px;
 }
 
 .yellow-tag {
@@ -421,7 +493,7 @@ body {
   margin-left: auto;
 }
 
-/* DROPDWON PROFILE CSS */
+/* DROPDOWN PROFILE CSS */
 
 .dropdown-toggle {
   background: transparent !important;
@@ -433,21 +505,48 @@ body {
   /* border: none !important; */
 }
 
-.profileakun {
+.header__title {
   margin-right: 30px;
+}
+
+.name-centered-text {
+  text-align: center;
+  font-family: "Karla" sans-serif;
+  font-size: 16x;
+  /* font-style: normal; */
+  font-weight: 700;
 }
 
 .centered-text {
   text-align: center;
   font-family: "Karla" sans-serif;
   font-size: 16x;
+  color: #8f8f8f;
 }
 
 .dropdown-toggle::after {
   content: none !important; /* Menghilangkan icon dropdown */
 }
 
-.btn-pro {
+.text-link {
+  color: #000;
+  text-decoration: none;
+  padding: 0px 0px 10px 10px;
+}
+
+.text-link:hover {
+  color: #000; /* Warna teks saat di hover */
+}
+
+.text-link-yakin {
+  text-decoration: none;
+}
+
+.text-link-yakin:hover {
+  text-decoration: none;
+}
+
+/* .btn-pro {
   padding: 5px 5px;
   border-radius: 8px;
   border: none;
@@ -456,9 +555,12 @@ body {
   font-family: "Karla" sans-serif;
   font-size: 13px;
   margin-bottom: 10px;
-}
+} */
 
 .btn-log {
+  margin-top: 20px;
+  /* display: flex; */
+  width: 140px;
   padding: 5px 5px;
   border-radius: 8px;
   border: none;
@@ -507,6 +609,15 @@ body {
   font-family: poppins;
   margin-bottom: 1px;
   padding: 20px 0px 10px 0px;
+}
+
+/**Telat Kerja**/
+.header-data1 {
+  background-color: #ac1616;
+  padding: 20px 0px 10px 0px;
+  margin-bottom: 1px;
+  text-align: top;
+  text-align: center;
 }
 
 /**ADMIN CSS**/
@@ -1048,6 +1159,15 @@ body {
   border-radius: 20px;
 }
 
+.header-content1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #ac1616;
+}
+
 .header-content {
   justify-content: center;
   align-items: center;
@@ -1059,6 +1179,8 @@ body {
 
 .header-content p {
   font-family: poppins;
+  padding-top: 1px;
+  font-weight: bold;
 }
 
 .header-content h4 {
@@ -1079,7 +1201,7 @@ body {
   justify-content: center;
 }
 
-.btn-done-working {
+.button-center {
   display: flex;
   width: 180px;
   padding: 10px;
@@ -1095,6 +1217,7 @@ body {
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: bold;
+  margin-left: 300px;
 }
 .btn-done-working:hover {
   background-color: #acffaa;
@@ -1109,3 +1232,5 @@ body {
   font-weight: 600;
   line-height: 20px;
 }
+
+/* Responsive*/
