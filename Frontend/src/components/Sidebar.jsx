@@ -40,7 +40,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
             <FontAwesomeIcon icon={isSideBarOpen ? faBars : faAngleLeft} />
           </Link>
         </li>
-        <li className="nav-item active">
+        <li className="nav-item">
           <Link to="/dashboard" className="nav-link">
             <FontAwesomeIcon icon={faHouse} />
             <span className="ms-2">Beranda</span>
@@ -99,7 +99,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
         {/* Divider */}
         <hr className="sidebar-divider d-none d-md-block text-white" />
         <li className="nav-item">
-          <Link to="/dashboard/laporan" className="nav-link" href="charts.html">
+          <Link to="/login" className="nav-link">
             <FontAwesomeIcon icon={faArrowRightToBracket} />
             <span className="ms-2">Keluar</span>
           </Link>
