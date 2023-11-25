@@ -24,38 +24,16 @@ body {
   height: auto; /* Add a fixed height for the sidebar */
 }
 
-/* =============== FORM IZIN =================== */
-.formIzin {
-  padding: 20px;
-  border: 1px solid #fff;
-  border-radius: 10px;
-}
-
 .formIzin .form-control,
-.formIzin .form-control:focus,
-.formIzin .form-select {
+.formIzin .form-select,
+.formIzin .form-select option {
   border: 1px solid #fff;
   background-color: transparent;
 }
 
 .formIzin .form-label,
-.formIzin .form-select,
-.formIzin button {
+.formIzin .form-select {
   color: #fff;
-}
-
-.formIzin .form-select option {
-  color: black !important;
-}
-
-.formIzin button {
-  background-color: #266cb2;
-}
-
-.formIzin button:hover {
-  color: #266cb2;
-  border: 1px solid #266cb2;
-  background-color: transparent;
 }
 
 .modalIzin p {
@@ -79,6 +57,15 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px 0px;
+}
+
+.form-content {
+  /* display: block; */
+  margin-top: 100px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
+  height: 100%;
 }
 
 .row-login {
@@ -358,7 +345,7 @@ body {
   display: flex;
   flex-direction: row;
   padding: 20px 35px;
-  margin-top: 30px;
+  margin-top: 10px;
   justify-content: space-between;
 }
 
@@ -481,7 +468,10 @@ body {
   background: rgba(191, 191, 191, 0.2);
   backdrop-filter: blur(45px);
   padding-top: 15px;
-  margin: 0px 100px 0px 100px;
+  margin-left: 60px;
+  margin-right: 60px;
+  /* width: 1200px;
+  height: 560px; */
 }
 
 .yellow-tag {
@@ -514,7 +504,7 @@ body {
   margin-left: auto;
 }
 
-/* DROPDOWN PROFILE CSS */
+/* DROPDWON PROFILE CSS */
 
 .dropdown-toggle {
   background: transparent !important;
@@ -526,48 +516,21 @@ body {
   /* border: none !important; */
 }
 
-.header__title {
+.profileakun {
   margin-right: 30px;
-}
-
-.name-centered-text {
-  text-align: center;
-  font-family: "Karla" sans-serif;
-  font-size: 16x;
-  /* font-style: normal; */
-  font-weight: 700;
 }
 
 .centered-text {
   text-align: center;
   font-family: "Karla" sans-serif;
   font-size: 16x;
-  color: #8f8f8f;
 }
 
 .dropdown-toggle::after {
   content: none !important; /* Menghilangkan icon dropdown */
 }
 
-.text-link {
-  color: #000;
-  text-decoration: none;
-  padding: 0px 0px 10px 10px;
-}
-
-.text-link:hover {
-  color: #000; /* Warna teks saat di hover */
-}
-
-.text-link-yakin {
-  text-decoration: none;
-}
-
-.text-link-yakin:hover {
-  text-decoration: none;
-}
-
-/* .btn-pro {
+.btn-pro {
   padding: 5px 5px;
   border-radius: 8px;
   border: none;
@@ -576,12 +539,9 @@ body {
   font-family: "Karla" sans-serif;
   font-size: 13px;
   margin-bottom: 10px;
-} */
+}
 
 .btn-log {
-  margin-top: 20px;
-  /* display: flex; */
-  width: 140px;
   padding: 5px 5px;
   border-radius: 8px;
   border: none;
@@ -631,8 +591,6 @@ body {
   margin-bottom: 1px;
   padding: 20px 0px 10px 0px;
 }
-
-/**Telat Kerja**/
 .header-data1 {
   background-color: #ac1616;
   padding: 20px 0px 10px 0px;
@@ -1180,15 +1138,6 @@ body {
   border-radius: 20px;
 }
 
-.header-content1 {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  background-color: #ac1616;
-}
-
 .header-content {
   justify-content: center;
   align-items: center;
@@ -1200,8 +1149,6 @@ body {
 
 .header-content p {
   font-family: poppins;
-  padding-top: 1px;
-  font-weight: bold;
 }
 
 .header-content h4 {
@@ -1222,7 +1169,7 @@ body {
   justify-content: center;
 }
 
-.button-center {
+.btn-done-working {
   display: flex;
   width: 180px;
   padding: 10px;
@@ -1238,7 +1185,6 @@ body {
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: bold;
-  margin-left: 300px;
 }
 .btn-done-working:hover {
   background-color: #acffaa;
@@ -1252,4 +1198,207 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
+}
+
+.cancel-cam-btn {
+  display: flex;
+  width: 75.83px;
+  height: 44px;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-color: #fdd4d4;
+  color: #ac1616;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  border: none;
+}
+
+.cancel-cam-btn:hover {
+  background-color: #ffb5b5;
+  color: #ac1616;
+}
+
+.upload-cam-button {
+  display: flex;
+  width: 75.83px;
+  height: 44px;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-color: #eef6fa;
+  color: #266cb2;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  border: none;
+}
+
+.upload-cam-button:hover {
+  background-color: #d8effa;
+  color: #266cb2;
+}
+
+/* IC CSS FOR HP */
+.hp {
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+}
+.hp-2 {
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  padding: 0px 20px;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+.hp-2 h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.hp-2 p {
+  font-family: poppins;
+  margin-top: 16px;
+}
+
+.hp-1 {
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.hp-1 button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 2px solid #ffffff;
+  color: #fff;
+  /* font-size: 20px; */
+  font-weight: 600;
+  font-family: poppins;
+  font-size: 16px;
+}
+
+.hp-camera {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.hp-camera-title {
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.hp-camera .webcam {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+}
+
+.hp-camera .camera-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.hp-camera-button button:nth-child(2) {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #dfdfdf;
+}
+
+.hp-sub-content-rumah-3 {
+  /* margin-top: 10px; */
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(176, 176, 176, 0.17);
+  color: white;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hp-sub-content-rumah-3 .container {
+  background-color: white;
+  border-radius: 20px;
+  padding-bottom: 3px;
+}
+
+.hp-header-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #1c711b;
+}
+
+.hp-header-content p {
+  font-family: poppins;
+  margin-top: 2px;
+}
+
+.hp-header-content h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.hp-border-sub-content {
+  border: 1px solid #266cb2;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.hp-border-sub-content label {
+  color: #266cb2;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.hp-button button {
+  margin-bottom: 10px;
 }
