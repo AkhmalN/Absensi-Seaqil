@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const logPresenceSchema = new mongoose.Schema(
+const workPermitSchema = new mongoose.Schema(
   {
     id_user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -11,10 +11,6 @@ const logPresenceSchema = new mongoose.Schema(
       type: Number,
       // required: true,
     },
-    shift: {
-      type: String,
-      required: true,
-    },
     username: {
       type: String,
       required: true,
@@ -23,8 +19,16 @@ const logPresenceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    file: {
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Log_Presence", logPresenceSchema);
+export default mongoose.model("Work_Permit", workPermitSchema);

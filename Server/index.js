@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import userRouter from "./routes/user-router.js";
 import presensiRouter from "./routes/presensi-router.js";
+import izinRouter from "./routes/izin-router.js";
 const PORT = process.env.PORT || 8081;
 const app = express();
 dotenv.config();
@@ -10,8 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Middlewares
-app.use("/absensiseaqil/users", userRouter);
-app.use("/absensiseaqil/presence", presensiRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/presence", presensiRouter);
+app.use("/api/v1/work_permit", izinRouter);
 
 // Connect to MongoDB
 mongoose
