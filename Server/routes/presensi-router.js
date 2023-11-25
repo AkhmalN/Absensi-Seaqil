@@ -4,6 +4,7 @@ import {
   deletePresence,
   getPresence,
   getPresences,
+  updatePresence,
 } from "../controllers/presensi-controller.js";
 
 const router = express.Router();
@@ -11,8 +12,7 @@ const router = express.Router();
 router.post("/", createPresent);
 router.get("/", getPresences);
 router.get("/:id", getPresence);
-// router.get("/:id", getUser);
-// router.put("/:id", updateUser);
+router.put("/:id", updatePresence);
 router.delete("/:id", deletePresence);
 
 export default router;

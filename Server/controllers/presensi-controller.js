@@ -45,25 +45,31 @@ export const getPresence = async (req, res, next) => {
   }
 };
 
-// Delete Present
+// Update Presence
+
+export const updatePresence = async (req, res) => {
+  try {
+    const presence = await Presence.findByIdAndUpdate(req.params.id);
+    if (!presence) {
+      return res.status(404).json({ message: "Presensi tidak ditemukan" });
+    }
+    return res.status(201).json(presence);
+  } catch (error) {
+    return res.status(404).json({ message: "Terjadi kesalahan pada server" });
+  }
+};
+
+// Delete Presence
 export const deletePresence = async (req, res) => {
   try {
-    // const isValid = Presence.exists({ id_msib: req.params.id });
-    // console.log(isValid);
-    // if (!isValid) {
-    //   return res.status(404).json({ error: "Presence not found" });
-    // }
-
-    const presence = await Presence.findByIdAndDelete({
-      id_msib: req.params.id,
-    });
+    // ID Presence not using id User or id_msib
+    const presence = await Presence.findByIdAndDelete(req.params.id);
     if (!presence) {
-      return res.status(404).json({ error: "Presence not found" });
+      return res.status(404).json({ message: "Data Presensi tidak ditemukan" });
     }
-
     return res
       .status(201)
-      .json({ Message: `Presence ${presence.username} telah di hapus` });
+      .json({ message: `Presensi ${presence.username} telah di hapus` });
   } catch (error) {
     return res.status(404).json({ message: "Terjadi Kesalahan pada Server!" });
   }
