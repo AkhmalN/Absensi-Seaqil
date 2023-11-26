@@ -7,6 +7,7 @@ import home3 from "../../assets/Users/home3.png";
 import akun from "../../assets/Users/akun.png";
 import "../../App.css";
 import { Row, Col, Button, Form } from "react-bootstrap";
+import Webcam from "react-webcam";
 
 class Home extends Component {
   constructor(props) {
@@ -16,7 +17,10 @@ class Home extends Component {
       showFormMasukKerja: false,
       showFormIzinKerja: false,
       showFormTelatKerja: false,
+      capturedImage: null,
+      showCamera: false,
     };
+    this.webcamRef = React.createRef();
   }
 
   // Fungsi untuk mengubah gambar
@@ -47,8 +51,50 @@ class Home extends Component {
     });
   };
 
+  capture = () => {
+    const imageSrc = this.webcamRef.current.getScreenshot();
+    // Set the captured image in the state
+    this.setState({
+      capturedImage: imageSrc,
+      showCamera: false, // Hide the camera and show the captured image
+    });
+  };
+  handleCancelButtonClick = () => {
+    console.log("Cancel button clicked");
+    // Clear the captured image and show the camera again
+    this.setState({
+      capturedImage: null,
+      showCamera: true,
+    });
+  };
+
+  handleUploadButtonClick = () => {
+    this.setState({
+      showFormMasukKerja: true, // Tampilkan formulir masuk kerja
+      showCamera: false, // Sembunyikan kamera
+      capturedImage: null,
+    });
+  };
+  handleCaptureButtonClick = () => {
+    this.capture();
+  };
+
+  changeToCamera = () => {
+    // Set the captured image in the state
+    this.setState((prevState) => ({
+      showCamera: !prevState.showCamera,
+      capturedImage: null,
+
+      showFormMasukKerja: false,
+      showFormIzinKerja: false,
+      showFormTelatKerja: false,
+    }));
+  };
+
   changeToFormMasukKerja = () => {
     this.setState((prevState) => ({
+      showCamera: false,
+      capturedImage: null,
       showFormMasukKerja: !prevState.showFormMasukKerja,
       showFormIzinKerja: false,
       showFormTelatKerja: false,
@@ -56,6 +102,9 @@ class Home extends Component {
   };
   changeToFormIzinKerja = () => {
     this.setState((prevState) => ({
+      showCamera: false,
+      capturedImage: null,
+
       showFormMasukKerja: false,
       showFormIzinKerja: !prevState.showFormMasukKerja,
       showFormTelatKerja: false,
@@ -63,6 +112,9 @@ class Home extends Component {
   };
   changeToFormTelatKerja = () => {
     this.setState((prevState) => ({
+      showCamera: false,
+      capturedImage: null,
+
       showFormMasukKerja: false,
       showFormIzinKerja: false,
       showFormTelatKerja: !prevState.showFormIzinKerja,
@@ -95,7 +147,7 @@ class Home extends Component {
                 style={{ borderWidth: 2, borderColor: "white" }}
                 onMouseOver={() => this.changeImage1(home1)}
                 onMouseOut={this.resetImage}
-                onClick={this.changeToFormMasukKerja}
+                onClick={this.changeToCamera}
               >
                 Masuk Kerja
               </button>
@@ -121,6 +173,79 @@ class Home extends Component {
           </div>
 
           <div className="image-content">
+            {/* CAMERA */}
+            {this.state.showCamera && (
+              <div className="sub-content-3">
+                <div className="camera-title">
+                  <Webcam
+                    className="webcam"
+                    audio={false}
+                    ref={this.webcamRef}
+                    screenshotFormat="image/jpeg"
+                    mirrored={true}
+                  />
+                  <div className="camera-button">
+                    <button
+                      className="btn btn-danger"
+                      onClick={this.handleCancelButtonClick}
+                    >
+                      Batal
+                    </button>
+                    <button
+                      className="btn btn-light"
+                      onClick={this.handleCaptureButtonClick}
+                    ></button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={this.handleUploadButtonClick}
+                    >
+                      Upload
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+            {this.state.capturedImage && (
+              <div style={{ position: "relative", textAlign: "center" }}>
+                <img
+                  src={this.state.capturedImage}
+                  alt="Captured"
+                  className="webcam"
+                />
+                <p
+                  style={{
+                    position: "absolute",
+                    bottom: "10px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    fontSize: 10,
+                    color: "white",
+                    // textTransform: "uppercase",
+                  }}
+                >
+                  Tekan Cancel untuk ambil ulang
+                </p>
+                <div className="camera-button">
+                  <button
+                    className="btn btn-danger"
+                    onClick={this.handleCancelButtonClick}
+                  >
+                    Batal
+                  </button>
+                  <button
+                    className="btn btn-light"
+                    onClick={this.handleCaptureButtonClick}
+                  ></button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={this.handleUploadButtonClick}
+                  >
+                    Upload
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* FORM MASUK KERJA */}
             {this.state.showFormMasukKerja && (
               <div className="sub-content-3">
@@ -187,7 +312,9 @@ class Home extends Component {
               </div>
             )}
 
-            {!this.state.showFormMasukKerja &&
+            {!this.state.showCamera &&
+              !this.state.capturedImage &&
+              !this.state.showFormMasukKerja &&
               !this.state.showFormIzinKerja &&
               !this.state.showFormTelatKerja && (
                 <div className="sub-content-3">

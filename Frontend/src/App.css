@@ -422,6 +422,8 @@ body {
 }
 
 .camera-title {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0px 35px;
@@ -435,13 +437,14 @@ body {
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
   border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .camera .camera-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .camera-button button:nth-child(2) {
