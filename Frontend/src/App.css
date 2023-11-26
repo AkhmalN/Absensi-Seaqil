@@ -603,15 +603,13 @@ body {
 }
 .blur-bg {
   border-radius: 10px;
-  border: 2px solid var(--Biru-Muda-BANGET, #eef6fa);
+  /* border: 2px solid var(--Biru-Muda-BANGET, #eef6fa); */
   background: rgba(191, 191, 191, 0.2);
   backdrop-filter: blur(45px);
-  margin-top: 100px;
-  padding-top: 25px;
-  margin-left: 100px;
-  height: 450px;
-  margin-right: 50px;
-  width: 1200px;
+  /* margin-left: 100px; */
+  height: 480px;
+  /* margin-right: 50px; */
+  /* width: 1200px; */
 }
 .button-keluar {
   margin-left: 300px;

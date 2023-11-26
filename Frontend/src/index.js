@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import IzinKerja from "./pages/users/IzinKerja";
 import MasukKerja from "./pages/users/MasukKerja";
 import StatusPengajuan from "./pages/users/StatusPengajuan";
 import RekapPresensi from "./pages/users/RekapPresensi";
@@ -33,7 +32,6 @@ root.render(
       <Route path="/login" Component={Login} />
       <Route path="/home" Component={Home} />
       <Route path="/masuk_kerja" Component={MasukKerja} />
-      <Route path="/izin_kerja" Component={IzinKerja} />
       <Route path="/status_pengajuan" Component={StatusPengajuan} />
       <Route path="/rekap_presensi" Component={RekapPresensi} />
       <Route path="/beranda" Component={Beranda} />
