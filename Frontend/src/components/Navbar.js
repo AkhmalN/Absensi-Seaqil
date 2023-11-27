@@ -1,9 +1,18 @@
 import React from "react";
+import "../App.css";
+import logo from "../assets/Users/Logo SEAQIL 1 1.png";
+import DropdownProfile from "./DropdwonProfile";
 
 function Navbar() {
   return (
-    <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div style={{ marginRight: "100px", marginLeft: "100px" }}>
+      <div className="header-rumah">
+        <div className="header-rumah-logo">
+          <img src={logo} alt="logo" />
+        </div>
+        <DropdownProfile></DropdownProfile>
+      </div>
+      {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             Navbar
@@ -59,8 +68,8 @@ function Navbar() {
             </form>
           </div>
         </div>
-      </nav>
-    </>
+      </nav> */}
+    </div>
   );
 }
 

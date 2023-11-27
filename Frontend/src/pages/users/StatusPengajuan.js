@@ -1,25 +1,18 @@
 import React from "react";
-import logo from "../../assets/Users/Logo SEAQIL 1 1.png";
+// import logo from "../../assets/Users/Logo SEAQIL 1 1.png";
 import "../../App.css";
-import DropdownProfile from "../../components/DropdwonProfile";
+// import DropdownProfile from "../../components/DropdwonProfile";
 
 // import { Table } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
+import Navbar from "../../components/Navbar";
 
 function StatusPengajuan() {
   return (
     <div>
-      <div className="header-masuk">
-        <div className="header__logo">
-          <img src={logo} alt="logo" />
-        </div>
-        {/* <div className="header__title">
-          <img src={akun} alt="logo" />
-        </div> */}
-        <DropdownProfile></DropdownProfile>
-      </div>
+      <Navbar></Navbar>
       <div className="bg-blur">
         <div className="tablePengajuanIzin">
           <div className="card shadow mb-4">
