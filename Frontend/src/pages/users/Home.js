@@ -186,7 +186,7 @@ class Home extends Component {
                           Batal
                         </button>
                         <button
-                          className="btn btn-light"
+                          className="capture-btn"
                           onClick={this.handleCaptureButtonClick}></button>
                         <button
                           className="upload-cam-button"
@@ -198,38 +198,40 @@ class Home extends Component {
                   </div>
                 )}
                 {this.state.capturedImage && (
-                  <div style={{ position: "relative", textAlign: "center" }}>
-                    <img
-                      src={this.state.capturedImage}
-                      alt="Captured"
-                      className="webcam"
-                    />
-                    <p
-                      style={{
-                        position: "absolute",
-                        bottom: "10px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        fontSize: 10,
-                        color: "white",
-                        // textTransform: "uppercase",
-                      }}>
-                      Tekan Cancel untuk ambil ulang
-                    </p>
-                    <div className="camera-button">
-                      <button
-                        className="cancel-cam-btn"
-                        onClick={this.handleCancelButtonClick}>
-                        Batal
-                      </button>
-                      <button
-                        className="btn btn-light"
-                        onClick={this.handleCaptureButtonClick}></button>
-                      <button
-                        className="upload-cam-button"
-                        onClick={this.handleUploadButtonClick}>
-                        Upload
-                      </button>
+                  <div className="camera">
+                    <div className="camera-title">
+                      <img
+                        src={this.state.capturedImage}
+                        alt="Captured"
+                        className="webcam"
+                      />
+                      <p
+                        style={{
+                          position: "absolute",
+                          bottom: "150px",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          fontSize: 10,
+                          color: "white",
+                          // textTransform: "uppercase",
+                        }}>
+                        Tekan Cancel untuk ambil ulang
+                      </p>
+                      <div className="camera-button d-flex justify-content-evenly">
+                        <button
+                          className="cancel-cam-btn"
+                          onClick={this.handleCancelButtonClick}>
+                          Batal
+                        </button>
+                        <button
+                          className="capture-btn d-none"
+                          onClick={this.handleCaptureButtonClick}></button>
+                        <button
+                          className="upload-cam-button"
+                          onClick={this.handleUploadButtonClick}>
+                          Upload
+                        </button>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -247,13 +249,14 @@ class Home extends Component {
                       </div>
                       <div className="border-sub-content">
                         <div className="container p-4">
-                          <div className="row py-1">
-                            <div className="col">
+                          <div className="row py-1 d-flex justify-content-center ">
+                            <div className="col ">
                               <div class="mb-3">
                                 <label for="IDKegiatan" class="form-label">
                                   ID Kegiatan
                                 </label>
                                 <input
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -267,6 +270,7 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -282,6 +286,7 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -295,6 +300,7 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
