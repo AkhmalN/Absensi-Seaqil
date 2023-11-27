@@ -22,7 +22,9 @@ function RekapPresensi() {
             <div className="card-header-pengajuan py-3 d-flex flex-row align-items-center justify-content-center">
               <div className="header">
                 <div className="header-1">Data Presensi</div>
-                <div className="header-2">Berikut ini data presensi kamu yaa.</div>
+                <div className="header-2">
+                  Berikut ini data presensi kamu yaa.
+                </div>
               </div>
             </div>
             {/* Card Body  */}
@@ -34,12 +36,27 @@ function RekapPresensi() {
                 rowsPerPageOptions={[5, 10, 25, 30]}
                 tableStyle={{ minWidth: "50rem" }}
                 className="customDataTable" //Add a custom class for more styling options
-                paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-              >
-                <Column field="No" header="No" style={{ width: "10%" }} alignHeader={"center"}></Column>
-                <Column field="Tanggal" header="Tanggal" style={{ width: "25%" }} alignHeader={"center"}></Column>
-                <Column field="Shift" header="Shift" style={{ width: "25%" }} alignHeader={"center"}></Column>
-                <Column field="Keterangan" header="Keterangan" style={{ width: "25%" }} alignHeader={"center"}></Column>
+                paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                <Column
+                  field="No"
+                  header="No"
+                  style={{ width: "10%" }}
+                  alignHeader={"center"}></Column>
+                <Column
+                  field="Tanggal"
+                  header="Tanggal"
+                  style={{ width: "25%" }}
+                  alignHeader={"center"}></Column>
+                <Column
+                  field="Shift"
+                  header="Shift"
+                  style={{ width: "25%" }}
+                  alignHeader={"center"}></Column>
+                <Column
+                  field="Keterangan"
+                  header="Keterangan"
+                  style={{ width: "25%" }}
+                  alignHeader={"center"}></Column>
               </DataTable>
               {/* <button className="button-cetak">
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
