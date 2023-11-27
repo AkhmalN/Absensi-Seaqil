@@ -28,9 +28,9 @@ function DropdownProfile() {
   return (
     <Dropdown>
       <Dropdown.Toggle>
-        <img className="header__title" src={akun} alt="logo" />
+        <img className="" src={akun} alt="logo" />
       </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu className="dropdown-menu">
         <li className="name-centered-text">Clarance Liew</li>
         <li className="centered-text">ID 1234567</li>
         <li className="centered-text" style={{ paddingBottom: "15px" }}>

@@ -558,8 +558,7 @@ body {
 .profileakun {
   margin-right: 30px;
 }
-
-.centered-text {
+*/ .centered-text {
   text-align: center;
   font-family: "Karla" sans-serif;
   font-size: 16x;
