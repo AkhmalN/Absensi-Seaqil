@@ -179,7 +179,7 @@ class Home extends Component {
                         screenshotFormat="image/jpeg"
                         mirrored={true}
                       />
-                      <div className="camera-button d-flex justify-content-between">
+                      <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
                           onClick={this.handleCancelButtonClick}>
