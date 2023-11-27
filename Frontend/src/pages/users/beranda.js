@@ -40,7 +40,10 @@ function Beranda() {
                 </button>
                 <button
                   className="btn btn-primary"
-                  style={{ borderWidth: 2, borderColor: "white" }}>
+                  style={{ borderWidth: 2, borderColor: "white" }}
+                  onClick={() => {
+                    window.location.href = "/pengajuan_izin";
+                  }}>
                   Pengajuan Izin
                 </button>
                 <button
@@ -97,7 +100,7 @@ function Beranda() {
                     className="btn btn-primary"
                     style={{ borderWidth: 2, borderColor: "white" }}
                     onClick={() => {
-                      window.location.href = "/kerja_masuk"; // Navigasi ke laman masuk_kerja
+                      window.location.href = "/pengajuan_izin"; // Navigasi ke laman masuk_kerja
                     }}>
                     Pengajuan
                   </button>

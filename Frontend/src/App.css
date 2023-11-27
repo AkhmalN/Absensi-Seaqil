@@ -1157,6 +1157,25 @@ body {
   margin-top: 20px;
 }
 
+.header-content-izin {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #266cb2;
+}
+
+.header-content-izin p {
+  font-family: poppins;
+}
+
+.header-content-izin h4 {
+  font-family: poppins;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 .border-sub-content {
   border: 1px solid #266cb2;
   border-radius: 20px;
@@ -1401,4 +1420,26 @@ body {
 
 .hp-button button {
   margin-bottom: 10px;
+}
+
+.btn-send {
+  display: flex;
+  width: 180px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #eef6fa;
+  border: 1px solid #266cb2;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #266cb2;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+.btn-send:hover {
+  background-color: #d8effa;
+  color: #266cb2;
 }

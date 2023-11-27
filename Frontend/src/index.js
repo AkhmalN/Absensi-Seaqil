@@ -18,6 +18,7 @@ import kerja_masuk from "./pages/users/kerja_masuk";
 import Beranda from "./pages/users/beranda";
 import Login from "./pages/users/Login";
 import Home from "./pages/users/Home";
+import pengajuan_izin from "./pages/users/pengajuan_izin";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -38,6 +39,7 @@ root.render(
       <Route path="/presensi_masuk" Component={presensi_masuk} />
       <Route path="/selesai_bekerja" Component={selesai_bekerja} />
       <Route path="/kerja_masuk" Component={kerja_masuk} />
+      <Route path="/pengajuan_izin" Component={pengajuan_izin} />
       <Route path="/dashboard/form_masuk_kerja" Component={formmasukkerja} />
       <Route path="/dashboard/form_telat_kerja" Component={FormTelatKerja} />
       {/* <Route path="/dashboard/Laporan" Component={Laporan} /> */}
