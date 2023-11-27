@@ -413,16 +413,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0px 35px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .camera .webcam {
   width: 100%;
   height: 100%;
   background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
   border-radius: 20px;
   margin-bottom: 20px;
 }
@@ -1097,14 +1093,11 @@ body {
 }
 
 .sub-content-rumah-3-index {
-  /* margin-top: 10px; */
   height: 100%;
-  border-radius: 20px;
   border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 35px;
 }
 
 .sub-content-rumah-3-index img {

@@ -74,10 +74,7 @@ class kerja_masuk extends Component {
                   </button>
                   <button
                     className="btn btn-primary"
-                    style={{ borderWidth: 2, borderColor: "white" }}
-                    onClick={() => {
-                      window.location.href = "/pengajuan_izin";
-                    }}>
+                    style={{ borderWidth: 2, borderColor: "white" }}>
                     Pengajuan Izin
                   </button>
                   <button
@@ -189,7 +186,7 @@ class kerja_masuk extends Component {
                       className="btn btn-primary"
                       style={{ borderWidth: 2, borderColor: "white" }}
                       onClick={() => {
-                        window.location.href = "/pengajuan_izin";
+                        window.location.href = "/kerja_masuk"; // Navigasi ke laman masuk_kerja
                       }}>
                       Pengajuan
                     </button>
