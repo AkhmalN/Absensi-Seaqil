@@ -34,7 +34,7 @@ export const getPresences = async (req, res, next) => {
   }
 };
 
-// Read Present
+// Read Presence
 export const getPresence = async (req, res, next) => {
   try {
     // console.log(req.params);
