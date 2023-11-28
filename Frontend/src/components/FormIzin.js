@@ -17,6 +17,8 @@ function FormIzin() {
             <option>Pilih</option>
             <option value="Izin">Izin</option>
             <option value="Sakit">Sakit</option>
+            <option value="Perjalanan Dinas">Perjalanan Dinas</option>
+            <option value="LAinnya">Lainnya</option>
           </Form.Select>
         </Form.Group>
 
@@ -25,7 +27,7 @@ function FormIzin() {
           <Form.Control type="date" placeholder="Pilih Tanggal" required />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
           <Form.Label>File :</Form.Label>
           <Form.Control type="file" placeholder="Upload File" required />
         </Form.Group>
