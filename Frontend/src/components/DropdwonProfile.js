@@ -36,12 +36,6 @@ function DropdownProfile() {
         <li className="centered-text" style={{ paddingBottom: "15px" }}>
           Web Designer
         </li>
-
-        <li>
-          <Link to="/rekap_presensi" className="text-link">
-            Rekap Presensi
-          </Link>
-        </li>
         <li>
           <Link to="/status_pengajuan" className="text-link">
             Pengajuan Izin
@@ -52,6 +46,7 @@ function DropdownProfile() {
             Reset Password
           </Link>
         </li>
+
         {/* <li className="centered-text">
           <button className="btn-pro">Rekap Absensi</button>
         </li>

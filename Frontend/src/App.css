@@ -17,38 +17,28 @@ body {
   height: auto; /* Add a fixed height for the sidebar */
 }
 
-/* =============== FORM IZIN =================== */
 .formIzin {
-  padding: 20px;
-  border: 1px solid #fff;
-  border-radius: 10px;
+  width: 90%;
+  margin: 20px 0;
 }
 
 .formIzin .form-control,
+.formIzin .form-select,
 .formIzin .form-control:focus,
-.formIzin .form-select {
+.formIzin .form-select:focus {
   border: 1px solid #fff;
   background-color: transparent;
 }
 
 .formIzin .form-label,
 .formIzin .form-select,
-.formIzin button {
+.formIzin .form-control,
+.formIzin .form-control:focus {
   color: #fff;
 }
 
 .formIzin .form-select option {
-  color: black !important;
-}
-
-.formIzin button {
-  background-color: #266cb2;
-}
-
-.formIzin button:hover {
-  color: #266cb2;
-  border: 1px solid #266cb2;
-  background-color: transparent;
+  color: #000 !important;
 }
 
 .modalIzin p {
@@ -72,6 +62,15 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px 0px;
+}
+
+.form-content {
+  /* display: block; */
+  margin-top: 100px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
+  height: 100%;
 }
 
 .row-login {
@@ -241,7 +240,7 @@ body {
   display: flex;
   flex-direction: row;
   padding: 20px 35px;
-  margin-top: 10px;
+  margin-top: 2px;
   justify-content: space-between;
 }
 
@@ -258,7 +257,6 @@ body {
   color: white;
   padding: 20px 35px;
   text-align: center;
-  margin-bottom: 30px;
 }
 .sub-content-1 h4 {
   font-family: poppins;
@@ -272,7 +270,7 @@ body {
 }
 
 .sub-content-2 {
-  margin-top: 30px;
+  margin-top: 20px;
   height: 100%;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
@@ -287,8 +285,8 @@ body {
 .sub-content-2 button {
   margin-top: 5px;
   margin-bottom: 5px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -305,6 +303,20 @@ body {
   width: 60%;
   height: 100%;
   margin-left: 15px;
+}
+
+.homepage {
+  height: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homepage img {
+  width: 80%;
+  justify-content: center;
+  align-items: center;
 }
 
 .sub-content-3 {
@@ -326,90 +338,52 @@ body {
   align-items: center;
 }
 
-/* masuk kerja css */
-.header-masuk {
-  margin: 0%;
-  padding: 20px 35px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.header__logo {
-  width: 176px;
-  height: 63px;
+.sub-content-3 .container {
+  background-color: white;
   border-radius: 20px;
-  background-color: #fff;
 }
 
-.header__logo img {
-  width: 100%;
+.header-content {
   justify-content: center;
   align-items: center;
-}
-
-.content-1 {
-  display: flex;
-  flex-direction: row;
-  padding: 20px 35px;
-  margin-top: 30px;
-  justify-content: space-between;
-}
-
-.form-content {
-  width: 50%;
-  height: 100%;
-}
-
-.first-row {
-  border-radius: 20px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
-  color: white;
-  padding: 20px 35px;
   text-align: center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
-.first-row h3 {
+
+.header-content p {
+  font-family: poppins;
+}
+
+.header-content h4 {
   font-family: poppins;
   font-weight: bold;
-}
-
-.first-row p {
-  font-family: inter;
   margin-top: 20px;
 }
-
-.second-row {
-  margin-top: 10px;
-  height: 100%;
+.border-sub-content {
+  border: 1px solid #266cb2;
   border-radius: 20px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 35px;
+  margin-top: 15px;
 }
 
-.second-row button {
-  margin-top: 10px;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 2px solid #ffffff;
-  color: #fff;
-  font-size: 20px;
+.border-sub-content label {
+  color: #266cb2;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 600;
+  line-height: 20px;
+}
+
+.border-sub-content input {
+  border-radius: 10px;
+  background: var(--bg-button-abu, #dbdbdb);
 }
 
 .camera {
   display: flex;
-  width: 55%;
-  height: 80%;
-  border-radius: 20px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
+  width: 100%;
+  height: 100%;
   font-size: 20px;
   font-weight: 600;
 }
@@ -417,37 +391,113 @@ body {
 .camera-title {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0px 35px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .camera .webcam {
-  width: 100%;
+  width: 85%;
   height: 100%;
   background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   border-radius: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+.camera .capture {
+  width: 92%;
+  height: 100%;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #fff;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  margin-left: 50px;
 }
 
 .camera .camera-button {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 20px;
+  margin-bottom: 8px;
 }
 
-.camera-button button:nth-child(2) {
+.camera-button .capture-btn {
   border-radius: 50px;
   width: 50px;
   height: 50px;
-  border: 5px solid #dfdfdf;
+  border: 5px solid #d6d6d6;
 }
 .custom-text {
   color: #1c1d22;
+}
+
+.btn-done-working {
+  display: flex;
+  width: 180px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #d0ffcf;
+  border: none;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #1c711b;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+.btn-done-working:hover {
+  background-color: #acffaa;
+  color: #1c711b;
+}
+
+.cancel-cam-btn {
+  display: flex;
+  width: 75.83px;
+  height: 44px;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-color: #fdd4d4;
+  color: #ac1616;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  border: none;
+}
+
+.cancel-cam-btn:hover {
+  background-color: #ffb5b5;
+  color: #ac1616;
+}
+
+.upload-cam-button {
+  display: flex;
+  width: 75.83px;
+  height: 44px;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-color: #eef6fa;
+  color: #266cb2;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  border: none;
+}
+
+.upload-cam-button:hover {
+  background-color: #d8effa;
+  color: #266cb2;
 }
 
 /* STATUS PENGAJUAN CSS */
@@ -477,7 +527,8 @@ body {
   background: rgba(191, 191, 191, 0.2);
   backdrop-filter: blur(45px);
   padding-top: 15px;
-  margin: 0px 100px 0px 100px;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
 .yellow-tag {
@@ -517,9 +568,21 @@ body {
   border: none !important;
 }
 
+.dropdown-toggle:focus {
+  border: none !important;
+}
+
 .dropdown-menu {
   border-radius: 10px;
   /* border: none !important; */
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%; 
+  transform: translateY(-50%); */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* .header__title {
@@ -563,17 +626,6 @@ body {
   text-decoration: none;
 }
 
-/* .btn-pro {
-  padding: 5px 5px;
-  border-radius: 8px;
-  border: none;
-  background-color: #eef6fa;
-  color: #266cb2;
-  font-family: "Karla" sans-serif;
-  font-size: 13px;
-  margin-bottom: 10px;
-} */
-
 .btn-log {
   margin-top: 20px;
   /* display: flex; */
@@ -586,7 +638,6 @@ body {
   font-family: "Karla" sans-serif;
   font-size: 13px;
 }
-
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */
@@ -625,8 +676,6 @@ body {
   margin-bottom: 1px;
   padding: 20px 0px 10px 0px;
 }
-
-/**Telat Kerja**/
 .header-data1 {
   background-color: #ac1616;
   padding: 20px 0px 10px 0px;
@@ -634,8 +683,6 @@ body {
   text-align: top;
   text-align: center;
 }
-
-/**ADMIN CSS**/
 
 /*ADMIN CSS*/
 .admin-bg {
@@ -1040,183 +1087,9 @@ body {
   margin-top: 1px;
 }
 
-/* Home CSS */
-.header-rumah {
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+/* IC CSS FOR HP */
 
-.header-rumah img {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-rumah-logo {
-  width: 176px;
-  height: 63px;
-  border-radius: 20px;
-  background-color: #fff;
-}
-
-.content-rumah {
-  display: flex;
-  flex-direction: row;
-  padding: 20px 35px;
-  margin-top: 2px;
-  justify-content: space-between;
-}
-
-.form-content-rumah {
-  width: 40%;
-  height: 100%;
-  margin-right: 15px;
-}
-
-.sub-content-rumah-1 {
-  border-radius: 20px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
-  color: white;
-  padding: 20px 35px;
-  text-align: center;
-}
-.sub-content-rumah-1 h4 {
-  font-family: poppins;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-.sub-content-rumah-1 p {
-  font-family: poppins;
-  margin-top: 20px;
-}
-
-.sub-content-rumah-2 {
-  margin-top: 30px;
-  height: 100%;
-  border-radius: 20px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 35px;
-}
-
-.sub-content-rumah-2 button {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 2px solid #ffffff;
-  color: #fff;
-  /* font-size: 20px; */
-  font-weight: 600;
-  font-family: poppins;
-  font-size: large;
-}
-
-.image-content {
-  width: 60%;
-  height: 100%;
-  margin-left: 15px;
-}
-
-.sub-content-rumah-3-index {
-  /* margin-top: 10px; */
-  height: 100%;
-  border-radius: 20px;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 35px;
-}
-
-.sub-content-rumah-3-index img {
-  width: 80%;
-  justify-content: center;
-  align-items: center;
-}
-
-/* CSS PRESENSI MASUK */
-
-.sub-content-rumah-3 {
-  /* margin-top: 10px; */
-  height: 100%;
-  border-radius: 20px;
-  background-color: rgba(176, 176, 176, 0.17);
-  border: 1px solid #ffffff;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 35px;
-}
-
-.sub-content-rumah-3 img {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.sub-content-rumah-3 .container {
-  background-color: white;
-  border-radius: 20px;
-}
-
-.header-content1 {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  background-color: #ac1616;
-}
-
-.header-content {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  background-color: #1c711b;
-}
-
-.header-content p {
-  font-family: poppins;
-  padding-top: 1px;
-  font-weight: bold;
-}
-
-.header-content h4 {
-  font-family: poppins;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-.border-sub-content {
-  border: 1px solid #266cb2;
-  border-radius: 20px;
-  margin-top: 15px;
-}
-
-.form-content {
-  color: #266cb2;
-  align-items: center;
-  justify-content: center;
-}
-
-.button-center {
+.btn-send {
   display: flex;
   width: 180px;
   padding: 10px;
@@ -1224,26 +1097,16 @@ body {
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  background-color: #d0ffcf;
-  border: none;
+  background-color: #eef6fa;
+  border: 1px solid #266cb2;
   margin-top: 15px;
   margin-bottom: 15px;
-  color: #1c711b;
+  color: #266cb2;
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: bold;
-  margin-left: 300px;
 }
-.btn-done-working:hover {
-  background-color: #acffaa;
-  color: #1c711b;
-}
-
-.border-sub-content label {
+.btn-send:hover {
+  background-color: #d8effa;
   color: #266cb2;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
 }

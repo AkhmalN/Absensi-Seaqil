@@ -6,8 +6,8 @@ import DropdownProfile from "./DropdwonProfile";
 function Navbar() {
   return (
     <div style={{ marginRight: "100px", marginLeft: "100px" }}>
-      <div className="header-rumah">
-        <div className="header-rumah-logo">
+      <div className="header-home">
+        <div className="header-home-logo">
           <img src={logo} alt="logo" />
         </div>
         <DropdownProfile></DropdownProfile>
