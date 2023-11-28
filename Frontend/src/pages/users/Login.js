@@ -28,7 +28,6 @@ class Login extends Component {
     return (
       <>
         <div class="flex-container">
-          <div class="flex-item-left"></div>
           <div class="flex-item-center">
             <div className="content">
               <div className="form-content">
@@ -38,12 +37,29 @@ class Login extends Component {
                       <img src={LogoSEAQIL} alt="logo" />
                     </div>
                     <h4 className="">Masuk</h4>
-                    <p className="">Selamat Datang di Website Absensi Mahasiswa MSIB Magang SEAQIL</p>
+                    <p className="">
+                      Selamat Datang di Website Absensi Mahasiswa MSIB Magang
+                      SEAQIL
+                    </p>
                     <div className="form-group">
-                      <input type="text" id="username" name="username" placeholder=" Username" value={this.state.username} onChange={this.handleInputChange} />
+                      <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder=" Username"
+                        value={this.state.username}
+                        onChange={this.handleInputChange}
+                      />
                     </div>
                     <div className="form-group">
-                      <input type="password" id="password" name="password" placeholder=" Password" value={this.state.password} onChange={this.handleInputChange} />
+                      <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder=" Password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                      />
                     </div>
                     <div className="form-group">
                       <button type="submit" className="btn-login">

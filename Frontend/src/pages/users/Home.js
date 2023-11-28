@@ -459,7 +459,9 @@ class Home extends Component {
                 {/* FORM IZIN KERJA */}
                 {this.state.showFormIzinKerja && (
                   <div className="sub-content-3">
-                    <FormIzin />
+                    <div className="container">
+                      <FormIzin />
+                    </div>
                   </div>
                 )}
 
@@ -639,7 +641,7 @@ class Home extends Component {
                   !this.state.capturedImage &&
                   !this.state.showFormMasukKerja &&
                   !this.state.showFormSelesaiKerja &&
-                  !this.state.showFormIRekapPresensi &&
+                  !this.state.showFormIzinKerja &&
                   !this.state.showFormRekapPresensi &&
                   !this.state.showFormTelatKerja && (
                     <div className="homepage">

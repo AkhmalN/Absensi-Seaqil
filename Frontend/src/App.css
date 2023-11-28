@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&family=Poppins:wght@300;400;600&display=swap");
 
 body {
   background-image: linear-gradient(
@@ -23,7 +23,6 @@ body {
   transition: width 0.3s ease, left 0.3s ease;
   height: auto; /* Add a fixed height for the sidebar */
 }
-
 .formIzin .form-control,
 .formIzin .form-select,
 .formIzin .form-select option {
@@ -49,6 +48,7 @@ body {
   display: flex;
   flex-direction: row;
   height: 100%;
+  width: 30%;
   /* font-size: 30px; */
   /* text-align: center; */
 }
@@ -288,10 +288,16 @@ body {
   background-color: rgba(176, 176, 176, 0.17);
   border: 2px solid #ffffff;
   color: #fff;
-  /* font-size: 20px; */
   font-weight: 600;
   font-family: poppins;
   font-size: large;
+}
+
+.sub-content-2 button:hover {
+  background-color: #266cb2;
+}
+.sub-content-2 button:active {
+  background-color: #266cb2;
 }
 
 .image-content {
@@ -334,7 +340,6 @@ body {
 }
 
 .sub-content-3 .container {
-  background-color: white;
   border-radius: 20px;
 }
 
