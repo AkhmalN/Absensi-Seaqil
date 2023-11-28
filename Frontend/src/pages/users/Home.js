@@ -4,6 +4,7 @@ import people from "../../assets/Users/front.png";
 import akun from "../../assets/Users/akun.png";
 import "../../App.css";
 import Webcam from "react-webcam";
+import FormIzin from "../../components/FormIzin"
 
 class Home extends Component {
   constructor(props) {
@@ -409,7 +410,7 @@ class Home extends Component {
                 {/* FORM IZIN KERJA */}
                 {this.state.showFormIzinKerja && (
                   <div className="sub-content-3">
-                    <h2>Form Izin Kerja</h2>
+                    <FormIzin />
                   </div>
                 )}
 
