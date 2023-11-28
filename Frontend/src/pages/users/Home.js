@@ -4,7 +4,7 @@ import people from "../../assets/Users/front.png";
 import akun from "../../assets/Users/akun.png";
 import "../../App.css";
 import Webcam from "react-webcam";
-import FormIzin from "../../components/FormIzin"
+import FormIzin from "../../components/FormIzin";
 
 class Home extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class Home extends Component {
       showFormMasukKerja: false,
       showFormSelesaiKerja: false,
       showFormIzinKerja: false,
+      showFormRekapPresensi: false,
       showFormTelatKerja: false,
       capturedImage: null,
       showCamera: false,
@@ -80,6 +81,7 @@ class Home extends Component {
       showFormMasukKerja: false,
       showFormSelesaiKerja: false,
       showFormIzinKerja: false,
+      showFormRekapPresensi: false,
       showFormTelatKerja: false,
     }));
   };
@@ -89,6 +91,8 @@ class Home extends Component {
       showFormSelesaiKerja: true, // Tampilkan formulir masuk kerja
       showFormMasukKerja: false, //
       showFormTelatKerja: false, //
+      showFormIzinKerja: false,
+      showFormRekapPresensi: false,
       showCamera: false, // Sembunyikan kamera
       capturedImage: null,
     });
@@ -100,6 +104,8 @@ class Home extends Component {
       showFormSelesaiKerja: false, // Tampilkan formulir masuk kerja
       showFormMasukKerja: false, //
       showFormTelatKerja: false, //
+      showFormIzinKerja: false,
+      showFormRekapPresensi: false,
       showCamera: false, // Sembunyikan kamera
       capturedImage: null,
     });
@@ -112,6 +118,7 @@ class Home extends Component {
       showFormMasukKerja: !prevState.showFormMasukKerja,
       showFormSelesaiKerja: false,
       showFormIzinKerja: false,
+      showFormRekapPresensi: false,
       showFormTelatKerja: false,
     }));
   };
@@ -122,6 +129,7 @@ class Home extends Component {
       showFormMasukKerja: false,
       showFormSelesaiKerja: !prevState.showFormSelesaiKerja,
       showFormIzinKerja: false,
+      showFormRekapPresensi: false,
       showFormTelatKerja: false,
     }));
   };
@@ -133,6 +141,19 @@ class Home extends Component {
       showFormMasukKerja: false,
       showFormSelesaiKerja: false,
       showFormIzinKerja: !prevState.showFormIzinKerja,
+      showFormRekapPresensi: false,
+      showFormTelatKerja: false,
+    }));
+  };
+  changeToRekapPresensi = () => {
+    this.setState((prevState) => ({
+      showCamera: false,
+      capturedImage: null,
+
+      showFormMasukKerja: false,
+      showFormSelesaiKerja: false,
+      showFormIzinKerja: false,
+      showFormRekapPresensi: !prevState.showFormRekapPresensi,
       showFormTelatKerja: false,
     }));
   };
@@ -143,6 +164,7 @@ class Home extends Component {
       showFormMasukKerja: false,
       showFormSelesaiKerja: false,
       showFormIzinKerja: false,
+      showFormRekapPresensi: false,
       showFormTelatKerja: false,
     }));
   };
@@ -185,15 +207,12 @@ class Home extends Component {
                   onClick={this.changeToFormIzinKerja}>
                   Pengajuan Izin
                 </button>
-                {/* <button
+                <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={() => {
-                    this.setState({ currentAction: "telat" });
-                    this.changeToCamera();
-                  }}>
-                  Terlambat
-                </button> */}
+                  onClick={this.changeToRekapPresensi}>
+                  Rekap Presensi
+                </button>
               </div>
             </div>
 
@@ -528,11 +547,100 @@ class Home extends Component {
                   </div>
                 )}
 
+                {/* FORM MASUK KERJA */}
+                {this.state.showFormRekapPresensi && (
+                  <div className="sub-content-3">
+                    <div
+                      className="container"
+                      style={{ backgroundColor: "white" }}>
+                      <div
+                        className="row header-content"
+                        style={{ backgroundColor: "#1c711b" }}>
+                        <h4>Presensi Hari Ini Sudah Berhasil!</h4>
+                        <p>Selamat dan semangat bekerja ya!</p>
+                      </div>
+                      <div className="border-sub-content">
+                        <div className="container p-4">
+                          <div className="row py-1 d-flex justify-content-center ">
+                            <div className="col ">
+                              <div class="mb-3">
+                                <label for="IDKegiatan" class="form-label">
+                                  ID Kegiatan
+                                </label>
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="IDK"
+                                  aria-describedby="emailHelp"
+                                />
+                              </div>
+                            </div>
+                            <div className="col">
+                              <div class="mb-3">
+                                <label for="pres_masuk" class="form-label">
+                                  Presensi Masuk
+                                </label>
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_masuk"
+                                  aria-describedby="emailHelp"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row py-2">
+                            <div className="col">
+                              <div class="mb-3">
+                                <label for="div" class="form-label">
+                                  Divisi
+                                </label>
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="div"
+                                  aria-describedby="emailHelp"
+                                />
+                              </div>
+                            </div>
+                            <div className="col">
+                              <div class="mb-3">
+                                <label for="pres_pulang" class="form-label">
+                                  Presensi Pulang
+                                </label>
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_pulang"
+                                  aria-describedby="emailHelp"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="hp-button">
+                        <button
+                          className="btn-done-working me-2 "
+                          type="button"
+                          onClick={this.handleDoneWorkButtonClick}>
+                          Selesai Bekerja
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {!this.state.showCamera &&
                   !this.state.capturedImage &&
                   !this.state.showFormMasukKerja &&
                   !this.state.showFormSelesaiKerja &&
-                  !this.state.showFormIzinKerja &&
+                  !this.state.showFormIRekapPresensi &&
+                  !this.state.showFormRekapPresensi &&
                   !this.state.showFormTelatKerja && (
                     <div className="homepage">
                       <img src={this.state.currentImage} alt="Current Home" />
