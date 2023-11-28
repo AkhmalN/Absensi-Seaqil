@@ -36,12 +36,6 @@ function DropdownProfile() {
         <li className="centered-text" style={{ paddingBottom: "15px" }}>
           Web Designer
         </li>
-
-        <li>
-          <Link to="/rekap_presensi" className="text-link">
-            Rekap Presensi
-          </Link>
-        </li>
         <li>
           <Link to="/status_pengajuan" className="text-link">
             Pengajuan Izin
@@ -52,6 +46,7 @@ function DropdownProfile() {
             Reset Password
           </Link>
         </li>
+
         {/* <li className="centered-text">
           <button className="btn-pro">Rekap Absensi</button>
         </li>
@@ -60,20 +55,11 @@ function DropdownProfile() {
   </li>*/}
 
         {/* COBA MODAL */}
-        <Modal
-          show={showDelete}
-          onHide={handleCloseDelete}
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-          size="sm">
+        <Modal show={showDelete} onHide={handleCloseDelete} aria-labelledby="contained-modal-title-vcenter" centered size="sm">
           <Modal.Body>
             <div className="modal-header-decline text-center">PERINGATAN!</div>
-            <div className="modal-body text-center">
-              Anda yakin ingin keluar?
-            </div>
-            <div
-              className="d-flex justify-content-center mt-2"
-              style={{ border: "none" }}>
+            <div className="modal-body text-center">Anda yakin ingin keluar?</div>
+            <div className="d-flex justify-content-center mt-2" style={{ border: "none" }}>
               <button className="batal-btn me-2" onClick={handleCloseDelete}>
                 Batal
               </button>

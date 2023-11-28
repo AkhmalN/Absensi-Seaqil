@@ -1,14 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&family=Poppins:wght@300;400;600&display=swap");
 
 body {
-  background-image: linear-gradient(
-    to right bottom,
-    #266cb2,
-    #748cc5,
-    #a8b0d7,
-    #d6d6eb,
-    #ffffff
-  );
+  background-image: linear-gradient(to right bottom, #266cb2, #748cc5, #a8b0d7, #d6d6eb, #ffffff);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -331,7 +324,6 @@ body {
 
 .sub-content-3 {
   /* margin-top: 10px; */
-  width: 100%;
   height: 100%;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
@@ -539,8 +531,6 @@ body {
   padding-top: 15px;
   margin-left: 60px;
   margin-right: 60px;
-  /* width: 1200px;
-  height: 560px; */
 }
 
 .yellow-tag {
@@ -573,7 +563,6 @@ body {
   margin-left: auto;
 }
 
-/* DROPDWON PROFILE CSS */
 /* DROPDOWN PROFILE CSS */
 
 .dropdown-toggle {
@@ -581,9 +570,21 @@ body {
   border: none !important;
 }
 
+.dropdown-toggle:focus {
+  border: none !important;
+}
+
 .dropdown-menu {
   border-radius: 10px;
   /* border: none !important; */
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%; 
+  transform: translateY(-50%); */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* .header__title {
@@ -626,17 +627,6 @@ body {
 .text-link-yakin:hover {
   text-decoration: none;
 }
-
-/* .btn-pro {
-  padding: 5px 5px;
-  border-radius: 8px;
-  border: none;
-  background-color: #eef6fa;
-  color: #266cb2;
-  font-family: "Karla" sans-serif;
-  font-size: 13px;
-  margin-bottom: 10px;
-} */
 
 .btn-log {
   margin-top: 20px;

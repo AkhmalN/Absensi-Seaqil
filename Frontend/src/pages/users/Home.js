@@ -5,6 +5,9 @@ import akun from "../../assets/Users/akun.png";
 import "../../App.css";
 import Webcam from "react-webcam";
 import FormIzin from "../../components/FormIzin";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import DataPresensiUser from "../../DataPresensiUser";
 
 class Home extends Component {
   constructor(props) {
@@ -306,7 +309,7 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -320,7 +323,7 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -336,7 +339,7 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -350,7 +353,7 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
@@ -393,7 +396,6 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -407,7 +409,6 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -423,7 +424,6 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -437,7 +437,6 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
@@ -490,7 +489,6 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -504,7 +502,6 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -520,7 +517,6 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -534,7 +530,6 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
-                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
@@ -557,15 +552,56 @@ class Home extends Component {
                   </div>
                 )}
 
-                {/* FORM MASUK KERJA */}
+                {/* REKAP PRESENSI */}
                 {this.state.showFormRekapPresensi && (
                   <div className="sub-content-3">
-                    <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}>
-                      <div
-                        className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}>
+                    <div className="">
+                      <div className="card shadow mb-4">
+                        {/* Card Header - Dropdown */}
+                        <div className="card-header-pengajuan py-3 d-flex flex-row align-items-center justify-content-center">
+                          <div className="header">
+                            <div className="header-1">Data Presensi</div>
+                            <div className="header-2">
+                              Berikut ini data presensi kamu yaa.
+                            </div>
+                          </div>
+                        </div>
+                        {/* Card Body  */}
+                        <div className="card-body">
+                          <DataTable
+                            value={DataPresensiUser}
+                            paginator
+                            rows={4}
+                            rowsPerPageOptions={[5, 10, 25, 30]}
+                            tableStyle={{ minWidth: "31rem" }}
+                            className="customDataTable" //Add a custom class for more styling options
+                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                            <Column
+                              field="No"
+                              header="No"
+                              style={{ width: "10%" }}
+                              alignHeader={"center"}></Column>
+                            <Column
+                              field="Tanggal"
+                              header="Tanggal"
+                              style={{ width: "20%" }}
+                              alignHeader={"center"}></Column>
+                            <Column
+                              field="Shift"
+                              header="Shift"
+                              style={{ width: "25%" }}
+                              alignHeader={"center"}></Column>
+                            <Column
+                              field="Keterangan"
+                              header="Keterangan"
+                              style={{ width: "25%" }}
+                              alignHeader={"center"}></Column>
+                          </DataTable>
+                        </div>
+                      </div>
+                    </div>
+                    {/* <div className="container" style={{ backgroundColor: "white" }}>
+                      <div className="row header-content" style={{ backgroundColor: "#1c711b" }}>
                         <h4>Presensi Hari Ini Sudah Berhasil!</h4>
                         <p>Selamat dan semangat bekerja ya!</p>
                       </div>
@@ -578,7 +614,7 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -592,7 +628,7 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -608,7 +644,7 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -622,7 +658,7 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
-                                  disabled
+                                  readOnly
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
@@ -634,14 +670,11 @@ class Home extends Component {
                         </div>
                       </div>
                       <div className="hp-button">
-                        <button
-                          className="btn-done-working me-2 "
-                          type="button"
-                          onClick={this.handleDoneWorkButtonClick}>
+                        <button className="btn-done-working me-2 " type="button" onClick={this.handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 )}
 
