@@ -16,6 +16,7 @@ class Home extends Component {
       showFormTelatKerja: false,
       capturedImage: null,
       showCamera: false,
+      currentAction: "",
     };
     this.webcamRef = React.createRef();
   }
@@ -38,9 +39,22 @@ class Home extends Component {
   };
 
   handleUploadButtonClick = () => {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+
+    if (currentHour < 8) {
+      this.setState({
+        showFormMasukKerja: true,
+        showFormTelatKerja: false,
+      });
+    } else if (currentHour >= 8) {
+      this.setState({
+        showFormMasukKerja: false,
+        showFormTelatKerja: true,
+      });
+    }
     this.setState({
-      showFormMasukKerja: true, // Tampilkan formulir masuk kerja
-      showCamera: false, // Sembunyikan kamera
+      showCamera: false,
       capturedImage: null,
     });
   };
@@ -72,6 +86,17 @@ class Home extends Component {
   handleDoneWorkButtonClick = () => {
     this.setState({
       showFormSelesaiKerja: true, // Tampilkan formulir masuk kerja
+      showFormMasukKerja: false, //
+      showFormTelatKerja: false, //
+      showCamera: false, // Sembunyikan kamera
+      capturedImage: null,
+    });
+  };
+
+  handleCloseWorkButtonClick = () => {
+    this.setState({
+      currentImage: people, // Gambar default
+      showFormSelesaiKerja: false, // Tampilkan formulir masuk kerja
       showFormMasukKerja: false, //
       showFormTelatKerja: false, //
       showCamera: false, // Sembunyikan kamera
@@ -112,13 +137,12 @@ class Home extends Component {
   };
   changeToFormTelatKerja = () => {
     this.setState((prevState) => ({
-      showCamera: false,
+      showCamera: true,
       capturedImage: null,
-
       showFormMasukKerja: false,
       showFormSelesaiKerja: false,
       showFormIzinKerja: false,
-      showFormTelatKerja: !prevState.showFormTelatKerja,
+      showFormTelatKerja: false,
     }));
   };
 
@@ -148,7 +172,10 @@ class Home extends Component {
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToCamera}>
+                  onClick={() => {
+                    this.setState({ currentAction: "masuk" });
+                    this.changeToCamera();
+                  }}>
                   Masuk Kerja
                 </button>
                 <button
@@ -157,12 +184,15 @@ class Home extends Component {
                   onClick={this.changeToFormIzinKerja}>
                   Pengajuan Izin
                 </button>
-                <button
+                {/* <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToFormTelatKerja}>
+                  onClick={() => {
+                    this.setState({ currentAction: "telat" });
+                    this.changeToCamera();
+                  }}>
                   Terlambat
-                </button>
+                </button> */}
               </div>
             </div>
 
@@ -203,13 +233,13 @@ class Home extends Component {
                       <img
                         src={this.state.capturedImage}
                         alt="Captured"
-                        className="webcam"
+                        className="capture"
                       />
                       <p
                         style={{
                           position: "absolute",
-                          bottom: "150px",
-                          left: "50%",
+                          bottom: "110px",
+                          left: "67%",
                           transform: "translateX(-50%)",
                           fontSize: 10,
                           color: "white",
@@ -398,7 +428,7 @@ class Home extends Component {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}>
+                          onClick={this.handleCloseWorkButtonClick}>
                           Tutup
                         </button>
                       </div>
@@ -504,10 +534,7 @@ class Home extends Component {
                   !this.state.showFormIzinKerja &&
                   !this.state.showFormTelatKerja && (
                     <div className="homepage">
-                      <img
-                        src={this.state.currentImage}
-                        alt="Current Home Image"
-                      />
+                      <img src={this.state.currentImage} alt="Current Home" />
                     </div>
                   )}
               </div>

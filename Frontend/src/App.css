@@ -368,7 +368,6 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
-  text-align: center;
 }
 
 .border-sub-content input {
@@ -391,6 +390,16 @@ body {
 
 .camera .webcam {
   width: 85%;
+  height: 100%;
+  background-color: rgba(176, 176, 176, 0.17);
+  border: 1px solid #fff;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+.camera .capture {
+  width: 92%;
   height: 100%;
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #fff;
@@ -550,6 +559,7 @@ body {
 }
 
 /* DROPDWON PROFILE CSS */
+/* DROPDOWN PROFILE CSS */
 
 .dropdown-toggle {
   background: transparent !important;
@@ -561,20 +571,48 @@ body {
   /* border: none !important; */
 }
 
-.profileakun {
+/* .header__title {
   margin-right: 30px;
-}
-*/ .centered-text {
+} */
+
+.name-centered-text {
   text-align: center;
   font-family: "Karla" sans-serif;
   font-size: 16x;
+  /* font-style: normal; */
+  font-weight: 700;
+}
+
+.centered-text {
+  text-align: center;
+  font-family: "Karla" sans-serif;
+  font-size: 16x;
+  color: #8f8f8f;
 }
 
 .dropdown-toggle::after {
   content: none !important; /* Menghilangkan icon dropdown */
 }
 
-.btn-pro {
+.text-link {
+  color: #000;
+  text-decoration: none;
+  padding: 0px 0px 10px 10px;
+}
+
+.text-link:hover {
+  color: #000; /* Warna teks saat di hover */
+}
+
+.text-link-yakin {
+  text-decoration: none;
+}
+
+.text-link-yakin:hover {
+  text-decoration: none;
+}
+
+/* .btn-pro {
   padding: 5px 5px;
   border-radius: 8px;
   border: none;
@@ -583,9 +621,12 @@ body {
   font-family: "Karla" sans-serif;
   font-size: 13px;
   margin-bottom: 10px;
-}
+} */
 
 .btn-log {
+  margin-top: 20px;
+  /* display: flex; */
+  width: 140px;
   padding: 5px 5px;
   border-radius: 8px;
   border: none;
@@ -594,7 +635,6 @@ body {
   font-family: "Karla" sans-serif;
   font-size: 13px;
 }
-
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */
