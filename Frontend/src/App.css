@@ -24,16 +24,28 @@ body {
   height: auto; /* Add a fixed height for the sidebar */
 }
 
+.formIzin {
+  width: 90%;
+  margin: 20px 0;
+}
+
 .formIzin .form-control,
 .formIzin .form-select,
-.formIzin .form-select option {
+.formIzin .form-control:focus,
+.formIzin .form-select:focus {
   border: 1px solid #fff;
   background-color: transparent;
 }
 
 .formIzin .form-label,
-.formIzin .form-select {
+.formIzin .form-select,
+.formIzin .form-control,
+.formIzin .form-control:focus {
   color: #fff;
+}
+
+.formIzin .form-select option {
+  color: #000 !important;
 }
 
 .modalIzin p {
@@ -316,6 +328,7 @@ body {
 
 .sub-content-3 {
   /* margin-top: 10px; */
+  width: 100%;
   height: 100%;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
