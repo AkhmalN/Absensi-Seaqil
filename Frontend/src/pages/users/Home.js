@@ -306,7 +306,7 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -320,7 +320,7 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -336,7 +336,7 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -350,7 +350,7 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
@@ -393,6 +393,7 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -406,6 +407,7 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -421,6 +423,7 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -434,6 +437,7 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
@@ -486,6 +490,7 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -499,6 +504,7 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -514,6 +520,7 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -527,6 +534,7 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"
@@ -570,7 +578,7 @@ class Home extends Component {
                                   ID Kegiatan
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="IDK"
@@ -584,7 +592,7 @@ class Home extends Component {
                                   Presensi Masuk
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_masuk"
@@ -600,7 +608,7 @@ class Home extends Component {
                                   Divisi
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="div"
@@ -614,7 +622,7 @@ class Home extends Component {
                                   Presensi Pulang
                                 </label>
                                 <input
-                                  readOnly
+                                  disabled
                                   type="text"
                                   class="form-control"
                                   id="pres_pulang"

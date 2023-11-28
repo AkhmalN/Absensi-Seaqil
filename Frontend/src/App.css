@@ -55,20 +55,14 @@ body {
   display: flex;
   flex-direction: row;
   height: 100%;
-  width: 30%;
+  width: 100%;
   /* font-size: 30px; */
   /* text-align: center; */
 }
 
-.content {
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0px;
-}
-
 .form-content {
   /* display: block; */
-  margin-top: 100px;
+  margin-top: 50%;
   /* margin-left: auto;
   margin-right: auto; */
   width: 100%;
@@ -144,57 +138,65 @@ body {
 /* PC */
 @media (min-width: 1199px) {
   .flex-item-left {
-    padding: 10px;
+    padding: 200px;
     flex: 100%;
   }
 
   .flex-item-center {
-    padding: 10px 0px;
+    padding: 0px 0px;
     flex: 100%;
   }
 
   .flex-item-right {
-    padding: 10px;
+    padding: 300px;
     flex: 100%;
   }
 }
 
 .row-login h4 {
-  font-family: poppins;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   margin-top: 20px;
 }
 
 .row-login p {
   font-size: small;
-  font-family: poppins;
+  font-family: "Poppins", sans-serif;
 }
 
 .row-login input {
-  font-family: poppins;
-  font-size: small;
-  margin-top: 20px;
-  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  border-radius: 8px;
   padding: 5px;
   width: 100%;
+  height: 40px;
   background-color: rgba(255, 255, 255, 0.032);
   border: 1px solid #ffffff;
   color: white;
 }
-
+.row-login ::placeholder {
+  color: white;
+}
 .row-login :placeholder-shown {
   color: white;
 }
 
 .btn-login {
-  font-family: poppins;
-  font-size: small;
-  margin-top: 20px;
-  border-radius: 10px;
-  padding: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 8px;
   width: 100%;
+  height: 40px;
   border: none;
-  background-color: #ec6078; /* For browsers that do not support gradients */
   background-image: linear-gradient(to right, #ec6078, #266cb2);
   color: white;
 }

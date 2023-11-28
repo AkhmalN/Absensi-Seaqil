@@ -28,6 +28,7 @@ class Login extends Component {
     return (
       <>
         <div class="flex-container">
+          <div class="flex-item-left"></div>
           <div class="flex-item-center">
             <div className="content">
               <div className="form-content">
@@ -38,7 +39,7 @@ class Login extends Component {
                     </div>
                     <h4 className="">Masuk</h4>
                     <p className="">
-                      Selamat Datang di Website Absensi Mahasiswa MSIB Magang
+                      Selamat Datang di Website Presensi Mahasiswa MSIB Magang
                       SEAQIL
                     </p>
                     <div className="form-group">
