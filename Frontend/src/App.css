@@ -7,6 +7,10 @@ body {
   height: 100vh;
   font-family: "Poppins", sans-serif;
 }
+
+.uk-body {
+  margin: 0px 100px 0px 100px;
+}
 .admin-sidebar {
   position: fixed;
   top: 0;
@@ -324,7 +328,7 @@ body {
 
 .sub-content-3 {
   /* margin-top: 10px; */
-  height: 100%;
+  height: 475px;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
