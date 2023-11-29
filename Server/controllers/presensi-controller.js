@@ -3,13 +3,15 @@ import Presence from "../models/presensi.js";
 // Create Presensi
 export const createPresent = async (req, res, next) => {
   try {
-    const { id_user, id_msib, username, divisi, shift } = req.body;
+    const { id_msib, username, divisi, shift } = req.body;
+    const image = req.file.filename;
+
     const newPresence = new Presence({
-      id_user: id_user,
       id_msib: id_msib,
       shift: shift,
       username: username,
       divisi: divisi,
+      image: image,
     });
     await newPresence.save();
     if (!newPresence) {
@@ -39,7 +41,9 @@ export const getPresence = async (req, res, next) => {
   try {
     // console.log(req.params);
     const presence = await Presence.findOne({ id_msib: req.params.id });
-    return res.status(201).json({ presence });
+    return res
+      .status(201)
+      .json({ message: `Hai, ${presence.username}`, presence });
   } catch (error) {
     return res.status(404).json(error);
   }
@@ -49,11 +53,23 @@ export const getPresence = async (req, res, next) => {
 
 export const updatePresence = async (req, res) => {
   try {
-    const presence = await Presence.findByIdAndUpdate(req.params.id);
+    const { id_msib, shift, username, divisi } = req.body;
+
+    const presence = await Presence.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        id_msib,
+        shift,
+        username,
+        divisi,
+      },
+      { new: true }
+    );
+    console.log(`Presence to update : ${presence._id}`);
     if (!presence) {
       return res.status(404).json({ message: "Presensi tidak ditemukan" });
     }
-    return res.status(201).json(presence);
+    return res.status(200).json(presence);
   } catch (error) {
     return res.status(404).json({ message: "Terjadi kesalahan pada server" });
   }

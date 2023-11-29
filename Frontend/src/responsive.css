@@ -1,0 +1,44 @@
+/* IPHONE SE */
+@media (max-width: 375px) {
+  body {
+    height: 100%;
+  }
+  .uk-body {
+    margin: 0px 10px 0px 10px;
+  }
+  .header-home-logo {
+    border-radius: 10px;
+  }
+
+  .sub-content-1,
+  .sub-content-2 {
+    width: 80vw;
+  }
+
+  .sub-content-1 {
+    position: absolute;
+    margin-top: 255px;
+  }
+
+  .sub-content-2 {
+    margin-top: 5px;
+  }
+
+  /* .sub-content-1 {
+    order: 2;
+  }
+  .sub-content-2 {
+    order: 1;
+  }
+
+  .form-content-home {
+    flex-direction: column-reverse;
+  } */
+
+  .homepage img {
+    position: absolute;
+    top: 690px;
+    left: 0;
+    margin-left: 50px;
+  }
+}

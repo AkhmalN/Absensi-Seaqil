@@ -8,9 +8,10 @@ import {
   faDatabase,
   faEnvelopeOpenText,
   faHouse,
-  faRightToBracket,
   faBars,
   faArrowRightToBracket,
+  faFolderOpen,
+  faRectangleList,
 } from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
 
@@ -67,6 +68,15 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
         {/* Nav Item - Pages Collapse Menu */}
         <li className="nav-item">
           <Link
+            to="/dashboard/rekap_presensi"
+            className="nav-link"
+            href="tables.html">
+            <FontAwesomeIcon icon={faFolderOpen} />
+            <span className="ms-2">Rekap Presensi</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
             to="/dashboard/data_izin"
             className="nav-link collapsed"
             href="#"
@@ -74,7 +84,7 @@ const Sidebar = ({ isSideBarOpen, setIsSideBarOpen }) => {
             data-target="#collapsePages"
             aria-expanded="true"
             aria-controls="collapsePages">
-            <FontAwesomeIcon icon={faRightToBracket} />
+            <FontAwesomeIcon icon={faRectangleList} />
             <span className="ms-2">Data Izin</span>
           </Link>
         </li>

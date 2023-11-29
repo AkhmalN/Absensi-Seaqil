@@ -1,11 +1,6 @@
-import React from "react";
-// import "react-date-range/dist/styles.css"; // main css file
-// import "react-date-range/dist/theme/default.css"; // theme css file
-// import { addDays } from "date-fns";
-// import { useState } from "react";
+import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
-import { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
@@ -21,7 +16,7 @@ import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useMediaQuery } from "@react-hook/media-query";
 
-const Laporan = () => {
+const RekapPresensi = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
   const isMediumScreen = useMediaQuery(
     "(max-width: 992px) and (min-width: 768px)"
@@ -40,13 +35,6 @@ const Laporan = () => {
   const toggleSidebar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
-  // const [state, setState] = useState([
-  //   {
-  //     startDate: new Date(),
-  //     endDate: addDays(new Date(), 7),
-  //     key: "selection",
-  //   },
-  // ]);
   return (
     <>
       <div id="wrapper">
@@ -66,7 +54,6 @@ const Laporan = () => {
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
             }}>
-            {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
               {/* Sidebar Toggle (Topbar) */}
@@ -119,33 +106,12 @@ const Laporan = () => {
                 <div className="card-header py-3 d-flex justify-content-between bg-white">
                   <div className="header tulisan">
                     <div className="header">
-                      Laporan
+                      Rekap Presensi
                       {/* <span className="sub-header ms-2">27/10/2023</span> */}
                       <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
-                  {/* <DateRangePicker
-                    onChange={(item) => setState([item.selection])}
-                    showSelectionPreview={true}
-                    moveRangeOnFirstSelection={false}
-                    months={2}
-                    ranges={state}
-                    direction="horizontal"
-                  /> */}
-
-                  {/* <div className="date-picker-container">
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleChange}
-                      dateFormat="dd/MM/yyyy"
-                      className="date-picker"
-                    />
-                    <FontAwesomeIcon
-                      icon={faCaretDown}
-                      className="dropdown-icon"
-                    /> */}
-                  {/* </div> */}
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
                     <button
                       className="print-button "
@@ -178,68 +144,48 @@ const Laporan = () => {
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
-                    tableStyle={{ textAlign: "center" }}
+                    tableStyle={{ textAlign: "center", minWidth: "50rem" }}
                     className="customDataTable"
-                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                    paginatorTemplate={` PrevPageLink PageLinks NextPageLink CurrentPageReport`}>
                     <Column
                       field="no"
                       header="No"
-                      style={{ width: "3%" }}
-                      alignHeader={"center"}></Column>
-                    <Column
-                      field="tgl"
-                      header="Tanggal"
-                      style={{ width: "9%" }}
-                      alignHeader={"center"}></Column>
+                      style={{ width: "3%" }}></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
-                      style={{ width: "9%" }}
+                      style={{ width: "15%" }}
+                      alignHeader={"center"}></Column>
+                    <Column
+                      field="shift"
+                      header="Shift"
+                      style={{ width: "8%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
-                      style={{ width: "14%" }}
+                      style={{ width: "20%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="div"
                       header="Divisi"
-                      style={{ width: "11%" }}
+                      style={{ width: "15%" }}
                       alignHeader={"center"}></Column>
                     <Column
-                      header={
-                        <>
-                          Status
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "row",
-                              paddingTop: "5px",
-                            }}>
-                            <div style={{ width: "17%", margin: "0 10px" }}>
-                              Hadir
-                            </div>
-                            <div style={{ width: "16%", margin: "0 10px" }}>
-                              Izin
-                            </div>
-                            <div style={{ width: "16%", margin: "0 10px" }}>
-                              Sakit
-                            </div>
-                            <div
-                              style={{
-                                width: "47%",
-                                paddingRight: "5px",
-                                whiteSpace: "nowrap",
-                                margin: "0 10px",
-                              }}>
-                              Tanpa Keterangan
-                            </div>
-                          </div>
-                        </>
-                      }
-                      style={{ width: "20%" }}
-                      alignHeader={"center"}
-                      rowSpan={2}></Column>
+                      field="jm"
+                      header="Jam Masuk"
+                      style={{ width: "13%" }}
+                      alignHeader={"center"}></Column>
+                    <Column
+                      field="jk"
+                      header="Jam Keluar"
+                      style={{ width: "13%" }}
+                      alignHeader={"center"}></Column>
+                    <Column
+                      field="lk"
+                      header="Lama Bekerja"
+                      style={{ width: "13%" }}
+                      alignHeader={"center"}></Column>
                   </DataTable>
                 </div>
               </div>
@@ -259,4 +205,4 @@ const Laporan = () => {
   );
 };
 
-export default Laporan;
+export default RekapPresensi;

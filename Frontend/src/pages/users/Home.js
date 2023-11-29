@@ -8,6 +8,7 @@ import FormIzin from "../../components/FormIzin";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DataPresensiUser from "../../DataPresensiUser";
+import "../../responsive.css";
 
 class Home extends Component {
   constructor(props) {
@@ -175,12 +176,12 @@ class Home extends Component {
   render() {
     return (
       <>
-        <div style={{ marginRight: "100px", marginLeft: "100px" }}>
+        <div className="uk-body">
           <div className="header-home">
             <div className="header-home-logo">
               <img src={logo} alt="logo" />
             </div>
-            <div className="">
+            <div className="logo-profile">
               <img src={akun} alt="logo" />
             </div>
           </div>
@@ -374,7 +375,9 @@ class Home extends Component {
                 {/* FORM IZIN KERJA */}
                 {this.state.showFormIzinKerja && (
                   <div className="sub-content-3">
-                    <FormIzin />
+                    <div className="container">
+                      <FormIzin />
+                    </div>
                   </div>
                 )}
 
@@ -466,57 +469,6 @@ class Home extends Component {
                         </div>
                       </div>
                     </div>
-                    {/* <div className="container" style={{ backgroundColor: "white" }}>
-                      <div className="row header-content" style={{ backgroundColor: "#1c711b" }}>
-                        <h4>Presensi Hari Ini Sudah Berhasil!</h4>
-                        <p>Selamat dan semangat bekerja ya!</p>
-                      </div>
-                      <div className="border-sub-content">
-                        <div className="container p-4">
-                          <div className="row py-1 d-flex justify-content-center ">
-                            <div className="col ">
-                              <div class="mb-3">
-                                <label for="IDKegiatan" class="form-label">
-                                  ID Kegiatan
-                                </label>
-                                <input readOnly type="text" class="form-control" id="IDK" aria-describedby="emailHelp" />
-                              </div>
-                            </div>
-                            <div className="col">
-                              <div class="mb-3">
-                                <label for="pres_masuk" class="form-label">
-                                  Presensi Masuk
-                                </label>
-                                <input readOnly type="text" class="form-control" id="pres_masuk" aria-describedby="emailHelp" />
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row py-2">
-                            <div className="col">
-                              <div class="mb-3">
-                                <label for="div" class="form-label">
-                                  Divisi
-                                </label>
-                                <input readOnly type="text" class="form-control" id="div" aria-describedby="emailHelp" />
-                              </div>
-                            </div>
-                            <div className="col">
-                              <div class="mb-3">
-                                <label for="pres_pulang" class="form-label">
-                                  Presensi Pulang
-                                </label>
-                                <input readOnly type="text" class="form-control" id="pres_pulang" aria-describedby="emailHelp" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="hp-button">
-                        <button className="btn-done-working me-2 " type="button" onClick={this.handleDoneWorkButtonClick}>
-                          Selesai Bekerja
-                        </button>
-                      </div>
-                    </div> */}
                   </div>
                 )}
 
@@ -524,7 +476,7 @@ class Home extends Component {
                   !this.state.capturedImage &&
                   !this.state.showFormMasukKerja &&
                   !this.state.showFormSelesaiKerja &&
-                  !this.state.showFormIRekapPresensi &&
+                  !this.state.showFormIzinKerja &&
                   !this.state.showFormRekapPresensi &&
                   !this.state.showFormTelatKerja && (
                     <div className="homepage">

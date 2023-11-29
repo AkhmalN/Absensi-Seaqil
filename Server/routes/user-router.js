@@ -7,12 +7,25 @@ import {
   updateUser,
 } from "../controllers/user-controller.js";
 
+import multer from "multer";
 const router = express.Router();
 
-router.post("/", createUser);
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads/profile");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+router.post("/", upload.single("image"), createUser);
 router.get("/", getUsers);
 router.get("/:id", getUser);
-router.put("/:id", updateUser);
+router.patch("/:id", updateUser);
 router.delete("/:id", deleteUser);
 
 export default router;
