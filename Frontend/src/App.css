@@ -1,14 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&family=Poppins:wght@300;400;600&display=swap");
 
 body {
-  background-image: linear-gradient(
-    to right bottom,
-    #266cb2,
-    #748cc5,
-    #a8b0d7,
-    #d6d6eb,
-    #ffffff
-  );
+  background-image: linear-gradient(to right bottom, #266cb2, #748cc5, #a8b0d7, #d6d6eb, #ffffff);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -52,109 +45,23 @@ body {
 
 /* Login CSS */
 
-* {
-  box-sizing: border-box;
-}
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  /* font-size: 30px; */
-  /* text-align: center; */
+.container {
+  margin-top: 100px;
 }
 
 .form-content {
-  /* display: block; */
-  margin-top: 50%;
-  /* margin-left: auto;
-  margin-right: auto; */
   width: 100%;
   height: 100%;
 }
 
 .row-login {
-  margin: auto;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
   color: white;
   padding: 20px;
   text-align: center;
-  width: 200%;
-}
-/* Smartphone 1 */
-
-@media (max-width: 646px) {
-  .form-content {
-    margin-top: 50px;
-  }
-
-  .flex-item-left {
-    padding: 10px;
-    flex: 5%;
-  }
-
-  .flex-item-center {
-    padding: 10px;
-    flex: 100%;
-  }
-
-  .flex-item-right {
-    padding: 10px;
-    flex: 5%;
-  }
-}
-/* Smartphone 2*/
-@media (min-width: 646px) and (max-width: 767px) {
-  .flex-item-left {
-    padding: 10px;
-    flex: 20%;
-  }
-
-  .flex-item-center {
-    padding: 10px;
-    flex: 100%;
-  }
-
-  .flex-item-right {
-    padding: 10px;
-    flex: 20%;
-  }
-}
-/* Tablet */
-@media (min-width: 767px) and (max-width: 1199px) {
-  .flex-item-left {
-    padding: 10px;
-    flex: 65%;
-  }
-
-  .flex-item-center {
-    padding: 10px;
-    flex: 100%;
-  }
-
-  .flex-item-right {
-    padding: 10px;
-    flex: 65%;
-  }
-}
-/* PC */
-@media (min-width: 1199px) {
-  .flex-item-left {
-    padding: 200px;
-    flex: 100%;
-  }
-
-  .flex-item-center {
-    padding: 0px 0px;
-    flex: 100%;
-  }
-
-  .flex-item-right {
-    padding: 300px;
-    flex: 100%;
-  }
+  width: 100%;
 }
 
 .row-login h4 {
