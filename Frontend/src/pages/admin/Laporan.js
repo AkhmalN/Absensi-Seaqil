@@ -1,11 +1,8 @@
-import React from "react";
-// import "react-date-range/dist/styles.css"; // main css file
-// import "react-date-range/dist/theme/default.css"; // theme css file
-// import { addDays } from "date-fns";
-// import { useState } from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
-import { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
@@ -40,13 +37,9 @@ const Laporan = () => {
   const toggleSidebar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
-  // const [state, setState] = useState([
-  //   {
-  //     startDate: new Date(),
-  //     endDate: addDays(new Date(), 7),
-  //     key: "selection",
-  //   },
-  // ]);
+  const DateRangePicker = () => {};
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   return (
     <>
       <div id="wrapper">
@@ -65,7 +58,8 @@ const Laporan = () => {
               marginLeft,
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
-            }}>
+            }}
+          >
             {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -84,7 +78,8 @@ const Laporan = () => {
                   fontSize: "20px",
                   fontStyle: "normal",
                   fontWeight: "600",
-                }}>
+                }}
+              >
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -124,33 +119,38 @@ const Laporan = () => {
                       <span className="blue-tag ms-2">MSIB Batch 5</span>
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
+                    <div className="DateRangePicker text-center mt-3">
+                      <div className="d-flex align-items-center">
+                        <DatePicker
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          selectsStart
+                          startDate={startDate}
+                          endDate={endDate}
+                          placeholderText="Start Date"
+                          dateFormat="dd/MM/yyyy"
+                          className="form-control"
+                        />
+                        <span className="mx-2">-</span>
+                        <DatePicker
+                          selected={endDate}
+                          onChange={(date) => setEndDate(date)}
+                          selectsEnd
+                          startDate={startDate}
+                          endDate={endDate}
+                          placeholderText="End Date"
+                          dateFormat="dd/MM/yyyy"
+                          className="form-control"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  {/* <DateRangePicker
-                    onChange={(item) => setState([item.selection])}
-                    showSelectionPreview={true}
-                    moveRangeOnFirstSelection={false}
-                    months={2}
-                    ranges={state}
-                    direction="horizontal"
-                  /> */}
-
-                  {/* <div className="date-picker-container">
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleChange}
-                      dateFormat="dd/MM/yyyy"
-                      className="date-picker"
-                    />
-                    <FontAwesomeIcon
-                      icon={faCaretDown}
-                      className="dropdown-icon"
-                    /> */}
-                  {/* </div> */}
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
                     <button
                       className="print-button "
                       type="button"
-                      style={{ marginRight: "16px" }}>
+                      style={{ marginRight: "16px" }}
+                    >
                       <FontAwesomeIcon icon={faPrint} />
                       <span className="d-none d-lg-inline">Cetak</span>
                     </button>
@@ -178,68 +178,71 @@ const Laporan = () => {
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
-                    tableStyle={{ textAlign: "center" }}
+                    tableStyle={{ textAlign: "center", minWidth: "40rem" }}
                     className="customDataTable"
-                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+                  >
                     <Column
                       field="no"
                       header="No"
                       style={{ width: "3%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="nm"
                       header="Nama"
                       style={{ width: "14%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="div"
                       header="Divisi"
                       style={{ width: "11%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
-                      header={
-                        <>
-                          Status
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "row",
-                              paddingTop: "5px",
-                            }}>
-                            <div style={{ width: "17%", margin: "0 10px" }}>
-                              Hadir
-                            </div>
-                            <div style={{ width: "16%", margin: "0 10px" }}>
-                              Izin
-                            </div>
-                            <div style={{ width: "16%", margin: "0 10px" }}>
-                              Sakit
-                            </div>
-                            <div
-                              style={{
-                                width: "47%",
-                                paddingRight: "5px",
-                                whiteSpace: "nowrap",
-                                margin: "0 10px",
-                              }}>
-                              Tanpa Keterangan
-                            </div>
-                          </div>
-                        </>
-                      }
+                      header="Status"
                       style={{ width: "20%" }}
                       alignHeader={"center"}
-                      rowSpan={2}></Column>
+                      rowSpan={2}
+                    >
+                      <Column
+                        field="hdr"
+                        header="Hadir"
+                        style={{ width: "17%" }}
+                        alignHeader={"center"}
+                      />
+                      <Column
+                        field="izin"
+                        header="Izin"
+                        style={{ width: "16%" }}
+                        alignHeader={"center"}
+                      />
+                      <Column
+                        field="skt"
+                        header="Sakit"
+                        style={{ width: "16%" }}
+                        alignHeader={"center"}
+                      />
+                      <Column
+                        field="tnp_ket"
+                        header="Tanpa Keterangan"
+                        style={{ width: "47%" }}
+                        alignHeader={"center"}
+                      />
+                    </Column>
                   </DataTable>
                 </div>
               </div>
