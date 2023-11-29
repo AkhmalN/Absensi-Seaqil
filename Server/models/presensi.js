@@ -5,7 +5,6 @@ const presenceSchema = new mongoose.Schema(
     id_user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
     },
     id_msib: {
       type: Number,
@@ -23,7 +22,7 @@ const presenceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    images: {
+    image: {
       type: String,
     },
   },

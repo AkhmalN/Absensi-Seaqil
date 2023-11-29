@@ -5,7 +5,6 @@ const workPermitSchema = new mongoose.Schema(
     id_user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
     },
     id_msib: {
       type: Number,
