@@ -55,11 +55,20 @@ function DropdownProfile() {
   </li>*/}
 
         {/* COBA MODAL */}
-        <Modal show={showDelete} onHide={handleCloseDelete} aria-labelledby="contained-modal-title-vcenter" centered size="sm">
+        <Modal
+          show={showDelete}
+          onHide={handleCloseDelete}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          size="sm">
           <Modal.Body>
             <div className="modal-header-decline text-center">PERINGATAN!</div>
-            <div className="modal-body text-center">Anda yakin ingin keluar?</div>
-            <div className="d-flex justify-content-center mt-2" style={{ border: "none" }}>
+            <div className="modal-body text-center">
+              Anda yakin ingin keluar?
+            </div>
+            <div
+              className="d-flex justify-content-center mt-2"
+              style={{ border: "none" }}>
               <button className="batal-btn me-2" onClick={handleCloseDelete}>
                 Batal
               </button>
