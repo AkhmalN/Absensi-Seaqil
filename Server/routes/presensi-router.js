@@ -6,13 +6,25 @@ import {
   getPresences,
   updatePresence,
 } from "../controllers/presensi-controller.js";
-
+import multer from "multer";
 const router = express.Router();
 
-router.post("/", createPresent);
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads/presensi");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+router.post("/", upload.single("image"), createPresent);
 router.get("/", getPresences);
 router.get("/:id", getPresence);
-router.put("/:id", updatePresence);
+router.patch("/:id", updatePresence);
 router.delete("/:id", deletePresence);
 
 export default router;

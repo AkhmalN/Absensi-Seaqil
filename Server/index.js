@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
+import cors from "cors";
 import userRouter from "./routes/user-router.js";
 import presensiRouter from "./routes/presensi-router.js";
 import izinRouter from "./routes/izin-router.js";
@@ -9,6 +10,7 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Middlewares
 app.use("/api/v1/users", userRouter);
