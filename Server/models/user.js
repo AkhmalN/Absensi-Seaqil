@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema(
     userId: {
       type: mongoose.Schema.Types.ObjectId,
     },
-    Id_Kegiatan: {
+    id_msib: {
       type: Number,
       required: true,
     },
@@ -28,7 +28,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    images: { type: String },
+    divisi: {
+      type: String,
+      required: true,
+    },
+    image: { type: String },
   },
   { timestamps: true }
 );

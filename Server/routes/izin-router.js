@@ -24,5 +24,7 @@ const upload = multer({ storage: storage });
 router.post("/", upload.single("file"), createIzin);
 router.get("/", getALlIzin);
 router.get("/:id", getIzin);
+router.patch("/:id", updateIzin);
+router.delete("/:id", deleteIzin);
 
 export default router;
