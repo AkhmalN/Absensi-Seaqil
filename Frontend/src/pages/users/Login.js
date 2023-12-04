@@ -10,17 +10,31 @@ const Login = () => {
   // const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [succsesMsg, setSuccsesMsg] = useState("");
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      if (username === "admin" && password === "admin123") {
-        setSuccsesMsg("Login Berhasil!");
+      const response = await axios.post("http://localhost:8081/api/v1/auth", {
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        setSuccsesMsg("Berhasil Login");
+        localStorage.setItem("username", username);
+        navigate("/home");
+      } else {
+        setErrorMsg("email atau password tidak ditemukan");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error during login:", error);
+      setErrorMsg("Terjadi kesalahan pada server");
+    }
   };
 
   return (
@@ -42,14 +56,16 @@ const Login = () => {
                       SEAQIL
                     </p>
                     <p>{succsesMsg}</p>
+                    <p>{errorMsg}</p>
                     <div className="form-group">
                       <input
                         type="text"
-                        id="username"
-                        name="username"
-                        placeholder=" Username"
-                        value={username}
-                        onChange={(event) => setUsername(event.target.value)}
+                        id="email"
+                        name="email"
+                        placeholder=" email"
+                        value={email}
+                        autoComplete="off"
+                        onChange={(event) => setEmail(event.target.value)}
                       />
                     </div>
                     <div className="form-group">
@@ -59,6 +75,7 @@ const Login = () => {
                         name="password"
                         placeholder=" Password"
                         value={password}
+                        autoComplete="off"
                         onChange={(event) => setPassword(event.target.value)}
                       />
                     </div>
