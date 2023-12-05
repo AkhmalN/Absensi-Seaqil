@@ -10,7 +10,7 @@ function FormIzin() {
 
   return (
     <>
-      <Form className="formIzin d-grid py-5 px-3">
+      <Form className="formIzin d-grid py-2 px-3">
         <Form.Group className="mb-3">
           <Form.Label>Tipe Pengajuan :</Form.Label>
           <Form.Select aria-label="Default select example" required>
@@ -37,7 +37,8 @@ function FormIzin() {
           variant="primary"
           size="lg"
           onClick={handleShow}
-          dismissible>
+          dismissible
+        >
           SUBMIT
         </Button>
       </Form>

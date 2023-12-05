@@ -20,16 +20,16 @@ export const createUser = async (req, res, next) => {
     if (!newUser) {
       res.json({ message: "terjadi Kesalahan" });
     }
-    res.status(200).json({ message: "User Ditambahkan" });
+    return res.status(200).json({ message: "User Ditambahkan" });
   } catch (error) {
-    res.status(404).json(error.message);
+    return res.status(404).json(error.message);
   }
 };
 
 // Get User
 export const getUser = async (req, res) => {
   try {
-    const user = await User.find(req.params.userId);
+    const user = await User.find(req.params.id);
     if (!user) res.status(200).json({ message: "User Tidak Ditemukan" });
     return res.status(200).json(user);
   } catch (error) {

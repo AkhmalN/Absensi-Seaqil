@@ -242,7 +242,7 @@ body {
 
 .sub-content-3 {
   /* margin-top: 10px; */
-  height: 475px;
+  height: 640px;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
@@ -250,8 +250,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 35px;
-  padding-bottom: 500px;
+  padding: 20px;
 }
 
 .sub-content-3 img {
@@ -282,6 +281,7 @@ body {
   margin-top: 20px;
 }
 .border-sub-content {
+  background-color: white;
   border: 1px solid #266cb2;
   border-radius: 20px;
   margin-top: 15px;
