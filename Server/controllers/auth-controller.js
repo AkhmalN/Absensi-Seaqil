@@ -10,7 +10,7 @@ export const Auth = async (req, res) => {
     if (!user) {
       return res
         .status(404)
-        .json({ message: "Username atau Password tidak ditemukan!" });
+        .json({ message: "Username atau Password tidak ditemukan!", user });
     }
     return res.status(200).json({ message: "Berhasil Login!" });
   } catch (error) {

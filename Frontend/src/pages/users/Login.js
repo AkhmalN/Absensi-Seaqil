@@ -26,8 +26,11 @@ const Login = () => {
 
       if (response.status === 200) {
         setSuccsesMsg("Berhasil Login");
-        localStorage.setItem("username", username);
-        navigate("/home");
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
+        const user = localStorage.setItem("email", email);
+        console.log(user);
       } else {
         setErrorMsg("email atau password tidak ditemukan");
       }
