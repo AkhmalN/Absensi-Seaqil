@@ -54,33 +54,14 @@ const Login = () => {
                       <img src={LogoSEAQIL} alt="logo" />
                     </div>
                     <h4 className="">Masuk</h4>
-                    <p className="">
-                      Selamat Datang di Website Presensi Mahasiswa MSIB Magang
-                      SEAQIL
-                    </p>
+                    <p className="">Selamat Datang di Website Presensi Mahasiswa MSIB Magang SEAQIL</p>
                     <p>{succsesMsg}</p>
                     <p>{errorMsg}</p>
                     <div className="form-group">
-                      <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        placeholder=" email"
-                        value={email}
-                        autoComplete="off"
-                        onChange={(event) => setEmail(event.target.value)}
-                      />
+                      <input type="text" id="email" name="email" placeholder=" email" value={email} autoComplete="off" onChange={(event) => setEmail(event.target.value)} />
                     </div>
                     <div className="form-group">
-                      <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder=" Password"
-                        value={password}
-                        autoComplete="off"
-                        onChange={(event) => setPassword(event.target.value)}
-                      />
+                      <input type="password" id="password" name="password" placeholder=" Password" value={password} autoComplete="off" onChange={(event) => setPassword(event.target.value)} />
                     </div>
                     <div className="form-group">
                       <button type="submit" className="btn-login">

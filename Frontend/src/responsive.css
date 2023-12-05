@@ -16,18 +16,16 @@
   }
 
   .homepage img {
-    position: absolute;
-    top: 690px;
-    left: 0;
-    margin-left: 50px;
+    display: none;
   }
+
   /* Presensi tepat waktu*/
-  .sub-content-3{
+  .sub-content-3 {
     padding: 10px 20px;
     margin-right: 160px;
   }
-  .sub-content-3 .container{
-  width: 260px; /* Sesuaikan lebar container sesuai kebutuhan Anda */
-  height: 350px;
+  .sub-content-3 .container {
+    width: 260px; /* Sesuaikan lebar container sesuai kebutuhan Anda */
+    height: 350px;
   }
 }
