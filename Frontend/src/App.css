@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&family=Poppins:wght@300;400;600&display=swap");
 
 body {
-  background-image: linear-gradient(to right bottom, #266cb2, #748cc5, #a8b0d7, #d6d6eb, #ffffff);
+  background-image: linear-gradient(
+    to right bottom,
+    #266cb2,
+    #748cc5,
+    #a8b0d7,
+    #d6d6eb,
+    #ffffff
+  );
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -251,6 +258,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px 35px;
+  padding-bottom: 500px;
 }
 
 .sub-content-3 img {
