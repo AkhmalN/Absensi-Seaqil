@@ -9,6 +9,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DataPresensiUser from "../../DataPresensiUser";
 import "../../responsive.css";
+import Navbar from "../../components/Navbar";
 
 class Home extends Component {
   constructor(props) {
@@ -176,15 +177,16 @@ class Home extends Component {
   render() {
     return (
       <>
+        <Navbar></Navbar>
         <div className="uk-body">
-          <div className="header-home">
+          {/* <div className="header-home">
             <div className="header-home-logo">
               <img src={logo} alt="logo" />
             </div>
             <div className="logo-profile">
               <img src={akun} alt="logo" />
             </div>
-          </div>
+          </div> */}
           <div className="content-home">
             <div className="form-content-home">
               <div className="sub-content-1">
