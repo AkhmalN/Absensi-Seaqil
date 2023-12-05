@@ -48,12 +48,12 @@ class Home extends Component {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
 
-    if (currentHour < 8) {
+    if (currentHour > 7) {
       this.setState({
         showFormMasukKerja: true,
         showFormTelatKerja: false,
       });
-    } else if (currentHour >= 8) {
+    } else if (currentHour >= 7) {
       this.setState({
         showFormMasukKerja: false,
         showFormTelatKerja: true,
