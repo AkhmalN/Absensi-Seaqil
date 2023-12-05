@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/Users/Logo SEAQIL 1 1.png";
 import people from "../../assets/Users/front.png";
 import akun from "../../assets/Users/akun.png";
@@ -9,182 +9,187 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DataPresensiUser from "../../DataPresensiUser";
 import "../../responsive.css";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "react-bootstrap";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentImage: people, // Gambar default
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-      capturedImage: null,
-      showCamera: false,
-      currentAction: "",
-    };
-    this.webcamRef = React.createRef();
-  }
+const Home = () => {
+  const [currentImage, setCurrentImage] = useState(people);
+  const [showFormMasukKerja, setShowFormMasukKerja] = useState(false);
+  const [showFormSelesaiKerja, setShowFormSelesaiKerja] = useState(false);
+  const [showFormIzinKerja, setShowFormIzinKerja] = useState(false);
+  const [showFormRekapPresensi, setShowFormRekapPresensi] = useState(false);
+  const [showFormTelatKerja, setShowFormTelatKerja] = useState(false);
+  const [capturedImage, setCapturedImage] = useState(null);
+  const [showCamera, setShowCamera] = useState(false);
+  const [currentAction, setCurrentAction] = useState("");
+  const [divisi, setDivisi] = useState(null);
+  const [idMsib, setIdMsib] = useState(null);
+  const [shift, setShift] = useState(null);
+  const [username, setUsername] = useState(null);
 
-  capture = () => {
-    const imageSrc = this.webcamRef.current.getScreenshot();
-    // Set the captured image in the state
-    this.setState({
-      capturedImage: imageSrc,
-      showCamera: false, // Hide the camera and show the captured image
-    });
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const formattedTime = `${hours < 10 ? "0" : ""}${hours}:${
+    minutes < 10 ? "0" : ""
+  }${minutes}`;
+
+  const webcamRef = useRef(null);
+
+  const capture = () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setCapturedImage(imageSrc);
+    setShowCamera(false);
   };
-  handleCancelButtonClick = () => {
-    console.log("Cancel button clicked");
-    // Clear the captured image and show the camera again
-    this.setState({
-      capturedImage: null,
-      showCamera: false,
-    });
+
+  const handleCancelButtonClick = () => {
+    setCapturedImage(null);
+    setShowCamera(false);
   };
 
-  handleUploadButtonClick = () => {
+  const handleUploadButtonClick = () => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
 
-    if (currentHour < 8) {
-      this.setState({
-        showFormMasukKerja: true,
-        showFormTelatKerja: false,
-      });
-    } else if (currentHour >= 8) {
-      this.setState({
-        showFormMasukKerja: false,
-        showFormTelatKerja: true,
-      });
+    if (currentHour > 8) {
+      setShowFormMasukKerja(true);
+      setShowFormTelatKerja(false);
+    } else if (currentHour <= 8) {
+      setShowFormMasukKerja(false);
+      setShowFormTelatKerja(true);
     }
-    this.setState({
-      showCamera: false,
-      capturedImage: null,
-    });
+
+    setShowCamera(false);
+    setCapturedImage(null);
   };
 
-  handleLateButtonClick = () => {
-    this.setState({
-      showFormTelatKerja: true, // Tampilkan formulir masuk kerja
-      showCamera: false, // Sembunyikan kamera
-      capturedImage: null,
-    });
-  };
-  handleCaptureButtonClick = () => {
-    this.capture();
+  const handleLateButtonClick = () => {
+    setShowFormTelatKerja(true);
+    setShowCamera(false);
+    setCapturedImage(null);
   };
 
-  changeToCamera = () => {
-    // Set the captured image in the state
-    this.setState((prevState) => ({
-      showCamera: !prevState.showCamera,
-      capturedImage: null,
-
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
+  const handleCaptureButtonClick = () => {
+    capture();
   };
 
-  handleDoneWorkButtonClick = () => {
-    this.setState({
-      showFormSelesaiKerja: true, // Tampilkan formulir masuk kerja
-      showFormMasukKerja: false, //
-      showFormTelatKerja: false, //
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showCamera: false, // Sembunyikan kamera
-      capturedImage: null,
-    });
+  const changeToCamera = () => {
+    setShowCamera((prevShowCamera) => !prevShowCamera);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
   };
 
-  handleCloseWorkButtonClick = () => {
-    this.setState({
-      currentImage: people, // Gambar default
-      showFormSelesaiKerja: false, // Tampilkan formulir masuk kerja
-      showFormMasukKerja: false, //
-      showFormTelatKerja: false, //
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showCamera: false, // Sembunyikan kamera
-      capturedImage: null,
-    });
+  const handleDoneWorkButtonClick = () => {
+    setShowFormSelesaiKerja(true);
+    setShowFormMasukKerja(false);
+    setShowFormTelatKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowCamera(false);
+    setCapturedImage(null);
   };
 
-  changeToFormMasukKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-      showFormMasukKerja: !prevState.showFormMasukKerja,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToFormSelesaiKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: !prevState.showFormSelesaiKerja,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToFormIzinKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: !prevState.showFormIzinKerja,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToRekapPresensi = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: !prevState.showFormRekapPresensi,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToFormTelatKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: true,
-      capturedImage: null,
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
+  const handleCloseWorkButtonClick = () => {
+    setCurrentImage(people);
+    setShowFormSelesaiKerja(false);
+    setShowFormMasukKerja(false);
+    setShowFormTelatKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowCamera(false);
+    setCapturedImage(null);
   };
 
-  render() {
-    return (
-      <>
-        <div className="uk-body">
-          <div className="header-home">
-            <div className="header-home-logo">
-              <img src={logo} alt="logo" />
-            </div>
-            <div className="logo-profile">
-              <img src={akun} alt="logo" />
-            </div>
+  const changeToFormMasukKerja = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja((prevShowForm) => !prevShowForm);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToFormSelesaiKerja = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja((prevShowForm) => !prevShowForm);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToFormIzinKerja = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja((prevShowForm) => !prevShowForm);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToRekapPresensi = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi((prevShowForm) => !prevShowForm);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToFormTelatKerja = () => {
+    setShowCamera(true);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  useEffect(() => {
+    const storedDivisi = localStorage.getItem("divisi");
+    const storedIdMsib = localStorage.getItem("id_msib");
+    const storedShift = localStorage.getItem("shift");
+    const storedUsername = localStorage.getItem("username");
+    setDivisi(storedDivisi);
+    setIdMsib(storedIdMsib);
+    setShift(storedShift);
+    setUsername(storedUsername);
+  }, []);
+
+  return (
+    <>
+      <div className="uk-body">
+        <div className="header-home">
+          <div className="header-home-logo">
+            <img src={logo} alt="logo" />
           </div>
+          <div className="logo-profile">
+            <Dropdown>
+              <DropdownToggle>
+                <img src={akun} alt="logo" />
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem disabled>{username}</DropdownItem>
+                <DropdownItem href="#/action-2">Lupa Password</DropdownItem>
+                <DropdownItem href="#/action-3">Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+        </div>
+        {idMsib && divisi && shift && username ? (
           <div className="content-home">
             <div className="form-content-home">
               <div className="sub-content-1">
@@ -200,8 +205,8 @@ class Home extends Component {
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
                   onClick={() => {
-                    this.setState({ currentAction: "masuk" });
-                    this.changeToCamera();
+                    setCurrentAction("masuk");
+                    changeToCamera();
                   }}
                 >
                   Masuk Kerja
@@ -209,14 +214,14 @@ class Home extends Component {
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToFormIzinKerja}
+                  onClick={changeToFormIzinKerja}
                 >
                   Pengajuan Izin
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToRekapPresensi}
+                  onClick={changeToRekapPresensi}
                 >
                   Rekap Presensi
                 </button>
@@ -226,30 +231,30 @@ class Home extends Component {
             <div className="image-content">
               <div className="homepage">
                 {/* CAMERA PRESENSI MASUK */}
-                {this.state.showCamera && (
+                {showCamera && (
                   <div className="camera">
                     <div className="camera-title">
                       <Webcam
                         className="webcam"
                         audio={false}
-                        ref={this.webcamRef}
+                        ref={webcamRef}
                         screenshotFormat="image/jpeg"
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={this.handleCancelButtonClick}
+                          onClick={handleCancelButtonClick}
                         >
                           Batal
                         </button>
                         <button
                           className="capture-btn"
-                          onClick={this.handleCaptureButtonClick}
+                          onClick={handleCaptureButtonClick}
                         ></button>
                         <button
                           className="upload-cam-button"
-                          onClick={this.handleUploadButtonClick}
+                          onClick={handleUploadButtonClick}
                         >
                           Upload
                         </button>
@@ -257,41 +262,29 @@ class Home extends Component {
                     </div>
                   </div>
                 )}
-                {this.state.capturedImage && (
+                {capturedImage && (
                   <div className="camera">
                     <div className="camera-title">
                       <img
-                        src={this.state.capturedImage}
+                        src={capturedImage}
                         alt="Captured"
                         className="capture"
                       />
-                      <p
-                        style={{
-                          position: "absolute",
-                          bottom: "110px",
-                          left: "67%",
-                          transform: "translateX(-50%)",
-                          fontSize: 10,
-                          color: "white",
-                          // textTransform: "uppercase",
-                        }}
-                      >
-                        Tekan Cancel untuk ambil ulang
-                      </p>
+
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={this.handleCancelButtonClick}
+                          onClick={handleCancelButtonClick}
                         >
                           Batal
                         </button>
                         <button
                           className="capture-btn d-none"
-                          onClick={this.handleCaptureButtonClick}
+                          onClick={handleCaptureButtonClick}
                         ></button>
                         <button
                           className="upload-cam-button"
-                          onClick={this.handleUploadButtonClick}
+                          onClick={handleUploadButtonClick}
                         >
                           Upload
                         </button>
@@ -300,20 +293,20 @@ class Home extends Component {
                   </div>
                 )}
                 {/* FORM MASUK KERJA */}
-                {this.state.showFormMasukKerja && (
+                {showFormMasukKerja && (
                   <div className="sub-content-3">
-                    <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}
-                    >
+                    <div className="border-sub-content">
                       <div
-                        className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}
+                        className="container-lg"
+                        style={{ backgroundColor: "white", borderRadius: 20 }}
                       >
-                        <h4>Presensi Hari Ini Sudah Berhasil!</h4>
-                        <p>Selamat dan semangat bekerja ya!</p>
-                      </div>
-                      <div className="border-sub-content">
+                        <div
+                          className="row header-content"
+                          style={{ backgroundColor: "#1c711b" }}
+                        >
+                          <h4>Presensi Hari Ini Sudah Berhasil!</h4>
+                          <p>Selamat dan semangat bekerja ya!</p>
+                        </div>
                         <div className="container p-4">
                           <div className="row py-1 d-flex justify-content-center ">
                             <div className="col ">
@@ -327,6 +320,7 @@ class Home extends Component {
                                   class="form-control"
                                   id="IDK"
                                   aria-describedby="emailHelp"
+                                  value={idMsib}
                                 />
                               </div>
                             </div>
@@ -341,6 +335,7 @@ class Home extends Component {
                                   class="form-control"
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
+                                  value={formattedTime}
                                 />
                               </div>
                             </div>
@@ -357,6 +352,7 @@ class Home extends Component {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
+                                  value={divisi}
                                 />
                               </div>
                             </div>
@@ -381,7 +377,7 @@ class Home extends Component {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}
+                          onClick={handleDoneWorkButtonClick}
                         >
                           Selesai Bekerja
                         </button>
@@ -390,11 +386,11 @@ class Home extends Component {
                   </div>
                 )}
                 {/* FORM SELESAI KERJA */}
-                {this.state.showFormSelesaiKerja && (
+                {showFormSelesaiKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}
+                      className="container-lg"
+                      style={{ backgroundColor: "white", borderRadius: 20 }}
                     >
                       <div
                         className="row header-content"
@@ -467,7 +463,7 @@ class Home extends Component {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleCloseWorkButtonClick}
+                          onClick={handleCloseWorkButtonClick}
                         >
                           Tutup
                         </button>
@@ -477,7 +473,7 @@ class Home extends Component {
                 )}
 
                 {/* FORM IZIN KERJA */}
-                {this.state.showFormIzinKerja && (
+                {showFormIzinKerja && (
                   <div className="sub-content-3">
                     <div className="container">
                       <FormIzin />
@@ -486,11 +482,11 @@ class Home extends Component {
                 )}
 
                 {/* FORM TERLAMBAT KERJA */}
-                {this.state.showFormTelatKerja && (
+                {showFormTelatKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}
+                      className="container-lg "
+                      style={{ backgroundColor: "white", borderRadius: 20 }}
                     >
                       <div
                         className="row header-content"
@@ -512,6 +508,7 @@ class Home extends Component {
                                   class="form-control"
                                   id="IDK"
                                   aria-describedby="emailHelp"
+                                  value={idMsib}
                                 />
                               </div>
                             </div>
@@ -525,6 +522,7 @@ class Home extends Component {
                                   class="form-control"
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
+                                  value={formattedTime}
                                 />
                               </div>
                             </div>
@@ -540,6 +538,7 @@ class Home extends Component {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
+                                  value={divisi}
                                 />
                               </div>
                             </div>
@@ -563,7 +562,7 @@ class Home extends Component {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}
+                          onClick={handleDoneWorkButtonClick}
                         >
                           Selesai Bekerja
                         </button>
@@ -573,7 +572,7 @@ class Home extends Component {
                 )}
 
                 {/* REKAP PRESENSI */}
-                {this.state.showFormRekapPresensi && (
+                {showFormRekapPresensi && (
                   <div className="sub-content-3">
                     <div className="">
                       <div className="card shadow mb-4">
@@ -628,24 +627,26 @@ class Home extends Component {
                   </div>
                 )}
 
-                {!this.state.showCamera &&
-                  !this.state.capturedImage &&
-                  !this.state.showFormMasukKerja &&
-                  !this.state.showFormSelesaiKerja &&
-                  !this.state.showFormIzinKerja &&
-                  !this.state.showFormRekapPresensi &&
-                  !this.state.showFormTelatKerja && (
+                {!showCamera &&
+                  !capturedImage &&
+                  !showFormMasukKerja &&
+                  !showFormSelesaiKerja &&
+                  !showFormIzinKerja &&
+                  !showFormRekapPresensi &&
+                  !showFormTelatKerja && (
                     <div className="homepage">
-                      <img src={this.state.currentImage} alt="Current Home" />
+                      <img src={currentImage} alt="Current Home" />
                     </div>
                   )}
               </div>
             </div>
           </div>
-        </div>
-      </>
-    );
-  }
-}
+        ) : (
+          <p>ID MSIB tidak ditemukan. Pastikan Anda telah login.</p>
+        )}
+      </div>
+    </>
+  );
+};
 
 export default Home;

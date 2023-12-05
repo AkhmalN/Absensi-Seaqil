@@ -26,12 +26,14 @@ const Login = () => {
 
       if (response.status === 200) {
         setSuccsesMsg("Berhasil Login");
+        localStorage.setItem("divisi", response.data.user.divisi);
+        localStorage.setItem("id_msib", response.data.user.id_msib);
+        localStorage.setItem("shift", response.data.user.shift);
+        localStorage.setItem("username", response.data.user.username);
         setTimeout(() => {
           navigate("/home");
         }, 1000);
-        const user = localStorage.setItem("email", email);
-        console.log(user);
-      } else {
+      } else if (response.status === 404) {
         setErrorMsg("email atau password tidak ditemukan");
       }
     } catch (error) {
