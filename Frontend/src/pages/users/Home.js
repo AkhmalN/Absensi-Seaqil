@@ -15,8 +15,10 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from "react-bootstrap";
+import axios from "axios";
 
 const Home = () => {
+  // State
   const [currentImage, setCurrentImage] = useState(people);
   const [showFormMasukKerja, setShowFormMasukKerja] = useState(false);
   const [showFormSelesaiKerja, setShowFormSelesaiKerja] = useState(false);
@@ -26,10 +28,13 @@ const Home = () => {
   const [capturedImage, setCapturedImage] = useState(null);
   const [showCamera, setShowCamera] = useState(false);
   const [currentAction, setCurrentAction] = useState("");
+
+  // Data
   const [divisi, setDivisi] = useState(null);
   const [idMsib, setIdMsib] = useState(null);
   const [shift, setShift] = useState(null);
   const [username, setUsername] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
 
   const now = new Date();
   const hours = now.getHours();
@@ -43,6 +48,7 @@ const Home = () => {
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setCapturedImage(imageSrc);
+
     setShowCamera(false);
   };
 
@@ -51,20 +57,43 @@ const Home = () => {
     setShowCamera(false);
   };
 
-  const handleUploadButtonClick = () => {
+  const handleUploadButtonClick = async () => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
 
-    if (currentHour > 8) {
+    if (currentHour < 8) {
       setShowFormMasukKerja(true);
       setShowFormTelatKerja(false);
-    } else if (currentHour <= 8) {
+    } else if (currentHour >= 8) {
       setShowFormMasukKerja(false);
       setShowFormTelatKerja(true);
     }
 
     setShowCamera(false);
     setCapturedImage(null);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/api/v1/presence",
+        {
+          id_msib: idMsib,
+          username: username,
+          shift: shift,
+          divisi: divisi,
+          image: imageSrc,
+        }
+      );
+
+      // Check for a successful response
+      if (response.status === 201) {
+        console.log("Upload successful:", response.data);
+      } else {
+        console.log("Upload failed:", response.status);
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("Error uploading:", error);
+    }
   };
 
   const handleLateButtonClick = () => {
@@ -74,6 +103,8 @@ const Home = () => {
   };
 
   const handleCaptureButtonClick = () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImageSrc(imageSrc);
     capture();
   };
 
