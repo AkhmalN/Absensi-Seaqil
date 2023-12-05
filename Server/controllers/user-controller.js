@@ -4,7 +4,7 @@ export const createUser = async (req, res, next) => {
   try {
     const { id_msib, shift, username, email, password, role, divisi } =
       req.body;
-    const image = req.file.filename;
+    // const image = req.file.filename;
 
     const newUser = new User({
       id_msib,
@@ -14,7 +14,7 @@ export const createUser = async (req, res, next) => {
       password,
       role,
       divisi,
-      image,
+      // image,
     });
     await newUser.save();
     if (!newUser) {

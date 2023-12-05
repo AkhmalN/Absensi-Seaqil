@@ -5,6 +5,7 @@ import cors from "cors";
 import userRouter from "./routes/user-router.js";
 import presensiRouter from "./routes/presensi-router.js";
 import izinRouter from "./routes/izin-router.js";
+import authRouter from "./routes/auth-router.js";
 const PORT = process.env.PORT || 8081;
 const app = express();
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(cors());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/presence", presensiRouter);
 app.use("/api/v1/work_permit", izinRouter);
+app.use("/api/v1/auth", authRouter);
 
 // Connect to MongoDB
 mongoose
