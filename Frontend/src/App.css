@@ -258,6 +258,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px 35px;
+  padding-bottom: 500px;
 }
 
 .sub-content-3 img {
