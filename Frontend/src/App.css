@@ -249,7 +249,7 @@ body {
 
 .sub-content-3 {
   /* margin-top: 10px; */
-  height: 475px;
+  height: 640px;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
@@ -257,7 +257,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 35px;
+  padding: 20px;
 }
 
 .sub-content-3 img {
@@ -288,6 +288,7 @@ body {
   margin-top: 20px;
 }
 .border-sub-content {
+  background-color: white;
   border: 1px solid #266cb2;
   border-radius: 20px;
   margin-top: 15px;
@@ -501,20 +502,10 @@ body {
 
 .dropdown-menu {
   border-radius: 10px;
-  /* border: none !important; */
-  /* position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 50%; 
-  transform: translateY(-50%); */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-
-/* .header__title {
-  margin-right: 30px;
-} */
 
 .name-centered-text {
   text-align: center;
@@ -565,6 +556,19 @@ body {
   font-family: "Karla" sans-serif;
   font-size: 13px;
 }
+
+.modal-header-reset {
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.form-reset .form-label {
+  font-size: small;
+}
+
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */

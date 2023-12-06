@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/Users/Logo SEAQIL 1 1.png";
 import people from "../../assets/Users/front.png";
 import akun from "../../assets/Users/akun.png";
@@ -9,182 +9,218 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DataPresensiUser from "../../DataPresensiUser";
 import "../../responsive.css";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "react-bootstrap";
+import axios from "axios";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentImage: people, // Gambar default
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-      capturedImage: null,
-      showCamera: false,
-      currentAction: "",
-    };
-    this.webcamRef = React.createRef();
-  }
+const Home = () => {
+  // State
+  const [currentImage, setCurrentImage] = useState(people);
+  const [showFormMasukKerja, setShowFormMasukKerja] = useState(false);
+  const [showFormSelesaiKerja, setShowFormSelesaiKerja] = useState(false);
+  const [showFormIzinKerja, setShowFormIzinKerja] = useState(false);
+  const [showFormRekapPresensi, setShowFormRekapPresensi] = useState(false);
+  const [showFormTelatKerja, setShowFormTelatKerja] = useState(false);
+  const [capturedImage, setCapturedImage] = useState(null);
+  const [showCamera, setShowCamera] = useState(false);
+  const [currentAction, setCurrentAction] = useState("");
 
-  capture = () => {
-    const imageSrc = this.webcamRef.current.getScreenshot();
-    // Set the captured image in the state
-    this.setState({
-      capturedImage: imageSrc,
-      showCamera: false, // Hide the camera and show the captured image
-    });
+  // Data
+  const [divisi, setDivisi] = useState(null);
+  const [idMsib, setIdMsib] = useState(null);
+  const [shift, setShift] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
+
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const formattedTime = `${hours < 10 ? "0" : ""}${hours}:${
+    minutes < 10 ? "0" : ""
+  }${minutes}`;
+
+  const webcamRef = useRef(null);
+
+  const capture = () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setCapturedImage(imageSrc);
+
+    setShowCamera(false);
   };
-  handleCancelButtonClick = () => {
-    console.log("Cancel button clicked");
-    // Clear the captured image and show the camera again
-    this.setState({
-      capturedImage: null,
-      showCamera: true,
-    });
+
+  const handleCancelButtonClick = () => {
+    setCapturedImage(null);
+    setShowCamera(false);
   };
 
-  handleUploadButtonClick = () => {
+  const handleUploadButtonClick = async () => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
 
     if (currentHour < 8) {
-      this.setState({
-        showFormMasukKerja: true,
-        showFormTelatKerja: false,
-      });
+      setShowFormMasukKerja(true);
+      setShowFormTelatKerja(false);
     } else if (currentHour >= 8) {
-      this.setState({
-        showFormMasukKerja: false,
-        showFormTelatKerja: true,
-      });
+      setShowFormMasukKerja(false);
+      setShowFormTelatKerja(true);
     }
-    this.setState({
-      showCamera: false,
-      capturedImage: null,
-    });
+
+    setShowCamera(false);
+    setCapturedImage(null);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/api/v1/presence",
+        {
+          id_msib: idMsib,
+          username: username,
+          shift: shift,
+          divisi: divisi,
+          image: imageSrc,
+        }
+      );
+
+      // Check for a successful response
+      if (response.status === 201) {
+        console.log("Upload successful:", response.data);
+      } else {
+        console.log("Upload failed:", response.status);
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("Error uploading:", error);
+    }
   };
 
-  handleLateButtonClick = () => {
-    this.setState({
-      showFormTelatKerja: true, // Tampilkan formulir masuk kerja
-      showCamera: false, // Sembunyikan kamera
-      capturedImage: null,
-    });
-  };
-  handleCaptureButtonClick = () => {
-    this.capture();
+  const handleLateButtonClick = () => {
+    setShowFormTelatKerja(true);
+    setShowCamera(false);
+    setCapturedImage(null);
   };
 
-  changeToCamera = () => {
-    // Set the captured image in the state
-    this.setState((prevState) => ({
-      showCamera: !prevState.showCamera,
-      capturedImage: null,
-
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
+  const handleCaptureButtonClick = () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImageSrc(imageSrc);
+    capture();
   };
 
-  handleDoneWorkButtonClick = () => {
-    this.setState({
-      showFormSelesaiKerja: true, // Tampilkan formulir masuk kerja
-      showFormMasukKerja: false, //
-      showFormTelatKerja: false, //
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showCamera: false, // Sembunyikan kamera
-      capturedImage: null,
-    });
+  const changeToCamera = () => {
+    setShowCamera((prevShowCamera) => !prevShowCamera);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
   };
 
-  handleCloseWorkButtonClick = () => {
-    this.setState({
-      currentImage: people, // Gambar default
-      showFormSelesaiKerja: false, // Tampilkan formulir masuk kerja
-      showFormMasukKerja: false, //
-      showFormTelatKerja: false, //
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showCamera: false, // Sembunyikan kamera
-      capturedImage: null,
-    });
+  const handleDoneWorkButtonClick = () => {
+    setShowFormSelesaiKerja(true);
+    setShowFormMasukKerja(false);
+    setShowFormTelatKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowCamera(false);
+    setCapturedImage(null);
   };
 
-  changeToFormMasukKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-      showFormMasukKerja: !prevState.showFormMasukKerja,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToFormSelesaiKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: !prevState.showFormSelesaiKerja,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToFormIzinKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: !prevState.showFormIzinKerja,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToRekapPresensi = () => {
-    this.setState((prevState) => ({
-      showCamera: false,
-      capturedImage: null,
-
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: !prevState.showFormRekapPresensi,
-      showFormTelatKerja: false,
-    }));
-  };
-  changeToFormTelatKerja = () => {
-    this.setState((prevState) => ({
-      showCamera: true,
-      capturedImage: null,
-      showFormMasukKerja: false,
-      showFormSelesaiKerja: false,
-      showFormIzinKerja: false,
-      showFormRekapPresensi: false,
-      showFormTelatKerja: false,
-    }));
+  const handleCloseWorkButtonClick = () => {
+    setCurrentImage(people);
+    setShowFormSelesaiKerja(false);
+    setShowFormMasukKerja(false);
+    setShowFormTelatKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowCamera(false);
+    setCapturedImage(null);
   };
 
-  render() {
-    return (
-      <>
-        <div className="uk-body">
-          <div className="header-home">
-            <div className="header-home-logo">
-              <img src={logo} alt="logo" />
-            </div>
-            <div className="logo-profile">
-              <img src={akun} alt="logo" />
-            </div>
+  const changeToFormMasukKerja = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja((prevShowForm) => !prevShowForm);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToFormSelesaiKerja = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja((prevShowForm) => !prevShowForm);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToFormIzinKerja = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja((prevShowForm) => !prevShowForm);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToRekapPresensi = () => {
+    setShowCamera(false);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi((prevShowForm) => !prevShowForm);
+    setShowFormTelatKerja(false);
+  };
+
+  const changeToFormTelatKerja = () => {
+    setShowCamera(true);
+    setCapturedImage(null);
+    setShowFormMasukKerja(false);
+    setShowFormSelesaiKerja(false);
+    setShowFormIzinKerja(false);
+    setShowFormRekapPresensi(false);
+    setShowFormTelatKerja(false);
+  };
+
+  useEffect(() => {
+    const storedDivisi = localStorage.getItem("divisi");
+    const storedIdMsib = localStorage.getItem("id_msib");
+    const storedShift = localStorage.getItem("shift");
+    const storedUsername = localStorage.getItem("username");
+    setDivisi(storedDivisi);
+    setIdMsib(storedIdMsib);
+    setShift(storedShift);
+    setUsername(storedUsername);
+  }, []);
+
+  return (
+    <>
+      <div className="uk-body">
+        <div className="header-home">
+          <div className="header-home-logo">
+            <img src={logo} alt="logo" />
           </div>
+          <div className="logo-profile">
+            <Dropdown>
+              <DropdownToggle>
+                <img src={akun} alt="logo" />
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem disabled>{username}</DropdownItem>
+                <DropdownItem href="#/action-2">Lupa Password</DropdownItem>
+                <DropdownItem href="#/action-3">Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+        </div>
+        {idMsib && divisi && shift && username ? (
           <div className="content-home">
             <div className="form-content-home">
               <div className="sub-content-1">
@@ -223,7 +259,7 @@ class Home extends Component {
             <div className="image-content">
               <div className="homepage">
                 {/* CAMERA PRESENSI MASUK */}
-                {this.state.showCamera && (
+                {showCamera && (
                   <div className="camera">
                     <div className="camera-title">
                       <Webcam
@@ -251,7 +287,7 @@ class Home extends Component {
                     </div>
                   </div>
                 )}
-                {this.state.capturedImage && (
+                {capturedImage && (
                   <div className="camera">
                     <div className="camera-title">
                       <img
@@ -290,7 +326,7 @@ class Home extends Component {
                   </div>
                 )}
                 {/* FORM MASUK KERJA */}
-                {this.state.showFormMasukKerja && (
+                {showFormMasukKerja && (
                   <div className="sub-content-3">
                     <div
                       className="container"
@@ -377,7 +413,7 @@ class Home extends Component {
                   </div>
                 )}
                 {/* FORM SELESAI KERJA */}
-                {this.state.showFormSelesaiKerja && (
+                {showFormSelesaiKerja && (
                   <div className="sub-content-3">
                     <div
                       className="container"
@@ -461,7 +497,7 @@ class Home extends Component {
                 )}
 
                 {/* FORM IZIN KERJA */}
-                {this.state.showFormIzinKerja && (
+                {showFormIzinKerja && (
                   <div className="sub-content-3">
                     <div className="container">
                       <FormIzin />
@@ -470,7 +506,7 @@ class Home extends Component {
                 )}
 
                 {/* FORM TERLAMBAT KERJA */}
-                {this.state.showFormTelatKerja && (
+                {showFormTelatKerja && (
                   <div className="sub-content-3">
                     <div
                       className="container"
@@ -554,7 +590,7 @@ class Home extends Component {
                 )}
 
                 {/* REKAP PRESENSI */}
-                {this.state.showFormRekapPresensi && (
+                {showFormRekapPresensi && (
                   <div className="sub-content-3">
                     <div className="">
                       <div className="card shadow mb-4">
@@ -604,24 +640,26 @@ class Home extends Component {
                   </div>
                 )}
 
-                {!this.state.showCamera &&
-                  !this.state.capturedImage &&
-                  !this.state.showFormMasukKerja &&
-                  !this.state.showFormSelesaiKerja &&
-                  !this.state.showFormIzinKerja &&
-                  !this.state.showFormRekapPresensi &&
-                  !this.state.showFormTelatKerja && (
+                {!showCamera &&
+                  !capturedImage &&
+                  !showFormMasukKerja &&
+                  !showFormSelesaiKerja &&
+                  !showFormIzinKerja &&
+                  !showFormRekapPresensi &&
+                  !showFormTelatKerja && (
                     <div className="homepage">
-                      <img src={this.state.currentImage} alt="Current Home" />
+                      <img src={currentImage} alt="Current Home" />
                     </div>
                   )}
               </div>
             </div>
           </div>
-        </div>
-      </>
-    );
-  }
-}
+        ) : (
+          <p>ID MSIB tidak ditemukan. Pastikan Anda telah login.</p>
+        )}
+      </div>
+    </>
+  );
+};
 
 export default Home;

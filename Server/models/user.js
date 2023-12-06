@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     username: {
-      type: String,
+      type: String, // Add this line to enforce uniqueness
       required: true,
     },
     email: {
