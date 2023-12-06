@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
@@ -20,6 +20,7 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
 import { useMediaQuery } from "@react-hook/media-query";
+import axios from "axios";
 
 const DataMahasiswa = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
@@ -46,6 +47,36 @@ const DataMahasiswa = () => {
   const [showAlertAdd, setShowAlertAdd] = useState(false);
   const [showAlertEdit, setShowAlertEdit] = useState(false);
   const [showAlertDelete, setShowAlertDelete] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [dataMahasiswa, setDataMahasiswa] = useState([]);
+  const [idMsib, setIdMsib] = useState("");
+  const [shift, setShift] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [divisi, setDivisi] = useState("");
+  const [editID, setEditID] = useState("");
+
+  const getDataMahasiswa = async () => {
+    try {
+      const response = await axios.get("http://localhost:8081/api/v1/users/");
+      setDataMahasiswa(response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error("Server responded with an error:", error.response.status);
+        console.error("Response data:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received from the server");
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
+    }
+  };
+  useEffect(() => {
+    getDataMahasiswa();
+  }, []);
 
   const handleCloseAdd = () => setShowAdd(false);
   const handleShowAdd = () => setShowAdd(true);
@@ -58,15 +89,44 @@ const DataMahasiswa = () => {
     }, 2000);
   };
 
-  const ButtonAdd = () => {
-    // Memanggil kedua aksi secara bersamaan
-    handleCloseAdd();
-    handleShowAlertAdd();
+  const ButtonAdd = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("id_msib", idMsib);
+      formData.append("shift", shift);
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("role", role);
+      formData.append("divisi", divisi);
+
+      const response = await axios.post(
+        "http://localhost:8081/api/v1/users/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        handleShowAlertAdd();
+      }
+      // handleCloseAdd();
+    } catch (error) {}
   };
 
   const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = () => setShowEdit(true);
-
+  const handleShowEdit = async (_id) => {
+    setLoading(true);
+    setEditID(_id);
+    setShowEdit(true);
+    setLoading(false);
+  };
+  useEffect(() => {
+    console.log(editID); // Log the updated editID
+  }, [editID]);
   const handleCloseAlertEdit = () => setShowAlertEdit(false);
   const handleShowAlertEdit = () => {
     setShowAlertEdit(true);
@@ -226,7 +286,7 @@ const DataMahasiswa = () => {
                 {/* Card Body */}
                 <div className="card-body ">
                   <DataTable
-                    value={DATA}
+                    value={dataMahasiswa}
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
@@ -235,24 +295,25 @@ const DataMahasiswa = () => {
                     paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
                   >
                     <Column
-                      field="no"
+                      field="id_msib"
                       header="No"
                       style={{ width: "3%" }}
                     ></Column>
+
                     <Column
-                      field="IDk"
-                      header="ID Kegiatan"
-                      style={{ width: "12%" }}
-                      alignHeader={"center"}
-                    ></Column>
-                    <Column
-                      field="nm"
+                      field="username"
                       header="Nama"
                       style={{ width: "20%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
-                      field="div"
+                      field="email"
+                      header="Email"
+                      style={{ width: "20%" }}
+                      alignHeader={"center"}
+                    ></Column>
+                    <Column
+                      field="divisi"
                       header="Divisi"
                       style={{ width: "15%" }}
                       alignHeader={"center"}
@@ -264,8 +325,14 @@ const DataMahasiswa = () => {
                       alignHeader={"center"}
                     ></Column>
                     <Column
-                      field="pass"
+                      field="password"
                       header="Password"
+                      style={{ width: "20%" }}
+                      alignHeader={"center"}
+                    ></Column>
+                    <Column
+                      field="role"
+                      header="role"
                       style={{ width: "20%" }}
                       alignHeader={"center"}
                     ></Column>
@@ -284,7 +351,7 @@ const DataMahasiswa = () => {
                           <button
                             className="edit me-2"
                             type="button"
-                            onClick={handleShowEdit}
+                            onClick={() => handleShowEdit(rowData._id)}
                           >
                             <FontAwesomeIcon icon={faPenToSquare} />
                           </button>
@@ -321,6 +388,8 @@ const DataMahasiswa = () => {
                           className="form-control"
                           id="IdK"
                           placeholder="ID Kegiatan"
+                          value={idMsib}
+                          onChange={(e) => setIdMsib(e.target.value)}
                         />
                       </div>
                       <div class="mb-2">
@@ -329,6 +398,18 @@ const DataMahasiswa = () => {
                           className="form-control"
                           id="nm"
                           placeholder="Nama Lengkap"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                        />
+                      </div>
+                      <div class="mb-2">
+                        <input
+                          type="email"
+                          className="form-control"
+                          id="nm"
+                          placeholder="Email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
                       <div class="mb-2">
@@ -337,16 +418,32 @@ const DataMahasiswa = () => {
                           className="form-control"
                           id="div"
                           placeholder="Divisi"
+                          value={divisi}
+                          onChange={(e) => setDivisi(e.target.value)}
                         />
                       </div>
                       <div class="mb-2">
                         <select
                           class="form-select"
                           aria-label="Default select example"
+                          value={shift}
+                          onChange={(e) => setShift(e.target.value)}
                         >
                           <option selected>Shift</option>
                           <option value="Pagi">Pagi</option>
                           <option value="Siang">Siang</option>
+                        </select>
+                      </div>
+                      <div class="mb-2">
+                        <select
+                          class="form-select"
+                          aria-label="Default select example"
+                          value={role}
+                          onChange={(e) => setRole(e.target.value)}
+                        >
+                          <option selected>Role</option>
+                          <option value="Pagi">User</option>
+                          <option value="Siang">Admin</option>
                         </select>
                       </div>
                       <div class="mb-2">
@@ -355,6 +452,8 @@ const DataMahasiswa = () => {
                           className="form-control"
                           id="pass"
                           placeholder="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
                         />
                       </div>
                     </div>
@@ -383,72 +482,76 @@ const DataMahasiswa = () => {
               centered
               size="sm"
             >
-              <Modal.Body className="modal-body">
-                <Modal.Body>
-                  <div className="modal-header-edit text-center mb-3">
-                    Edit Data
-                    <div className="mt-3">
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="IdK"
-                          placeholder="ID Kegiatan"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="nm"
-                          placeholder="Nama Lengkap"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="div"
-                          placeholder="Divisi"
-                        />
-                      </div>
-                      <div class="mb-2">
-                        <select
-                          class="form-select"
-                          aria-label="Default select example"
-                        >
-                          <option selected>Shift</option>
-                          <option value="Pagi">Pagi</option>
-                          <option value="Siang">Siang</option>
-                        </select>
-                      </div>
-                      <div class="mb-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="pass"
-                          placeholder="Password"
-                        />
+              {loading ? (
+                <h1>Tunggu</h1>
+              ) : (
+                <Modal.Body className="modal-body">
+                  <Modal.Body>
+                    <div className="modal-header-edit text-center mb-3">
+                      Edit Data
+                      <div className="mt-3">
+                        <div class="mb-2">
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="IdK"
+                            placeholder="ID Kegiatan"
+                          />
+                        </div>
+                        <div class="mb-2">
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="nm"
+                            placeholder="Nama Lengkap"
+                          />
+                        </div>
+                        <div class="mb-2">
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="div"
+                            placeholder="Divisi"
+                          />
+                        </div>
+                        <div class="mb-2">
+                          <select
+                            class="form-select"
+                            aria-label="Default select example"
+                          >
+                            <option selected>Shift</option>
+                            <option value="Pagi">Pagi</option>
+                            <option value="Siang">Siang</option>
+                          </select>
+                        </div>
+                        <div class="mb-2">
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="pass"
+                            placeholder="Password"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}
-                  >
-                    <button
-                      className="batal-btn me-2"
-                      onClick={handleCloseEdit}
+                    <div
+                      className="d-flex justify-content-center mt-4"
+                      style={{ border: "none" }}
                     >
-                      Batal
-                    </button>
-                    <button className="edit-btn ms-2" onClick={ButtonEdit}>
-                      Simpan
-                    </button>
-                  </div>
+                      <button
+                        className="batal-btn me-2"
+                        onClick={handleCloseEdit}
+                      >
+                        Batal
+                      </button>
+                      <button className="edit-btn ms-2" onClick={ButtonEdit}>
+                        Simpan
+                      </button>
+                    </div>
+                  </Modal.Body>
                 </Modal.Body>
-              </Modal.Body>
+              )}
             </Modal>
             {/* END OF BUTTON EDIT */}
             {/* BUTTON DELETE */}

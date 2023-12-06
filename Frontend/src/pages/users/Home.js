@@ -46,10 +46,11 @@ const Home = () => {
   const webcamRef = useRef(null);
 
   const capture = () => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setCapturedImage(imageSrc);
-
-    setShowCamera(false);
+    if (webcamRef.current) {
+      const imageSrc = webcamRef.current.getScreenshot();
+      setCapturedImage(imageSrc);
+      setShowCamera(false);
+    }
   };
 
   const handleCancelButtonClick = () => {
@@ -109,6 +110,7 @@ const Home = () => {
   };
 
   const changeToCamera = () => {
+    setCurrentAction("masuk");
     setShowCamera((prevShowCamera) => !prevShowCamera);
     setCapturedImage(null);
     setShowFormMasukKerja(false);
@@ -235,22 +237,22 @@ const Home = () => {
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={() => {
-                    this.setState({ currentAction: "masuk" });
-                    this.changeToCamera();
-                  }}>
+                  onClick={changeToCamera}
+                >
                   Masuk Kerja
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToFormIzinKerja}>
+                  onClick={changeToFormIzinKerja}
+                >
                   Pengajuan Izin
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToRekapPresensi}>
+                  onClick={changeToRekapPresensi}
+                >
                   Rekap Presensi
                 </button>
               </div>
@@ -265,22 +267,25 @@ const Home = () => {
                       <Webcam
                         className="webcam"
                         audio={false}
-                        ref={this.webcamRef}
+                        ref={webcamRef}
                         screenshotFormat="image/jpeg"
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={this.handleCancelButtonClick}>
+                          onClick={handleCancelButtonClick}
+                        >
                           Batal
                         </button>
                         <button
                           className="capture-btn"
-                          onClick={this.handleCaptureButtonClick}></button>
+                          onClick={handleCaptureButtonClick}
+                        ></button>
                         <button
                           className="upload-cam-button"
-                          onClick={this.handleUploadButtonClick}>
+                          onClick={handleUploadButtonClick}
+                        >
                           Upload
                         </button>
                       </div>
@@ -291,7 +296,7 @@ const Home = () => {
                   <div className="camera">
                     <div className="camera-title">
                       <img
-                        src={this.state.capturedImage}
+                        src={capturedImage}
                         alt="Captured"
                         className="capture"
                       />
@@ -304,21 +309,25 @@ const Home = () => {
                           fontSize: 10,
                           color: "white",
                           // textTransform: "uppercase",
-                        }}>
+                        }}
+                      >
                         Tekan Cancel untuk ambil ulang
                       </p>
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={this.handleCancelButtonClick}>
+                          onClick={handleCancelButtonClick}
+                        >
                           Batal
                         </button>
                         <button
                           className="capture-btn d-none"
-                          onClick={this.handleCaptureButtonClick}></button>
+                          onClick={handleCaptureButtonClick}
+                        ></button>
                         <button
                           className="upload-cam-button"
-                          onClick={this.handleUploadButtonClick}>
+                          onClick={handleUploadButtonClick}
+                        >
                           Upload
                         </button>
                       </div>
@@ -330,10 +339,12 @@ const Home = () => {
                   <div className="sub-content-3">
                     <div
                       className="container"
-                      style={{ backgroundColor: "white" }}>
+                      style={{ backgroundColor: "white" }}
+                    >
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}>
+                        style={{ backgroundColor: "#1c711b" }}
+                      >
                         <h4>Presensi Hari Ini Sudah Berhasil!</h4>
                         <p>Selamat dan semangat bekerja ya!</p>
                       </div>
@@ -405,7 +416,8 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}>
+                          onClick={this.handleDoneWorkButtonClick}
+                        >
                           Selesai Bekerja
                         </button>
                       </div>
@@ -417,10 +429,12 @@ const Home = () => {
                   <div className="sub-content-3">
                     <div
                       className="container"
-                      style={{ backgroundColor: "white" }}>
+                      style={{ backgroundColor: "white" }}
+                    >
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}>
+                        style={{ backgroundColor: "#1c711b" }}
+                      >
                         <h4>Presensi Pulang Sudah Berhasil!</h4>
                         <p>Hati-hati di jalan dan selamat beristirahat!</p>
                       </div>
@@ -488,7 +502,8 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleCloseWorkButtonClick}>
+                          onClick={this.handleCloseWorkButtonClick}
+                        >
                           Tutup
                         </button>
                       </div>
@@ -510,10 +525,12 @@ const Home = () => {
                   <div className="sub-content-3">
                     <div
                       className="container"
-                      style={{ backgroundColor: "white" }}>
+                      style={{ backgroundColor: "white" }}
+                    >
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#AC1616" }}>
+                        style={{ backgroundColor: "#AC1616" }}
+                      >
                         <h4>ANDA TERLAMBAT!</h4>
                         <p>Walaupun terlambat, tetap semangat bekerja</p>
                       </div>
@@ -581,7 +598,8 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}>
+                          onClick={this.handleDoneWorkButtonClick}
+                        >
                           Selesai Bekerja
                         </button>
                       </div>
@@ -612,27 +630,32 @@ const Home = () => {
                             rowsPerPageOptions={[5, 10, 25, 30]}
                             tableStyle={{ minWidth: "31rem" }}
                             className="customDataTable" //Add a custom class for more styling options
-                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+                          >
                             <Column
                               field="No"
                               header="No"
                               style={{ width: "10%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                             <Column
                               field="Tanggal"
                               header="Tanggal"
                               style={{ width: "20%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                             <Column
                               field="Shift"
                               header="Shift"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                             <Column
                               field="Keterangan"
                               header="Keterangan"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                           </DataTable>
                         </div>
                       </div>

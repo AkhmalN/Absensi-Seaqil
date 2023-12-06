@@ -7,6 +7,8 @@ import {
   updatePresence,
 } from "../controllers/presensi-controller.js";
 import multer from "multer";
+import path from "path";
+
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -14,8 +16,14 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/presensi");
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now();
-    cb(null, uniqueSuffix + "-" + file.originalname);
+    cb(
+      null,
+      path.parse(file.originalname).name +
+        "-" +
+        Date.now() +
+        "-" +
+        file.originalname
+    );
   },
 });
 
