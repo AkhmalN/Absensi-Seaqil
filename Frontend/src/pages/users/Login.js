@@ -3,13 +3,9 @@ import LogoSEAQIL from "../../assets/Users/LogoSEAQILhd.png";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
 
 const Login = () => {
-  // const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -34,7 +30,7 @@ const Login = () => {
           navigate("/home");
         }, 1000);
       } else if (response.status === 404) {
-        setErrorMsg("email atau password tidak ditemukan");
+        setErrorMsg("Email atau password tidak ditemukan");
       }
     } catch (error) {
       console.error("Error during login:", error);

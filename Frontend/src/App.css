@@ -51,8 +51,6 @@ body {
   height: 100vh;
   padding-top: 100px;
 }
-.container {
-}
 
 .form-content {
   width: 100%;
@@ -501,20 +499,10 @@ body {
 
 .dropdown-menu {
   border-radius: 10px;
-  /* border: none !important; */
-  /* position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 50%; 
-  transform: translateY(-50%); */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-
-/* .header__title {
-  margin-right: 30px;
-} */
 
 .name-centered-text {
   text-align: center;
@@ -565,6 +553,19 @@ body {
   font-family: "Karla" sans-serif;
   font-size: 13px;
 }
+
+.modal-header-reset {
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.form-reset .form-label {
+  font-size: small;
+}
+
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */
@@ -1038,11 +1039,16 @@ body {
 
 .DateRangePicker {
   display: flex;
-  width: 280px;
-  padding: 8px 10px 8px 16px;
+  width: 260px;
   align-items: center;
-  gap: 6px;
-  border-radius: 5px;
-  border: 1px solid #545459;
+  border: none;
   background: #fff;
+}
+
+.DateRangePicker ::placeholder {
+  font-size: small;
+}
+
+.DateRangePicker :placeholder-shown {
+  font-size: small;
 }

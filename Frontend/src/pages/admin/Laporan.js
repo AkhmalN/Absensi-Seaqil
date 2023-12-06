@@ -58,8 +58,7 @@ const Laporan = () => {
               marginLeft,
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
-            }}
-          >
+            }}>
             {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -78,8 +77,7 @@ const Laporan = () => {
                   fontSize: "20px",
                   fontStyle: "normal",
                   fontWeight: "600",
-                }}
-              >
+                }}>
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -149,8 +147,7 @@ const Laporan = () => {
                     <button
                       className="print-button "
                       type="button"
-                      style={{ marginRight: "16px" }}
-                    >
+                      style={{ marginRight: "16px" }}>
                       <FontAwesomeIcon icon={faPrint} />
                       <span className="d-none d-lg-inline">Cetak</span>
                     </button>
@@ -180,44 +177,37 @@ const Laporan = () => {
                     rowsPerPageOptions={[5, 10, 25, 50]}
                     tableStyle={{ textAlign: "center", minWidth: "40rem" }}
                     className="customDataTable"
-                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-                  >
+                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                     <Column
                       field="no"
                       header="No"
                       style={{ width: "3%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="IDk"
                       header="ID Kegiatan"
                       style={{ width: "9%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="nm"
                       header="Nama"
                       style={{ width: "14%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       field="div"
                       header="Divisi"
                       style={{ width: "11%" }}
-                      alignHeader={"center"}
-                    ></Column>
+                      alignHeader={"center"}></Column>
                     <Column
                       header="Status"
                       style={{ width: "20%" }}
                       alignHeader={"center"}
-                      rowSpan={2}
-                    >
+                      rowSpan={2}>
                       <Column
                         field="hdr"
                         header="Hadir"
@@ -250,8 +240,8 @@ const Laporan = () => {
           </div>
 
           <footer className="sticky-footer bg-white">
-            <div className="container my-auto">
-              <div className="copyright text-center my-auto">
+            <div className="container">
+              <div className="copyright text-center">
                 <span>Copyright © MSIB Batch 5 SEAQIL 2023</span>
               </div>
             </div>

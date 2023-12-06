@@ -15,8 +15,10 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from "react-bootstrap";
+import axios from "axios";
 
 const Home = () => {
+  // State
   const [currentImage, setCurrentImage] = useState(people);
   const [showFormMasukKerja, setShowFormMasukKerja] = useState(false);
   const [showFormSelesaiKerja, setShowFormSelesaiKerja] = useState(false);
@@ -26,10 +28,13 @@ const Home = () => {
   const [capturedImage, setCapturedImage] = useState(null);
   const [showCamera, setShowCamera] = useState(false);
   const [currentAction, setCurrentAction] = useState("");
+
+  // Data
   const [divisi, setDivisi] = useState(null);
   const [idMsib, setIdMsib] = useState(null);
   const [shift, setShift] = useState(null);
   const [username, setUsername] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
 
   const now = new Date();
   const hours = now.getHours();
@@ -43,6 +48,7 @@ const Home = () => {
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setCapturedImage(imageSrc);
+
     setShowCamera(false);
   };
 
@@ -51,20 +57,43 @@ const Home = () => {
     setShowCamera(false);
   };
 
-  const handleUploadButtonClick = () => {
+  const handleUploadButtonClick = async () => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
 
-    if (currentHour > 8) {
+    if (currentHour < 8) {
       setShowFormMasukKerja(true);
       setShowFormTelatKerja(false);
-    } else if (currentHour <= 8) {
+    } else if (currentHour >= 8) {
       setShowFormMasukKerja(false);
       setShowFormTelatKerja(true);
     }
 
     setShowCamera(false);
     setCapturedImage(null);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/api/v1/presence",
+        {
+          id_msib: idMsib,
+          username: username,
+          shift: shift,
+          divisi: divisi,
+          image: imageSrc,
+        }
+      );
+
+      // Check for a successful response
+      if (response.status === 201) {
+        console.log("Upload successful:", response.data);
+      } else {
+        console.log("Upload failed:", response.status);
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("Error uploading:", error);
+    }
   };
 
   const handleLateButtonClick = () => {
@@ -74,6 +103,8 @@ const Home = () => {
   };
 
   const handleCaptureButtonClick = () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImageSrc(imageSrc);
     capture();
   };
 
@@ -205,24 +236,21 @@ const Home = () => {
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
                   onClick={() => {
-                    setCurrentAction("masuk");
-                    changeToCamera();
-                  }}
-                >
+                    this.setState({ currentAction: "masuk" });
+                    this.changeToCamera();
+                  }}>
                   Masuk Kerja
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToFormIzinKerja}
-                >
+                  onClick={this.changeToFormIzinKerja}>
                   Pengajuan Izin
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToRekapPresensi}
-                >
+                  onClick={this.changeToRekapPresensi}>
                   Rekap Presensi
                 </button>
               </div>
@@ -237,25 +265,22 @@ const Home = () => {
                       <Webcam
                         className="webcam"
                         audio={false}
-                        ref={webcamRef}
+                        ref={this.webcamRef}
                         screenshotFormat="image/jpeg"
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={handleCancelButtonClick}
-                        >
+                          onClick={this.handleCancelButtonClick}>
                           Batal
                         </button>
                         <button
                           className="capture-btn"
-                          onClick={handleCaptureButtonClick}
-                        ></button>
+                          onClick={this.handleCaptureButtonClick}></button>
                         <button
                           className="upload-cam-button"
-                          onClick={handleUploadButtonClick}
-                        >
+                          onClick={this.handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -266,26 +291,34 @@ const Home = () => {
                   <div className="camera">
                     <div className="camera-title">
                       <img
-                        src={capturedImage}
+                        src={this.state.capturedImage}
                         alt="Captured"
                         className="capture"
                       />
-
+                      <p
+                        style={{
+                          position: "absolute",
+                          bottom: "110px",
+                          left: "67%",
+                          transform: "translateX(-50%)",
+                          fontSize: 10,
+                          color: "white",
+                          // textTransform: "uppercase",
+                        }}>
+                        Tekan Cancel untuk ambil ulang
+                      </p>
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={handleCancelButtonClick}
-                        >
+                          onClick={this.handleCancelButtonClick}>
                           Batal
                         </button>
                         <button
                           className="capture-btn d-none"
-                          onClick={handleCaptureButtonClick}
-                        ></button>
+                          onClick={this.handleCaptureButtonClick}></button>
                         <button
                           className="upload-cam-button"
-                          onClick={handleUploadButtonClick}
-                        >
+                          onClick={this.handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -295,18 +328,16 @@ const Home = () => {
                 {/* FORM MASUK KERJA */}
                 {showFormMasukKerja && (
                   <div className="sub-content-3">
-                    <div className="border-sub-content">
+                    <div
+                      className="container"
+                      style={{ backgroundColor: "white" }}>
                       <div
-                        className="container-lg"
-                        style={{ backgroundColor: "white", borderRadius: 20 }}
-                      >
-                        <div
-                          className="row header-content"
-                          style={{ backgroundColor: "#1c711b" }}
-                        >
-                          <h4>Presensi Hari Ini Sudah Berhasil!</h4>
-                          <p>Selamat dan semangat bekerja ya!</p>
-                        </div>
+                        className="row header-content"
+                        style={{ backgroundColor: "#1c711b" }}>
+                        <h4>Presensi Hari Ini Sudah Berhasil!</h4>
+                        <p>Selamat dan semangat bekerja ya!</p>
+                      </div>
+                      <div className="border-sub-content">
                         <div className="container p-4">
                           <div className="row py-1 d-flex justify-content-center ">
                             <div className="col ">
@@ -320,7 +351,6 @@ const Home = () => {
                                   class="form-control"
                                   id="IDK"
                                   aria-describedby="emailHelp"
-                                  value={idMsib}
                                 />
                               </div>
                             </div>
@@ -335,7 +365,6 @@ const Home = () => {
                                   class="form-control"
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
-                                  value={formattedTime}
                                 />
                               </div>
                             </div>
@@ -352,7 +381,6 @@ const Home = () => {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
-                                  value={divisi}
                                 />
                               </div>
                             </div>
@@ -377,8 +405,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleDoneWorkButtonClick}
-                        >
+                          onClick={this.handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -389,13 +416,11 @@ const Home = () => {
                 {showFormSelesaiKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container-lg"
-                      style={{ backgroundColor: "white", borderRadius: 20 }}
-                    >
+                      className="container"
+                      style={{ backgroundColor: "white" }}>
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}
-                      >
+                        style={{ backgroundColor: "#1c711b" }}>
                         <h4>Presensi Pulang Sudah Berhasil!</h4>
                         <p>Hati-hati di jalan dan selamat beristirahat!</p>
                       </div>
@@ -463,8 +488,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleCloseWorkButtonClick}
-                        >
+                          onClick={this.handleCloseWorkButtonClick}>
                           Tutup
                         </button>
                       </div>
@@ -485,13 +509,11 @@ const Home = () => {
                 {showFormTelatKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container-lg "
-                      style={{ backgroundColor: "white", borderRadius: 20 }}
-                    >
+                      className="container"
+                      style={{ backgroundColor: "white" }}>
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#AC1616" }}
-                      >
+                        style={{ backgroundColor: "#AC1616" }}>
                         <h4>ANDA TERLAMBAT!</h4>
                         <p>Walaupun terlambat, tetap semangat bekerja</p>
                       </div>
@@ -508,7 +530,6 @@ const Home = () => {
                                   class="form-control"
                                   id="IDK"
                                   aria-describedby="emailHelp"
-                                  value={idMsib}
                                 />
                               </div>
                             </div>
@@ -522,7 +543,6 @@ const Home = () => {
                                   class="form-control"
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
-                                  value={formattedTime}
                                 />
                               </div>
                             </div>
@@ -538,7 +558,6 @@ const Home = () => {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
-                                  value={divisi}
                                 />
                               </div>
                             </div>
@@ -562,8 +581,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleDoneWorkButtonClick}
-                        >
+                          onClick={this.handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -594,32 +612,27 @@ const Home = () => {
                             rowsPerPageOptions={[5, 10, 25, 30]}
                             tableStyle={{ minWidth: "31rem" }}
                             className="customDataTable" //Add a custom class for more styling options
-                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-                          >
+                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                             <Column
                               field="No"
                               header="No"
                               style={{ width: "10%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                             <Column
                               field="Tanggal"
                               header="Tanggal"
                               style={{ width: "20%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                             <Column
                               field="Shift"
                               header="Shift"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                             <Column
                               field="Keterangan"
                               header="Keterangan"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                           </DataTable>
                         </div>
                       </div>
