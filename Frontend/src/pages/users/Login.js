@@ -27,7 +27,7 @@ class Login extends Component {
   render() {
     return (
       <>
-        <div class="container">
+        <div class="container-login">
           <div class="row">
             <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
             <div class=" col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4">
@@ -39,12 +39,29 @@ class Login extends Component {
                         <img src={LogoSEAQIL} alt="logo" />
                       </div>
                       <h4 className="">Masuk</h4>
-                      <p className="">Selamat Datang di Website Presensi Mahasiswa MSIB Magang SEAQIL</p>
+                      <p className="">
+                        Selamat Datang di Website Presensi Mahasiswa MSIB Magang
+                        SEAQIL
+                      </p>
                       <div className="form-group">
-                        <input type="text" id="username" name="username" placeholder=" Username" value={this.state.username} onChange={this.handleInputChange} />
+                        <input
+                          type="text"
+                          id="username"
+                          name="username"
+                          placeholder=" Username"
+                          value={this.state.username}
+                          onChange={this.handleInputChange}
+                        />
                       </div>
                       <div className="form-group">
-                        <input type="password" id="password" name="password" placeholder=" Password" value={this.state.password} onChange={this.handleInputChange} />
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          placeholder=" Password"
+                          value={this.state.password}
+                          onChange={this.handleInputChange}
+                        />
                       </div>
                       <div className="form-group">
                         <button type="submit" className="btn-login">

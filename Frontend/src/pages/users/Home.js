@@ -189,7 +189,11 @@ class Home extends Component {
             <div className="form-content-home">
               <div className="sub-content-1">
                 <h4 className="">Halo, Staf Magang SEAQIL!</h4>
-                <p className="">Selamat datang di Sistem Presensi MSIB SEAQIL. Selamat bekerja dan semoga pengalaman presensi Anda menjadi lebih praktis dan efektif.</p>
+                <p className="">
+                  Selamat datang di Sistem Presensi MSIB SEAQIL. Selamat bekerja
+                  dan semoga pengalaman presensi Anda menjadi lebih praktis dan
+                  efektif.
+                </p>
               </div>
               <div className="sub-content-2">
                 <button
@@ -198,14 +202,19 @@ class Home extends Component {
                   onClick={() => {
                     this.setState({ currentAction: "masuk" });
                     this.changeToCamera();
-                  }}
-                >
+                  }}>
                   Masuk Kerja
                 </button>
-                <button className="btn btn-primary" style={{ borderWidth: 2, borderColor: "white" }} onClick={this.changeToFormIzinKerja}>
+                <button
+                  className="btn btn-primary"
+                  style={{ borderWidth: 2, borderColor: "white" }}
+                  onClick={this.changeToFormIzinKerja}>
                   Pengajuan Izin
                 </button>
-                <button className="btn btn-primary" style={{ borderWidth: 2, borderColor: "white" }} onClick={this.changeToRekapPresensi}>
+                <button
+                  className="btn btn-primary"
+                  style={{ borderWidth: 2, borderColor: "white" }}
+                  onClick={this.changeToRekapPresensi}>
                   Rekap Presensi
                 </button>
               </div>
@@ -217,13 +226,25 @@ class Home extends Component {
                 {this.state.showCamera && (
                   <div className="camera">
                     <div className="camera-title">
-                      <Webcam className="webcam" audio={false} ref={this.webcamRef} screenshotFormat="image/jpeg" mirrored={true} />
+                      <Webcam
+                        className="webcam"
+                        audio={false}
+                        ref={this.webcamRef}
+                        screenshotFormat="image/jpeg"
+                        mirrored={true}
+                      />
                       <div className="camera-button d-flex justify-content-evenly">
-                        <button className="cancel-cam-btn" onClick={this.handleCancelButtonClick}>
+                        <button
+                          className="cancel-cam-btn"
+                          onClick={this.handleCancelButtonClick}>
                           Batal
                         </button>
-                        <button className="capture-btn" onClick={this.handleCaptureButtonClick}></button>
-                        <button className="upload-cam-button" onClick={this.handleUploadButtonClick}>
+                        <button
+                          className="capture-btn"
+                          onClick={this.handleCaptureButtonClick}></button>
+                        <button
+                          className="upload-cam-button"
+                          onClick={this.handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -233,7 +254,11 @@ class Home extends Component {
                 {this.state.capturedImage && (
                   <div className="camera">
                     <div className="camera-title">
-                      <img src={this.state.capturedImage} alt="Captured" className="capture" />
+                      <img
+                        src={this.state.capturedImage}
+                        alt="Captured"
+                        className="capture"
+                      />
                       <p
                         style={{
                           position: "absolute",
@@ -243,16 +268,21 @@ class Home extends Component {
                           fontSize: 10,
                           color: "white",
                           // textTransform: "uppercase",
-                        }}
-                      >
+                        }}>
                         Tekan Cancel untuk ambil ulang
                       </p>
                       <div className="camera-button d-flex justify-content-evenly">
-                        <button className="cancel-cam-btn" onClick={this.handleCancelButtonClick}>
+                        <button
+                          className="cancel-cam-btn"
+                          onClick={this.handleCancelButtonClick}>
                           Batal
                         </button>
-                        <button className="capture-btn d-none" onClick={this.handleCaptureButtonClick}></button>
-                        <button className="upload-cam-button" onClick={this.handleUploadButtonClick}>
+                        <button
+                          className="capture-btn d-none"
+                          onClick={this.handleCaptureButtonClick}></button>
+                        <button
+                          className="upload-cam-button"
+                          onClick={this.handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -262,8 +292,12 @@ class Home extends Component {
                 {/* FORM MASUK KERJA */}
                 {this.state.showFormMasukKerja && (
                   <div className="sub-content-3">
-                    <div className="container" style={{ backgroundColor: "white" }}>
-                      <div className="row header-content" style={{ backgroundColor: "#1c711b" }}>
+                    <div
+                      className="container"
+                      style={{ backgroundColor: "white" }}>
+                      <div
+                        className="row header-content"
+                        style={{ backgroundColor: "#1c711b" }}>
                         <h4>Presensi Hari Ini Sudah Berhasil!</h4>
                         <p>Selamat dan semangat bekerja ya!</p>
                       </div>
@@ -275,7 +309,13 @@ class Home extends Component {
                                 <label for="IDKegiatan" class="form-label">
                                   ID Kegiatan
                                 </label>
-                                <input readOnly type="text" class="form-control" id="IDK" aria-describedby="emailHelp" />
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="IDK"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                             <div className="col">
@@ -283,7 +323,13 @@ class Home extends Component {
                                 <label for="pres_masuk" class="form-label">
                                   Presensi Masuk
                                 </label>
-                                <input readOnly type="text" class="form-control" id="pres_masuk" aria-describedby="emailHelp" />
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_masuk"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                           </div>
@@ -293,7 +339,13 @@ class Home extends Component {
                                 <label for="div" class="form-label">
                                   Divisi
                                 </label>
-                                <input readOnly type="text" class="form-control" id="div" aria-describedby="emailHelp" />
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="div"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                             <div className="col">
@@ -301,14 +353,23 @@ class Home extends Component {
                                 <label for="pres_pulang" class="form-label">
                                   Presensi Pulang
                                 </label>
-                                <input readOnly type="text" class="form-control" id="pres_pulang" aria-describedby="emailHelp" />
+                                <input
+                                  readOnly
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_pulang"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div className="hp-button">
-                        <button className="btn-done-working me-2 " type="button" onClick={this.handleDoneWorkButtonClick}>
+                        <button
+                          className="btn-done-working me-2 "
+                          type="button"
+                          onClick={this.handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -318,8 +379,12 @@ class Home extends Component {
                 {/* FORM SELESAI KERJA */}
                 {this.state.showFormSelesaiKerja && (
                   <div className="sub-content-3">
-                    <div className="container" style={{ backgroundColor: "white" }}>
-                      <div className="row header-content" style={{ backgroundColor: "#1c711b" }}>
+                    <div
+                      className="container"
+                      style={{ backgroundColor: "white" }}>
+                      <div
+                        className="row header-content"
+                        style={{ backgroundColor: "#1c711b" }}>
                         <h4>Presensi Pulang Sudah Berhasil!</h4>
                         <p>Hati-hati di jalan dan selamat beristirahat!</p>
                       </div>
@@ -331,7 +396,12 @@ class Home extends Component {
                                 <label for="IDKegiatan" class="form-label">
                                   ID Kegiatan
                                 </label>
-                                <input type="text" class="form-control" id="IDK" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="IDK"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                             <div className="col">
@@ -339,7 +409,12 @@ class Home extends Component {
                                 <label for="pres_masuk" class="form-label">
                                   Presensi Masuk
                                 </label>
-                                <input type="text" class="form-control" id="pres_masuk" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_masuk"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                           </div>
@@ -349,7 +424,12 @@ class Home extends Component {
                                 <label for="div" class="form-label">
                                   Divisi
                                 </label>
-                                <input type="text" class="form-control" id="div" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="div"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                             <div className="col">
@@ -357,14 +437,22 @@ class Home extends Component {
                                 <label for="pres_pulang" class="form-label">
                                   Presensi Pulang
                                 </label>
-                                <input type="text" class="form-control" id="pres_pulang" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_pulang"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div className="hp-button">
-                        <button className="btn-done-working me-2 " type="button" onClick={this.handleCloseWorkButtonClick}>
+                        <button
+                          className="btn-done-working me-2 "
+                          type="button"
+                          onClick={this.handleCloseWorkButtonClick}>
                           Tutup
                         </button>
                       </div>
@@ -384,8 +472,12 @@ class Home extends Component {
                 {/* FORM TERLAMBAT KERJA */}
                 {this.state.showFormTelatKerja && (
                   <div className="sub-content-3">
-                    <div className="container" style={{ backgroundColor: "white" }}>
-                      <div className="row header-content" style={{ backgroundColor: "#AC1616" }}>
+                    <div
+                      className="container"
+                      style={{ backgroundColor: "white" }}>
+                      <div
+                        className="row header-content"
+                        style={{ backgroundColor: "#AC1616" }}>
                         <h4>ANDA TERLAMBAT!</h4>
                         <p>Walaupun terlambat, tetap semangat bekerja</p>
                       </div>
@@ -397,7 +489,12 @@ class Home extends Component {
                                 <label for="IDKegiatan" class="form-label">
                                   ID Kegiatan
                                 </label>
-                                <input type="text" class="form-control" id="IDK" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="IDK"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                             <div className="col">
@@ -405,7 +502,12 @@ class Home extends Component {
                                 <label for="pres_masuk" class="form-label">
                                   Presensi Masuk
                                 </label>
-                                <input type="text" class="form-control" id="pres_masuk" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_masuk"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                           </div>
@@ -415,7 +517,12 @@ class Home extends Component {
                                 <label for="div" class="form-label">
                                   Divisi
                                 </label>
-                                <input type="text" class="form-control" id="div" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="div"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                             <div className="col">
@@ -423,14 +530,22 @@ class Home extends Component {
                                 <label for="pres_pulang" class="form-label">
                                   Presensi Pulang
                                 </label>
-                                <input type="text" class="form-control" id="pres_pulang" aria-describedby="emailHelp" />
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="pres_pulang"
+                                  aria-describedby="emailHelp"
+                                />
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div className="hp-button">
-                        <button className="btn-done-working me-2 " type="button" onClick={this.handleDoneWorkButtonClick}>
+                        <button
+                          className="btn-done-working me-2 "
+                          type="button"
+                          onClick={this.handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -447,7 +562,9 @@ class Home extends Component {
                         <div className="card-header-pengajuan py-3 d-flex flex-row align-items-center justify-content-center">
                           <div className="header">
                             <div className="header-1">Data Presensi</div>
-                            <div className="header-2">Berikut ini data presensi kamu yaa.</div>
+                            <div className="header-2">
+                              Berikut ini data presensi kamu yaa.
+                            </div>
                           </div>
                         </div>
                         {/* Card Body  */}
@@ -459,12 +576,27 @@ class Home extends Component {
                             rowsPerPageOptions={[5, 10, 25, 30]}
                             tableStyle={{ minWidth: "31rem" }}
                             className="customDataTable" //Add a custom class for more styling options
-                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-                          >
-                            <Column field="No" header="No" style={{ width: "10%" }} alignHeader={"center"}></Column>
-                            <Column field="Tanggal" header="Tanggal" style={{ width: "20%" }} alignHeader={"center"}></Column>
-                            <Column field="Shift" header="Shift" style={{ width: "25%" }} alignHeader={"center"}></Column>
-                            <Column field="Keterangan" header="Keterangan" style={{ width: "25%" }} alignHeader={"center"}></Column>
+                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                            <Column
+                              field="No"
+                              header="No"
+                              style={{ width: "10%" }}
+                              alignHeader={"center"}></Column>
+                            <Column
+                              field="Tanggal"
+                              header="Tanggal"
+                              style={{ width: "20%" }}
+                              alignHeader={"center"}></Column>
+                            <Column
+                              field="Shift"
+                              header="Shift"
+                              style={{ width: "25%" }}
+                              alignHeader={"center"}></Column>
+                            <Column
+                              field="Keterangan"
+                              header="Keterangan"
+                              style={{ width: "25%" }}
+                              alignHeader={"center"}></Column>
                           </DataTable>
                         </div>
                       </div>
