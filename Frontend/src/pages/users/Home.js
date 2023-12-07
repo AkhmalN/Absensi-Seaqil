@@ -16,6 +16,9 @@ import {
   DropdownToggle,
 } from "react-bootstrap";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+import LogoutModal from "../../components/LogoutModal";
+import ResetPasswordModal from "../../components/ResetPasswordModal";
 
 const Home = () => {
   // State
@@ -28,6 +31,12 @@ const Home = () => {
   const [capturedImage, setCapturedImage] = useState(null);
   const [showCamera, setShowCamera] = useState(false);
   const [currentAction, setCurrentAction] = useState("");
+  const [showLogout, setShowLogout] = useState(null);
+  const [showResetPassword, setShowResetPassword] = useState(null);
+  const [succses, setSuccses] = useState(null);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const navigate = useNavigate();
 
   // Data
   const [divisi, setDivisi] = useState(null);
@@ -51,6 +60,7 @@ const Home = () => {
       setCapturedImage(imageSrc);
       setShowCamera(false);
     }
+    return imageSrc;
   };
 
   const handleCancelButtonClick = () => {
@@ -73,34 +83,56 @@ const Home = () => {
     setShowCamera(false);
     setCapturedImage(null);
 
+    const data = {
+      id_msib: idMsib,
+      username: username,
+      shift: shift,
+      divisi: divisi,
+      image: capturedImage,
+    };
+    console.log(data);
     try {
-      const response = await axios.post(
-        "http://localhost:8081/api/v1/presence",
-        {
+      axios
+        .post("http://localhost:8081/api/v1/presence", {
           id_msib: idMsib,
           username: username,
           shift: shift,
           divisi: divisi,
-          image: imageSrc,
-        }
-      );
-
-      // Check for a successful response
-      if (response.status === 201) {
-        console.log("Upload successful:", response.data);
-      } else {
-        console.log("Upload failed:", response.status);
-      }
+          imageSrc: imageSrc, // Make sure to include imageSrc property
+        })
+        .then((response) => {
+          setSuccses(response.data);
+          setTimeout(() => {
+            setSuccses(null);
+          });
+        });
     } catch (error) {
-      // Handle errors
-      console.error("Error uploading:", error);
+      console.log(error.message);
     }
   };
+  const handleLocationClick = () => {
+    const onlatitude = latitude;
+    const onlongitude = longitude;
 
-  const handleLateButtonClick = () => {
-    setShowFormTelatKerja(true);
-    setShowCamera(false);
-    setCapturedImage(null);
+    // Open Google Maps in a new tab or window
+    window.open(
+      `https://www.google.com/maps?q=${onlatitude},${onlongitude}`,
+      "_blank"
+    );
+  };
+  const handleCloseLogout = () => {
+    setShowLogout(false);
+  };
+
+  const handleShowLogout = () => {
+    setShowLogout(true);
+  };
+  const handleCloseResetPassword = () => {
+    setShowResetPassword(false);
+  };
+
+  const handleShowResetPassword = () => {
+    setShowResetPassword(true);
   };
 
   const handleCaptureButtonClick = () => {
@@ -110,6 +142,19 @@ const Home = () => {
   };
 
   const changeToCamera = () => {
+    if (navigator.geolocation) {
+      // get the current users location
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLatitude(latitude);
+          setLongitude(longitude);
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    }
     setCurrentAction("masuk");
     setShowCamera((prevShowCamera) => !prevShowCamera);
     setCapturedImage(null);
@@ -209,18 +254,42 @@ const Home = () => {
           <div className="header-home-logo">
             <img src={logo} alt="logo" />
           </div>
-          <div className="logo-profile">
-            <Dropdown>
-              <DropdownToggle>
-                <img src={akun} alt="logo" />
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem disabled>{username}</DropdownItem>
-                <DropdownItem href="#/action-2">Lupa Password</DropdownItem>
-                <DropdownItem href="#/action-3">Logout</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </div>
+          <Dropdown>
+            <DropdownToggle>
+              <img src={akun} alt="logo" />
+            </DropdownToggle>
+            <Dropdown.Menu className="dropdown-menu">
+              <li className="name-centered-text">{username}</li>
+              <li className="centered-text">ID {idMsib}</li>
+              <li className="centered-text" style={{ paddingBottom: "15px" }}>
+                {divisi}
+              </li>
+              <li>
+                <Link to="/status_pengajuan" className="text-link">
+                  Pengajuan Izin
+                </Link>
+              </li>
+              <li>
+                <Link className="text-link" onClick={handleShowResetPassword}>
+                  Reset Password
+                </Link>
+              </li>
+              <li className="centered-text">
+                <button className="btn-log" onClick={handleShowLogout}>
+                  Keluar
+                </button>
+              </li>
+            </Dropdown.Menu>
+
+            <LogoutModal
+              showLogout={showLogout}
+              handleCloseLogout={handleCloseLogout}
+            />
+            <ResetPasswordModal
+              showResetPassword={showResetPassword}
+              handleCloseResetPassword={handleCloseResetPassword}
+            />
+          </Dropdown>
         </div>
         {idMsib && divisi && shift && username ? (
           <div className="content-home">
@@ -416,7 +485,6 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}
                         >
                           Selesai Bekerja
                         </button>
@@ -502,7 +570,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleCloseWorkButtonClick}
+                          onClick={handleCloseWorkButtonClick}
                         >
                           Tutup
                         </button>
@@ -547,6 +615,7 @@ const Home = () => {
                                   class="form-control"
                                   id="IDK"
                                   aria-describedby="emailHelp"
+                                  value={idMsib}
                                 />
                               </div>
                             </div>
@@ -560,6 +629,7 @@ const Home = () => {
                                   class="form-control"
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
+                                  value={formattedTime}
                                 />
                               </div>
                             </div>
@@ -575,20 +645,23 @@ const Home = () => {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
+                                  value={divisi}
                                 />
                               </div>
                             </div>
                             <div className="col">
                               <div class="mb-3">
                                 <label for="pres_pulang" class="form-label">
-                                  Presensi Pulang
+                                  Lokasi
                                 </label>
-                                <input
-                                  type="text"
+                                <div
                                   class="form-control"
-                                  id="pres_pulang"
-                                  aria-describedby="emailHelp"
-                                />
+                                  onClick={handleLocationClick}
+                                >
+                                  <p>
+                                    {latitude}, {longitude}
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -598,7 +671,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}
+                          onClick={handleDoneWorkButtonClick}
                         >
                           Selesai Bekerja
                         </button>

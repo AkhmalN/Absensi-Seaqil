@@ -10,11 +10,15 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [succsesMsg, setSuccsesMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      setLoading(true);
+      setErrorMsg("");
+      setSuccsesMsg("");
       const response = await axios.post("http://localhost:8081/api/v1/auth", {
         email,
         password,
@@ -26,15 +30,16 @@ const Login = () => {
         localStorage.setItem("id_msib", response.data.user.id_msib);
         localStorage.setItem("shift", response.data.user.shift);
         localStorage.setItem("username", response.data.user.username);
-        setTimeout(() => {
-          navigate("/home");
-        }, 1000);
+
+        navigate("/home");
       } else if (response.status === 404) {
         setErrorMsg("Email atau password tidak ditemukan");
       }
     } catch (error) {
       console.error("Error during login:", error);
       setErrorMsg("Terjadi kesalahan pada server");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -53,18 +58,37 @@ const Login = () => {
                         <img src={LogoSEAQIL} alt="logo" />
                       </div>
                       <h4 className="">Masuk</h4>
-                      <p className="">Selamat Datang di Website Presensi Mahasiswa MSIB Magang SEAQIL</p>
+                      <p className="">
+                        Selamat Datang di Website Presensi Mahasiswa MSIB Magang
+                        SEAQIL
+                      </p>
                       <p>{succsesMsg}</p>
                       <p>{errorMsg}</p>
                       <div className="form-group">
-                        <input type="text" id="email" name="email" placeholder=" email" value={email} autoComplete="off" onChange={(event) => setEmail(event.target.value)} />
+                        <input
+                          type="text"
+                          id="email"
+                          name="email"
+                          placeholder=" email"
+                          value={email}
+                          autoComplete="off"
+                          onChange={(event) => setEmail(event.target.value)}
+                        />
                       </div>
                       <div className="form-group">
-                        <input type="password" id="password" name="password" placeholder=" Password" value={password} autoComplete="off" onChange={(event) => setPassword(event.target.value)} />
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          placeholder=" Password"
+                          value={password}
+                          autoComplete="off"
+                          onChange={(event) => setPassword(event.target.value)}
+                        />
                       </div>
                       <div className="form-group">
                         <button type="submit" className="btn-login">
-                          Masuk
+                          {loading ? "Tunggu ..." : "Masuk"}
                         </button>
                       </div>
                       <div>
