@@ -236,21 +236,21 @@ const Home = () => {
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
                   onClick={() => {
-                    this.setState({ currentAction: "masuk" });
-                    this.changeToCamera();
+                    setCurrentAction("masuk");
+                    changeToCamera();
                   }}>
                   Masuk Kerja
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToFormIzinKerja}>
+                  onClick={changeToFormIzinKerja}>
                   Pengajuan Izin
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={this.changeToRekapPresensi}>
+                  onClick={changeToRekapPresensi}>
                   Rekap Presensi
                 </button>
               </div>
@@ -265,22 +265,22 @@ const Home = () => {
                       <Webcam
                         className="webcam"
                         audio={false}
-                        ref={this.webcamRef}
+                        ref={webcamRef}
                         screenshotFormat="image/jpeg"
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={this.handleCancelButtonClick}>
+                          onClick={handleCancelButtonClick}>
                           Batal
                         </button>
                         <button
                           className="capture-btn"
-                          onClick={this.handleCaptureButtonClick}></button>
+                          onClick={handleCaptureButtonClick}></button>
                         <button
                           className="upload-cam-button"
-                          onClick={this.handleUploadButtonClick}>
+                          onClick={handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -291,34 +291,23 @@ const Home = () => {
                   <div className="camera">
                     <div className="camera-title">
                       <img
-                        src={this.state.capturedImage}
+                        src={capturedImage}
                         alt="Captured"
                         className="capture"
                       />
-                      <p
-                        style={{
-                          position: "absolute",
-                          bottom: "110px",
-                          left: "67%",
-                          transform: "translateX(-50%)",
-                          fontSize: 10,
-                          color: "white",
-                          // textTransform: "uppercase",
-                        }}>
-                        Tekan Cancel untuk ambil ulang
-                      </p>
+
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={this.handleCancelButtonClick}>
+                          onClick={handleCancelButtonClick}>
                           Batal
                         </button>
                         <button
                           className="capture-btn d-none"
-                          onClick={this.handleCaptureButtonClick}></button>
+                          onClick={handleCaptureButtonClick}></button>
                         <button
                           className="upload-cam-button"
-                          onClick={this.handleUploadButtonClick}>
+                          onClick={handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -328,16 +317,16 @@ const Home = () => {
                 {/* FORM MASUK KERJA */}
                 {showFormMasukKerja && (
                   <div className="sub-content-3">
-                    <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}>
+                    <div className="border-sub-content">
                       <div
-                        className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}>
-                        <h4>Presensi Hari Ini Sudah Berhasil!</h4>
-                        <p>Selamat dan semangat bekerja ya!</p>
-                      </div>
-                      <div className="border-sub-content">
+                        className="container-lg"
+                        style={{ backgroundColor: "white", borderRadius: 20 }}>
+                        <div
+                          className="row header-content"
+                          style={{ backgroundColor: "#1c711b" }}>
+                          <h4>Presensi Hari Ini Sudah Berhasil!</h4>
+                          <p>Selamat dan semangat bekerja ya!</p>
+                        </div>
                         <div className="container p-4">
                           <div className="row py-1 d-flex justify-content-center ">
                             <div className="col ">
@@ -351,6 +340,7 @@ const Home = () => {
                                   class="form-control"
                                   id="IDK"
                                   aria-describedby="emailHelp"
+                                  value={idMsib}
                                 />
                               </div>
                             </div>
@@ -365,6 +355,7 @@ const Home = () => {
                                   class="form-control"
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
+                                  value={formattedTime}
                                 />
                               </div>
                             </div>
@@ -381,6 +372,7 @@ const Home = () => {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
+                                  value={divisi}
                                 />
                               </div>
                             </div>
@@ -405,7 +397,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}>
+                          onClick={handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -416,8 +408,8 @@ const Home = () => {
                 {showFormSelesaiKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}>
+                      className="container-lg"
+                      style={{ backgroundColor: "white", borderRadius: 20 }}>
                       <div
                         className="row header-content"
                         style={{ backgroundColor: "#1c711b" }}>
@@ -488,7 +480,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleCloseWorkButtonClick}>
+                          onClick={handleCloseWorkButtonClick}>
                           Tutup
                         </button>
                       </div>
@@ -509,8 +501,8 @@ const Home = () => {
                 {showFormTelatKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}>
+                      className="container-lg "
+                      style={{ backgroundColor: "white", borderRadius: 20 }}>
                       <div
                         className="row header-content"
                         style={{ backgroundColor: "#AC1616" }}>
@@ -530,6 +522,7 @@ const Home = () => {
                                   class="form-control"
                                   id="IDK"
                                   aria-describedby="emailHelp"
+                                  value={idMsib}
                                 />
                               </div>
                             </div>
@@ -543,6 +536,7 @@ const Home = () => {
                                   class="form-control"
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
+                                  value={formattedTime}
                                 />
                               </div>
                             </div>
@@ -558,6 +552,7 @@ const Home = () => {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
+                                  value={divisi}
                                 />
                               </div>
                             </div>
@@ -581,7 +576,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={this.handleDoneWorkButtonClick}>
+                          onClick={handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -593,9 +588,9 @@ const Home = () => {
                 {showFormRekapPresensi && (
                   <div className="sub-content-3">
                     <div className="">
-                      <div className="card shadow mb-4">
+                      <div className="card shadow mb-4 rounded-2">
                         {/* Card Header - Dropdown */}
-                        <div className="card-header-pengajuan py-3 d-flex flex-row align-items-center justify-content-center">
+                        <div className="card-header-pengajuan py-2 d-flex flex-row align-items-center justify-content-center rounded-top-2">
                           <div className="header">
                             <div className="header-1">Data Presensi</div>
                             <div className="header-2">
@@ -610,7 +605,10 @@ const Home = () => {
                             paginator
                             rows={4}
                             rowsPerPageOptions={[5, 10, 25, 30]}
-                            tableStyle={{ minWidth: "31rem" }}
+                            tableStyle={{
+                              minWidth: "31rem",
+                              minHeight: "5rem",
+                            }}
                             className="customDataTable" //Add a custom class for more styling options
                             paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                             <Column
