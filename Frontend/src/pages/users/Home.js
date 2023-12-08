@@ -467,7 +467,7 @@ const Home = () => {
                             <div className="col">
                               <div class="mb-3">
                                 <label for="pres_pulang" class="form-label">
-                                  Presensi Pulang
+                                  Lokasi
                                 </label>
                                 <input
                                   readOnly
