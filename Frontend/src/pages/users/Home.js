@@ -310,22 +310,22 @@ const Home = () => {
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToCamera}
-                >
+                  onClick={() => {
+                    setCurrentAction("masuk");
+                    changeToCamera();
+                  }}>
                   Masuk Kerja
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToFormIzinKerja}
-                >
+                  onClick={changeToFormIzinKerja}>
                   Pengajuan Izin
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToRekapPresensi}
-                >
+                  onClick={changeToRekapPresensi}>
                   Rekap Presensi
                 </button>
               </div>
@@ -347,18 +347,15 @@ const Home = () => {
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={handleCancelButtonClick}
-                        >
+                          onClick={handleCancelButtonClick}>
                           Batal
                         </button>
                         <button
                           className="capture-btn"
-                          onClick={handleCaptureButtonClick}
-                        ></button>
+                          onClick={handleCaptureButtonClick}></button>
                         <button
                           className="upload-cam-button"
-                          onClick={handleUploadButtonClick}
-                        >
+                          onClick={handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -373,34 +370,19 @@ const Home = () => {
                         alt="Captured"
                         className="capture"
                       />
-                      <p
-                        style={{
-                          position: "absolute",
-                          bottom: "110px",
-                          left: "67%",
-                          transform: "translateX(-50%)",
-                          fontSize: 10,
-                          color: "white",
-                          // textTransform: "uppercase",
-                        }}
-                      >
-                        Tekan Cancel untuk ambil ulang
-                      </p>
+
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={handleCancelButtonClick}
-                        >
+                          onClick={handleCancelButtonClick}>
                           Batal
                         </button>
                         <button
                           className="capture-btn d-none"
-                          onClick={handleCaptureButtonClick}
-                        ></button>
+                          onClick={handleCaptureButtonClick}></button>
                         <button
                           className="upload-cam-button"
-                          onClick={handleUploadButtonClick}
-                        >
+                          onClick={handleUploadButtonClick}>
                           Upload
                         </button>
                       </div>
@@ -410,18 +392,16 @@ const Home = () => {
                 {/* FORM MASUK KERJA */}
                 {showFormMasukKerja && (
                   <div className="sub-content-3">
-                    <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}
-                    >
+                    <div className="border-sub-content">
                       <div
-                        className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}
-                      >
-                        <h4>Presensi Hari Ini Sudah Berhasil!</h4>
-                        <p>Selamat dan semangat bekerja ya!</p>
-                      </div>
-                      <div className="border-sub-content">
+                        className="container-lg"
+                        style={{ backgroundColor: "white", borderRadius: 20 }}>
+                        <div
+                          className="row header-content"
+                          style={{ backgroundColor: "#1c711b" }}>
+                          <h4>Presensi Hari Ini Sudah Berhasil!</h4>
+                          <p>Selamat dan semangat bekerja ya!</p>
+                        </div>
                         <div className="container p-4">
                           <div className="row py-1 d-flex justify-content-center ">
                             <div className="col ">
@@ -493,7 +473,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                        >
+                          onClick={handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -504,13 +484,11 @@ const Home = () => {
                 {showFormSelesaiKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}
-                    >
+                      className="container-lg"
+                      style={{ backgroundColor: "white", borderRadius: 20 }}>
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}
-                      >
+                        style={{ backgroundColor: "#1c711b" }}>
                         <h4>Presensi Pulang Sudah Berhasil!</h4>
                         <p>Hati-hati di jalan dan selamat beristirahat!</p>
                       </div>
@@ -578,8 +556,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleCloseWorkButtonClick}
-                        >
+                          onClick={handleCloseWorkButtonClick}>
                           Tutup
                         </button>
                       </div>
@@ -600,13 +577,11 @@ const Home = () => {
                 {showFormTelatKerja && (
                   <div className="sub-content-3">
                     <div
-                      className="container"
-                      style={{ backgroundColor: "white" }}
-                    >
+                      className="container-lg "
+                      style={{ backgroundColor: "white", borderRadius: 20 }}>
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#AC1616" }}
-                      >
+                        style={{ backgroundColor: "#AC1616" }}>
                         <h4>ANDA TERLAMBAT!</h4>
                         <p>Walaupun terlambat, tetap semangat bekerja</p>
                       </div>
@@ -664,8 +639,7 @@ const Home = () => {
                                 </label>
                                 <div
                                   class="form-control"
-                                  onClick={handleLocationClick}
-                                >
+                                  onClick={handleLocationClick}>
                                   <p>
                                     {latitude}, {longitude}
                                   </p>
@@ -679,8 +653,7 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleDoneWorkButtonClick}
-                        >
+                          onClick={handleDoneWorkButtonClick}>
                           Selesai Bekerja
                         </button>
                       </div>
@@ -692,9 +665,9 @@ const Home = () => {
                 {showFormRekapPresensi && (
                   <div className="sub-content-3">
                     <div className="">
-                      <div className="card shadow mb-4">
+                      <div className="card shadow mb-4 rounded-2">
                         {/* Card Header - Dropdown */}
-                        <div className="card-header-pengajuan py-3 d-flex flex-row align-items-center justify-content-center">
+                        <div className="card-header-pengajuan py-2 d-flex flex-row align-items-center justify-content-center rounded-top-2">
                           <div className="header">
                             <div className="header-1">Data Presensi</div>
                             <div className="header-2">
@@ -709,34 +682,32 @@ const Home = () => {
                             paginator
                             rows={4}
                             rowsPerPageOptions={[5, 10, 25, 30]}
-                            tableStyle={{ minWidth: "31rem" }}
+                            tableStyle={{
+                              minWidth: "31rem",
+                              minHeight: "5rem",
+                            }}
                             className="customDataTable" //Add a custom class for more styling options
-                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
-                          >
+                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                             <Column
                               field="No"
                               header="No"
                               style={{ width: "10%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                             <Column
                               field="Tanggal"
                               header="Tanggal"
                               style={{ width: "20%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                             <Column
                               field="Shift"
                               header="Shift"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                             <Column
                               field="Keterangan"
                               header="Keterangan"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}
-                            ></Column>
+                              alignHeader={"center"}></Column>
                           </DataTable>
                         </div>
                       </div>

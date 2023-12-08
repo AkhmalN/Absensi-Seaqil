@@ -45,60 +45,58 @@ const Login = () => {
 
   return (
     <>
-      <div className="container-bg">
-        <div className="container">
-          <div className="row">
-            <div className="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
-            <div className=" col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4">
-              <div className="content">
-                <div className="form-content">
-                  <form onSubmit={handleLoginSubmit}>
-                    <div className="row-login">
-                      <div className="header_logo">
-                        <img src={LogoSEAQIL} alt="logo" />
-                      </div>
-                      <h4 className="">Masuk</h4>
-                      <p className="">
-                        Selamat Datang di Website Presensi Mahasiswa MSIB Magang
-                        SEAQIL
-                      </p>
-                      <p>{succsesMsg}</p>
-                      <p>{errorMsg}</p>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          id="email"
-                          name="email"
-                          placeholder=" email"
-                          value={email}
-                          autoComplete="off"
-                          onChange={(event) => setEmail(event.target.value)}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="password"
-                          id="password"
-                          name="password"
-                          placeholder=" Password"
-                          value={password}
-                          autoComplete="off"
-                          onChange={(event) => setPassword(event.target.value)}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <button type="submit" className="btn-login">
-                          {loading ? "Tunggu ..." : "Masuk"}
-                        </button>
-                      </div>
-                      <div>
-                        <p className="" style={{ color: "black" }}>
-                          Lupa Password?
-                        </p>
-                      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
+          <div className=" col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+            <div className="content">
+              <div className="form-content">
+                <form onSubmit={handleLoginSubmit}>
+                  <div className="row-login">
+                    <div className="header_logo">
+                      <img src={LogoSEAQIL} alt="logo" />
                     </div>
-                  </form>
-                </div>
+                    <h4 className="">Masuk</h4>
+                    <p className="">
+                      Selamat Datang di Website Presensi Mahasiswa MSIB Magang
+                      SEAQIL
+                    </p>
+                    <p>{succsesMsg}</p>
+                    <p>{errorMsg}</p>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder=" email"
+                        value={email}
+                        autoComplete="off"
+                        onChange={(event) => setEmail(event.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder=" Password"
+                        value={password}
+                        autoComplete="off"
+                        onChange={(event) => setPassword(event.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <button type="submit" className="btn-login">
+                        Masuk
+                      </button>
+                    </div>
+                    <div>
+                      <p className="" style={{ color: "black" }}>
+                        Lupa Password?
+                      </p>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
             <div className="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>

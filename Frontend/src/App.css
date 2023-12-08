@@ -20,6 +20,11 @@ body {
   transition: width 0.3s ease, left 0.3s ease;
   height: auto; /* Add a fixed height for the sidebar */
 }
+
+.formIzin {
+  width: 100%;
+
+}
 .formIzin .form-control,
 .formIzin .form-select,
 .formIzin .form-control:focus,
@@ -245,8 +250,8 @@ body {
 }
 
 .sub-content-3 {
-  /* margin-top: 10px; */
-  height: 640px;
+  width: 90%;
+  height: 470px;
   border-radius: 20px;
   background-color: rgba(176, 176, 176, 0.17);
   border: 1px solid #ffffff;
