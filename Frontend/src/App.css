@@ -582,7 +582,7 @@ body {
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */
-  color: #fff;
+  color: #7a7a7a;
   height: 400px;
   border-radius: 10px;
   margin: 20px 40px 0px px;
@@ -1064,4 +1064,7 @@ body {
 
 .DateRangePicker :placeholder-shown {
   font-size: small;
+}
+.sub-content-3 .form-control{
+  background-color:#cecdcd;
 }
