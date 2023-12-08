@@ -22,6 +22,14 @@ const presenceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    latitude: {
+      type: String,
+      required: true,
+    },
+    longitude: {
+      type: String,
+      required: true,
+    },
     image: {
       data: Buffer,
       contentType: String,

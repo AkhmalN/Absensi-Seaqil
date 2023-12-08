@@ -5,7 +5,8 @@ import fs from "fs";
 // Create Presensi
 export const createPresent = async (req, res, next) => {
   try {
-    const { id_msib, username, divisi, shift, imageSrc } = req.body;
+    const { id_msib, username, divisi, shift, imageSrc, latitude, longitude } =
+      req.body;
     // Decode the base64 image string
     const base64Data = imageSrc.replace(/^data:image\/jpeg;base64,/, "");
     const imageBuffer = Buffer.from(base64Data, "base64");
@@ -18,6 +19,8 @@ export const createPresent = async (req, res, next) => {
         data: imageBuffer,
         contentType: "image/jpeg",
       },
+      latitude: latitude,
+      longitude: longitude,
     });
     await newPresence.save();
     if (!newPresence) {
@@ -52,7 +55,7 @@ export const getPresence = async (req, res, next) => {
     // console.log(req.params);
     const presence = await Presence.findOne({ id_msib: req.params.id });
     return res
-      .status(201)
+      .status(200)
       .json({ message: `Hai, ${presence.username}`, presence });
   } catch (error) {
     return res.status(404).json(error);
