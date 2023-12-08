@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
+import path from "path";
 import userRouter from "./routes/user-router.js";
 import presensiRouter from "./routes/presensi-router.js";
 import izinRouter from "./routes/izin-router.js";
@@ -18,6 +19,11 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/presence", presensiRouter);
 app.use("/api/v1/work_permit", izinRouter);
 app.use("/api/v1/auth", authRouter);
+
+// Use import.meta.url to get the current module's URL
+const __filename = new URL(import.meta.url).pathname;
+// Use path.dirname to extract the directory name
+const __dirname = path.dirname(__filename);
 
 // Connect to MongoDB
 mongoose

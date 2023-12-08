@@ -1,27 +1,37 @@
+import path from "path";
 import Presence from "../models/presensi.js";
+import fs from "fs";
 
 // Create Presensi
 export const createPresent = async (req, res, next) => {
   try {
-    const { id_msib, username, divisi, shift } = req.body;
-    const image = req.file.filename;
-
+    const { id_msib, username, divisi, shift, imageSrc } = req.body;
+    // Decode the base64 image string
+    const base64Data = imageSrc.replace(/^data:image\/jpeg;base64,/, "");
+    const imageBuffer = Buffer.from(base64Data, "base64");
     const newPresence = new Presence({
       id_msib: id_msib,
       shift: shift,
       username: username,
       divisi: divisi,
-      image: image,
+      image: {
+        data: imageBuffer,
+        contentType: "image/jpeg",
+      },
     });
     await newPresence.save();
     if (!newPresence) {
-      return res.json({ message: "terjadi Kesalahan" });
+      res.status(404).json({ message: "terjadi Kesalahan" });
     }
-    return res
-      .status(201)
-      .json({ message: `Selamat Bekerja ${newPresence.username}` });
+    res.status(200).json({ message: "Selamat Bekerja" });
+    // return res.status(201).json({
+    //   message: `Selamat Bekerja ${newPresence.username}`,
+    //   ...newPresence._doc,
+    //   image: undefined,
+    // });
   } catch (error) {
-    return res.status(404).json(error);
+    console.error(error.message);
+    res.status(500).json(error);
   }
 };
 

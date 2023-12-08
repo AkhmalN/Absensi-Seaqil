@@ -3,22 +3,22 @@ import LogoSEAQIL from "../../assets/Users/LogoSEAQILhd.png";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
 
 const Login = () => {
-  // const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [succsesMsg, setSuccsesMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      setLoading(true);
+      setErrorMsg("");
+      setSuccsesMsg("");
       const response = await axios.post("http://localhost:8081/api/v1/auth", {
         email,
         password,
@@ -30,15 +30,16 @@ const Login = () => {
         localStorage.setItem("id_msib", response.data.user.id_msib);
         localStorage.setItem("shift", response.data.user.shift);
         localStorage.setItem("username", response.data.user.username);
-        setTimeout(() => {
-          navigate("/home");
-        }, 1000);
+
+        navigate("/home");
       } else if (response.status === 404) {
-        setErrorMsg("email atau password tidak ditemukan");
+        setErrorMsg("Email atau password tidak ditemukan");
       }
     } catch (error) {
       console.error("Error during login:", error);
       setErrorMsg("Terjadi kesalahan pada server");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,8 +99,8 @@ const Login = () => {
                 </form>
               </div>
             </div>
+            <div className="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
           </div>
-          <div className="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
         </div>
       </div>
     </>
