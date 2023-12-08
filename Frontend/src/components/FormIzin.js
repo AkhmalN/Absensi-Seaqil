@@ -10,7 +10,7 @@ function FormIzin() {
 
   return (
     <>
-      <Form className="formIzin d-grid py-2 px-3">
+      <Form className="formIzin d-grid p-5">
         <Form.Group className="mb-3">
           <Form.Label>Tipe Pengajuan :</Form.Label>
           <Form.Select aria-label="Default select example" required>
@@ -29,7 +29,7 @@ function FormIzin() {
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>File :</Form.Label>
-          <Form.Control type="file" placeholder="Upload File" required />
+          <Form.Control type="file" accept=".pdf" placeholder="Upload File" required />
         </Form.Group>
 
         <Button
