@@ -26,6 +26,7 @@ import PresensiHarian from "../../fragments/Presensi_hari_ini";
 import { useMediaQuery } from "@react-hook/media-query";
 import axios from "axios";
 import ImageComponents from "../../components/ImageComponents";
+import LocationModal from "../../components/LocationModal";
 
 const Dashboard = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
@@ -53,6 +54,8 @@ const Dashboard = () => {
   const [showAlertDelete, setShowAlertDelete] = useState(false);
   const [showAlertApprove, setShowAlertApprove] = useState(false);
   const [dataPresensi, setDataPresensi] = useState([]);
+  const [showLocation, setShowLocation] = useState(null);
+  const [approveID, setApproveID] = useState("");
 
   const getDataPresensi = async () => {
     try {
@@ -110,7 +113,19 @@ const Dashboard = () => {
   };
 
   const handleCloseApprove = () => setshowApprove(false);
-  const handleshowApprove = () => setshowApprove(true);
+  const handleshowApprove = async (id_msib) => {
+    setApproveID(id_msib);
+    setshowApprove(true);
+    try {
+      await axios
+        .get(` http://localhost:8081/api/v1/presence/${approveID}`)
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("succses");
+          }
+        });
+    } catch (error) {}
+  };
 
   const handleCloseAlertApprove = () => setShowAlertApprove(false);
   const handleShowAlertApprove = () => {
@@ -125,6 +140,14 @@ const Dashboard = () => {
     handleCloseApprove();
     handleShowAlertApprove();
   };
+
+  const handleCloseLocation = () => {
+    setShowLocation(false);
+  };
+  const handleOnClickLocation = () => {
+    setShowLocation(true);
+  };
+
   return (
     <>
       <div id="wrapper">
@@ -256,7 +279,10 @@ const Dashboard = () => {
                     </div>
                   </form>
                 </div>
-
+                <LocationModal
+                  showLocation={showLocation}
+                  handleCloseLocation={handleCloseLocation}
+                />
                 {/* Card Body */}
                 <div className="card-body ">
                   <DataTable
@@ -324,7 +350,7 @@ const Dashboard = () => {
                           <button
                             className="check me-2 "
                             type="button"
-                            onClick={handleshowApprove}
+                            onClick={() => handleshowApprove(rowData.id_msib)}
                           >
                             <FontAwesomeIcon icon={faCheck} size="lg" />
                           </button>
@@ -760,6 +786,17 @@ const Dashboard = () => {
                       alignHeader={"center"}
                       body={(rowData) => (
                         <span>{new Date().toLocaleTimeString(rowData)}</span>
+                      )}
+                    ></Column>
+                    <Column
+                      field="latitude"
+                      header="Lokasi"
+                      style={{ width: "12%" }}
+                      alignHeader={"center"}
+                      body={(rowData) => (
+                        <span onClick={handleOnClickLocation}>
+                          {rowData.latitude},{rowData.longitude}
+                        </span>
                       )}
                     ></Column>
                     <Column
