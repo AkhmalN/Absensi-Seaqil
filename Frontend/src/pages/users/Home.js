@@ -345,19 +345,19 @@ const Home = () => {
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
-                        <button
+                        {/* <button
                           className="cancel-cam-btn"
                           onClick={handleCancelButtonClick}>
                           Batal
-                        </button>
+                        </button> */}
                         <button
                           className="capture-btn"
                           onClick={handleCaptureButtonClick}></button>
-                        <button
+                        {/* <button
                           className="upload-cam-button"
                           onClick={handleUploadButtonClick}>
                           Upload
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>
@@ -458,8 +458,7 @@ const Home = () => {
                                 </label>
                                 <div
                                   class="form-control"
-                                  onClick={handleLocationClick}
-                                >
+                                  onClick={handleLocationClick}>
                                   <p>
                                     {latitude}, {longitude}
                                   </p>
