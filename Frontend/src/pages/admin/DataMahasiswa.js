@@ -4,7 +4,6 @@ import "../../utils/css/sb-admin-2.min.css";
 import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import DATA from "../../DATA";
 import "../../App.css";
 import profil from "../../assets/admin/profil.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -58,6 +57,8 @@ const DataMahasiswa = () => {
   const [role, setRole] = useState("");
   const [divisi, setDivisi] = useState("");
   const [editID, setEditID] = useState("");
+  const [deleteID, setDeleteID] = useState("");
+  const [succsesMessage, setSuccsesMessage] = useState("");
 
   const getDataMahasiswa = async () => {
     try {
@@ -142,7 +143,10 @@ const DataMahasiswa = () => {
   };
 
   const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
+  const handleShowDelete = async (_id) => {
+    setShowDelete(true);
+    setDeleteID(_id);
+  };
 
   const handleCloseAlertDelete = () => setShowAlertDelete(false);
   const handleShowAlertDelete = () => {
@@ -152,10 +156,24 @@ const DataMahasiswa = () => {
     }, 2000);
   };
 
-  const ButtonDelete = () => {
+  const ButtonDelete = async () => {
     // Memanggil kedua aksi secara bersamaan
     handleCloseDelete();
     handleShowAlertDelete();
+    try {
+      await axios
+        .delete(`http://localhost:8081/api/v1/users/${deleteID}`)
+        .then((response) => {
+          if (response.status === 200) {
+            setSuccsesMessage("Berhasil Menghapus Users!");
+            setTimeout(() => {
+              setSuccsesMessage(null);
+            }, 3000);
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -240,6 +258,11 @@ const DataMahasiswa = () => {
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
+                  {succsesMessage && (
+                    <p className="p-3 mb-2 bg-success text-white">
+                      {succsesMessage}
+                    </p>
+                  )}
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
                     <button
                       className="print-button"
@@ -358,7 +381,7 @@ const DataMahasiswa = () => {
                           <button
                             className="decline"
                             type="button"
-                            onClick={handleShowDelete}
+                            onClick={() => handleShowDelete(rowData._id)}
                           >
                             <FontAwesomeIcon icon={faTrashCan} size="lg" />
                           </button>

@@ -83,14 +83,16 @@ const Home = () => {
     setShowCamera(false);
     setCapturedImage(null);
 
-    const data = {
-      id_msib: idMsib,
-      username: username,
-      shift: shift,
-      divisi: divisi,
-      image: capturedImage,
-    };
-    console.log(data);
+    // const data = {
+    //   id_msib: idMsib,
+    //   username: username,
+    //   shift: shift,
+    //   divisi: divisi,
+    //   image: capturedImage,
+    //   latitude : latitude,
+    //   longitude : longitude
+    // };
+    // console.log(data);
     try {
       axios
         .post("http://localhost:8081/api/v1/presence", {
@@ -98,7 +100,9 @@ const Home = () => {
           username: username,
           shift: shift,
           divisi: divisi,
-          imageSrc: imageSrc, // Make sure to include imageSrc property
+          imageSrc: imageSrc,
+          latitude: latitude,
+          longitude: longitude,
         })
         .then((response) => {
           setSuccses(response.data);
@@ -450,15 +454,16 @@ const Home = () => {
                             <div className="col">
                               <div class="mb-3">
                                 <label for="pres_pulang" class="form-label">
-                                  Presensi Pulang
+                                  Lokasi
                                 </label>
-                                <input
-                                  readOnly
-                                  type="text"
+                                <div
                                   class="form-control"
-                                  id="pres_pulang"
-                                  aria-describedby="emailHelp"
-                                />
+                                  onClick={handleLocationClick}
+                                >
+                                  <p>
+                                    {latitude}, {longitude}
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
