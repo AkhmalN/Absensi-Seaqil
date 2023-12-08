@@ -30,7 +30,8 @@ body {
 
 .formIzin {
   width: 100%;
-
+  border: 1px solid #fff;
+  border-radius: 10px;
 }
 .formIzin .form-control,
 .formIzin .form-select,
