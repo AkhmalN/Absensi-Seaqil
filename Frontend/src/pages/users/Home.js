@@ -301,6 +301,15 @@ const Home = () => {
     setUsername(storedUsername);
   }, []);
 
+  // popup absen
+  const [showPopupAbsen, setShowPopupAbsen] = useState(false);
+  // handleShowPopupAbsen = () => {
+  //   setShowPopupAbsen(true)
+  // }
+  const handleClosePopupAbsen = () => {
+    setShowPopupAbsen(false);
+  };
+
   return (
     <>
       <div className="uk-body">
@@ -411,12 +420,12 @@ const Home = () => {
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
-                        <button
+                        {/* <button
                           className="cancel-cam-btn"
                           onClick={handleCancelButtonClick}
                         >
                           Batal
-                        </button>
+                        </button> */}
                         <button
                           className="capture-btn"
                           onClick={handleCaptureButtonClick}
@@ -457,6 +466,10 @@ const Home = () => {
                         >
                           Upload
                         </button>
+                        <PopupAbsen
+                          showPopupAbsen={showPopupAbsen}
+                          handleClosePopupAbsen={handleClosePopupAbsen}
+                        />
                       </div>
                     </div>
                   </div>
@@ -555,6 +568,7 @@ const Home = () => {
                     </div>
                   </div>
                 )}
+
                 {/* FORM SELESAI KERJA */}
                 {showFormSelesaiKerja && (
                   <div className="sub-content-3">

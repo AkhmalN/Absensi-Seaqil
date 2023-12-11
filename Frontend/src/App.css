@@ -30,6 +30,11 @@ body {
 
 .formIzin {
   width: 100%;
+<<<<<<< HEAD
+=======
+  border: 1px solid #fff;
+  border-radius: 10px;
+>>>>>>> 16a7ba708ec19ed1d609fef10723658df0837a53
 }
 .formIzin .form-control,
 .formIzin .form-select,
@@ -580,7 +585,7 @@ body {
 /* form masuk kerja */
 .app-container {
   background: #fff; /* Ganti dengan path gambar yang diinginkan */
-  color: #fff;
+  color: #7a7a7a;
   height: 400px;
   border-radius: 10px;
   margin: 20px 40px 0px px;
@@ -623,7 +628,7 @@ body {
   text-align: center;
 }
 
-/*ADMIN CSS*/
+/* /ADMIN CSS/  */
 .admin-bg {
   background-color: #ffffff;
 }
@@ -850,7 +855,7 @@ body {
   gap: 6px;
 } */
 
-/*MODAL ADMIN CSS*/
+/* /MODAL ADMIN CSS/  */
 .modal-header-decline {
   color: #ac1616;
   font-family: "Poppins", sans-serif;
@@ -1062,4 +1067,7 @@ body {
 
 .DateRangePicker :placeholder-shown {
   font-size: small;
+}
+.sub-content-3 .form-control{
+  background-color:#cecdcd;
 }
