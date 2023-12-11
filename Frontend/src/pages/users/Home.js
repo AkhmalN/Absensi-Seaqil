@@ -66,15 +66,31 @@ const Home = () => {
     setCapturedImage(null);
     setShowCamera(false);
   };
+  const closeHandleModal = () => {
+    setShowHandleModal(false);
+  };
 
   const handleUploadWorking = async () => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
+
+    // Upload Masuk kerja
     if (enterWorking === true && outWorking === false) {
-      if (currentHour < 8) {
+      // Masuk kerja  tepat waktu
+      if (
+        (currentHour >= 7 && currentHour <= 8) ||
+        (currentHour >= 12 && currentHour <= 13)
+      ) {
+        // console.log("tepat waktu!");
         setShowFormMasukKerja(true);
         setShowFormTelatKerja(false);
-      } else if (currentHour >= 8) {
+      }
+      // Masuk kerja telat
+      else if (
+        (currentHour > 8 && currentHour <= 12) ||
+        (currentHour > 13 && currentHour <= 17)
+      ) {
+        // console.log("terlambat waktu!");
         setShowFormMasukKerja(false);
         setShowFormTelatKerja(true);
       }
@@ -100,11 +116,12 @@ const Home = () => {
       } catch (error) {
         console.log(error.message);
       }
+      console.log(imageSrc);
     } else if (outWorking === true && enterWorking === false) {
       setShowFormSelesaiKerja(true);
       try {
         axios
-          .post("http://localhost:8081/api/v1/presence", {
+          .post("http://localhost:8081/api/v1/presence_out", {
             id_msib: idMsib,
             username: username,
             shift: shift,
@@ -120,6 +137,7 @@ const Home = () => {
             });
           });
         setEnterWorking(false);
+        console.log(imageSrc);
       } catch (error) {
         console.log(error.message);
       }
@@ -172,15 +190,58 @@ const Home = () => {
         }
       );
     }
-    setEnterWorking(true);
-    setOutWorking(false);
-    setShowCamera((prevShowCamera) => !prevShowCamera);
-    setCapturedImage(null);
-    setShowFormMasukKerja(false);
-    setShowFormSelesaiKerja(false);
-    setShowFormIzinKerja(false);
-    setShowFormRekapPresensi(false);
-    setShowFormTelatKerja(false);
+    if (shift === "Pagi") {
+      const currentTime = new Date();
+      const currentHour = currentTime.getHours();
+
+      // Shift pagi tepat waktu
+      if (currentHour >= 7 && currentHour <= 8) {
+        setEnterWorking(true);
+        setOutWorking(false);
+        setShowCamera((prevShowCamera) => !prevShowCamera);
+        setCapturedImage(null);
+        setShowFormMasukKerja(false);
+        setShowFormSelesaiKerja(false);
+        setShowFormIzinKerja(false);
+        setShowFormRekapPresensi(false);
+        setShowFormTelatKerja(false);
+        console.log("shift pagi");
+      } else {
+        setShowHandleModal(true);
+        setHandleMessage("anda tidak bisa masuk saat ini!");
+      }
+    } else if (shift === "Siang") {
+      const currentTime = new Date();
+      const currentHour = currentTime.getHours();
+
+      // Shift Siang Tepat waktu
+      if (currentHour >= 12 && currentHour <= 13) {
+        setEnterWorking(true);
+        setOutWorking(false);
+        setShowCamera((prevShowCamera) => !prevShowCamera);
+        setCapturedImage(null);
+        setShowFormMasukKerja(false);
+        setShowFormSelesaiKerja(false);
+        setShowFormIzinKerja(false);
+        setShowFormRekapPresensi(false);
+        setShowFormTelatKerja(false);
+        console.log("shift siang");
+      } else if (currentHour > 13 && currentHour <= 17) {
+        setEnterWorking(true);
+        setOutWorking(false);
+        setShowCamera((prevShowCamera) => !prevShowCamera);
+        setCapturedImage(null);
+        setShowFormMasukKerja(false);
+        setShowFormSelesaiKerja(false);
+        setShowFormIzinKerja(false);
+        setShowFormRekapPresensi(false);
+        setShowFormTelatKerja(false);
+        console.log("shift siang");
+      }
+    } else {
+      setShowHandleModal(true);
+      setHandleMessage("Anda shift siang");
+    }
   };
 
   const changeToCameraOut = () => {
@@ -197,38 +258,42 @@ const Home = () => {
         }
       );
     }
-    setEnterWorking(false);
-    setOutWorking(true);
-    setShowCamera((prevShowCamera) => !prevShowCamera);
-    setCapturedImage(null);
-    setShowFormMasukKerja(false);
-    setShowFormSelesaiKerja(false);
-    setShowFormIzinKerja(false);
-    setShowFormRekapPresensi(false);
-    setShowFormTelatKerja(false);
-  };
+    if (shift === "Pagi") {
+      const currentTime = new Date();
+      const currentHour = currentTime.getHours();
+      if (currentHour >= 12 && currentHour < 13) {
+        setEnterWorking(false);
+        setOutWorking(true);
+        setShowCamera((prevShowCamera) => !prevShowCamera);
+        setCapturedImage(null);
+        setShowFormMasukKerja(false);
+        setShowFormSelesaiKerja(false);
+        setShowFormIzinKerja(false);
+        setShowFormRekapPresensi(false);
+        setShowFormTelatKerja(false);
+      } else {
+        setShowHandleModal(true);
+        setHandleMessage("Rentang waktu kerja shift pagi 8.00 - 12.00");
+      }
+    } else if (shift === "Siang") {
+      const currentTime = new Date();
+      const currentHour = currentTime.getHours();
 
-  // const handleDoneWorkButtonClick = () => {
-  //   const currentTime = new Date();
-  //   const currentHour = currentTime.getHours();
-
-  //   if (currentHour <= 17 && currentHour >= 8) {
-  //     setHandleMessage("Belum jam 5. tidak boleh cabut kerja!!!!!");
-  //     setShowHandleModal(true);
-  //   } else {
-  //     setShowFormSelesaiKerja(true);
-  //   }
-
-  //   setShowFormMasukKerja(false);
-  //   setShowFormTelatKerja(false);
-  //   setShowFormIzinKerja(false);
-  //   setShowFormRekapPresensi(false);
-  //   setShowCamera(false);
-  //   setCapturedImage(null);
-  // };
-
-  const closeHandleModal = () => {
-    setShowHandleModal(false);
+      if (currentHour >= 17 && currentHour < 18) {
+        setEnterWorking(false);
+        setOutWorking(true);
+        setShowCamera((prevShowCamera) => !prevShowCamera);
+        setCapturedImage(null);
+        setShowFormMasukKerja(false);
+        setShowFormSelesaiKerja(false);
+        setShowFormIzinKerja(false);
+        setShowFormRekapPresensi(false);
+        setShowFormTelatKerja(false);
+      } else {
+        setShowHandleModal(true);
+        setHandleMessage("Rentang waktu kerja shift siang 13.00 - 17.00");
+      }
+    }
   };
 
   const handleCloseWorkButtonClick = () => {
@@ -241,26 +306,6 @@ const Home = () => {
     setShowCamera(false);
     setCapturedImage(null);
   };
-
-  // const changeToFormMasukKerja = () => {
-  //   setShowCamera(false);
-  //   setCapturedImage(null);
-  //   setShowFormMasukKerja((prevShowForm) => !prevShowForm);
-  //   setShowFormSelesaiKerja(false);
-  //   setShowFormIzinKerja(false);
-  //   setShowFormRekapPresensi(false);
-  //   setShowFormTelatKerja(false);
-  // };
-
-  // const changeToFormSelesaiKerja = () => {
-  //   setShowCamera(false);
-  //   setCapturedImage(null);
-  //   setShowFormMasukKerja(false);
-  //   setShowFormSelesaiKerja((prevShowForm) => !prevShowForm);
-  //   setShowFormIzinKerja(false);
-  //   setShowFormRekapPresensi(false);
-  //   setShowFormTelatKerja(false);
-  // };
 
   const changeToFormIzinKerja = () => {
     setShowCamera(false);
@@ -282,15 +327,6 @@ const Home = () => {
     setShowFormTelatKerja(false);
   };
 
-  // const changeToFormTelatKerja = () => {
-  //   setShowCamera(true);
-  //   setCapturedImage(null);
-  //   setShowFormMasukKerja(false);
-  //   setShowFormSelesaiKerja(false);
-  //   setShowFormIzinKerja(false);
-  //   setShowFormRekapPresensi(false);
-  //   setShowFormTelatKerja(false);
-  // };
   useEffect(() => {
     const storedDivisi = localStorage.getItem("divisi");
     const storedIdMsib = localStorage.getItem("id_msib");
@@ -421,12 +457,12 @@ const Home = () => {
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
-                        {/* <button
+                        <button
                           className="cancel-cam-btn"
                           onClick={handleCancelButtonClick}
                         >
                           Batal
-                        </button> */}
+                        </button>
                         <button
                           className="capture-btn"
                           onClick={handleCaptureButtonClick}

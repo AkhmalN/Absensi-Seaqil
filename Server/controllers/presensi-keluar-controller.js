@@ -5,7 +5,8 @@ import fs from "fs";
 // Create Presensi
 export const createPresent = async (req, res, next) => {
   try {
-    const { id_msib, username, divisi, shift, latitude, longitude } = req.body;
+    const { id_msib, username, divisi, shift, latitude, longitude, imageSrc } =
+      req.body;
     // Decode the base64 image string
     const base64Data = imageSrc.replace(/^data:image\/jpeg;base64,/, "");
     const imageBuffer = Buffer.from(base64Data, "base64");

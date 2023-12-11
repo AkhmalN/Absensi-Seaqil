@@ -18,9 +18,9 @@ const HandleModal = ({ message, showHandleModal, closeHandleModal }) => {
           className="d-flex justify-content-center mt-2"
           style={{ border: "none" }}
         >
-          <Link to="/" className="text-link-yakin">
+          <Link to="/home" className="text-link-yakin">
             <button className="decline ms-2" onClick={closeHandleModal}>
-              Yakin
+              Tutup
             </button>
           </Link>
         </div>
