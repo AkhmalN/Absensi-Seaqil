@@ -79,8 +79,9 @@ const PresensiMasuk = ({
           >
             <Column
               field="id_msib"
-              header="Id MSIB"
-              style={{ width: "3%" }}
+              header="ID Kegiatan"
+              style={{ width: "20%" }}
+              alignHeader={"center"}
             ></Column>
             <Column
               field="username"
@@ -106,9 +107,60 @@ const PresensiMasuk = ({
               header="Jam Masuk"
               style={{ width: "12%" }}
               alignHeader={"center"}
-              body={(rowData) => (
-                <span>{new Date().toLocaleTimeString(rowData)}</span>
-              )}
+              body={(rowData) => {
+                const createdAtDate = new Date(rowData.createdAt);
+                return <span>{createdAtDate.toLocaleTimeString()}</span>;
+              }}
+            ></Column>
+            <Column
+              field="createdAt"
+              header="Status"
+              style={{ width: "12%" }}
+              alignHeader={"center"}
+              body={(rowData) => {
+                const createdAtDate = new Date(rowData.createdAt);
+                const targetTimeMorningShift = new Date();
+                const targetTimeAfternoonShift = new Date();
+                targetTimeMorningShift.setHours(1, 3.0, 0);
+                targetTimeAfternoonShift.setHours(8, 0, 0, 0);
+
+                // Hitung selisih waktu dalam milidetik
+                const timeDifferenceOnMorning =
+                  createdAtDate - targetTimeMorningShift;
+                const timeDifferenceOnAfternoon =
+                  createdAtDate - targetTimeAfternoonShift;
+
+                // Tentukan kondisi berdasarkan selisih waktu
+                let status;
+                if (createdAtDate <= timeDifferenceOnMorning) {
+                  status = "Tepat Waktu";
+                } else if (createdAtDate <= timeDifferenceOnAfternoon) {
+                  status = "Tepat Waktu";
+                } else {
+                  status = "Terlambat";
+                }
+                const textColor =
+                  status === "Tepat Waktu" || status === "Terlambat"
+                    ? "#ac1616"
+                    : "#1c711b";
+                const bgColor =
+                  status === "Tepat Waktu" || status === "Terlambat"
+                    ? "#fdd4d4"
+                    : "#d0ffcf";
+
+                return (
+                  <span
+                    style={{
+                      color: textColor,
+                      backgroundColor: bgColor,
+                      borderRadius: 10,
+                      padding: 7,
+                    }}
+                  >
+                    {status}
+                  </span>
+                );
+              }}
             ></Column>
             <Column
               field="latitude"

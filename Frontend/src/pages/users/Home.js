@@ -208,7 +208,7 @@ const Home = () => {
         console.log("shift pagi");
       } else {
         setShowHandleModal(true);
-        setHandleMessage("anda tidak bisa masuk saat ini!");
+        setHandleMessage("Diluar Presensi Bekerja!");
       }
     } else if (shift === "Siang") {
       const currentTime = new Date();
@@ -237,10 +237,10 @@ const Home = () => {
         setShowFormRekapPresensi(false);
         setShowFormTelatKerja(false);
         console.log("shift siang");
+      } else {
+        setShowHandleModal(true);
+        setHandleMessage("Diluar Presensi Bekerja!");
       }
-    } else {
-      setShowHandleModal(true);
-      setHandleMessage("Anda shift siang");
     }
   };
 

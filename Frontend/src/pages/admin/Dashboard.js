@@ -114,7 +114,6 @@ const Dashboard = () => {
 
   const handleCloseApprove = () => setshowApprove(false);
   const handleshowApprove = async (id_msib) => {
-    console.log(id_msib);
     setshowApprove(true);
     try {
       await axios
@@ -146,6 +145,30 @@ const Dashboard = () => {
   };
   const handleOnClickLocation = () => {
     setShowLocation(true);
+  };
+
+  const getStatusClass = (createdAt) => {
+    const createdAtDate = new Date(createdAt);
+    const targetTimeMorningShift = new Date();
+    const targetTimeAfternoonShift = new Date();
+    targetTimeMorningShift.setHours(8, 0, 0, 0); // Adjust as needed
+    targetTimeAfternoonShift.setHours(13, 0, 0, 0); // Adjust as needed
+
+    // Calculate time differences in milliseconds
+    const timeDifferenceOnMorning = createdAtDate - targetTimeMorningShift;
+    const timeDifferenceOnAfternoon = createdAtDate - targetTimeAfternoonShift;
+
+    // Determine status based on time differences
+    let status;
+    if (timeDifferenceOnMorning <= 0) {
+      status = "Tepat Waktu Pagi";
+    } else if (timeDifferenceOnAfternoon <= 0) {
+      status = "Tepat Waktu Siang";
+    } else {
+      status = "Terlambat";
+    }
+
+    return status;
   };
 
   return (
@@ -615,7 +638,9 @@ const Dashboard = () => {
                           </tr>
                           <tr>
                             <td>Status</td>
-                            <td classclassName="green-tag">Tepat Waktu</td>
+                            <td>
+                              {getStatusClass(detailDataPresensi.createdAt)}
+                            </td>
                           </tr>
                         </table>
                       </Col>
@@ -636,11 +661,18 @@ const Dashboard = () => {
                           </tr>
                           <tr>
                             <td>Jam Masuk</td>
-                            <td>07.30</td>
+                            <td>
+                              {new Date(
+                                detailDataPresensi.createdAt
+                              ).toLocaleTimeString()}
+                            </td>
                           </tr>
                           <tr>
-                            <td>Jam Keluar</td>
-                            <td>--.--</td>
+                            <td>Lokasi</td>
+                            <td>
+                              {detailDataPresensi.latitude},
+                              {detailDataPresensi.longitude}
+                            </td>
                           </tr>
                         </table>
                       </Col>
