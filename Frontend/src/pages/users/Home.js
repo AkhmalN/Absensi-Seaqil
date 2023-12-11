@@ -19,6 +19,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import LogoutModal from "../../components/LogoutModal";
 import ResetPasswordModal from "../../components/ResetPasswordModal";
+import PopupAbsen from "../../components/PopupAbsen";
 
 const Home = () => {
   // State
@@ -36,6 +37,7 @@ const Home = () => {
   const [succses, setSuccses] = useState(null);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
   // Data
@@ -82,6 +84,7 @@ const Home = () => {
 
     setShowCamera(false);
     setCapturedImage(null);
+    setShowPopupAbsen(true)
 
     // const data = {
     //   id_msib: idMsib,
@@ -251,6 +254,15 @@ const Home = () => {
     setUsername(storedUsername);
   }, []);
 
+  // popup absen
+  const [showPopupAbsen, setShowPopupAbsen] = useState(false)
+  // handleShowPopupAbsen = () => {
+  //   setShowPopupAbsen(true)
+  // }
+  const handleClosePopupAbsen = () => {
+    setShowPopupAbsen(false)
+  }
+
   return (
     <>
       <div className="uk-body">
@@ -385,6 +397,7 @@ const Home = () => {
                           onClick={handleUploadButtonClick}>
                           Upload
                         </button>
+                        <PopupAbsen showPopupAbsen ={showPopupAbsen} handleClosePopupAbsen={handleClosePopupAbsen}/>
                       </div>
                     </div>
                   </div>
@@ -479,6 +492,7 @@ const Home = () => {
                     </div>
                   </div>
                 )}
+                
                 {/* FORM SELESAI KERJA */}
                 {showFormSelesaiKerja && (
                   <div className="sub-content-3">
