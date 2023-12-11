@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [idMsib, setIdMsib] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [succsesMsg, setSuccsesMsg] = useState("");
@@ -20,7 +20,7 @@ const Login = () => {
       setErrorMsg("");
       setSuccsesMsg("");
       const response = await axios.post("http://localhost:8081/api/v1/auth", {
-        email,
+        id_msib: idMsib,
         password,
       });
       console.log(response);
@@ -69,9 +69,9 @@ const Login = () => {
                           id="email"
                           name="email"
                           placeholder=" email"
-                          value={email}
+                          value={idMsib}
                           autoComplete="off"
-                          onChange={(event) => setEmail(event.target.value)}
+                          onChange={(event) => setIdMsib(event.target.value)}
                         />
                       </div>
                       <div className="form-group">

@@ -30,11 +30,6 @@ body {
 
 .formIzin {
   width: 100%;
-<<<<<<< HEAD
-=======
-  border: 1px solid #fff;
-  border-radius: 10px;
->>>>>>> 16a7ba708ec19ed1d609fef10723658df0837a53
 }
 .formIzin .form-control,
 .formIzin .form-select,
@@ -1068,6 +1063,6 @@ body {
 .DateRangePicker :placeholder-shown {
   font-size: small;
 }
-.sub-content-3 .form-control{
-  background-color:#cecdcd;
+.sub-content-3 .form-control {
+  background-color: #cecdcd;
 }

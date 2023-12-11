@@ -3,13 +3,13 @@ import User from "../models/user.js";
 export const Auth = async (req, res) => {
   try {
     const user = await User.findOne({
-      email: req.body.email,
+      id_msib: req.body.id_msib,
       password: req.body.password,
     });
 
     if (!user) {
       return res
-        .status(401)
+        .status(404)
         .json({ message: "Username atau Password tidak ditemukan!", user });
     }
     const userData = {

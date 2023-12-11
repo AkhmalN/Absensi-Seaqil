@@ -9,12 +9,13 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DataPresensiUser from "../../DataPresensiUser";
 import "../../responsive.css";
-import { Dropdown, DropdownToggle, Modal } from "react-bootstrap";
+import { Dropdown, DropdownToggle } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogoutModal from "../../components/LogoutModal";
 import ResetPasswordModal from "../../components/ResetPasswordModal";
 import HandleModal from "./HandleModal";
+import PopupAbsen from "../../components/PopupAbsen";
 
 const Home = () => {
   // State
