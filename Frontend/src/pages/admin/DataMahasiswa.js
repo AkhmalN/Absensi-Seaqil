@@ -87,35 +87,30 @@ const DataMahasiswa = () => {
     setShowAlertAdd(true);
     setTimeout(() => {
       setShowAlertAdd(false);
-    }, 2000);
+    }, 3000);
+    window.location.reload("/dashboard/data_mahasiswa");
   };
 
   const ButtonAdd = async () => {
     try {
-      const formData = new FormData();
-      formData.append("id_msib", idMsib);
-      formData.append("shift", shift);
-      formData.append("username", username);
-      formData.append("email", email);
-      formData.append("password", password);
-      formData.append("role", role);
-      formData.append("divisi", divisi);
-
-      const response = await axios.post(
-        "http://localhost:8081/api/v1/users/",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        handleShowAlertAdd();
-      }
-      // handleCloseAdd();
-    } catch (error) {}
+      await axios
+        .post("http://localhost:8081/api/v1/users/", {
+          id_msib: idMsib,
+          shift: shift,
+          username: username,
+          email: email,
+          password: password,
+          role: role,
+          divisi: divisi,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            handleShowAlertAdd();
+          }
+        });
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   const handleCloseEdit = () => setShowEdit(false);
@@ -258,11 +253,7 @@ const DataMahasiswa = () => {
                     </div>
                     <div className="sub-header">SEAMEO QITEP In Language</div>
                   </div>
-                  {succsesMessage && (
-                    <p className="p-3 mb-2 bg-success text-white">
-                      {succsesMessage}
-                    </p>
-                  )}
+
                   <form className="d-flex align-items-center form-inline mr-0 mw-100 navbar-search">
                     <button
                       className="print-button"
@@ -465,8 +456,8 @@ const DataMahasiswa = () => {
                           onChange={(e) => setRole(e.target.value)}
                         >
                           <option selected>Role</option>
-                          <option value="Pagi">User</option>
-                          <option value="Siang">Admin</option>
+                          <option value="User">User</option>
+                          <option value="Admin">Admin</option>
                         </select>
                       </div>
                       <div class="mb-2">

@@ -23,23 +23,22 @@ const Login = () => {
         email,
         password,
       });
-
+      console.log(response);
       if (response.status === 200) {
         setSuccsesMsg("Berhasil Login");
         localStorage.setItem("divisi", response.data.user.divisi);
         localStorage.setItem("id_msib", response.data.user.id_msib);
         localStorage.setItem("shift", response.data.user.shift);
         localStorage.setItem("username", response.data.user.username);
+        localStorage.setItem("role", response.data.user.role);
 
         navigate("/home");
-      } else if (response.status === 404) {
+      } else if (response.status === 401) {
         setErrorMsg("Email atau password tidak ditemukan");
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      console.log("Error during login:", error);
       setErrorMsg("Terjadi kesalahan pada server");
-    } finally {
-      setLoading(false);
     }
   };
 

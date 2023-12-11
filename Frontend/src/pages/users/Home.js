@@ -9,16 +9,12 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DataPresensiUser from "../../DataPresensiUser";
 import "../../responsive.css";
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from "react-bootstrap";
+import { Dropdown, DropdownToggle, Modal } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import LogoutModal from "../../components/LogoutModal";
 import ResetPasswordModal from "../../components/ResetPasswordModal";
+import HandleModal from "./HandleModal";
 
 const Home = () => {
   // State
@@ -30,13 +26,15 @@ const Home = () => {
   const [showFormTelatKerja, setShowFormTelatKerja] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
   const [showCamera, setShowCamera] = useState(false);
-  const [currentAction, setCurrentAction] = useState("");
   const [showLogout, setShowLogout] = useState(null);
   const [showResetPassword, setShowResetPassword] = useState(null);
   const [succses, setSuccses] = useState(null);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  const navigate = useNavigate();
+  const [handleMessage, setHandleMessage] = useState(null);
+  const [showHandleModal, setShowHandleModal] = useState(null);
+  const [enterWorking, setEnterWorking] = useState(null);
+  const [outWorking, setOutWorking] = useState(null);
 
   // Data
   const [divisi, setDivisi] = useState(null);
@@ -68,51 +66,65 @@ const Home = () => {
     setShowCamera(false);
   };
 
-  const handleUploadButtonClick = async () => {
+  const handleUploadWorking = async () => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
+    if (enterWorking === true && outWorking === false) {
+      if (currentHour < 8) {
+        setShowFormMasukKerja(true);
+        setShowFormTelatKerja(false);
+      } else if (currentHour >= 8) {
+        setShowFormMasukKerja(false);
+        setShowFormTelatKerja(true);
+      }
 
-    if (currentHour < 8) {
-      setShowFormMasukKerja(true);
-      setShowFormTelatKerja(false);
-    } else if (currentHour >= 8) {
-      setShowFormMasukKerja(false);
-      setShowFormTelatKerja(true);
+      try {
+        axios
+          .post("http://localhost:8081/api/v1/presence", {
+            id_msib: idMsib,
+            username: username,
+            shift: shift,
+            divisi: divisi,
+            imageSrc: imageSrc,
+            latitude: latitude,
+            longitude: longitude,
+          })
+          .then((response) => {
+            setSuccses(response.data);
+            setTimeout(() => {
+              setSuccses(null);
+            });
+          });
+        setEnterWorking(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    } else if (outWorking === true && enterWorking === false) {
+      setShowFormSelesaiKerja(true);
+      try {
+        axios
+          .post("http://localhost:8081/api/v1/presence", {
+            id_msib: idMsib,
+            username: username,
+            shift: shift,
+            divisi: divisi,
+            imageSrc: imageSrc,
+            latitude: latitude,
+            longitude: longitude,
+          })
+          .then((response) => {
+            setSuccses(response.data);
+            setTimeout(() => {
+              setSuccses(null);
+            });
+          });
+        setEnterWorking(false);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-
     setShowCamera(false);
     setCapturedImage(null);
-
-    // const data = {
-    //   id_msib: idMsib,
-    //   username: username,
-    //   shift: shift,
-    //   divisi: divisi,
-    //   image: capturedImage,
-    //   latitude : latitude,
-    //   longitude : longitude
-    // };
-    // console.log(data);
-    try {
-      axios
-        .post("http://localhost:8081/api/v1/presence", {
-          id_msib: idMsib,
-          username: username,
-          shift: shift,
-          divisi: divisi,
-          imageSrc: imageSrc,
-          latitude: latitude,
-          longitude: longitude,
-        })
-        .then((response) => {
-          setSuccses(response.data);
-          setTimeout(() => {
-            setSuccses(null);
-          });
-        });
-    } catch (error) {
-      console.log(error.message);
-    }
   };
   const handleLocationClick = () => {
     const onlatitude = latitude;
@@ -145,7 +157,7 @@ const Home = () => {
     capture();
   };
 
-  const changeToCamera = () => {
+  const changeToCameraEnter = () => {
     if (navigator.geolocation) {
       // get the current users location
       navigator.geolocation.getCurrentPosition(
@@ -159,7 +171,8 @@ const Home = () => {
         }
       );
     }
-    setCurrentAction("masuk");
+    setEnterWorking(true);
+    setOutWorking(false);
     setShowCamera((prevShowCamera) => !prevShowCamera);
     setCapturedImage(null);
     setShowFormMasukKerja(false);
@@ -169,14 +182,52 @@ const Home = () => {
     setShowFormTelatKerja(false);
   };
 
-  const handleDoneWorkButtonClick = () => {
-    setShowFormSelesaiKerja(true);
+  const changeToCameraOut = () => {
+    if (navigator.geolocation) {
+      // get the current users location
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLatitude(latitude);
+          setLongitude(longitude);
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    }
+    setEnterWorking(false);
+    setOutWorking(true);
+    setShowCamera((prevShowCamera) => !prevShowCamera);
+    setCapturedImage(null);
     setShowFormMasukKerja(false);
-    setShowFormTelatKerja(false);
+    setShowFormSelesaiKerja(false);
     setShowFormIzinKerja(false);
     setShowFormRekapPresensi(false);
-    setShowCamera(false);
-    setCapturedImage(null);
+    setShowFormTelatKerja(false);
+  };
+
+  // const handleDoneWorkButtonClick = () => {
+  //   const currentTime = new Date();
+  //   const currentHour = currentTime.getHours();
+
+  //   if (currentHour <= 17 && currentHour >= 8) {
+  //     setHandleMessage("Belum jam 5. tidak boleh cabut kerja!!!!!");
+  //     setShowHandleModal(true);
+  //   } else {
+  //     setShowFormSelesaiKerja(true);
+  //   }
+
+  //   setShowFormMasukKerja(false);
+  //   setShowFormTelatKerja(false);
+  //   setShowFormIzinKerja(false);
+  //   setShowFormRekapPresensi(false);
+  //   setShowCamera(false);
+  //   setCapturedImage(null);
+  // };
+
+  const closeHandleModal = () => {
+    setShowHandleModal(false);
   };
 
   const handleCloseWorkButtonClick = () => {
@@ -190,25 +241,25 @@ const Home = () => {
     setCapturedImage(null);
   };
 
-  const changeToFormMasukKerja = () => {
-    setShowCamera(false);
-    setCapturedImage(null);
-    setShowFormMasukKerja((prevShowForm) => !prevShowForm);
-    setShowFormSelesaiKerja(false);
-    setShowFormIzinKerja(false);
-    setShowFormRekapPresensi(false);
-    setShowFormTelatKerja(false);
-  };
+  // const changeToFormMasukKerja = () => {
+  //   setShowCamera(false);
+  //   setCapturedImage(null);
+  //   setShowFormMasukKerja((prevShowForm) => !prevShowForm);
+  //   setShowFormSelesaiKerja(false);
+  //   setShowFormIzinKerja(false);
+  //   setShowFormRekapPresensi(false);
+  //   setShowFormTelatKerja(false);
+  // };
 
-  const changeToFormSelesaiKerja = () => {
-    setShowCamera(false);
-    setCapturedImage(null);
-    setShowFormMasukKerja(false);
-    setShowFormSelesaiKerja((prevShowForm) => !prevShowForm);
-    setShowFormIzinKerja(false);
-    setShowFormRekapPresensi(false);
-    setShowFormTelatKerja(false);
-  };
+  // const changeToFormSelesaiKerja = () => {
+  //   setShowCamera(false);
+  //   setCapturedImage(null);
+  //   setShowFormMasukKerja(false);
+  //   setShowFormSelesaiKerja((prevShowForm) => !prevShowForm);
+  //   setShowFormIzinKerja(false);
+  //   setShowFormRekapPresensi(false);
+  //   setShowFormTelatKerja(false);
+  // };
 
   const changeToFormIzinKerja = () => {
     setShowCamera(false);
@@ -230,16 +281,15 @@ const Home = () => {
     setShowFormTelatKerja(false);
   };
 
-  const changeToFormTelatKerja = () => {
-    setShowCamera(true);
-    setCapturedImage(null);
-    setShowFormMasukKerja(false);
-    setShowFormSelesaiKerja(false);
-    setShowFormIzinKerja(false);
-    setShowFormRekapPresensi(false);
-    setShowFormTelatKerja(false);
-  };
-
+  // const changeToFormTelatKerja = () => {
+  //   setShowCamera(true);
+  //   setCapturedImage(null);
+  //   setShowFormMasukKerja(false);
+  //   setShowFormSelesaiKerja(false);
+  //   setShowFormIzinKerja(false);
+  //   setShowFormRekapPresensi(false);
+  //   setShowFormTelatKerja(false);
+  // };
   useEffect(() => {
     const storedDivisi = localStorage.getItem("divisi");
     const storedIdMsib = localStorage.getItem("id_msib");
@@ -293,6 +343,11 @@ const Home = () => {
               showResetPassword={showResetPassword}
               handleCloseResetPassword={handleCloseResetPassword}
             />
+            <HandleModal
+              message={handleMessage}
+              showHandleModal={showHandleModal}
+              closeHandleModal={closeHandleModal}
+            />
           </Dropdown>
         </div>
         {idMsib && divisi && shift && username ? (
@@ -311,21 +366,32 @@ const Home = () => {
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
                   onClick={() => {
-                    setCurrentAction("masuk");
-                    changeToCamera();
-                  }}>
+                    changeToCameraEnter();
+                  }}
+                >
                   Masuk Kerja
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToFormIzinKerja}>
+                  onClick={() => {
+                    changeToCameraOut();
+                  }}
+                >
+                  Selesai Kerja
+                </button>
+                <button
+                  className="btn btn-primary"
+                  style={{ borderWidth: 2, borderColor: "white" }}
+                  onClick={changeToFormIzinKerja}
+                >
                   Pengajuan Izin
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToRekapPresensi}>
+                  onClick={changeToRekapPresensi}
+                >
                   Rekap Presensi
                 </button>
               </div>
@@ -347,15 +413,18 @@ const Home = () => {
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={handleCancelButtonClick}>
+                          onClick={handleCancelButtonClick}
+                        >
                           Batal
                         </button>
                         <button
                           className="capture-btn"
-                          onClick={handleCaptureButtonClick}></button>
+                          onClick={handleCaptureButtonClick}
+                        ></button>
                         <button
                           className="upload-cam-button"
-                          onClick={handleUploadButtonClick}>
+                          onClick={handleUploadWorking}
+                        >
                           Upload
                         </button>
                       </div>
@@ -374,15 +443,18 @@ const Home = () => {
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={handleCancelButtonClick}>
+                          onClick={handleCancelButtonClick}
+                        >
                           Batal
                         </button>
                         <button
                           className="capture-btn d-none"
-                          onClick={handleCaptureButtonClick}></button>
+                          onClick={handleCaptureButtonClick}
+                        ></button>
                         <button
                           className="upload-cam-button"
-                          onClick={handleUploadButtonClick}>
+                          onClick={handleUploadWorking}
+                        >
                           Upload
                         </button>
                       </div>
@@ -395,10 +467,12 @@ const Home = () => {
                     <div className="border-sub-content">
                       <div
                         className="container-lg"
-                        style={{ backgroundColor: "white", borderRadius: 20 }}>
+                        style={{ backgroundColor: "white", borderRadius: 20 }}
+                      >
                         <div
                           className="row header-content"
-                          style={{ backgroundColor: "#1c711b" }}>
+                          style={{ backgroundColor: "#1c711b" }}
+                        >
                           <h4>Presensi Hari Ini Sudah Berhasil!</h4>
                           <p>Selamat dan semangat bekerja ya!</p>
                         </div>
@@ -406,7 +480,7 @@ const Home = () => {
                           <div className="row py-1 d-flex justify-content-center ">
                             <div className="col ">
                               <div class="mb-3">
-                                <label for="IDKegiatan" class="form-label">
+                                <label for="IDKegiatan" className="form-label">
                                   ID Kegiatan
                                 </label>
                                 <input
@@ -473,8 +547,9 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleDoneWorkButtonClick}>
-                          Selesai Bekerja
+                          onClick={handleCloseWorkButtonClick}
+                        >
+                          Tutup
                         </button>
                       </div>
                     </div>
@@ -485,10 +560,12 @@ const Home = () => {
                   <div className="sub-content-3">
                     <div
                       className="container-lg"
-                      style={{ backgroundColor: "white", borderRadius: 20 }}>
+                      style={{ backgroundColor: "white", borderRadius: 20 }}
+                    >
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#1c711b" }}>
+                        style={{ backgroundColor: "#1c711b" }}
+                      >
                         <h4>Presensi Pulang Sudah Berhasil!</h4>
                         <p>Hati-hati di jalan dan selamat beristirahat!</p>
                       </div>
@@ -504,20 +581,24 @@ const Home = () => {
                                   type="text"
                                   class="form-control"
                                   id="IDK"
+                                  value={idMsib}
                                   aria-describedby="emailHelp"
+                                  readOnly
                                 />
                               </div>
                             </div>
                             <div className="col">
                               <div class="mb-3">
-                                <label for="pres_masuk" class="form-label">
-                                  Presensi Masuk
+                                <label for="pres_pulang" class="form-label">
+                                  Presensi Pulang
                                 </label>
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="pres_masuk"
+                                  id="pres_pulang"
                                   aria-describedby="emailHelp"
+                                  value={formattedTime}
+                                  readOnly
                                 />
                               </div>
                             </div>
@@ -533,20 +614,25 @@ const Home = () => {
                                   class="form-control"
                                   id="div"
                                   aria-describedby="emailHelp"
+                                  value={divisi}
+                                  readOnly
                                 />
                               </div>
                             </div>
+
                             <div className="col">
                               <div class="mb-3">
                                 <label for="pres_pulang" class="form-label">
-                                  Presensi Pulang
+                                  Lokasi
                                 </label>
-                                <input
-                                  type="text"
+                                <div
                                   class="form-control"
-                                  id="pres_pulang"
-                                  aria-describedby="emailHelp"
-                                />
+                                  onClick={handleLocationClick}
+                                >
+                                  <p>
+                                    {latitude}, {longitude}
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -556,7 +642,8 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleCloseWorkButtonClick}>
+                          onClick={handleCloseWorkButtonClick}
+                        >
                           Tutup
                         </button>
                       </div>
@@ -578,10 +665,12 @@ const Home = () => {
                   <div className="sub-content-3">
                     <div
                       className="container-lg "
-                      style={{ backgroundColor: "white", borderRadius: 20 }}>
+                      style={{ backgroundColor: "white", borderRadius: 20 }}
+                    >
                       <div
                         className="row header-content"
-                        style={{ backgroundColor: "#AC1616" }}>
+                        style={{ backgroundColor: "#AC1616" }}
+                      >
                         <h4>ANDA TERLAMBAT!</h4>
                         <p>Walaupun terlambat, tetap semangat bekerja</p>
                       </div>
@@ -599,6 +688,7 @@ const Home = () => {
                                   id="IDK"
                                   aria-describedby="emailHelp"
                                   value={idMsib}
+                                  readOnly
                                 />
                               </div>
                             </div>
@@ -613,6 +703,7 @@ const Home = () => {
                                   id="pres_masuk"
                                   aria-describedby="emailHelp"
                                   value={formattedTime}
+                                  readOnly
                                 />
                               </div>
                             </div>
@@ -629,6 +720,7 @@ const Home = () => {
                                   id="div"
                                   aria-describedby="emailHelp"
                                   value={divisi}
+                                  readOnly
                                 />
                               </div>
                             </div>
@@ -639,7 +731,8 @@ const Home = () => {
                                 </label>
                                 <div
                                   class="form-control"
-                                  onClick={handleLocationClick}>
+                                  onClick={handleLocationClick}
+                                >
                                   <p>
                                     {latitude}, {longitude}
                                   </p>
@@ -653,8 +746,9 @@ const Home = () => {
                         <button
                           className="btn-done-working me-2 "
                           type="button"
-                          onClick={handleDoneWorkButtonClick}>
-                          Selesai Bekerja
+                          onClick={handleCloseWorkButtonClick}
+                        >
+                          Tutup
                         </button>
                       </div>
                     </div>
@@ -687,27 +781,32 @@ const Home = () => {
                               minHeight: "5rem",
                             }}
                             className="customDataTable" //Add a custom class for more styling options
-                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                            paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+                          >
                             <Column
                               field="No"
                               header="No"
                               style={{ width: "10%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                             <Column
                               field="Tanggal"
                               header="Tanggal"
                               style={{ width: "20%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                             <Column
                               field="Shift"
                               header="Shift"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                             <Column
                               field="Keterangan"
                               header="Keterangan"
                               style={{ width: "25%" }}
-                              alignHeader={"center"}></Column>
+                              alignHeader={"center"}
+                            ></Column>
                           </DataTable>
                         </div>
                       </div>
