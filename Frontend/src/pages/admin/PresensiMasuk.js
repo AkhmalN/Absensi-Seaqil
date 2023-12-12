@@ -80,7 +80,7 @@ const PresensiMasuk = ({
             <Column
               field="id_msib"
               header="ID Kegiatan"
-              style={{ width: "20%" }}
+              style={{ width: "10%" }}
               alignHeader={"center"}
             ></Column>
             <Column
@@ -92,20 +92,20 @@ const PresensiMasuk = ({
             <Column
               field="shift"
               header="Shift"
-              style={{ width: "10%" }}
+              style={{ width: "7%" }}
               alignHeader={"center"}
             ></Column>
 
             <Column
               field="divisi"
               header="Divisi"
-              style={{ width: "12%" }}
+              style={{ width: "15%" }}
               alignHeader={"center"}
             ></Column>
             <Column
               field="createdAt"
               header="Jam Masuk"
-              style={{ width: "12%" }}
+              style={{ width: "13%" }}
               alignHeader={"center"}
               body={(rowData) => {
                 const createdAtDate = new Date(rowData.createdAt);
@@ -115,7 +115,7 @@ const PresensiMasuk = ({
             <Column
               field="createdAt"
               header="Status"
-              style={{ width: "12%" }}
+              style={{ width: "7%" }}
               alignHeader={"center"}
               body={(rowData) => {
                 const createdAtDate = new Date(rowData.createdAt);
@@ -165,7 +165,7 @@ const PresensiMasuk = ({
             <Column
               field="latitude"
               header="Lokasi"
-              style={{ width: "12%" }}
+              style={{ width: "15%" }}
               alignHeader={"center"}
               body={(rowData) => (
                 <span onClick={handleOnClickLocation}>
@@ -175,8 +175,8 @@ const PresensiMasuk = ({
             ></Column>
             <Column
               field="image"
-              header="Dokumen"
-              style={{ width: "12%" }}
+              header="Foto"
+              style={{ width: "20%" }}
               alignHeader={"center"}
               body={(rowData) => (
                 <ImageComponents key={rowData._id} singleData={rowData} />

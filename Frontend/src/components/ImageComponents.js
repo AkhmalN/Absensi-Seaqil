@@ -10,8 +10,8 @@ const ImageComponents = React.memo(({ singleData }) => {
       <img
         key={singleData._id}
         src={`data:image/png;base64,${base64String}`}
-        width={50}
-        height={40}
+        width={60}
+        height={50}
         alt=""
       />
     )
