@@ -68,7 +68,7 @@ function ProfilModal({
   return (
     <Modal show={isOpen} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Profil {local_username}</Modal.Title>
+        <Modal.Title> {local_username}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="d-flex justify-content-center align-items-center w-25 border border-secondary rounded-circle p-2 mx-auto d-block ">
@@ -92,23 +92,17 @@ function ProfilModal({
         </div>
         <Form>
           <Form.Group className="mb-3">
-            <Form.Label>Username : </Form.Label>
-            <Form.Control
-              value={local_username}
-              type="text"
-              onChange={(e) => setUsername(e.target.value)}
-            />
             <Form.Label>ID Kegiatan : </Form.Label>
             <Form.Control
               value={local_id_msib}
               type="text"
               onChange={(e) => setIdMsib(e.target.value)}
             />
-            <Form.Label>Shift : </Form.Label>
+            <Form.Label>Nama : </Form.Label>
             <Form.Control
-              value={local_shift}
+              value={local_username}
               type="text"
-              onChange={(e) => setShift(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <Form.Label>Divisi : </Form.Label>
             <Form.Control
@@ -116,8 +110,13 @@ function ProfilModal({
               type="text"
               onChange={(e) => setDivisi(e.target.value)}
             />
+            <Form.Label>Shift : </Form.Label>
+            <Form.Control
+              value={local_shift}
+              type="text"
+              onChange={(e) => setShift(e.target.value)}
+            />
             <Form.Label>Password : </Form.Label>
-
             <InputGroup>
               <Form.Control
                 type={showPassword ? "text" : "password"}
@@ -129,12 +128,6 @@ function ProfilModal({
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </InputGroup.Text>
             </InputGroup>
-            <Form.Label>Role : </Form.Label>
-            <Form.Control
-              value={local_role}
-              type="text"
-              onChange={(e) => setRole(e.target.value)}
-            />
           </Form.Group>
         </Form>
       </Modal.Body>

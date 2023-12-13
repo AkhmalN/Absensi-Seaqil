@@ -217,8 +217,7 @@ const Dashboard = () => {
               marginLeft,
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
-            }}
-          >
+            }}>
             {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -237,8 +236,7 @@ const Dashboard = () => {
                   fontSize: "20px",
                   fontStyle: "normal",
                   fontWeight: "600",
-                }}
-              >
+                }}>
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -298,8 +296,7 @@ const Dashboard = () => {
               onHide={handleCloseAdd}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="md"
-            >
+              size="md">
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
@@ -322,8 +319,7 @@ const Dashboard = () => {
                                 backgroundColor: "#266cb2",
                                 borderBottomRightRadius: "10px",
                                 borderTopRightRadius: "10px",
-                              }}
-                            >
+                              }}>
                               <FontAwesomeIcon icon={faMagnifyingGlass} />
                             </button>
                           </div>
@@ -338,7 +334,7 @@ const Dashboard = () => {
                               type="text"
                               className="form-control"
                               id="IdK"
-                              placeholder="ID Kegiatan"
+                              placeholder="ID MSIB"
                             />
                           </div>
                           <div class="mb-2">
@@ -360,8 +356,7 @@ const Dashboard = () => {
                           <div class="mb-2">
                             <select
                               class="form-select"
-                              aria-label="Default select example"
-                            >
+                              aria-label="Default select example">
                               <option selected>Shift</option>
                               <option value="Pagi">Pagi</option>
                               <option value="Siang">Siang</option>
@@ -398,8 +393,7 @@ const Dashboard = () => {
                           <div class="mb-2">
                             <select
                               class="form-select"
-                              aria-label="Default select example"
-                            >
+                              aria-label="Default select example">
                               <option selected>Shift</option>
                               <option value="Pagi">Tepat Waktu</option>
                               <option value="Siang">Terlambat</option>
@@ -420,8 +414,7 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}
-                  >
+                    style={{ border: "none" }}>
                     <button className="batal-btn me-2" onClick={handleCloseAdd}>
                       Batal
                     </button>
@@ -439,8 +432,7 @@ const Dashboard = () => {
               onHide={handleCloseAlertAdd}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm"
-            >
+              size="sm">
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -457,8 +449,7 @@ const Dashboard = () => {
               onHide={handleCloseDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm"
-            >
+              size="sm">
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   PERINGATAN!
@@ -468,12 +459,10 @@ const Dashboard = () => {
                 </div>
                 <div
                   className="d-flex justify-content-center mt-2"
-                  style={{ border: "none" }}
-                >
+                  style={{ border: "none" }}>
                   <button
                     className="batal-btn me-2"
-                    onClick={handleCloseDelete}
-                  >
+                    onClick={handleCloseDelete}>
                     Batal
                   </button>
                   <button className="decline ms-2" onClick={ButtonDelete}>
@@ -489,8 +478,7 @@ const Dashboard = () => {
               onHide={handleCloseAlertDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm"
-            >
+              size="sm">
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -505,8 +493,7 @@ const Dashboard = () => {
               onHide={handleCloseApproveMasuk}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="lg"
-            >
+              size="lg">
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
@@ -518,11 +505,10 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left"
-                      >
+                        className="d-flex justify-content-left">
                         <table border="0" cellpadding="8">
                           <tr>
-                            <td>ID Kegiatan</td>
+                            <td>ID MSIB</td>
                             <td>{detailDataPresensi.id_msib}</td>
                           </tr>
                           <tr>
@@ -542,8 +528,7 @@ const Dashboard = () => {
                             <td
                               className={getStatusClass(
                                 detailDataPresensiKeluar.createdAt
-                              )}
-                            >
+                              )}>
                               {getStatusClass(
                                 detailDataPresensiKeluar.createdAt
                               )}
@@ -555,8 +540,7 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left"
-                      >
+                        className="d-flex justify-content-left">
                         <table border="0" cellpadding="8">
                           <tr>
                             <td>Nama</td>
@@ -587,8 +571,7 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-center"
-                      >
+                        className="d-flex justify-content-center">
                         <ImageDetailComponents
                           singleData={detailDataPresensi}
                         />
@@ -598,18 +581,15 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}
-                  >
+                    style={{ border: "none" }}>
                     <button
                       className="batal-btn me-2"
-                      onClick={handleCloseApproveMasuk}
-                    >
+                      onClick={handleCloseApproveMasuk}>
                       Batal
                     </button>
                     <button
                       className="approve-btn ms-2"
-                      onClick={ButtonApprove}
-                    >
+                      onClick={ButtonApprove}>
                       Simpan
                     </button>
                   </div>
@@ -623,8 +603,7 @@ const Dashboard = () => {
               onHide={handleCloseAlertApprove}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm"
-            >
+              size="sm">
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -641,8 +620,7 @@ const Dashboard = () => {
               onHide={handleCloseApproveKeluar}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="lg"
-            >
+              size="lg">
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
@@ -654,11 +632,10 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left"
-                      >
+                        className="d-flex justify-content-left">
                         <table border="0" cellpadding="8">
                           <tr>
-                            <td>ID Kegiatan</td>
+                            <td>ID MSIB</td>
                             <td>{detailDataPresensiKeluar.id_msib}</td>
                           </tr>
                           <tr>
@@ -687,8 +664,7 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left"
-                      >
+                        className="d-flex justify-content-left">
                         <table border="0" cellpadding="8">
                           <tr>
                             <td>Nama</td>
@@ -719,8 +695,7 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-center"
-                      >
+                        className="d-flex justify-content-center">
                         <ImageDetailComponents
                           singleData={detailDataPresensiKeluar}
                         />
@@ -730,18 +705,15 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}
-                  >
+                    style={{ border: "none" }}>
                     <button
                       className="batal-btn me-2"
-                      onClick={handleCloseApproveKeluar}
-                    >
+                      onClick={handleCloseApproveKeluar}>
                       Batal
                     </button>
                     <button
                       className="approve-btn ms-2"
-                      onClick={ButtonApprove}
-                    >
+                      onClick={ButtonApprove}>
                       Simpan
                     </button>
                   </div>

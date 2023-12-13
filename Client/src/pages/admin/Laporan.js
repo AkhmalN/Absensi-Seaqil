@@ -190,7 +190,7 @@ const Laporan = () => {
                       alignHeader={"center"}></Column>
                     <Column
                       field="IDk"
-                      header="ID Kegiatan"
+                      header="ID MSIB"
                       style={{ width: "9%" }}
                       alignHeader={"center"}></Column>
                     <Column

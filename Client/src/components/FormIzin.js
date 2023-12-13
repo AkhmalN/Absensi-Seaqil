@@ -29,7 +29,12 @@ function FormIzin() {
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>File :</Form.Label>
-          <Form.Control type="file" accept=".pdf" placeholder="Upload File" required />
+          <Form.Control
+            type="file"
+            accept=".pdf"
+            placeholder="Upload File"
+            required
+          />
         </Form.Group>
 
         <Button
@@ -37,8 +42,7 @@ function FormIzin() {
           variant="primary"
           size="lg"
           onClick={handleShow}
-          dismissible
-        >
+          dismissible>
           SUBMIT
         </Button>
       </Form>

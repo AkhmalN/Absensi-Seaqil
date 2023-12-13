@@ -457,13 +457,6 @@ const Home = () => {
                   onClick={changeToFormIzinKerja}>
                   Pengajuan Izin
                 </button>
-                {/* <button
-                  className="btn btn-primary"
-                  style={{ borderWidth: 2, borderColor: "white" }}
-                  onClick={changeToRekapPresensi}
-                >
-                  Rekap Presensi
-                </button> */}
               </div>
             </div>
 
@@ -481,19 +474,19 @@ const Home = () => {
                         mirrored={true}
                       />
                       <div className="camera-button d-flex justify-content-evenly">
-                        <button
+                        {/* <button
                           className="cancel-cam-btn"
                           onClick={handleCancelButtonClick}>
                           Batal
-                        </button>
+                        </button> */}
                         <button
                           className="capture-btn"
                           onClick={handleCaptureButtonClick}></button>
-                        <button
+                        {/* <button
                           className="upload-cam-button"
                           onClick={handleUploadWorking}>
                           Upload
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>
@@ -510,7 +503,7 @@ const Home = () => {
                       <div className="camera-button d-flex justify-content-evenly">
                         <button
                           className="cancel-cam-btn"
-                          onClick={handleCancelButtonClick}>
+                          onClick={changeToCameraEnter}>
                           Batal
                         </button>
                         <button

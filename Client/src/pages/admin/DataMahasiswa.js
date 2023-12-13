@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faMagnifyingGlass,
-  faPen,
   faPenToSquare,
   faPrint,
   faTrashCan,
@@ -305,38 +304,33 @@ const DataMahasiswa = () => {
                     paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
                     <Column
                       field="id_msib"
-                      header="No"
-                      style={{ width: "3%" }}></Column>
-
+                      header="ID MSIB"
+                      style={{ width: "7%" }}></Column>
                     <Column
                       field="username"
                       header="Nama"
-                      style={{ width: "20%" }}
-                      alignHeader={"center"}></Column>
-                    <Column
-                      field="email"
-                      header="Email"
-                      style={{ width: "20%" }}
+                      style={{ width: "23%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="divisi"
                       header="Divisi"
-                      style={{ width: "15%" }}
+                      style={{ width: "20%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="shift"
                       header="Shift"
-                      style={{ width: "1O%" }}
+                      style={{ width: "10%" }}
+                      alignHeader={"center"}></Column>
+
+                    <Column
+                      field="role"
+                      header="role"
+                      style={{ width: "10%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="password"
                       header="Password"
-                      style={{ width: "20%" }}
-                      alignHeader={"center"}></Column>
-                    <Column
-                      field="role"
-                      header="role"
-                      style={{ width: "20%" }}
+                      style={{ width: "10%" }}
                       alignHeader={"center"}></Column>
                     <Column
                       field="aksi"
@@ -483,30 +477,15 @@ const DataMahasiswa = () => {
                     <div className="modal-header-edit text-center mb-3">
                       Edit Data
                       <Row>
-                        <Col>
-                          <div className="d-flex justify-content-center align-items-center w-25 border border-secondary rounded-circle p-2 mx-auto d-block ">
-                            <img
-                              // src={akunImage}
-                              alt="Akun"
-                              className="rounded-circle"
-                              style={{ width: "80px", height: "80px" }}
-                            />
-                            <div className="overlay">
-                              <label
-                                htmlFor="upload-image"
-                                className="overlay-content">
-                                <FontAwesomeIcon icon={faPen} />
-                              </label>
-                              <input
-                                type="file"
-                                id="upload-image"
-                                style={{ display: "none" }}
-                                // onChange={handleImageChange}
-                              />
-                            </div>
-                          </div>
+                        <Col lg="5">
+                          <img
+                            src={profil}
+                            alt="Akun"
+                            className="rounded-circle mt-2"
+                            style={{ width: "300px", height: "300px" }}
+                          />
                         </Col>
-                        <Col>
+                        <Col lg="7">
                           <div className="mt-3">
                             <div class="mb-2">
                               <input

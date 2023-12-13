@@ -153,7 +153,7 @@ const RekapPresensi = () => {
                       style={{ width: "3%" }}></Column>
                     <Column
                       field="IDk"
-                      header="ID Kegiatan"
+                      header="ID MSIB"
                       style={{ width: "15%" }}
                       alignHeader={"center"}></Column>
                     <Column
