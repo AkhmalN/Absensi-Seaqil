@@ -70,7 +70,7 @@ const Login = () => {
                           type="text"
                           id="email"
                           name="email"
-                          placeholder=" email"
+                          placeholder="ID MSIB"
                           value={idMsib}
                           autoComplete="off"
                           onChange={(event) => setIdMsib(event.target.value)}
