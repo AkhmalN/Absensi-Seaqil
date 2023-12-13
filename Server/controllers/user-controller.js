@@ -2,10 +2,19 @@ import User from "../models/user.js";
 // Create User
 export const createUser = async (req, res, next) => {
   try {
-    const { id_msib, shift, username, email, password, role, divisi } =
-      req.body;
-    // const image = req.file.filename;
+    const {
+      id_msib,
+      shift,
+      username,
+      email,
+      password,
+      role,
+      divisi,
+      akunImage,
+    } = req.body;
 
+    const base64Data = akunImage.replace(/^data:image\/jpeg;base64,/, "");
+    const imageBuffer = Buffer.from(base64Data, "base64");
     const newUser = new User({
       id_msib,
       shift,
@@ -14,7 +23,10 @@ export const createUser = async (req, res, next) => {
       password,
       role,
       divisi,
-      // image,
+      image: {
+        data: imageBuffer,
+        contentType: "image/jpeg",
+      },
     });
     await newUser.save();
     if (!newUser) {
@@ -52,8 +64,18 @@ export const getUsers = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     console.log("User ID to update: ", req.params.id);
-    const { id_msib, shift, username, email, password, role, divisi } =
-      req.body;
+    const {
+      id_msib,
+      shift,
+      username,
+      email,
+      password,
+      role,
+      divisi,
+      akunImage,
+    } = req.body;
+    const base64Data = akunImage.replace(/^data:image\/jpeg;base64,/, "");
+    const imageBuffer = Buffer.from(base64Data, "base64");
     const user = await User.findOneAndUpdate(
       { _id: req.params.id },
       {
@@ -64,6 +86,10 @@ export const updateUser = async (req, res) => {
         password,
         role,
         divisi,
+        image: {
+          data: imageBuffer,
+          contentType: "image/jpeg",
+        },
       },
       { new: true }
     );

@@ -31,6 +31,8 @@ const Login = () => {
         localStorage.setItem("shift", response.data.user.shift);
         localStorage.setItem("username", response.data.user.username);
         localStorage.setItem("role", response.data.user.role);
+        localStorage.setItem("password", response.data.user.password);
+        localStorage.setItem("ID", response.data.user.id);
 
         navigate("/home");
       } else if (response.status === 401) {

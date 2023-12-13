@@ -16,6 +16,7 @@ import LogoutModal from "../../components/LogoutModal";
 import ResetPasswordModal from "../../components/ResetPasswordModal";
 import HandleModal from "./HandleModal";
 import PopupAbsen from "../../components/PopupAbsen";
+import ProfilModal from "./ProfilModal";
 
 const Home = () => {
   // State
@@ -36,13 +37,17 @@ const Home = () => {
   const [showHandleModal, setShowHandleModal] = useState(null);
   const [enterWorking, setEnterWorking] = useState(null);
   const [outWorking, setOutWorking] = useState(null);
+  const [openProfilModal, setOpenProfilModal] = useState(null);
 
   // Data
   const [divisi, setDivisi] = useState(null);
   const [idMsib, setIdMsib] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [shift, setShift] = useState(null);
   const [username, setUsername] = useState(null);
   const [imageSrc, setImageSrc] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [role, setRole] = useState(null);
 
   const now = new Date();
   const hours = now.getHours();
@@ -332,19 +337,29 @@ const Home = () => {
     const storedIdMsib = localStorage.getItem("id_msib");
     const storedShift = localStorage.getItem("shift");
     const storedUsername = localStorage.getItem("username");
+    const storedPassword = localStorage.getItem("password");
+    const storedRole = localStorage.getItem("role");
+    const storedID = localStorage.getItem("ID");
     setDivisi(storedDivisi);
     setIdMsib(storedIdMsib);
     setShift(storedShift);
     setUsername(storedUsername);
+    setPassword(storedPassword);
+    setRole(storedRole);
+    setUserId(storedID);
   }, []);
 
   // popup absen
   const [showPopupAbsen, setShowPopupAbsen] = useState(false);
-  // handleShowPopupAbsen = () => {
-  //   setShowPopupAbsen(true)
-  // }
   const handleClosePopupAbsen = () => {
     setShowPopupAbsen(false);
+  };
+
+  const handleOpenProfile = () => {
+    setOpenProfilModal(true);
+  };
+  const handleCloseProfile = () => {
+    setOpenProfilModal(false);
   };
 
   return (
@@ -359,10 +374,10 @@ const Home = () => {
               <img src={akun} alt="logo" />
             </DropdownToggle>
             <Dropdown.Menu className="dropdown-menu">
-              <li className="name-centered-text">{username}</li>
-              <li className="centered-text">ID {idMsib}</li>
-              <li className="centered-text" style={{ paddingBottom: "15px" }}>
-                {divisi}
+              <li>
+                <Link className="text-link" onClick={handleOpenProfile}>
+                  Lihat Profil
+                </Link>
               </li>
               <li>
                 <Link to="/status_pengajuan" className="text-link">
@@ -395,6 +410,18 @@ const Home = () => {
               closeHandleModal={closeHandleModal}
             />
           </Dropdown>
+          <ProfilModal
+            isOpen={openProfilModal}
+            onClose={handleCloseProfile}
+            local_username={username}
+            local_shift={shift}
+            local_divisi={divisi}
+            local_id_msib={idMsib}
+            local_image={akun}
+            local_password={password}
+            local_role={role}
+            user_id={userId}
+          />
         </div>
         {idMsib && divisi && shift && username ? (
           <div className="content-home">
