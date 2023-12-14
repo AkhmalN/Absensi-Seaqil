@@ -47,7 +47,7 @@ export const getPresences = async (req, res, next) => {
 // Read Presence
 export const getPresence = async (req, res, next) => {
   try {
-    const presence = await PresenceOut.findOne({ id_msib: req.params.id });
+    const presence = await PresenceOut.findOne({ _id: req.params.id });
     return res
       .status(200)
       .json({ message: `Hai, ${PresenceOut.username}`, presence });

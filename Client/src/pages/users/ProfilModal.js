@@ -26,7 +26,6 @@ function ProfilModal({
   const [idMsib, setIdMsib] = useState(local_id_msib);
   const [password, setPassword] = useState(local_password);
   const [role, setRole] = useState(local_role);
-  console.log(akunImage);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];

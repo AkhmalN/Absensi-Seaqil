@@ -21,6 +21,7 @@ import LocationModal from "../../components/LocationModal";
 import PresensiMasuk from "./PresensiMasuk";
 import ImageDetailComponents from "../../components/ImageDetailComponents";
 import PresensiKeluar from "./PresensiKeluar";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
@@ -41,18 +42,21 @@ const Dashboard = () => {
   const toggleSidebar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [showApproveMasuk, setshowApproveMasuk] = useState(false);
   const [showApproveKeluar, setshowApproveKeluar] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [showAlertAdd, setShowAlertAdd] = useState(false);
-  const [showAlertDelete, setShowAlertDelete] = useState(false);
+  const [showDeleteKeluar, setShowDeleteKeluar] = useState(false);
   const [showAlertApprove, setShowAlertApprove] = useState(false);
   const [dataPresensiMasuk, setDataPresensiMasuk] = useState([]);
   const [dataPresensiKeluar, setDataPresensiKeluar] = useState([]);
   const [showLocation, setShowLocation] = useState(null);
   const [detailDataPresensi, setDetailDataPresensi] = useState([]);
   const [detailDataPresensiKeluar, setDetailDataPresensiKeluar] = useState([]);
+  const [deleteIdPresence, setDeleteIdPresence] = useState();
 
   const getDataPresensiMasuk = async () => {
     try {
@@ -60,7 +64,6 @@ const Dashboard = () => {
         "http://localhost:8081/api/v1/presence/"
       );
       setDataPresensiMasuk(response.data);
-      console.log(response);
     } catch (error) {
       if (error.response) {
         console.error("Server responded with an error:", error.response.status);
@@ -106,31 +109,65 @@ const Dashboard = () => {
     handleShowAlertAdd();
   };
   const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
-
-  const handleCloseAlertDelete = () => setShowAlertDelete(false);
-  const handleShowAlertDelete = () => {
-    setShowAlertDelete(true);
-    setTimeout(() => {
-      setShowAlertDelete(false);
-    }, 2000);
+  const handleShowDeleteMasuk = async (_id) => {
+    setLoading(true);
+    setShowDelete(true);
+    await setDeleteIdPresence(_id);
+    setLoading(false);
+    console.log("delete masuk : ", deleteIdPresence);
   };
 
-  const ButtonDelete = () => {
-    // Memanggil kedua aksi secara bersamaan
+  const handleCloseDeleteKeluar = () => setShowDeleteKeluar(false);
+  const handleShowDeleteKeluar = async (_id) => {
+    setLoading(true);
+    setShowDeleteKeluar(true);
+    await setDeleteIdPresence(_id);
+    setLoading(false);
+    console.log("delete keluar : ", deleteIdPresence);
+  };
+
+  const DeleteEnterPresenceMasuk = async () => {
+    try {
+      await axios
+        .delete(`http://localhost:8081/api/v1/presence/${deleteIdPresence}`)
+        .then((response) => {
+          if (response.status === 200) {
+            handleShowDeleteKeluar();
+            navigate("/dashboard");
+            window.location.reload();
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
     handleCloseDelete();
-    handleShowAlertDelete();
   };
 
   const handleCloseApproveMasuk = () => setshowApproveMasuk(false);
-  const handleshowApproveMasuk = async (id_msib) => {
+  const handleshowApproveMasuk = async (_id) => {
     setshowApproveMasuk(true);
     try {
       await axios
-        .get(` http://localhost:8081/api/v1/presence/${id_msib}`)
+        .get(` http://localhost:8081/api/v1/presence/${_id}`)
         .then((response) => {
           if (response.status === 200) {
             setDetailDataPresensi(response.data.presence);
+          }
+        });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleCloseApproveKeluar = () => setshowApproveKeluar(false);
+  const handleShowApproveKeluar = async (_id) => {
+    setshowApproveKeluar(true);
+    try {
+      await axios
+        .get(` http://localhost:8081/api/v1/presence_out/${_id}`)
+        .then((response) => {
+          if (response.status === 200) {
+            setDetailDataPresensiKeluar(response.data.presence);
           }
         });
     } catch (error) {
@@ -152,51 +189,11 @@ const Dashboard = () => {
     handleShowAlertApprove();
   };
 
-  const handleCloseApproveKeluar = () => setshowApproveKeluar(false);
-  const handleShowApproveKeluar = async (id_msib) => {
-    setshowApproveKeluar(true);
-    try {
-      await axios
-        .get(` http://localhost:8081/api/v1/presence_out/${id_msib}`)
-        .then((response) => {
-          if (response.status === 200) {
-            setDetailDataPresensiKeluar(response.data.presence);
-          }
-        });
-    } catch (error) {
-      alert(error);
-    }
-  };
-
   const handleCloseLocation = () => {
     setShowLocation(false);
   };
   const handleOnClickLocation = () => {
     setShowLocation(true);
-  };
-
-  const getStatusClass = (createdAt) => {
-    const createdAtDate = new Date(createdAt);
-    const targetTimeMorningShift = new Date();
-    const targetTimeAfternoonShift = new Date();
-    targetTimeMorningShift.setHours(8, 0, 0, 0); // Adjust as needed
-    targetTimeAfternoonShift.setHours(13, 0, 0, 0); // Adjust as needed
-
-    // Calculate time differences in milliseconds
-    const timeDifferenceOnMorning = createdAtDate - targetTimeMorningShift;
-    const timeDifferenceOnAfternoon = createdAtDate - targetTimeAfternoonShift;
-
-    // Determine status based on time differences
-    let status;
-    if (timeDifferenceOnMorning <= 0) {
-      status = "Tepat Waktu Pagi";
-    } else if (timeDifferenceOnAfternoon <= 0) {
-      status = "Tepat Waktu Siang";
-    } else {
-      status = "Terlambat";
-    }
-
-    return status;
   };
 
   return (
@@ -217,7 +214,8 @@ const Dashboard = () => {
               marginLeft,
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
-            }}>
+            }}
+          >
             {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -236,7 +234,8 @@ const Dashboard = () => {
                   fontSize: "20px",
                   fontStyle: "normal",
                   fontWeight: "600",
-                }}>
+                }}
+              >
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -287,7 +286,7 @@ const Dashboard = () => {
               handleShowAdd={handleShowAdd}
               handleOnClickLocation={handleOnClickLocation}
               handleShowApproveKeluar={handleShowApproveKeluar}
-              handleShowDelete={handleShowDelete}
+              handleShowDelete={handleShowDeleteKeluar}
             />
 
             {/* MODAL ADD PRESENSI */}
@@ -296,7 +295,8 @@ const Dashboard = () => {
               onHide={handleCloseAdd}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="md">
+              size="md"
+            >
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
@@ -319,7 +319,8 @@ const Dashboard = () => {
                                 backgroundColor: "#266cb2",
                                 borderBottomRightRadius: "10px",
                                 borderTopRightRadius: "10px",
-                              }}>
+                              }}
+                            >
                               <FontAwesomeIcon icon={faMagnifyingGlass} />
                             </button>
                           </div>
@@ -356,7 +357,8 @@ const Dashboard = () => {
                           <div class="mb-2">
                             <select
                               class="form-select"
-                              aria-label="Default select example">
+                              aria-label="Default select example"
+                            >
                               <option selected>Shift</option>
                               <option value="Pagi">Pagi</option>
                               <option value="Siang">Siang</option>
@@ -393,7 +395,8 @@ const Dashboard = () => {
                           <div class="mb-2">
                             <select
                               class="form-select"
-                              aria-label="Default select example">
+                              aria-label="Default select example"
+                            >
                               <option selected>Shift</option>
                               <option value="Pagi">Tepat Waktu</option>
                               <option value="Siang">Terlambat</option>
@@ -414,7 +417,8 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
+                    style={{ border: "none" }}
+                  >
                     <button className="batal-btn me-2" onClick={handleCloseAdd}>
                       Batal
                     </button>
@@ -432,7 +436,8 @@ const Dashboard = () => {
               onHide={handleCloseAlertAdd}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -443,13 +448,14 @@ const Dashboard = () => {
               </Modal.Body>
             </Modal>
 
-            {/* MODAL DELETE PRESENSI */}
+            {/* MODAL DELETE PRESENSI MASUK*/}
             <Modal
               show={showDelete}
               onHide={handleCloseDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   PERINGATAN!
@@ -459,33 +465,85 @@ const Dashboard = () => {
                 </div>
                 <div
                   className="d-flex justify-content-center mt-2"
-                  style={{ border: "none" }}>
+                  style={{ border: "none" }}
+                >
                   <button
                     className="batal-btn me-2"
-                    onClick={handleCloseDelete}>
+                    onClick={handleCloseDelete}
+                  >
                     Batal
                   </button>
-                  <button className="decline ms-2" onClick={ButtonDelete}>
+                  <button
+                    className="decline ms-2"
+                    onClick={DeleteEnterPresenceMasuk}
+                  >
                     Yakin
                   </button>
                 </div>
               </Modal.Body>
             </Modal>
 
-            {/* MODAL SUCCSES DELETE PRESENSI */}
+            {/* MODAL DELETE PRESENSI KELUAR*/}
             <Modal
-              show={showAlertDelete}
-              onHide={handleCloseAlertDelete}
+              show={showDeleteKeluar}
+              onHide={handleCloseDeleteKeluar}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
+              <Modal.Body>
+                <div className="modal-header-decline text-center">
+                  PERINGATAN!
+                </div>
+                <div className="modal-body text-center">
+                  Anda yakin untuk menolak data ini?
+                </div>
+                <div
+                  className="d-flex justify-content-center mt-2"
+                  style={{ border: "none" }}
+                >
+                  <button
+                    className="batal-btn me-2"
+                    onClick={handleCloseDeleteKeluar}
+                  >
+                    Batal
+                  </button>
+                  <button className="decline ms-2">Yakin</button>
+                </div>
+              </Modal.Body>
+            </Modal>
+
+            {/* MODAL SUCCSES DELETE PRESENSI */}
+            {/* <Modal
+              show={showDelete}
+              onHide={handleCloseDelete}
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
                 </div>
                 <div className="modal-body text-center">Berhasil Ditolak!</div>
               </Modal.Body>
-            </Modal>
+            </Modal> */}
+
+            {/* MODAL SUCCSES DELETE PRESENSI KELUAR */}
+            {/* <Modal
+              show={showDeleteKeluar}
+              onHide={handleCloseDeleteKeluar}
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+              size="sm"
+            >
+              <Modal.Body>
+                <div className="modal-header-decline text-center">
+                  <img src={checkmark} alt="checkmark" className="icon_check" />
+                </div>
+                <div className="modal-body text-center">Berhasil Ditolak!</div>
+              </Modal.Body>
+            </Modal> */}
 
             {/* MODAL APPROVE PRESENSI MASUK*/}
             <Modal
@@ -493,7 +551,8 @@ const Dashboard = () => {
               onHide={handleCloseApproveMasuk}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="lg">
+              size="lg"
+            >
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
@@ -505,8 +564,13 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left">
-                        <table border="0" cellpadding="8">
+                        className="d-flex justify-content-left"
+                      >
+                        <table border="0">
+                          <tr>
+                            <td>Nama</td>
+                            <td>{detailDataPresensi.username}</td>
+                          </tr>
                           <tr>
                             <td>ID MSIB</td>
                             <td>{detailDataPresensi.id_msib}</td>
@@ -523,29 +587,15 @@ const Dashboard = () => {
                             <td>Shift</td>
                             <td>{detailDataPresensi.shift}</td>
                           </tr>
-                          <tr>
-                            <td>Status</td>
-                            <td
-                              className={getStatusClass(
-                                detailDataPresensiKeluar.createdAt
-                              )}>
-                              {getStatusClass(
-                                detailDataPresensiKeluar.createdAt
-                              )}
-                            </td>
-                          </tr>
                         </table>
                       </Col>
                       <Col
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left">
+                        className="d-flex justify-content-left"
+                      >
                         <table border="0" cellpadding="8">
-                          <tr>
-                            <td>Nama</td>
-                            <td>{detailDataPresensi.username}</td>
-                          </tr>
                           <tr>
                             <td>Divisi</td>
                             <td>{detailDataPresensi.divisi}</td>
@@ -571,7 +621,8 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-center">
+                        className="d-flex justify-content-center"
+                      >
                         <ImageDetailComponents
                           singleData={detailDataPresensi}
                         />
@@ -581,50 +632,36 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
+                    style={{ border: "none" }}
+                  >
                     <button
                       className="batal-btn me-2"
-                      onClick={handleCloseApproveMasuk}>
+                      onClick={handleCloseApproveMasuk}
+                    >
                       Batal
                     </button>
                     <button
                       className="approve-btn ms-2"
-                      onClick={ButtonApprove}>
+                      onClick={ButtonApprove}
+                    >
                       Simpan
                     </button>
                   </div>
                 </Modal.Body>
               </Modal.Body>
             </Modal>
-
-            {/* MODAL SUCCSES APPROVE MASUK */}
-            <Modal
-              show={showAlertApprove}
-              onHide={handleCloseAlertApprove}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm">
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">
-                  Berhasil di Approve!
-                </div>
-              </Modal.Body>
-            </Modal>
-
             {/* MODAL APPROVE PRESENSI KELUAR*/}
             <Modal
               show={showApproveKeluar}
               onHide={handleCloseApproveKeluar}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="lg">
+              size="lg"
+            >
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
-                    Approve Presensi
+                    Approve Presensi Keluar
                   </div>
                   <div className="approve-presensi">
                     <Row>
@@ -632,8 +669,13 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left">
-                        <table border="0" cellpadding="8">
+                        className="d-flex justify-content-left"
+                      >
+                        <table border="0">
+                          <tr>
+                            <td>Nama</td>
+                            <td>{detailDataPresensiKeluar.username}</td>
+                          </tr>
                           <tr>
                             <td>ID MSIB</td>
                             <td>{detailDataPresensiKeluar.id_msib}</td>
@@ -650,32 +692,21 @@ const Dashboard = () => {
                             <td>Shift</td>
                             <td>{detailDataPresensiKeluar.shift}</td>
                           </tr>
-                          <tr>
-                            <td>Status</td>
-                            <td>
-                              {getStatusClass(
-                                detailDataPresensiKeluar.createdAt
-                              )}
-                            </td>
-                          </tr>
                         </table>
                       </Col>
                       <Col
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-left">
-                        <table border="0" cellpadding="8">
-                          <tr>
-                            <td>Nama</td>
-                            <td>{detailDataPresensiKeluar.username}</td>
-                          </tr>
+                        className="d-flex justify-content-left"
+                      >
+                        <table border="0">
                           <tr>
                             <td>Divisi</td>
                             <td>{detailDataPresensiKeluar.divisi}</td>
                           </tr>
                           <tr>
-                            <td>Jam Masuk</td>
+                            <td>Jam Keluar</td>
                             <td>
                               {new Date(
                                 detailDataPresensiKeluar.createdAt
@@ -695,7 +726,8 @@ const Dashboard = () => {
                         md="12"
                         sm="12"
                         lg="4"
-                        className="d-flex justify-content-center">
+                        className="d-flex justify-content-center"
+                      >
                         <ImageDetailComponents
                           singleData={detailDataPresensiKeluar}
                         />
@@ -705,19 +737,40 @@ const Dashboard = () => {
 
                   <div
                     className="d-flex justify-content-center mt-4"
-                    style={{ border: "none" }}>
+                    style={{ border: "none" }}
+                  >
                     <button
                       className="batal-btn me-2"
-                      onClick={handleCloseApproveKeluar}>
+                      onClick={handleCloseApproveKeluar}
+                    >
                       Batal
                     </button>
                     <button
                       className="approve-btn ms-2"
-                      onClick={ButtonApprove}>
+                      onClick={ButtonApprove}
+                    >
                       Simpan
                     </button>
                   </div>
                 </Modal.Body>
+              </Modal.Body>
+            </Modal>
+
+            {/* MODAL SUCCSES APPROVE MASUK */}
+            <Modal
+              show={showAlertApprove}
+              onHide={handleCloseAlertApprove}
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+              size="sm"
+            >
+              <Modal.Body>
+                <div className="modal-header-decline text-center">
+                  <img src={checkmark} alt="checkmark" className="icon_check" />
+                </div>
+                <div className="modal-body text-center">
+                  Berhasil di Approve!
+                </div>
               </Modal.Body>
             </Modal>
 
@@ -726,7 +779,7 @@ const Dashboard = () => {
               handleShowAdd={handleShowAdd}
               handleOnClickLocation={handleOnClickLocation}
               handleshowApprove={handleshowApproveMasuk}
-              handleShowDelete={handleShowDelete}
+              handleShowDelete={handleShowDeleteMasuk}
             />
           </div>
 

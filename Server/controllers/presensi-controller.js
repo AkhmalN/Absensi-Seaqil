@@ -53,7 +53,7 @@ export const getPresences = async (req, res, next) => {
 export const getPresence = async (req, res, next) => {
   try {
     // console.log(req.params);
-    const presence = await Presence.findOne({ id_msib: req.params.id });
+    const presence = await Presence.findOne({ _id: req.params.id });
     return res
       .status(200)
       .json({ message: `Hai, ${presence.username}`, presence });
@@ -97,7 +97,7 @@ export const deletePresence = async (req, res) => {
       return res.status(404).json({ message: "Data Presensi tidak ditemukan" });
     }
     return res
-      .status(201)
+      .status(200)
       .json({ message: `Presensi ${presence.username} telah di hapus` });
   } catch (error) {
     return res.status(404).json({ message: "Terjadi Kesalahan pada Server!" });
