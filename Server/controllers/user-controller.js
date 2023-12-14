@@ -41,7 +41,7 @@ export const createUser = async (req, res, next) => {
 // Get User
 export const getUser = async (req, res) => {
   try {
-    const user = await User.find(req.params.id);
+    const user = await User.findOne({ _id: req.params.id });
     if (!user) res.status(200).json({ message: "User Tidak Ditemukan" });
     return res.status(200).json(user);
   } catch (error) {

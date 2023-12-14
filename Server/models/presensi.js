@@ -8,27 +8,22 @@ const presenceSchema = new mongoose.Schema(
     },
     id_msib: {
       type: Number,
-      // required: true,
+      //
     },
     shift: {
       type: String,
-      required: true,
     },
     username: {
       type: String,
-      required: true,
     },
     divisi: {
       type: String,
-      required: true,
     },
     latitude: {
       type: String,
-      required: true,
     },
     longitude: {
       type: String,
-      required: true,
     },
     image: {
       data: Buffer,

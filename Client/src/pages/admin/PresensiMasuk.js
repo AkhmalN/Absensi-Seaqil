@@ -127,7 +127,7 @@ const PresensiMasuk = ({
                 targetTimeMorningStart.setHours(7, 0, 0, 0);
                 targetTimeMorningEnd.setHours(8, 0, 0, 0);
                 targetTimeAfternoonStart.setHours(12, 0, 0, 0);
-                targetTimeAfternoonEnd.setHours(17, 0, 0, 0);
+                targetTimeAfternoonEnd.setHours(13, 0, 0, 0);
 
                 // Hitung selisih waktu dalam milidetik
                 const timeDifferenceOnMorningStart =

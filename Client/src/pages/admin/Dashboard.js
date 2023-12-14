@@ -10,14 +10,12 @@ import { Row, Col } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
-import selfie from "../../assets/admin/selfie.jpg";
 import Terlambat from "../../fragments/terlambat";
 import MahasiswaMagang from "../../fragments/mahasiswa_magang";
 import PengajuanIzin from "../../fragments/pengajuan_izin";
 import PresensiHarian from "../../fragments/Presensi_hari_ini";
 import { useMediaQuery } from "@react-hook/media-query";
 import axios from "axios";
-import LocationModal from "../../components/LocationModal";
 import PresensiMasuk from "./PresensiMasuk";
 import ImageDetailComponents from "../../components/ImageDetailComponents";
 import PresensiKeluar from "./PresensiKeluar";
@@ -47,7 +45,8 @@ const Dashboard = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [showApproveMasuk, setshowApproveMasuk] = useState(false);
   const [showApproveKeluar, setshowApproveKeluar] = useState(false);
-  const [showAdd, setShowAdd] = useState(false);
+  const [showAddPresenceMasuk, setShowAddPresenceMasuk] = useState(false);
+  const [showAddPresenceKeluar, setShowAddPresenceKeluar] = useState(false);
   const [showAlertAdd, setShowAlertAdd] = useState(false);
   const [showDeleteKeluar, setShowDeleteKeluar] = useState(false);
   const [showAlertApprove, setShowAlertApprove] = useState(false);
@@ -57,7 +56,15 @@ const Dashboard = () => {
   const [detailDataPresensi, setDetailDataPresensi] = useState([]);
   const [detailDataPresensiKeluar, setDetailDataPresensiKeluar] = useState([]);
   const [deleteIdPresence, setDeleteIdPresence] = useState();
+  const [succsesDelete, setSuccsesDelete] = useState(false);
 
+  // State Data
+  const [IdMsib, setIdMsib] = useState("");
+  const [username, setUsername] = useState("");
+  const [divisi, setDivisi] = useState("");
+  const [shift, setShift] = useState("");
+
+  // !GET DATA ALL
   const getDataPresensiMasuk = async () => {
     try {
       const response = await axios.get(
@@ -92,15 +99,44 @@ const Dashboard = () => {
     getDataPresensiKeluar();
   }, []);
 
-  const handleCloseAdd = () => setShowAdd(false);
-  const handleShowAdd = () => setShowAdd(true);
+  // !LifeCycle Add Presence
+  const handleCloseAdd = () => setShowAddPresenceMasuk(false);
+  const handleShowAdd = () => setShowAddPresenceMasuk(true);
+
+  const handleCloseAddKeluar = () => setShowAddPresenceKeluar(false);
+  const handleShowAddKeluar = () => {
+    setShowAddPresenceKeluar(true);
+  };
+
+  // ! POST DATA PRESENCE MASUK
+  // ! POST DATA PESENCE KELUAR
+  const handleAddPresenceKeluar = async () => {
+    try {
+      await axios
+        .post(` http://localhost:8081/api/v1/presence_out`, {
+          id_msib: IdMsib,
+          username: username,
+          divisi: divisi,
+          shift: shift,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("succses add");
+          } else {
+            console.log("error");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleCloseAlertAdd = () => setShowAlertAdd(false);
   const handleShowAlertAdd = () => {
     setShowAlertAdd(true);
     setTimeout(() => {
       setShowAlertAdd(false);
-    }, 2000);
+    }, 3000);
   };
 
   const ButtonAdd = () => {
@@ -108,13 +144,18 @@ const Dashboard = () => {
     handleCloseAdd();
     handleShowAlertAdd();
   };
+
+  const closeSuccsesDelete = () => {
+    setSuccsesDelete(false);
+  };
+
+  //! LifeCycle Delete Presence
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDeleteMasuk = async (_id) => {
     setLoading(true);
     setShowDelete(true);
     await setDeleteIdPresence(_id);
     setLoading(false);
-    console.log("delete masuk : ", deleteIdPresence);
   };
 
   const handleCloseDeleteKeluar = () => setShowDeleteKeluar(false);
@@ -123,16 +164,19 @@ const Dashboard = () => {
     setShowDeleteKeluar(true);
     await setDeleteIdPresence(_id);
     setLoading(false);
-    console.log("delete keluar : ", deleteIdPresence);
   };
 
-  const DeleteEnterPresenceMasuk = async () => {
+  // ! Delete Presence
+  const DeleteEnterPresence = async () => {
     try {
       await axios
         .delete(`http://localhost:8081/api/v1/presence/${deleteIdPresence}`)
         .then((response) => {
           if (response.status === 200) {
-            handleShowDeleteKeluar();
+            setSuccsesDelete(true);
+            setTimeout(() => {
+              setSuccsesDelete(false);
+            }, 3000);
             navigate("/dashboard");
             window.location.reload();
           }
@@ -143,6 +187,24 @@ const Dashboard = () => {
     handleCloseDelete();
   };
 
+  const DeleteOutPresence = async () => {
+    try {
+      await axios
+        .delete(`http://localhost:8081/api/v1/presence_out/${deleteIdPresence}`)
+        .then((response) => {
+          if (response.status === 200) {
+            setSuccsesDelete(true);
+            setTimeout(() => {
+              setSuccsesDelete(false);
+            }, 3000);
+            navigate("/dashboard");
+            window.location.reload();
+          }
+        });
+    } catch (error) {}
+  };
+
+  // ! LifeCycle Approve
   const handleCloseApproveMasuk = () => setshowApproveMasuk(false);
   const handleshowApproveMasuk = async (_id) => {
     setshowApproveMasuk(true);
@@ -175,14 +237,17 @@ const Dashboard = () => {
     }
   };
 
+  // ! LifeCycle Approve
+
   const handleCloseAlertApprove = () => setShowAlertApprove(false);
   const handleShowAlertApprove = () => {
     setShowAlertApprove(true);
     setTimeout(() => {
       setShowAlertApprove(false);
-    }, 2000);
+    }, 3000);
   };
 
+  // ! Approve Presence
   const ButtonApprove = () => {
     // Memanggil kedua aksi secara bersamaan
     handleCloseApproveMasuk();
@@ -283,16 +348,23 @@ const Dashboard = () => {
             {/* Area Chart PRESENSI PULANG HARI INI*/}
             <PresensiKeluar
               dataPresensi={dataPresensiKeluar}
-              handleShowAdd={handleShowAdd}
+              handleShowAdd={handleShowAddKeluar}
               handleOnClickLocation={handleOnClickLocation}
               handleShowApproveKeluar={handleShowApproveKeluar}
               handleShowDelete={handleShowDeleteKeluar}
             />
+            <PresensiMasuk
+              dataPresensi={dataPresensiMasuk}
+              handleShowAdd={handleShowAdd}
+              handleOnClickLocation={handleOnClickLocation}
+              handleshowApprove={handleshowApproveMasuk}
+              handleShowDelete={handleShowDeleteMasuk}
+            />
 
-            {/* MODAL ADD PRESENSI */}
+            {/* MODAL ADD PRESENSI KELUAR*/}
             <Modal
-              show={showAdd}
-              onHide={handleCloseAdd}
+              show={showAddPresenceKeluar}
+              onHide={handleCloseAddKeluar}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="md"
@@ -300,33 +372,7 @@ const Dashboard = () => {
               <Modal.Body className="modal-body">
                 <Modal.Body>
                   <div className="modal-header-edit text-center mb-3">
-                    Tambah Presensi
-                    <Row className="mt-3">
-                      <div className="col-6 modal-header-edit">
-                        <div className="input-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Cari..."
-                            aria-label="Search"
-                            aria-describedby="basic-addon2"
-                          />
-                          <div className="input-group-append">
-                            <button
-                              className="btn btn-primary btn-sm"
-                              type="button"
-                              style={{
-                                backgroundColor: "#266cb2",
-                                borderBottomRightRadius: "10px",
-                                borderTopRightRadius: "10px",
-                              }}
-                            >
-                              <FontAwesomeIcon icon={faMagnifyingGlass} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </Row>
+                    Tambah Presensi Keluar
                     <Row>
                       <Col>
                         <div className="mt-3">
@@ -335,7 +381,9 @@ const Dashboard = () => {
                               type="text"
                               className="form-control"
                               id="IdK"
+                              value={IdMsib}
                               placeholder="ID MSIB"
+                              onChange={(e) => setIdMsib(e.target.value)}
                             />
                           </div>
                           <div class="mb-2">
@@ -343,7 +391,9 @@ const Dashboard = () => {
                               type="text"
                               className="form-control"
                               id="nm"
+                              value={username}
                               placeholder="Nama Lengkap"
+                              onChange={(e) => setUsername(e.target.value)}
                             />
                           </div>
                           <div class="mb-2">
@@ -351,19 +401,12 @@ const Dashboard = () => {
                               type="text"
                               className="form-control"
                               id="div"
+                              value={divisi}
                               placeholder="Divisi"
+                              onChange={(e) => setDivisi(e.target.value)}
                             />
                           </div>
-                          <div class="mb-2">
-                            <select
-                              class="form-select"
-                              aria-label="Default select example"
-                            >
-                              <option selected>Shift</option>
-                              <option value="Pagi">Pagi</option>
-                              <option value="Siang">Siang</option>
-                            </select>
-                          </div>
+
                           <div class="mb-2">
                             <input
                               type="date"
@@ -396,19 +439,13 @@ const Dashboard = () => {
                             <select
                               class="form-select"
                               aria-label="Default select example"
+                              value={shift}
+                              onChange={(e) => setShift(e.target.value)}
                             >
                               <option selected>Shift</option>
-                              <option value="Pagi">Tepat Waktu</option>
-                              <option value="Siang">Terlambat</option>
+                              <option value="Pagi">Pagi</option>
+                              <option value="Siang">Siang</option>
                             </select>
-                          </div>
-                          <div class="mb-2">
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="Alasan"
-                              placeholder="Alasan"
-                            />
                           </div>
                         </div>
                       </Col>
@@ -419,10 +456,111 @@ const Dashboard = () => {
                     className="d-flex justify-content-center mt-4"
                     style={{ border: "none" }}
                   >
-                    <button className="batal-btn me-2" onClick={handleCloseAdd}>
+                    <button
+                      className="batal-btn me-2"
+                      onClick={handleCloseAddKeluar}
+                    >
                       Batal
                     </button>
-                    <button className="edit-btn ms-2" onClick={ButtonAdd}>
+                    <button
+                      className="edit-btn ms-2"
+                      onClick={handleAddPresenceKeluar}
+                    >
+                      Simpan
+                    </button>
+                  </div>
+                </Modal.Body>
+              </Modal.Body>
+            </Modal>
+            {/* MODAL ADD PRESENSI KELUAR */}
+            <Modal
+              show={showAddPresenceMasuk}
+              onHide={handleCloseAdd}
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+              size="md"
+            >
+              <Modal.Body className="modal-body">
+                <Modal.Body>
+                  <div className="modal-header-edit text-center mb-3">
+                    Tambah Presensi Masuk
+                    <Row>
+                      <Col>
+                        <div className="mt-3">
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="IdK"
+                              placeholder="ID MSIB"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="nm"
+                              placeholder="Nama Lengkap"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="div"
+                              placeholder="Divisi"
+                            />
+                          </div>
+
+                          <div class="mb-2">
+                            <input
+                              type="date"
+                              className="form-control"
+                              id="tgl"
+                              placeholder="Tanggal"
+                            />
+                          </div>
+                        </div>
+                      </Col>
+                      <Col>
+                        <div className="mt-3">
+                          <div class="mb-2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="jk"
+                              placeholder="Jam Keluar"
+                            />
+                          </div>
+                          <div class="mb-2">
+                            <select
+                              class="form-select"
+                              aria-label="Default select example"
+                            >
+                              <option selected>Shift</option>
+                              <option value="Pagi">Tepat Waktu</option>
+                              <option value="Siang">Terlambat</option>
+                            </select>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+
+                  <div
+                    className="d-flex justify-content-center mt-4"
+                    style={{ border: "none" }}
+                  >
+                    <button
+                      className="batal-btn me-2"
+                      onClick={handleCloseAddKeluar}
+                    >
+                      Batal
+                    </button>
+                    <button
+                      className="edit-btn ms-2"
+                      onClick={handleAddPresenceKeluar}
+                    >
                       Simpan
                     </button>
                   </div>
@@ -475,7 +613,7 @@ const Dashboard = () => {
                   </button>
                   <button
                     className="decline ms-2"
-                    onClick={DeleteEnterPresenceMasuk}
+                    onClick={DeleteEnterPresence}
                   >
                     Yakin
                   </button>
@@ -508,15 +646,17 @@ const Dashboard = () => {
                   >
                     Batal
                   </button>
-                  <button className="decline ms-2">Yakin</button>
+                  <button className="decline ms-2" onClick={DeleteOutPresence}>
+                    Yakin
+                  </button>
                 </div>
               </Modal.Body>
             </Modal>
 
             {/* MODAL SUCCSES DELETE PRESENSI */}
-            {/* <Modal
-              show={showDelete}
-              onHide={handleCloseDelete}
+            <Modal
+              show={succsesDelete}
+              onHide={closeSuccsesDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
               size="sm"
@@ -527,23 +667,7 @@ const Dashboard = () => {
                 </div>
                 <div className="modal-body text-center">Berhasil Ditolak!</div>
               </Modal.Body>
-            </Modal> */}
-
-            {/* MODAL SUCCSES DELETE PRESENSI KELUAR */}
-            {/* <Modal
-              show={showDeleteKeluar}
-              onHide={handleCloseDeleteKeluar}
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-              size="sm"
-            >
-              <Modal.Body>
-                <div className="modal-header-decline text-center">
-                  <img src={checkmark} alt="checkmark" className="icon_check" />
-                </div>
-                <div className="modal-body text-center">Berhasil Ditolak!</div>
-              </Modal.Body>
-            </Modal> */}
+            </Modal>
 
             {/* MODAL APPROVE PRESENSI MASUK*/}
             <Modal
@@ -773,14 +897,6 @@ const Dashboard = () => {
                 </div>
               </Modal.Body>
             </Modal>
-
-            <PresensiMasuk
-              dataPresensi={dataPresensiMasuk}
-              handleShowAdd={handleShowAdd}
-              handleOnClickLocation={handleOnClickLocation}
-              handleshowApprove={handleshowApproveMasuk}
-              handleShowDelete={handleShowDeleteMasuk}
-            />
           </div>
 
           <footer className="sticky-footer bg-white">

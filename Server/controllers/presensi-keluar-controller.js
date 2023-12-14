@@ -7,8 +7,10 @@ export const createPresent = async (req, res, next) => {
   try {
     const { id_msib, username, divisi, shift, latitude, longitude, imageSrc } =
       req.body;
-    // Decode the base64 image string
-    const base64Data = imageSrc.replace(/^data:image\/jpeg;base64,/, "");
+    const base64Data = (imageSrc ?? "").replace(
+      /^data:image\/jpeg;base64,/,
+      ""
+    );
     const imageBuffer = Buffer.from(base64Data, "base64");
     const newPresence = new PresenceOut({
       id_msib: id_msib,
@@ -91,7 +93,7 @@ export const deletePresence = async (req, res) => {
       return res.status(404).json({ message: "Data Presensi tidak ditemukan" });
     }
     return res
-      .status(201)
+      .status(200)
       .json({ message: `Presensi ${presence.username} telah di hapus` });
   } catch (error) {
     return res.status(404).json({ message: "Terjadi Kesalahan pada Server!" });
