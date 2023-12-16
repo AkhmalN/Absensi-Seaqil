@@ -1,16 +1,75 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import "../App.css";
 import { useState } from "react";
 import InfoAlert from "./InfoAlert";
+import axios from "axios";
 
 function FormIzin() {
+  const [file, setFile] = useState(null);
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
+  const [progress, setProgress] = useState({ started: false, pc: 0 });
+  const [message, setMessage] = useState(null);
+  // const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  const handleUploadFile = () => {
+    if (!file) {
+      setMessage("Tidak ada file yang dipilih!");
+      return;
+    }
+    const fd = new FormData();
+    fd.append("file", file);
+
+    setMessage("Mengunggah...");
+    setProgress((prevState) => {
+      return { ...prevState, started: true };
+    });
+    axios
+      .post("http://httpbin.org/post", fd, {
+        onUploadProgress: (progressEvent) => {
+          setProgress((prevState) => {
+            return { ...prevState, pc: progressEvent.progress * 100 };
+          });
+        },
+        headers: {
+          "Custom-Header": "value",
+        },
+      })
+      .then((res) => {
+        setMessage("Berhasil Mengunggah");
+        console.log(res.data);
+
+        // Reset state values after successful upload
+        setProgress({ started: false, pc: 0 });
+        setMessage(null);
+        setFile(null);
+      })
+      .catch((err) => {
+        setMessage("Gagal Mengunggah");
+        console.log(err);
+      });
+  };
 
   return (
     <>
       <Form className="formIzin d-grid p-5">
+        {progress.started && (
+          <div class="alert alert-warning" role="alert">
+            <label>Processing:</label>
+            <div className="progress">
+              <div
+                className="progress-bar progress-bar-striped bg-sucsses"
+                role="progressbar"
+                style={{ width: `${progress.pc}%` }}
+                aria-valuenow={progress.pc}
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            {message && <span>{message}</span>}
+          </div>
+        )}
+
         <Form.Group className="mb-3">
           <Form.Label>Tipe Pengajuan :</Form.Label>
           <Form.Select aria-label="Default select example" required>
@@ -34,6 +93,9 @@ function FormIzin() {
             accept=".pdf"
             placeholder="Upload File"
             required
+            onChange={(e) => {
+              setFile(e.target.files[0]);
+            }}
           />
         </Form.Group>
 
@@ -41,8 +103,9 @@ function FormIzin() {
           className="mt-4"
           variant="primary"
           size="lg"
-          onClick={handleShow}
-          dismissible>
+          onClick={handleUploadFile}
+          dismissible
+        >
           SUBMIT
         </Button>
       </Form>
