@@ -19,12 +19,15 @@ const workPermitSchema = new mongoose.Schema(
       required: true,
     },
     file: {
-      type: String,
-      required: true,
+      data: Buffer,
+      contentType: String,
     },
     status: {
       type: String,
       required: true,
+    },
+    tanggal_pengajuan: {
+      type: Date,
     },
   },
   { timestamps: true }

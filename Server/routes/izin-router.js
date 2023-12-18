@@ -4,6 +4,7 @@ import {
   getIzin,
   updateIzin,
   deleteIzin,
+  getFile,
 } from "../controllers/izin-controller.js";
 import express from "express";
 import multer from "multer";
@@ -26,5 +27,6 @@ router.get("/", getALlIzin);
 router.get("/:id", getIzin);
 router.patch("/:id", updateIzin);
 router.delete("/:id", deleteIzin);
+router.get("/dokumen/:id", getFile);
 
 export default router;

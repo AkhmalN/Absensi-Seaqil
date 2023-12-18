@@ -1,29 +1,56 @@
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal, ProgressBar } from "react-bootstrap";
 import "../App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InfoAlert from "./InfoAlert";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 function FormIzin() {
   const [file, setFile] = useState(null);
   const [show, setShow] = useState(false);
   const [progress, setProgress] = useState({ started: false, pc: 0 });
   const [message, setMessage] = useState(null);
-  // const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const [succses, setSuccses] = useState(null);
 
-  const handleUploadFile = () => {
+  const [idMsib, setIdMsib] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [divisi, setDivisi] = useState(null);
+  const [statusPengajuan, setStatusPengajuan] = useState(null);
+  const [tanggalPengajuan, setTanggalPengajuan] = useState(null);
+  const [dokumen, setDokumen] = useState(null);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    const storedDivisi = localStorage.getItem("divisi");
+    const ID_MSIB = localStorage.getItem("id_msib");
+
+    setUsername(storedUsername);
+    setDivisi(storedDivisi);
+    setIdMsib(ID_MSIB);
+  });
+
+  const handleClose = () => setShow(false);
+  const handleUploadFile = async (e) => {
+    e.preventDefault();
     if (!file) {
       setMessage("Tidak ada file yang dipilih!");
+      setSuccses(false);
+      setTimeout(() => {
+        setMessage(null);
+      }, 2000);
       return;
     }
+
     const fd = new FormData();
     fd.append("file", file);
 
     setMessage("Mengunggah...");
+
     setProgress((prevState) => {
       return { ...prevState, started: true };
     });
+
     axios
       .post("http://httpbin.org/post", fd, {
         onUploadProgress: (progressEvent) => {
@@ -37,8 +64,8 @@ function FormIzin() {
       })
       .then((res) => {
         setMessage("Berhasil Mengunggah");
-        console.log(res.data);
-
+        setSuccses(true);
+        setDokumen(res.data.files.file);
         // Reset state values after successful upload
         setProgress({ started: false, pc: 0 });
         setMessage(null);
@@ -46,34 +73,54 @@ function FormIzin() {
       })
       .catch((err) => {
         setMessage("Gagal Mengunggah");
+        setSuccses(false);
         console.log(err);
       });
+    setMessage(null);
+  };
+
+  const handleToUploadForm = async () => {
+    if (dokumen === null) {
+      setMessage("Setujui file terlebih dahulu!");
+      setTimeout(() => {
+        setMessage(null);
+      }, 2000);
+    }
+    const formData = new FormData();
+    formData.append("id_msib", idMsib);
+    formData.append("username", username);
+    formData.append("divisi", divisi);
+    formData.append("status", statusPengajuan);
+    formData.append("files", dokumen);
+    formData.append("tanggal_pengajuan", tanggalPengajuan);
+    try {
+      await axios
+        .post("http://localhost:8081/api/v1/work_permit/", formData)
+        .then((response) => {
+          if (response.status === 200) {
+            setMessage(response.data.message);
+            setTimeout(() => {
+              setMessage(null);
+            }, 2000);
+          }
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <>
-      <Form className="formIzin d-grid p-5">
-        {progress.started && (
-          <div class="alert alert-warning" role="alert">
-            <label>Processing:</label>
-            <div className="progress">
-              <div
-                className="progress-bar progress-bar-striped bg-sucsses"
-                role="progressbar"
-                style={{ width: `${progress.pc}%` }}
-                aria-valuenow={progress.pc}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-            {message && <span>{message}</span>}
-          </div>
-        )}
-
-        <Form.Group className="mb-3">
+      <Form className="formIzin d-grid px-5 py-2">
+        <Form.Group className="mb-1">
           <Form.Label>Tipe Pengajuan :</Form.Label>
-          <Form.Select aria-label="Default select example" required>
-            <option>Pilih</option>
+          <Form.Select
+            aria-label="Default select example"
+            required
+            value={statusPengajuan}
+            onChange={(e) => setStatusPengajuan(e.target.value)}
+          >
+            <option>Pilih Status Pengajuan</option>
             <option value="Izin">Izin</option>
             <option value="Sakit">Sakit</option>
             <option value="Perjalanan Dinas">Perjalanan Dinas</option>
@@ -81,13 +128,20 @@ function FormIzin() {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
           <Form.Label>Tanggal :</Form.Label>
-          <Form.Control type="date" placeholder="Pilih Tanggal" required />
+          <Form.Control
+            type="date"
+            placeholder="Pilih Tanggal"
+            required
+            onChange={(e) => setTanggalPengajuan(e.target.value)}
+          />
         </Form.Group>
-
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>File :</Form.Label>
+        <Form.Label>File :</Form.Label>
+        <Form.Group
+          className="d-flex flex-md-row  mb-1"
+          controlId="exampleForm.ControlInput1"
+        >
           <Form.Control
             type="file"
             accept=".pdf"
@@ -97,13 +151,59 @@ function FormIzin() {
               setFile(e.target.files[0]);
             }}
           />
+          <button
+            className="mx-1 btn btn-outline-secondary "
+            onClick={handleUploadFile}
+          >
+            <FontAwesomeIcon icon={faCheck} />
+          </button>
         </Form.Group>
+        <Modal show={progress.started || message} onHide={handleClose}>
+          <Modal.Body>
+            {progress.started && (
+              <div className="mb-3">
+                <label>Processing:</label>
+                <ProgressBar
+                  now={progress.pc}
+                  label={`${progress.pc.toFixed(0)}%`}
+                  variant="success"
+                  striped
+                />
+              </div>
+            )}
+
+            {message && (
+              <div
+                className={`alert ${
+                  succses ? "alert-success" : "alert-danger"
+                }`}
+                role="alert"
+              >
+                {message}
+              </div>
+            )}
+          </Modal.Body>
+        </Modal>
+        <Modal show={message} onHide={handleClose}>
+          <Modal.Body>
+            {message && (
+              <div
+                className={`alert ${
+                  succses ? "alert-success" : "alert-danger"
+                }`}
+                role="alert"
+              >
+                {message}
+              </div>
+            )}
+          </Modal.Body>
+        </Modal>
 
         <Button
           className="mt-4"
           variant="primary"
           size="lg"
-          onClick={handleUploadFile}
+          onClick={handleToUploadForm}
           dismissible
         >
           SUBMIT

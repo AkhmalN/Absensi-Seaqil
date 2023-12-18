@@ -3,14 +3,20 @@ import Izin from "../models/izin.js";
 // Create Izin
 export const createIzin = async (req, res) => {
   try {
-    const { id_msib, username, divisi, status } = req.body;
-    const file = req.file.filename;
+    const { id_msib, username, divisi, status, files, tanggal_pengajuan } =
+      req.body;
+    const base64Data = files.replace(/^data:application\/pdf;base64,/, "");
+    const fileBuffer = Buffer.from(base64Data, "base64");
     const newIzin = new Izin({
       id_msib,
       username,
       divisi,
-      file,
+      file: {
+        data: fileBuffer,
+        contentType: "pdf",
+      },
       status,
+      tanggal_pengajuan,
     });
     await newIzin.save();
     if (!newIzin) {
@@ -82,4 +88,21 @@ export const deleteIzin = async (req, res) => {
         .json({ message: `Data Izin ${izin.username} telah dihapus` });
     }
   } catch (error) {}
+};
+
+// Detail View
+
+export const getFile = async (req, res) => {
+  try {
+    const izin = await Izin.findOne({ _id: req.params.id });
+
+    if (!izin) {
+      return res.status(404).json({ message: "dokumen tidak ditemukan!" });
+    }
+    res.setHeader("Content-Type", izin.file.contentType);
+    res.send(izin.file.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };

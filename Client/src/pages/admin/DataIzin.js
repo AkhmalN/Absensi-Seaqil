@@ -16,6 +16,7 @@ import {
 import { Row, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useMediaQuery } from "@react-hook/media-query";
+import PdfView from "./PdfView";
 
 const DataIzin = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
@@ -54,7 +55,8 @@ const DataIzin = () => {
               marginLeft,
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
-            }}>
+            }}
+          >
             {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -73,7 +75,8 @@ const DataIzin = () => {
                   fontSize: "20px",
                   fontStyle: "normal",
                   fontWeight: "600",
-                }}>
+                }}
+              >
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -131,6 +134,7 @@ const DataIzin = () => {
                     </div>
                   </form>
                 </div>
+                <PdfView />
 
                 {/* Card Body */}
                 <div className="card-body ">
@@ -141,31 +145,37 @@ const DataIzin = () => {
                     rowsPerPageOptions={[5, 10, 25, 50]}
                     tableStyle={{ minWidth: "50rem", textAlign: "center" }}
                     className="customDataTable" // Add a custom class for more styling options
-                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+                  >
                     <Column
                       field="no"
                       header="No"
-                      style={{ width: "3%" }}></Column>
+                      style={{ width: "3%" }}
+                    ></Column>
                     <Column
                       field="IDk"
                       header="ID MSIB"
                       style={{ width: "14%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="tgl"
                       header="Tanggal"
                       style={{ width: "12%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="nm"
                       header="Nama"
                       style={{ width: "20%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="div"
                       header="Divisi"
                       style={{ width: "15%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="file"
                       header="File"
@@ -177,18 +187,21 @@ const DataIzin = () => {
                             <FontAwesomeIcon icon={faFilePdf} />
                           </Button>
                         </div>
-                      )}></Column>
+                      )}
+                    ></Column>
 
                     <Column
                       field="stat_i"
                       header="Status"
                       style={{ width: "10%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="ket"
                       header="Ket"
                       style={{ width: "16%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                   </DataTable>
                 </div>
               </div>
