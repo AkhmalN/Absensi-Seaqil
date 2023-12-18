@@ -19,7 +19,6 @@
     "bootstrap-icons": "^1.11.1",
     "datepicker": "^0.0.0",
     "leaflet": "^1.9.4",
-    "pdfjs-dist": "^4.0.269",
     "primereact": "^10.0.9",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",

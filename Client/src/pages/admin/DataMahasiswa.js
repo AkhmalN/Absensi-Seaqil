@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "../../App.css";
@@ -20,6 +20,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
 import { useMediaQuery } from "@react-hook/media-query";
 import axios from "axios";
+import ImageComponents from "../../components/ImageComponents";
 
 const DataMahasiswa = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
@@ -56,6 +57,7 @@ const DataMahasiswa = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
   const [divisi, setDivisi] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
   const [deleteID, setDeleteID] = useState("");
   const [succsesMessage, setSuccsesMessage] = useState("");
   const [editDataMahasiswa, setEditDataMahasiswa] = useState([]);
@@ -64,6 +66,7 @@ const DataMahasiswa = () => {
     try {
       const response = await axios.get("http://localhost:8081/api/v1/users/");
       setDataMahasiswa(response.data);
+      console.log(response.data);
     } catch (error) {
       if (error.response) {
         console.error("Server responded with an error:", error.response.status);
@@ -91,6 +94,19 @@ const DataMahasiswa = () => {
     window.location.reload("/dashboard/data_mahasiswa");
   };
 
+  const convertToBase64 = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      // Preview the selected image
+      const reader = new FileReader();
+      reader.onload = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const ButtonAdd = async () => {
     try {
       await axios
@@ -102,6 +118,7 @@ const DataMahasiswa = () => {
           password: password,
           role: role,
           divisi: divisi,
+          selectedImage: selectedImage,
         })
         .then((response) => {
           if (response.status === 200) {
@@ -315,6 +332,18 @@ const DataMahasiswa = () => {
                     paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
                   >
                     <Column
+                      field="image"
+                      header="Foto"
+                      style={{ width: "10%" }}
+                      alignHeader={"center"}
+                      body={(rowData) => (
+                        <ImageComponents
+                          key={rowData._id}
+                          singleData={rowData}
+                        />
+                      )}
+                    ></Column>
+                    <Column
                       field="id_msib"
                       header="ID MSIB"
                       style={{ width: "7%" }}
@@ -421,9 +450,9 @@ const DataMahasiswa = () => {
                           type="file"
                           className="form-control"
                           id="nm"
+                          accept="image/*"
                           placeholder="Email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          onChange={convertToBase64}
                         />
                       </div>
                       <div class="mb-2">

@@ -6,26 +6,31 @@ export const createUser = async (req, res, next) => {
       id_msib,
       shift,
       username,
-      email,
+
       password,
       role,
       divisi,
-      akunImage,
+      selectedImage,
     } = req.body;
 
-    const base64Data = akunImage.replace(/^data:image\/jpeg;base64,/, "");
+    if (!selectedImage) {
+      return res.status(400).json({ message: "Image is required" });
+    }
+    const matches = selectedImage.match(
+      /^data:image\/([a-zA-Z+]+);base64,(.+)$/
+    );
+    const [, imageType, base64Data] = matches;
     const imageBuffer = Buffer.from(base64Data, "base64");
     const newUser = new User({
       id_msib,
       shift,
       username,
-      email,
       password,
       role,
       divisi,
       image: {
         data: imageBuffer,
-        contentType: "image/jpeg",
+        contentType: `image/${imageType}`,
       },
     });
     await newUser.save();

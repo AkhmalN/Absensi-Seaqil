@@ -1,10 +1,9 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import DATA from "../../DATA";
 import "../../App.css";
 import profil from "../../assets/admin/profil.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +16,7 @@ import { Row, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useMediaQuery } from "@react-hook/media-query";
 import PdfView from "./PdfView";
+import axios from "axios";
 
 const DataIzin = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
@@ -37,6 +37,29 @@ const DataIzin = () => {
   const toggleSidebar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
+
+  const [dataIzin, setDataIzin] = useState(null);
+
+  const getDataIzin = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8081/api/v1/work_permit/"
+      );
+      setDataIzin(response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error("Server responded with an error:", error.response.status);
+        console.error("Response data:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received from the server");
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
+    }
+  };
+  useEffect(() => {
+    getDataIzin();
+  }, []);
   return (
     <>
       <div id="wrapper">
@@ -134,12 +157,12 @@ const DataIzin = () => {
                     </div>
                   </form>
                 </div>
-                <PdfView />
+                {/* <PdfView /> */}
 
                 {/* Card Body */}
                 <div className="card-body ">
                   <DataTable
-                    value={DATA}
+                    value={dataIzin}
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
@@ -153,25 +176,30 @@ const DataIzin = () => {
                       style={{ width: "3%" }}
                     ></Column>
                     <Column
-                      field="IDk"
+                      field="id_msib"
                       header="ID MSIB"
                       style={{ width: "14%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
-                      field="tgl"
-                      header="Tanggal"
+                      field="createdAt"
+                      header="Tanggal Dibuat"
                       style={{ width: "12%" }}
                       alignHeader={"center"}
+                      body={(rowData) => (
+                        <span>
+                          {new Date(rowData.createdAt).toLocaleDateString()}
+                        </span>
+                      )}
                     ></Column>
                     <Column
-                      field="nm"
+                      field="username"
                       header="Nama"
                       style={{ width: "20%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
-                      field="div"
+                      field="divisi"
                       header="Divisi"
                       style={{ width: "15%" }}
                       alignHeader={"center"}
@@ -191,16 +219,23 @@ const DataIzin = () => {
                     ></Column>
 
                     <Column
-                      field="stat_i"
+                      field="status"
                       header="Status"
                       style={{ width: "10%" }}
                       alignHeader={"center"}
                     ></Column>
                     <Column
-                      field="ket"
-                      header="Ket"
+                      field="tanggal_pengajuan"
+                      header="Tanggal Keperluan"
                       style={{ width: "16%" }}
                       alignHeader={"center"}
+                      body={(rowData) => (
+                        <span>
+                          {new Date(
+                            rowData.tanggal_pengajuan
+                          ).toLocaleDateString()}
+                        </span>
+                      )}
                     ></Column>
                   </DataTable>
                 </div>

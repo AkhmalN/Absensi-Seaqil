@@ -44,22 +44,21 @@ function ProfilModal({
     setShowPassword(!showPassword);
   };
   const handleOnUpdate = async () => {
+    const data = {
+      username: username,
+      shift: shift,
+      divisi: divisi,
+      id_msib: idMsib,
+      image: akunImage,
+      password: password,
+    };
+
     try {
-      const response = await axios.patch(
-        `http://localhost:8081/api/v1/users/${user_id}`,
-        {
-          username: username,
-          shift: shift,
-          divisi: divisi,
-          id_msib: idMsib,
-          image: akunImage,
-          password: password,
-        }
-      );
-      console.log(response);
-      if (response.status === 200) {
-        console.log("succses");
-      }
+      await axios
+        .patch(`http://localhost:8081/api/v1/users/${user_id}`, data)
+        .then((response) => {
+          console.log(response);
+        });
     } catch (error) {
       console.log("Error during update:", error);
     }
@@ -135,7 +134,7 @@ function ProfilModal({
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleOnUpdate}>
+        <Button variant="primary" onClick={() => handleOnUpdate(user_id)}>
           Save Changes
         </Button>
       </Modal.Footer>

@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import "../../utils/css/sb-admin-2.min.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import DATA from "../../DATA";
@@ -20,6 +20,7 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import checkmark from "../../assets/admin/check mark.png";
 import { useMediaQuery } from "@react-hook/media-query";
+import axios from "axios";
 
 const Pengajuan = () => {
   const isLargeScreen = useMediaQuery("(min-width: 992px)");
@@ -43,6 +44,28 @@ const Pengajuan = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [showAlertDelete, setShowAlertDelete] = useState(false);
   const [showAlertApprove, setShowAlertApprove] = useState(false);
+  const [dataIzin, setDataIzin] = useState(null);
+
+  const getDataIzin = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8081/api/v1/work_permit/"
+      );
+      setDataIzin(response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error("Server responded with an error:", error.response.status);
+        console.error("Response data:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received from the server");
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
+    }
+  };
+  useEffect(() => {
+    getDataIzin();
+  }, []);
 
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => {
@@ -88,7 +111,8 @@ const Pengajuan = () => {
               marginLeft,
               transition: "margin 0.3s ease", // Optional: Add a smooth transition effect
               padding: isSmallScreen ? "10px" : "0", // Optional: Add padding for small screens
-            }}>
+            }}
+          >
             {/* <Button onClick={toggleSidebar}>Click</Button> */}
             {/* Topbar */}
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -107,7 +131,8 @@ const Pengajuan = () => {
                   fontSize: "20px",
                   fontStyle: "normal",
                   fontWeight: "600",
-                }}>
+                }}
+              >
                 <FontAwesomeIcon icon={faBars} />
               </button>
               {/* Topbar Navbar */}
@@ -142,7 +167,8 @@ const Pengajuan = () => {
               onHide={handleCloseDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   PERINGATAN!
@@ -152,10 +178,12 @@ const Pengajuan = () => {
                 </div>
                 <div
                   className="d-flex justify-content-center mt-2"
-                  style={{ border: "none" }}>
+                  style={{ border: "none" }}
+                >
                   <button
                     className="batal-btn me-2"
-                    onClick={handleCloseDelete}>
+                    onClick={handleCloseDelete}
+                  >
                     Batal
                   </button>
                   <button className="decline ms-2" onClick={ButtonYakin}>
@@ -171,7 +199,8 @@ const Pengajuan = () => {
               onHide={handleCloseAlertDelete}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -185,7 +214,8 @@ const Pengajuan = () => {
               onHide={handleCloseAlertApprove}
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              size="sm">
+              size="sm"
+            >
               <Modal.Body>
                 <div className="modal-header-decline text-center">
                   <img src={checkmark} alt="checkmark" className="icon_check" />
@@ -226,37 +256,48 @@ const Pengajuan = () => {
                 {/* Card Body */}
                 <div className="card-body ">
                   <DataTable
-                    value={DATA}
+                    value={dataIzin}
                     paginator
                     rows={6}
                     rowsPerPageOptions={[5, 10, 25, 50]}
                     tableStyle={{ textAlign: "center", minWidth: "50rem" }}
                     className="customDataTable" // Add a custom class for more styling options
-                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}>
+                    paginatorTemplate={`CurrentPageReport PrevPageLink PageLinks NextPageLink `}
+                  >
                     <Column
                       field="no"
                       header="No"
-                      style={{ width: "3%" }}></Column>
+                      style={{ width: "3%" }}
+                    ></Column>
                     <Column
-                      field="IDk"
+                      field="id_msib"
                       header="ID MSIB"
                       style={{ width: "14%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
-                      field="tgl"
+                      field="createdAt"
                       header="Tanggal"
                       style={{ width: "12%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                      body={(rowData) => (
+                        <span>
+                          {new Date(rowData.createdAt).toLocaleDateString()}
+                        </span>
+                      )}
+                    ></Column>
                     <Column
-                      field="nm"
+                      field="username"
                       header="Nama"
-                      style={{ width: "20%" }}
-                      alignHeader={"center"}></Column>
+                      style={{ width: "15%" }}
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
-                      field="div"
+                      field="divisi"
                       header="Divisi"
                       style={{ width: "15%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
                     <Column
                       field="file"
                       header="File"
@@ -270,12 +311,27 @@ const Pengajuan = () => {
                             type="button"
                           />
                         </div>
-                      )}></Column>
+                      )}
+                    ></Column>
                     <Column
-                      field="stat_i"
+                      field="status"
                       header="Status"
                       style={{ width: "10%" }}
-                      alignHeader={"center"}></Column>
+                      alignHeader={"center"}
+                    ></Column>
+                    <Column
+                      field="tanggal_pengajuan"
+                      header="Tanggal Keperluan"
+                      style={{ width: "10%" }}
+                      alignHeader={"center"}
+                      body={(rowData) => (
+                        <span>
+                          {new Date(
+                            rowData.tanggal_pengajuan
+                          ).toLocaleDateString()}
+                        </span>
+                      )}
+                    ></Column>
                     <Column
                       field="aksi"
                       header="Aksi"
@@ -286,27 +342,32 @@ const Pengajuan = () => {
                           style={{
                             display: "flex",
                             justifyContent: "center",
-                          }}>
+                          }}
+                        >
                           <div
                             style={{
                               display: "flex",
                               justifyContent: "center",
-                            }}>
+                            }}
+                          >
                             <button
                               className="check me-2 "
                               type="button"
-                              onClick={handleShowAlertApprove}>
+                              onClick={handleShowAlertApprove}
+                            >
                               <FontAwesomeIcon icon={faCheck} size="lg" />
                             </button>
                             <button
                               className="decline "
                               type="button"
-                              onClick={handleShowDelete}>
+                              onClick={handleShowDelete}
+                            >
                               <FontAwesomeIcon icon={faXmark} size="lg" />
                             </button>
                           </div>
                         </div>
-                      )}></Column>
+                      )}
+                    ></Column>
                   </DataTable>
                 </div>
               </div>
