@@ -92,11 +92,11 @@ const Login = () => {
                           {loading ? "Tunggu ..." : "Masuk"}
                         </button>
                       </div>
-                      <div>
+                      {/* <div>
                         <p className="" style={{ color: "black" }}>
                           Lupa Password?
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   </form>
                 </div>

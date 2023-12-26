@@ -48,6 +48,7 @@ const Home = () => {
   const [imageSrc, setImageSrc] = useState(null);
   const [password, setPassword] = useState(null);
   const [role, setRole] = useState(null);
+  const [useImage, setUserImage] = useState(null);
 
   const now = new Date();
   const hours = now.getHours();
@@ -351,6 +352,7 @@ const Home = () => {
     const storedPassword = localStorage.getItem("password");
     const storedRole = localStorage.getItem("role");
     const storedID = localStorage.getItem("ID");
+    const storedImage = localStorage.getItem("image");
     setDivisi(storedDivisi);
     setIdMsib(storedIdMsib);
     setShift(storedShift);
@@ -358,6 +360,7 @@ const Home = () => {
     setPassword(storedPassword);
     setRole(storedRole);
     setUserId(storedID);
+    setUserImage(storedImage);
   }, []);
 
   // popup absen

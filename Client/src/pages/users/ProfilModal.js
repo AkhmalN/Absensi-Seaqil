@@ -63,6 +63,7 @@ function ProfilModal({
       console.log("Error during update:", error);
     }
   };
+
   return (
     <Modal show={isOpen} onHide={onClose}>
       <Modal.Header closeButton>
