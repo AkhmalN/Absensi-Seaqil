@@ -20,6 +20,7 @@ export const Auth = async (req, res) => {
       role: user.role,
       password: user.password,
       id: user._id,
+      image: user.image.data,
     };
     return res.status(200).json({ message: "Berhasil Login!", user: userData });
   } catch (error) {
